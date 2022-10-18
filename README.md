@@ -22,7 +22,8 @@ OLDI messages have one further difference when compared to ATS messages; in addi
 <h2>Current Limitations</h2>
 The ICAO message Parser is not fully parsing the following fields:
 <ul>
-<li>ICAO fields 10 (syntax only), 18, 19, 20, 21 and 22; these fields are copied to the FPR as received in the message under their respective fields but the individual elements of these fields are currently not parsed;<\li>
+<li>ICAO fields 10 (syntax only)</li>
+<li>ICAO fields 18, 19 and 22 are being parse for correct and valid keywords and copied to the FPR, but the individual subfields are not being parsed;</li>
 <li>OLDI fields 80 and 81 are not parsed; these fields are copied to the FPR in dedicated fields but individual items in these fields are not parsed;</li>
 </ul>
 <h2>Future Upgrades</h2>
