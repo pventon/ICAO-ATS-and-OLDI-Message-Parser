@@ -1,9 +1,11 @@
 from Configuration.EnumerationConstants import ErrorId
 
 
-# This class contains a dictionary of error messages used by the ICAO Message Parser
-# when erroneous fields and / or subfields are detected.
 class ErrorMessages:
+    """This class contains a dictionary of error messages used by the ICAO Message Parser
+    when erroneous fields and / or subfields are detected.
+
+    The error message dictionary keys are defined in EnumerationConstants.ErrorId class."""
     error_messages = {}
 
     def __init__(self):
@@ -111,8 +113,8 @@ class ErrorMessages:
             ErrorId.F10_F10A_SYNTAX: "Expecting COMMS/NAV capability as 'N' or 'S' and/or 'A-D', 'E1-3', "
                                      "'F-I', 'J1-7', 'K', 'L', 'M1-3', 'O', 'P1-9', 'R-Z' instead of '!'",
             ErrorId.F10_F10AB_SYNTAX: "Expecting surveillance capabilities as 'N' or one or more of 'A', 'B1-2', "
-                                     "'C', 'D1', 'E', 'G1', 'H', 'I', 'L', 'P', 'S', 'U1-2', 'V1-2' or 'X' instead of "
-                                     "'!'",
+                                      "'C', 'D1', 'E', 'G1', 'H', 'I', 'L', 'P', 'S', 'U1-2', 'V1-2' or 'X' instead of "
+                                      "'!'",
             ErrorId.F10_F10B_SYNTAX: "Expecting surveillance capabilities as 'N' or one or more of 'A', 'B1-2', "
                                      "'C', 'D1', 'E', 'G1', 'H', 'I', 'L', 'P', 'S', 'U1-2', 'V1-2' or 'X' instead of "
                                      "'!'",
@@ -174,27 +176,70 @@ class ErrorMessages:
             ErrorId.F18_DOF_F18A_SYNTAX: "Expecting DOF in the format YYMMDD instead of '!'",
             # Field Junk following the DOF
             ErrorId.F18_DOF_TOO_MANY_FIELDS: "Invalid characters for alternate aerodrome text, should be "
-                                         "'A' to 'Z' and '0' to '9' only instead of '!'",
+                                             "'A' to 'Z' and '0' to '9' only instead of '!'",
 
             ErrorId.MFS_POINT_MISSING: "There is no data in field MFS Significant point field",
             ErrorId.MFS_POINT_SYNTAX: "Expecting MFS significant point starting with a letter "
                                       "followed by up to 14 letters and digits instead of '!'",
-            ErrorId.MFS_POINT_TOO_MANY_FIELDS: "Expecting a single point for the MFS point, remove '!'"
+            ErrorId.MFS_POINT_TOO_MANY_FIELDS: "Expecting a single point for the MFS point, remove '!'",
 
             # Field 18 is handled by its own parser
+            ErrorId.F18_NO_F18_KEYWORDS_FOUND: "Expecting field 18 keyword/data instead of '!'",
+            ErrorId.F18_UNRECOGNISED_DATA: "Expecting data following field 18 keyword '!'",
+            ErrorId.F18_DATA_MISSING: "No data in field 18, expecting field 18 keyword/data",
+            ErrorId.F18_GARBAGE: "Field 18 contains invalid data, expecting field 18 keyword/data instead of '!'",
+            ErrorId.F18_ZERO_OR_KEYWORDS: "Field 18 contains no keywords, can be '0' or 'n' "
+                                          "keyword/data occurrences instead of '!'",
+            ErrorId.F18_UNRECOGNISED_KEYWORD: "Field 18 Keyword '!' unrecognised",
+
             # Field 19 is handled by its own parser
-            # Field 20 is handled by its own parser
-            # Field 21 is handled by its own parser
+            ErrorId.F19_NO_F19_KEYWORDS_FOUND: "Expecting field 19 keyword/data instead of '!'",
+            ErrorId.F19_DATA_MISSING: "No data in field 19, expecting field 19 keyword/data",
+            ErrorId.F19_UNRECOGNISED_DATA: "Expecting data following field 19 keyword '!'",
+            ErrorId.F19_UNRECOGNISED_KEYWORD: "Field 19 Keyword '!' unrecognised",
+            ErrorId.F19_ZERO_OR_KEYWORDS: "Field 19 contains no keywords, must consist of one or more "
+                                          "keyword/data occurrences instead of '!'",
+
+            # Errors relating to Field 20
+            ErrorId.F20_MISSING: "There is no data in field 20",
+            ErrorId.F20_F20A_SYNTAX: "Invalid characters in field 20a, expecting A to Z, 0 to 9 instead of '!'",
+            ErrorId.F20_F20B_SYNTAX: "Invalid characters in field 20b, expecting A to Z, 0 to 9 instead of '!'",
+            ErrorId.F20_F20C_SYNTAX: "Expecting time in HHMM instead of '!'",
+            ErrorId.F20_F20D_SYNTAX: "Expecting frequency in 2 to 4 digits, decimal "
+                                     "point, 1 to 2 digit format instead of '!'",
+            ErrorId.F20_F20E_SYNTAX: "Expecting point as PRP, Lat/Long in degrees, Lat/Long in "
+                                     "degrees/minutes or point/bearing/distance instead of '!'",
+            ErrorId.F20_F20F_SYNTAX: "Invalid characters in field 20f, expecting A to Z, 0 to 9 instead of '!'",
+            ErrorId.F20_F20G_SYNTAX: "Invalid characters in field 20g, expecting A to Z, 0 to 9 instead of '!'",
+            ErrorId.F20_F20H_SYNTAX: "Invalid characters in field 20h, expecting A to Z, 0 to 9 instead of '!'",
+            ErrorId.F20_TOO_MANY_FIELDS: "Too many fields in Field 20, remove '!'",
+
+            # Errors relating to Field 20
+            ErrorId.F21_MISSING: "There is no data in field 21",
+            ErrorId.F21_F21A_SYNTAX: "Expecting time in HHMM instead of '!'",
+            ErrorId.F21_F21B_SYNTAX: "Expecting frequency in 2 to 4 digits, decimal "
+                                     "point, 1 to 2 digit format instead of '!'",
+            ErrorId.F21_F21C_SYNTAX: "Expecting point as PRP, Lat/Long in degrees, Lat/Long in "
+                                     "degrees/minutes or point/bearing/distance instead of '!'",
+            ErrorId.F21_F21D_SYNTAX: "Expecting time in HHMM instead of '!'",
+            ErrorId.F21_F21E_SYNTAX: "Invalid characters in field 21e, expecting A to Z, 0 to 9 instead of '!'",
+            ErrorId.F21_F21F_SYNTAX: "Invalid characters in field 21f, expecting A to Z, 0 to 9 instead of '!'",
+            ErrorId.F21_TOO_MANY_FIELDS: "Too many fields in Field 21, remove '!'",
+
             # Field 22 is handled by its own parser
+            ErrorId.F22_NO_F22_KEYWORDS_FOUND: "Expecting <field 22 ICAO field number>/<ICAO field> instead of '!'",
+            ErrorId.F22_DATA_MISSING: "No data in field 22, expecting <field 22 ICAO field number>/<ICAO field>",
+            ErrorId.F22_UNRECOGNISED_DATA: "Expecting data following field 22 ICAO field number '!'",
+            ErrorId.F22_UNRECOGNISED_KEYWORD: "Field 22 ICAO field number '!' unrecognised",
+            ErrorId.F22_ZERO_OR_KEYWORDS: "Field 22 contains no ICAO fields, must consist of one or more "
+                                          "<ICAO field number>/<ICAO field> occurrences instead of '!'",
 
         }
 
-    # This method gets an error message using an enumeration value from the
-    # ErrorId class.
-    # Attributes
-    # ----------
-    # error_id:         The error message ID; an enum from the ErrorId class.
-    # return:           A text string that is the error message.
     def get_error_message(self, error_id):
         # type: (ErrorId) -> str | None
+        """This method gets an error message using an enumeration value from the ErrorId class.
+
+            :param error_id: The error message ID; an enum from the ErrorId class.
+            :return: A text string that is the error message."""
         return self.error_messages[error_id]

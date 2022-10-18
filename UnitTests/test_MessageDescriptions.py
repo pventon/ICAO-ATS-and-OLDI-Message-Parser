@@ -45,7 +45,7 @@ class SupportedMessagesTest(unittest.TestCase):
         fim = FieldsInMessage()
         md = fim.get_message_content(MessageTypes.OLDI, AdjacentUnits.DEFAULT, MessageTitles.ACT)
         self.assertEqual(MessageTitles.ACT.name, md.get_message_title())
-        self.assertEqual("Activation", md.get_message_description())
+        self.assertEqual("OLDI Activation Message", md.get_message_description())
         fields = md.get_message_fields()
         expected = [FieldIdentifiers.F3, FieldIdentifiers.F7, FieldIdentifiers.F13a, FieldIdentifiers.F14,
                     FieldIdentifiers.F16a, FieldIdentifiers.F22_SPECIFIC]
@@ -55,7 +55,7 @@ class SupportedMessagesTest(unittest.TestCase):
         fim = FieldsInMessage()
         md = fim.get_message_content(MessageTypes.OLDI, AdjacentUnits.AA, MessageTitles.ACT)
         self.assertEqual(MessageTitles.ACT.name, md.get_message_title())
-        self.assertEqual("TBP", md.get_message_description())
+        self.assertEqual("OLDI Activation Message", md.get_message_description())
         fields = md.get_message_fields()
         expected = [FieldIdentifiers.F3, FieldIdentifiers.F7, FieldIdentifiers.F13a, FieldIdentifiers.F14,
                     FieldIdentifiers.F16a, FieldIdentifiers.F22_SPECIFIC]
@@ -74,7 +74,7 @@ class SupportedMessagesTest(unittest.TestCase):
     def test_get_subfield_description_01(self):
         sfif = SubFieldsInFields()
         subfields = sfif.get_field_content_description(FieldIdentifiers.F22)
-        expected = [SubFieldIdentifiers.F22]
+        expected = [SubFieldIdentifiers.F22_f3]
         self.assertEqual(expected, subfields)
 
         sfd = SubFieldDescriptions()

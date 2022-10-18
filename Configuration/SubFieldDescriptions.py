@@ -2,81 +2,92 @@ from Configuration.EnumerationConstants import SubFieldIdentifiers
 from Configuration.SubFieldDescription import SubFieldDescription
 
 
-# This class contains configuration data describing the individual ICAO subfields.
-# The individual subfield descriptions are written into an instance of the
-# SubFieldDescription class and describe the following about each subfield:
-#   ICAO Field Number / identifier as defined SubFieldIdentifiers
-#   Minimum Field Length
-#   Maximum Field Length
-#   Field Syntax given as a regular expression
-#   Indicator specifying if a field is compulsory or not, (True indicates it is)
-# The SubFieldDescription class instances are stored in a dictionary and indexed
-# by the SubFieldIdentifiers enumeration values.
 class SubFieldDescriptions:
+    """This class contains configuration data describing the individual ICAO subfields.
 
-    # A dictionary containing for each ICAO subfield, its syntax description given
-    # as a regular expression.
+    The individual subfield descriptions are written into an instance of the SubFieldDescription class
+    and describe the following about each subfield:
+        - ICAO Field Number / identifier as defined in the SubFieldIdentifiers class
+        - Minimum Field Length
+        - Maximum Field Length
+        - Field Syntax given as a regular expression
+        - Boolean indicator specifying if a field is compulsory or not, (True indicates it is)
+    The SubFieldDescription class instances are stored in a dictionary and indexed
+    by the SubFieldIdentifiers enumeration values."""
+
     subfield_description = {}
+    """A dictionary containing for each ICAO subfield, its syntax description given
+    as a regular expression."""
 
-    # Regular expression for time in HHMM 0000 to 2359
     hhmm = "([01][0-9][0-5][0-9]|2[0-3][0-5][0-9])"
+    """Regular expression for time in HHMM 0000 to 2359"""
 
-    # Regular expression for filing time as DDHHMM 0000 to 2359
     ddhhmm = "(([012][0-9]|3[01])" + hhmm + ")"
+    """Regular expression for filing time as DDHHMM 0000 to 2359"""
 
-    # Regular expression for location indicator
     aero = "[A-Z]{4}"
+    """Regular expression for location indicator"""
 
-    # Regular expression Latitude/Longitude in degrees 00 to 90 & 000 to 180
     ll = "[NS]([0-8][0-9]|90)[EW](0[0-9]{2}|1[0-7][0-9]|180)"
+    """Regular expression Latitude/Longitude in degrees 00 to 90 & 000 to 180"""
 
-    # Regular expression Latitude/Longitude in degrees & minutes 0000 to 9000 & 00000 to 18000
     llmm = "[NS]([0-8][0-9][0-5][0-9]|9000)[EW](0[0-9]{2}[0-5][0-9]|1[0-7][0-9][0-5][0-9]|18000)"
+    """Regular expression Latitude/Longitude in degrees & minutes 0000 to 9000 & 00000 to 18000"""
 
-    # Regular expression published route point
     prp = "[A-Z]{2,5}"
+    """Regular expression published route point"""
 
-    # Regular expression for bearing 000 to 360
     bear = "([012][0-9]{2}|3[0-5][0-9]|360)"
+    """Regular expression for bearing 000 to 360"""
 
-    # Regular expression for distance 000 to 999
     dist = "[0-9]{3}"
+    """Regular expression for distance 000 to 999"""
 
-    # Regular expression for facility address
     fac = "([A-Z]{8}|[A-Z]{3}[A-Z0-9]{4})"
+    """# Regular expression for facility address"""
 
-    # Regular expression for priority indicator
     prio = "FF|GG|DD|KK|SS"
+    """Regular expression for priority indicator"""
 
-    # Regular expression for flight level and altitudes
     level = "(F[0-9]{2}[05]|A[0-9]{3}|[SM][0-9]{4})"
+    """Regular expression for flight level and altitudes"""
 
-    # Regular expression for free text
-    free = "[A-Z0-9 :/.\r\n\t]*"
+    free = "[A-Z0-9 _:/.\r\n\t]*"
+    """# Regular expression for free text"""
 
-    # Regular expression for DOF in the format YYMMDD
-    # Jan, Mar, May, Jul, Oct, Dec = 31 days;
-    # Apr, Jun, Aug, Sep, Nov = 30 days;
-    # Feb 29 days year mod 4, otherwise 28 days
-    # Further syntax checks done in the parser
     dof = "[0-9]{6}"
+    """Regular expression for DOF in the format YYMMDD 
+    Further syntax checks done in the parser"""
 
-    # Regular expression for aircraft type
     type = "[A-Z][A-Z0-9]{1,4}"
+    """Regular expression for aircraft type"""
 
-    # Adjacent unit identifier
     unit = "[A-Z]{1,4}"
+    """# Adjacent unit identifier"""
 
-    # Channel sequence number
     seq_num = "[0-9]{3}"
+    """Channel sequence number"""
 
-    # This expression makes sure a string has spaces or a newline at its start / end
-    # It's tricky to set up these regular expressions, be careful if changes are made
-    # and re-run the unit tests to ensure nothing is broken.
-    # "(^|\s)[A-Z]{4}($|\s)"
+    freq = "[0-9]{2,4}[.][0-9]{1,2}"
+    """A frequency"""
+
+    point = ""
+    """Reporting point, defined in the constructor"""
 
     def __init__(self):
         # type: () -> None
+        # AIP Published Route Point
+        # Latitude longitude in degrees
+        # Latitude longitude in degrees and minutes
+        # Latitude longitude in degrees bearing distance
+        # Latitude longitude in degrees and minutes bearing distance
+        self.point = "(" + self.prp + ")|" \
+                    "(" + self.ll + ")|" \
+                    "(" + self.llmm + ")|" \
+                    "(" + self.prp + self.bear + self.dist + ")|" \
+                    "(" + self.ll + self.bear + self.dist + ")|" \
+                    "(" + self.llmm + self.bear + self.dist + ")"
+
         # Format when assigning data descriptions to a FieldDescription instance is:
         # SubFieldDescription(
         #   ICAO Field Number / identifier as defined SubFieldIdentifiers,
@@ -204,19 +215,19 @@ class SubFieldDescriptions:
 
             # F14 - Estimate data
             SubFieldIdentifiers.F14a: SubFieldDescription(
-                SubFieldIdentifiers.F14a, 1, 15,
-                # Published Route Point
-                "(" + self.prp + ")|"
-                # Latitude longitude in degrees
-                "(" + self.ll + ")|"
-                # Latitude longitude in degrees and minutes
-                "(" + self.llmm + ")|"
-                # Point Bearing Distance
-                "(" + self.prp + self.bear + self.dist + ")|"
-                # Latitude longitude in degrees bearing distance
-                "(" + self.ll + self.bear + self.dist + ")|"
-                # Latitude longitude in degrees and minutes bearing distance
-                "(" + self.llmm + self.bear + self.dist + ")", True),
+                SubFieldIdentifiers.F14a, 1, 15, self.point, True),
+            #                # Published Route Point
+            #                "(" + self.prp + ")|"
+            #                # Latitude longitude in degrees
+            #                "(" + self.ll + ")|"
+            #                # Latitude longitude in degrees and minutes
+            #                "(" + self.llmm + ")|"
+            #                # Point Bearing Distance
+            #                "(" + self.prp + self.bear + self.dist + ")|"
+            #                # Latitude longitude in degrees bearing distance
+            #                "(" + self.ll + self.bear + self.dist + ")|"
+            #                # Latitude longitude in degrees and minutes bearing distance
+            #                "(" + self.llmm + self.bear + self.dist + ")", True),
             SubFieldIdentifiers.F14ab: SubFieldDescription(
                 SubFieldIdentifiers.F14ab, 1, 1, "[/]", True),
             SubFieldIdentifiers.F14b: SubFieldDescription(
@@ -263,6 +274,8 @@ class SubFieldDescriptions:
                 SubFieldIdentifiers.F18dep, 0, 15, self.free, False),
             SubFieldIdentifiers.F18dest: SubFieldDescription(
                 SubFieldIdentifiers.F18dest, 0, 15, self.free, False),
+            SubFieldIdentifiers.F18dle: SubFieldDescription(
+                SubFieldIdentifiers.F18dle, 0, 15, self.free, False),
             SubFieldIdentifiers.F18dof: SubFieldDescription(
                 SubFieldIdentifiers.F18dof, 6, 6, self.dof, False),
             SubFieldIdentifiers.F18eet: SubFieldDescription(
@@ -275,6 +288,10 @@ class SubFieldDescriptions:
                 SubFieldIdentifiers.F18nav, 0, 10, self.free, False),
             SubFieldIdentifiers.F18opr: SubFieldDescription(
                 SubFieldIdentifiers.F18opr, 0, 20, self.free, False),
+            SubFieldIdentifiers.F18orgn: SubFieldDescription(
+                SubFieldIdentifiers.F18orgn, 0, 20, self.free, False),
+            SubFieldIdentifiers.F18pbn: SubFieldDescription(
+                SubFieldIdentifiers.F18pbn, 0, 10, self.free, False),
             SubFieldIdentifiers.F18per: SubFieldDescription(
                 SubFieldIdentifiers.F18per, 0, 10, self.free, False),
             SubFieldIdentifiers.F18ralt: SubFieldDescription(
@@ -295,10 +312,12 @@ class SubFieldDescriptions:
                 SubFieldIdentifiers.F18sts, 0, 25, self.free, False),
             SubFieldIdentifiers.F18src: SubFieldDescription(
                 SubFieldIdentifiers.F18src, 0, 25, self.free, False),
+            SubFieldIdentifiers.F18sur: SubFieldDescription(
+                SubFieldIdentifiers.F18sur, 0, 20, self.free, False),
+            SubFieldIdentifiers.F18talt: SubFieldDescription(
+                SubFieldIdentifiers.F18talt, 0, 10, self.type, False),
             SubFieldIdentifiers.F18typ: SubFieldDescription(
                 SubFieldIdentifiers.F18typ, 0, 10, self.type, False),
-            SubFieldIdentifiers.F18orgn: SubFieldDescription(
-                SubFieldIdentifiers.F18orgn, 0, 20, self.free, False),
 
             # F19 - Supplementary information
             SubFieldIdentifiers.F19a: SubFieldDescription(
@@ -320,12 +339,34 @@ class SubFieldDescriptions:
             SubFieldIdentifiers.F19s: SubFieldDescription(
                 SubFieldIdentifiers.F19s, 0, 4, "[PDMJ]{0,4}", False),
 
-            SubFieldIdentifiers.F20: SubFieldDescription(
-                SubFieldIdentifiers.F20, 0, 100, self.free, True),
-            SubFieldIdentifiers.F21: SubFieldDescription(
-                SubFieldIdentifiers.F21, 0, 100, self.free, True),
-            SubFieldIdentifiers.F22: SubFieldDescription(
-                SubFieldIdentifiers.F22, 0, 100, self.free, True),
+            SubFieldIdentifiers.F20a: SubFieldDescription(
+                SubFieldIdentifiers.F20a, 1, 100, self.free, True),
+            SubFieldIdentifiers.F20b: SubFieldDescription(
+                SubFieldIdentifiers.F20b, 1, 100, self.free, True),
+            SubFieldIdentifiers.F20c: SubFieldDescription(
+                SubFieldIdentifiers.F20c, 4, 4, self.hhmm, True),
+            SubFieldIdentifiers.F20d: SubFieldDescription(
+                SubFieldIdentifiers.F20d, 4, 7, self.freq, True),
+            SubFieldIdentifiers.F20e: SubFieldDescription(
+                SubFieldIdentifiers.F20e, 1, 15, self.point, True),
+            SubFieldIdentifiers.F20f: SubFieldDescription(
+                SubFieldIdentifiers.F20f, 1, 100, self.free, True),
+            SubFieldIdentifiers.F20g: SubFieldDescription(
+                SubFieldIdentifiers.F20g, 1, 100, self.free, True),
+            SubFieldIdentifiers.F20h: SubFieldDescription(
+                SubFieldIdentifiers.F20h, 1, 100, self.free, True),
+            SubFieldIdentifiers.F21a: SubFieldDescription(
+                SubFieldIdentifiers.F21a, 4, 4, self.hhmm, True),
+            SubFieldIdentifiers.F21b: SubFieldDescription(
+                SubFieldIdentifiers.F21b, 4, 7, self.freq, True),
+            SubFieldIdentifiers.F21c: SubFieldDescription(
+                SubFieldIdentifiers.F21c, 1, 15, self.point, True),
+            SubFieldIdentifiers.F21d: SubFieldDescription(
+                SubFieldIdentifiers.F21d, 4, 4, self.hhmm, True),
+            SubFieldIdentifiers.F21e: SubFieldDescription(
+                SubFieldIdentifiers.F21e, 0, 100, self.free, True),
+            SubFieldIdentifiers.F21f: SubFieldDescription(
+                SubFieldIdentifiers.F21f, 0, 100, self.free, True),
 
             # Field 80 for OLDI
             # TODO - It appears that F80 is part of a custom F22, these definitions may be removed
@@ -352,15 +393,13 @@ class SubFieldDescriptions:
                 SubFieldIdentifiers.RQS_FREE_TEXT, 0, 0, self.free, True)
         }
 
-    # This method gets the subfield description for an ICAO subfield based on its ICAO
-    # subfield ID, i.e. F13a (Only the ADEP location indicator), F16ab (ADES and EET) etc.
-    # Attributes
-    # ----------
-    # subfield_id:      The subfield ID; an enum from the SubFieldIdentifiers class. Based on
-    #                   the ICAO subfields as defined in ICAO DOC 4444.
-    # return:           An instance of SubFieldDescription containing a complete description
-    #                   of a subfield including its syntax using a regular expression, or
-    #                   None if the subfield 'icao_field_id' could not be found.
     def get_subfield_description(self, subfield_id):
         # type: (SubFieldIdentifiers) -> SubFieldDescription | None
+        """This method gets the subfield description for an ICAO subfield based on its ICAO
+        subfield ID, i.e. F13a (Only the ADEP location indicator), F16ab (ADES and EET) etc.
+            :param subfield_id: The subfield ID; an enum from the SubFieldIdentifiers class. Based on
+                                the ICAO subfields as defined in ICAO DOC 4444.
+            :return: An instance of SubFieldDescription containing a complete description
+                     of a subfield including its syntax using a regular expression, or
+                     None if the subfield 'icao_field_id' could not be found."""
         return self.subfield_description[subfield_id]

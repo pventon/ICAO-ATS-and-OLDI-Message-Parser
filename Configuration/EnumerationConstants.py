@@ -1,25 +1,27 @@
-# This file contains severa; enumeration classes used as system-wide constants
-# that define the following:
-# MessageTitles ->          Enumerations for all supported ATS and OLDI message titles;
-# FieldIdentifiers ->       Enumerations for all ICAO fields as defined in both OLDI
-#                           standards and ICAO DOC 4444;
-# SubFieldIdentifiers ->    Enumerations for all ICAO and OLDI message subfields; a
-#                           subfield is derived as described in the ICAO DOC 4444.
-# MessageTypes ->           Enumeration to define the type of message, OLDI, ICAO ATS,
-#                           ADEXP or UNKNOWN. Determined by analysing a message during
-#                           message parsing;
-# AdjacentUnits ->          A list of adjacent unit identifiers used in combination with
-#                           a message title and its type to determine the field content
-#                           of OLDI messages. Unlike the ICAO ATS messages, the fields
-#                           contained in an OLDI message are not fixed but vary depending
-#                           on the adjacent unit that they are being exchanged on.
-# ErrorId ->                Enumeration used to index error messages.
+"""This file contains several enumeration classes used as system-wide constants
+that define the following:
+
+MessageTitles -> Enumerations for all supported ATS and OLDI message titles;
+
+FieldIdentifiers -> Enumerations for all ICAO fields as defined in both the OLDI 4.2 standard and ICAO DOC 4444;
+
+SubFieldIdentifiers -> Enumerations for all ICAO and OLDI message subfields; a subfield is derived as
+described in the ICAO DOC 4444.
+
+MessageTypes -> Enumeration to define the type of message, OLDI, ICAO ATS, ADEXP or UNKNOWN.
+Determined by analysing a message during message parsing;
+
+AdjacentUnits -> A list of adjacent unit identifiers used in combination with a message title and its
+type to determine the field content of OLDI messages. Unlike the ICAO ATS messages, the fields contained
+in an OLDI message are not fixed but vary depending on the adjacent unit that they are being exchanged on.
+
+ErrorId -> Enumeration used to index error messages."""
 from enum import IntEnum, auto
 
 
-# This enumeration class defines a unique identifier for each of the supported
-# message titles.
 class MessageTitles(IntEnum):
+    """This enumeration class defines a unique identifier for each of the supported ICAO and OLDI
+    message titles."""
     # ATS Messages
     ACH = 0
     ACP = auto()  # This title is also defined as an OLDI message
@@ -63,9 +65,9 @@ class MessageTitles(IntEnum):
     SBY = auto()
 
 
-# This enumeration class defines a unique identifier for each of the ICAO fields;
-# i.e. ICAO field 13 (ADEP and EOBT).
 class FieldIdentifiers(IntEnum):
+    """This enumeration class defines a unique identifier for each of the ICAO fields;
+    i.e. ICAO field 13 (ADEP and EOBT)."""
     PRIORITY_INDICATOR = 0
     FILING_TIME = auto()
     ORIGINATOR = auto()
@@ -100,9 +102,11 @@ class FieldIdentifiers(IntEnum):
     MFS_SIG_POINT = auto()
 
 
-# This enumeration class defines a unique identifier for each of the ICAO subfields;
-# i.e. ICAO field 13 (ADEP and EOBT) are separated into two subfields, 13 'a' and 'b'.
 class SubFieldIdentifiers(IntEnum):
+    """This enumeration class defines a unique identifier for each of the ICAO subfields;
+    i.e. ICAO field 13 (ADEP and EOBT) are separated into two subfields, 13 'a' and 'b'.
+
+    Note: These fields must remain in order, do not mix up fields"""
     PRIORITY_INDICATOR = 0
     FILING_TIME = auto()
     ORIGINATOR = auto()
@@ -171,12 +175,15 @@ class SubFieldIdentifiers(IntEnum):
     F18dat = auto()
     F18dep = auto()
     F18dest = auto()
+    F18dle = auto()
     F18dof = auto()
     F18eet = auto()
     F18est = auto()
     F18ifp = auto()
     F18nav = auto()
     F18opr = auto()
+    F18orgn = auto()
+    F18pbn = auto()
     F18per = auto()
     F18ralt = auto()
     F18reg = auto()
@@ -187,8 +194,9 @@ class SubFieldIdentifiers(IntEnum):
     F18sel = auto()
     F18sts = auto()
     F18src = auto()
+    F18sur = auto()
+    F18talt = auto()
     F18typ = auto()
-    F18orgn = auto()
     F19a = auto()
     F19c = auto()
     F19d = auto()
@@ -198,9 +206,36 @@ class SubFieldIdentifiers(IntEnum):
     F19p = auto()
     F19r = auto()
     F19s = auto()
-    F20 = auto()
-    F21 = auto()
-    F22 = auto()
+    F20a = auto()
+    F20b = auto()
+    F20c = auto()
+    F20d = auto()
+    F20e = auto()
+    F20f = auto()
+    F20g = auto()
+    F20h = auto()
+    F21a = auto()
+    F21b = auto()
+    F21c = auto()
+    F21d = auto()
+    F21e = auto()
+    F21f = auto()
+    F22_f3 = auto()
+    F22_f5 = auto()
+    F22_f7 = auto()
+    F22_f8 = auto()
+    F22_f9 = auto()
+    F22_f10 = auto()
+    F22_f13 = auto()
+    F22_f14 = auto()
+    F22_f15 = auto()
+    F22_f16 = auto()
+    F22_f17 = auto()
+    F22_f18 = auto()
+    F22_f19 = auto()
+    F22_f20 = auto()
+    F22_f21 = auto()
+    F22_f22 = auto()
     F80a = auto()
     F80b = auto()
     F81a = auto()
@@ -210,25 +245,23 @@ class SubFieldIdentifiers(IntEnum):
     ANYTHING = auto()
 
 
-# Enumeration to identify the message type, ICAO ATS, OLDI or ADEXP; for OLDI
-# messages the field content for a given title can vary depending on the
-# adjacent unit that a given OLDI message is exchange on.
-# Using a combination of the message type and adjacent unit a precise
-# field list can be obtained for a given message title.
 class MessageTypes(IntEnum):
+    """Enumeration to identify the message type, ICAO ATS, OLDI, ADEXP or UNKNOWN; for OLDI
+    messages the field content for a given title can vary depending on the adjacent unit that
+    a given OLDI message is exchange on. Using a combination of the message type and
+    adjacent unit a precise field list can be obtained for a given message title."""
     ATS = 0
     OLDI = auto()
     ADEXP = auto()  # Reserved for future use
     UNKNOWN = auto()
 
 
-# Enumeration to identify an adjacent unit for OLDI messages.
-# The field content for OLDI messages varies depending on the adjacent unit
-# that an OLDI message is exchanged over. This enumeration defines the
-# supported OLDI adjacent units. Using a combination of the message title,
-# message type and adjacent unit a precise field list can be defined for
-# a given OLDI message title, type and adjacent unit.
 class AdjacentUnits(IntEnum):
+    """Enumeration to identify an adjacent unit for OLDI messages. The field content for OLDI
+    messages varies depending on the adjacent unit that an OLDI message is exchanged over.
+    supported OLDI adjacent units. Using a combination of the message title, message type and
+    adjacent unit a precise field list can be defined for a given OLDI message title, type
+    and adjacent unit."""
     DEFAULT = 0
     AA = auto()
     AX = auto()
@@ -237,10 +270,10 @@ class AdjacentUnits(IntEnum):
     L = auto()
 
 
-# Enumeration used to index error messages used by the system. The error text is defined
-# in the ErrorMessages class using a dictionary, the enumerations in this class are used
-# for the error message dictionary.
 class ErrorId(IntEnum):
+    """Enumeration used to index error messages used by the system. The error text is defined
+    in the ErrorMessages class using a dictionary, the enumerations in this class are used as keys
+    for the error message dictionary."""
     # System fatal case that really should never happen
     SYSTEM_FATAL = 0
     SYSTEM_CONFIG_UNDEFINED = auto()
@@ -376,9 +409,50 @@ class ErrorId(IntEnum):
     F18_DOF_MISSING = auto()
     F18_DOF_F18A_SYNTAX = auto()
     F18_DOF_TOO_MANY_FIELDS = auto()
+    F18_NO_F18_KEYWORDS_FOUND = auto()
+    F18_ZERO_OR_KEYWORDS = auto()
+    F18_UNRECOGNISED_DATA = auto()
+    F18_DATA_MISSING = auto()
+    F18_GARBAGE = auto()
+    F18_UNRECOGNISED_KEYWORD = auto()
+
+    # Errors relating to Field 19
+    F19_NO_F19_KEYWORDS_FOUND = auto()
+    F19_DATA_MISSING = auto()
+    F19_UNRECOGNISED_DATA = auto()
+    F19_UNRECOGNISED_KEYWORD = auto()
+    F19_ZERO_OR_KEYWORDS = auto()
+
+    # Errors relating to Field 20
+    F20_MISSING = auto()
+    F20_F20A_SYNTAX = auto()
+    F20_F20B_SYNTAX = auto()
+    F20_F20C_SYNTAX = auto()
+    F20_F20D_SYNTAX = auto()
+    F20_F20E_SYNTAX = auto()
+    F20_F20F_SYNTAX = auto()
+    F20_F20G_SYNTAX = auto()
+    F20_F20H_SYNTAX = auto()
+    F20_TOO_MANY_FIELDS = auto()
+
+    # Errors relating to Field 20
+    F21_MISSING = auto()
+    F21_F21A_SYNTAX = auto()
+    F21_F21B_SYNTAX = auto()
+    F21_F21C_SYNTAX = auto()
+    F21_F21D_SYNTAX = auto()
+    F21_F21E_SYNTAX = auto()
+    F21_F21F_SYNTAX = auto()
+    F21_TOO_MANY_FIELDS = auto()
+
+    # Errors relating to Field 22
+    F22_NO_F22_KEYWORDS_FOUND = auto()
+    F22_DATA_MISSING = auto()
+    F22_UNRECOGNISED_DATA = auto()
+    F22_UNRECOGNISED_KEYWORD = auto()
+    F22_ZERO_OR_KEYWORDS = auto()
 
     # Errors relating to the MFS significant point
     MFS_POINT_MISSING = auto()
     MFS_POINT_SYNTAX = auto()
     MFS_POINT_TOO_MANY_FIELDS = auto()
-

@@ -15,7 +15,7 @@ class ParseMessageTests(unittest.TestCase):
                               "-LOWW0800\r"
                               "-N0450F350 AAA B9 BBB\t"
                               "-EDDF0200\n"
-                              "-0-F19-EXTRA FIELD)",
+                              "-0-A/F19-EXTRA FIELD)",
                      ["Too many fields in this message, the field 'EXTRA FIELD' "
                       "is superfluous; check placement of hyphens"])
 
@@ -45,7 +45,7 @@ class ParseMessageTests(unittest.TestCase):
                      [""])
         self.do_test(False, 0,
                      "(ALR-INCERFA/ABCDEFGH/FREE TEXT-TEST01-IS-B737/M-S/C-EGLL0800-N0450F350 "
-                     "PNT B9 NMB-LOWL0100 LOWZ LOWG-0-E/2131-SOME JUNK FOR FIELD 20)",
+                     "PNT B9 NMB-LOWL0100 LOWZ LOWG-0-E/2131-BA GF 1234 123.23 N23W123 VOR CALLED_EMERGENCY CRASHING)",
                      [""])
         self.do_test(False, 0,
                      "(APL-TEST01-IS-B737/M-S/C-EGLL0800-PNT/1234F350F200A-N0450F350 PNT B9 "
@@ -65,7 +65,7 @@ class ParseMessageTests(unittest.TestCase):
                      [""])
         self.do_test(False, 0, "(FNM-TEST01-B737/M-PETE-N0450F350 PNT B9 NMB-LOWL-0-E/1235)", [""])
         self.do_test(False, 0, "(MFS-TEST01-B737/M-PETE-PNT/1234F350F200A-LOWL-DFG56TH)", [""])
-        self.do_test(False, 0, "(RCF-TEST01-FIELD 21 DATA)", [""])
+        self.do_test(False, 0, "(RCF-TEST01-1234 123.43 PNT 2321 COM REMARKS)", [""])
         self.do_test(False, 0, "(RQP-TEST01-EGLL0800-LOWL-221013)", [""])
         self.do_test(False, 0, "(RQS-TEST01-LOWW0800-EGLL0200-0)", [""])
         self.do_test(False, 0, "(SPL-TEST01-EGLL0800-LOWL0100 LOWZ LOWG-0-E/1235)", [""])

@@ -8,7 +8,6 @@ from Tokenizer.Tokenize import Tokenize
 
 
 class MessageParserTest(unittest.TestCase):
-
     def test_FlightPlanRecord_01(self):
         fpr = FlightPlanRecord()
         fpr.set_message_complete("COMPLETE")
@@ -110,7 +109,6 @@ class MessageParserTest(unittest.TestCase):
         fpr.add_extracted_route(ers)
         res_ers = fpr.get_extracted_route()
         self.assertEqual("DEA", res_ers.get_previous_to_last_element().get_name())
-
 
 if __name__ == '__main__':
     unittest.main()

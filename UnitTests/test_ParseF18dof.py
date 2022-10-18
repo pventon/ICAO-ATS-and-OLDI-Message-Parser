@@ -5,8 +5,6 @@ from Configuration.SubFieldDescriptions import SubFieldDescriptions
 from Configuration.SubFieldsInFields import SubFieldsInFields
 from IcaoMessageParser.FlightPlanRecord import FlightPlanRecord
 from IcaoMessageParser.ParseF18dof import ParseF18dof
-from IcaoMessageParser.ParsePriorityIndicator import ParsePriorityIndicator
-from Tokenizer.Token import Token
 
 
 class TestParseF18dof(unittest.TestCase):

@@ -1,24 +1,26 @@
-# This class describes the subfield content of each ICAO and OLDI field supported by this
-# message parser.
-# The description consists of listing the ICAO subfields / ID for each
-# ICAO field defined by this parser. The ICAO subfield IDs are provided by the enumeration
-# values in the SubFieldIdentifiers class. Many of the ICAO subfield IDs translate directly
-# to those specified in ICAO DOC 4444; however, due to support for OLDI messages as well
-# as some IFPS Oceanic message, some field identifiers are what could be called custom.
-# The result is the same, all subfields for a given ICAO field can be obtained from this class.
-# The data is stored in a dictionary; the key is an enumeration from the FieldIdentifiers class
-# with the subfields stored in a list of SubFieldIdentifiers enumerations and associated with
-# their respective ICAO fields.
-# For each ICAO field declaration, a list of error message identifiers are also stored; these
-# errors will be used by the parser when looping of the subfields in a field to parse each
-# individual subfield.
 from Configuration.EnumerationConstants import FieldIdentifiers, SubFieldIdentifiers, ErrorId
 
 
 class SubFieldsInFields:
-    # A dictionary containing a description of an ICAO field's subfields.
-    # For example, ICAO F16 comprises an ADES given as a location indicator and a time field.
+    """This class describes the subfield content of each ICAO and OLDI field supported by this
+    message parser.
+
+    The description consists of listing the ICAO subfields / ID for each ICAO field defined by this parser.
+    The ICAO subfield IDs are provided by the enumeration values in the SubFieldIdentifiers class. Many of
+    the ICAO subfield IDs translate directly to those specified in ICAO DOC 4444; however, due to support
+    for OLDI messages as well as some IFPS Oceanic message, some field identifiers are what could be called
+    custom.
+
+    The result is the same, all subfields for a given ICAO field can be obtained from this class. The data
+    is stored in a dictionary; the key is an enumeration from the FieldIdentifiers class with the subfields
+    stored in a list of SubFieldIdentifiers enumerations and associated with their respective ICAO fields.
+
+    For each ICAO field declaration, a list of error message identifiers are also stored; these errors will
+    be used by the parser when looping over the subfields in a field to parse each individual subfield."""
+
     field_content_description = {}
+    """A dictionary containing a description of an ICAO field's subfields.
+    # For example, ICAO F16 comprises an ADES given as a location indicator and a time field."""
 
     def __init__(self):
         # type: () -> None
@@ -128,15 +130,20 @@ class SubFieldsInFields:
                                    [ErrorId.F17_F17A_SYNTAX, ErrorId.F17_F17B_SYNTAX,
                                     ErrorId.F17_F17C_SYNTAX, ErrorId.F17_TOO_MANY_FIELDS,
                                     ErrorId.FLD_MORE_SUBFIELDS_EXPECTED, ErrorId.F17_MISSING]],
+
+            # TODO F18 Individual field parsing has to be implemented for this field.
+            # TODO F18 The fields are all present in the FPR as of this implementation.
             FieldIdentifiers.F18: [
                 [SubFieldIdentifiers.F18altn, SubFieldIdentifiers.F18code, SubFieldIdentifiers.F18com,
                  SubFieldIdentifiers.F18dat, SubFieldIdentifiers.F18dep, SubFieldIdentifiers.F18dest,
-                 SubFieldIdentifiers.F18dof, SubFieldIdentifiers.F18eet, SubFieldIdentifiers.F18est,
-                 SubFieldIdentifiers.F18ifp, SubFieldIdentifiers.F18nav, SubFieldIdentifiers.F18opr,
+                 SubFieldIdentifiers.F18dof, SubFieldIdentifiers.F18dle, SubFieldIdentifiers.F18eet,
+                 SubFieldIdentifiers.F18est, SubFieldIdentifiers.F18ifp, SubFieldIdentifiers.F18nav,
+                 SubFieldIdentifiers.F18opr, SubFieldIdentifiers.F18orgn, SubFieldIdentifiers.F18pbn,
                  SubFieldIdentifiers.F18per, SubFieldIdentifiers.F18ralt, SubFieldIdentifiers.F18reg,
                  SubFieldIdentifiers.F18rif, SubFieldIdentifiers.F18rfp, SubFieldIdentifiers.F18rmk,
                  SubFieldIdentifiers.F18rvr, SubFieldIdentifiers.F18sel, SubFieldIdentifiers.F18sts,
-                 SubFieldIdentifiers.F18src, SubFieldIdentifiers.F18typ, SubFieldIdentifiers.F18orgn],
+                 SubFieldIdentifiers.F18sur, SubFieldIdentifiers.F18src, SubFieldIdentifiers.F18talt,
+                 SubFieldIdentifiers.F18typ],
                 []],
 
             # F18_DOF - For single DOF used on many messages without a complete F18
@@ -149,25 +156,40 @@ class SubFieldsInFields:
                                              [ErrorId.MFS_POINT_SYNTAX, ErrorId.MFS_POINT_TOO_MANY_FIELDS,
                                               ErrorId.FLD_MORE_SUBFIELDS_EXPECTED, ErrorId.MFS_POINT_MISSING]],
 
-            # TODO Everything below this line will be revisited as the message parser is developed
-            # TODO Field 19 has to be implemented
+            # TODO F19 Individual field parsing has to be implemented for this field.
+            # TODO F19 The fields are all present in the FPR as of this implementation.
             FieldIdentifiers.F19: [[SubFieldIdentifiers.F19a, SubFieldIdentifiers.F19c, SubFieldIdentifiers.F19d,
                                     SubFieldIdentifiers.F19e, SubFieldIdentifiers.F19j, SubFieldIdentifiers.F19n,
                                     SubFieldIdentifiers.F19p, SubFieldIdentifiers.F19r, SubFieldIdentifiers.F19s],
                                    []],
 
-            # TODO Field 20 has to be implemented
-            FieldIdentifiers.F20: [[SubFieldIdentifiers.F20],
-                                   []],
+            # Field 20 parsing rules
+            FieldIdentifiers.F20: [[SubFieldIdentifiers.F20a, SubFieldIdentifiers.F20b,
+                                    SubFieldIdentifiers.F20c, SubFieldIdentifiers.F20d,
+                                    SubFieldIdentifiers.F20e, SubFieldIdentifiers.F20f,
+                                    SubFieldIdentifiers.F20g, SubFieldIdentifiers.F20h],
+                                   [ErrorId.F20_F20A_SYNTAX, ErrorId.F20_F20B_SYNTAX,
+                                    ErrorId.F20_F20C_SYNTAX, ErrorId.F20_F20D_SYNTAX,
+                                    ErrorId.F20_F20E_SYNTAX, ErrorId.F20_F20F_SYNTAX,
+                                    ErrorId.F20_F20G_SYNTAX, ErrorId.F20_F20H_SYNTAX,
+                                    ErrorId.F20_TOO_MANY_FIELDS,
+                                    ErrorId.FLD_MORE_SUBFIELDS_EXPECTED, ErrorId.F20_MISSING]],
 
-            # TODO Field 21 has to be implemented
-            FieldIdentifiers.F21: [[SubFieldIdentifiers.F21],
-                                   []],
+            # Field 21 parsing rules
+            FieldIdentifiers.F21: [[SubFieldIdentifiers.F21a, SubFieldIdentifiers.F21b,
+                                    SubFieldIdentifiers.F21c, SubFieldIdentifiers.F21d,
+                                    SubFieldIdentifiers.F21e, SubFieldIdentifiers.F21f],
+                                   [ErrorId.F21_F21A_SYNTAX, ErrorId.F21_F21B_SYNTAX,
+                                    ErrorId.F21_F21C_SYNTAX, ErrorId.F21_F21D_SYNTAX,
+                                    ErrorId.F21_F21E_SYNTAX, ErrorId.F21_F21F_SYNTAX,
+                                    ErrorId. F21_TOO_MANY_FIELDS,
+                                    ErrorId.FLD_MORE_SUBFIELDS_EXPECTED, ErrorId.F21_MISSING]],
 
-            # TODO Field 22 has to be implemented
-            FieldIdentifiers.F22: [[SubFieldIdentifiers.F22],
+            # TODO F22 Individual field parsing has to be implemented for this field.
+            # TODO F22 The fields are all present in the FPR as of this implementation.
+            FieldIdentifiers.F22: [[SubFieldIdentifiers.F22_f3],
                                    []],
-            FieldIdentifiers.F22_SPECIFIC: [[SubFieldIdentifiers.F22],
+            FieldIdentifiers.F22_SPECIFIC: [[SubFieldIdentifiers.F22_f3],
                                             []],
 
             # TODO Special for OLDI
@@ -180,26 +202,23 @@ class SubFieldsInFields:
                                    []],
         }
 
-    # Gets the subfield description for an ICAO field based on its ICAO field ID,
-    # i.e. F13, F16 etc.
-    # Attributes
-    # ----------
-    # icao_field_id:    The field ID; an enumerator from the FieldIdentifiers class. Based on
-    #                   the ICAO field numbers as defined in ICAO DOC 4444.
-    # return:           A list of one or more enumeration values from the SubFieldIdentifiers class
-    #                   or None if the field 'icao_field_id' could not be found.
     def get_field_content_description(self, icao_field_id):
         # type: (FieldIdentifiers) -> [SubFieldIdentifiers]
+        """Gets the subfield description for an ICAO field based on its ICAO field ID, i.e. F13, F16 etc.
+
+            :param icao_field_id: The field ID; an enumerator from the FieldIdentifiers class. Based on
+                                  the ICAO field numbers as defined in ICAO DOC 4444.
+            :return:              A list of one or more enumeration values from the SubFieldIdentifiers class
+                                  or None if the field 'icao_field_id' could not be found."""
         return self.field_content_description[icao_field_id][0]
 
-    # Gets the list of errors defined for a given ICAO field that are used by the subfield
-    # parser to report errors.
-    # Attributes
-    # ----------
-    # icao_field_id:    The field ID; an enumerator from the FieldIdentifiers class. Based on
-    #                   the ICAO field numbers as defined in ICAO DOC 4444.
-    # return:           A list of one or more enumeration values from the ErrorId class
-    #                   or None if the field 'icao_field_id' could not be found.
     def get_field_errors(self, icao_field_id):
         # type: (FieldIdentifiers) -> [ErrorId]
+        """Gets the list of errors defined for a given ICAO field that are used by the subfield
+        parser to report errors.
+
+        :param icao_field_id: The field ID; an enumerator from the FieldIdentifiers class. Based on
+                              the ICAO field numbers as defined in ICAO DOC 4444.
+        :return: A list of one or more enumeration values from the ErrorId class
+                 or None if the field 'icao_field_id' could not be found."""
         return self.field_content_description[icao_field_id][1]
