@@ -77,6 +77,17 @@ class SubFieldRecord:
         :return: The zero based index of the subfields end position in the original message"""
         return self.end_index
 
+    def subfield_as_xml(self, subfield_id):
+        # type: (SubFieldIdentifiers) -> str
+        """This method returns an XML representation of the contents of this class.
+
+        :return: An XML representation of the contents of this class as a string"""
+        return "      <subfield_record id=\"" + subfield_id.name + \
+               "\" name=\"" + self.get_field_text() + \
+               "\" start_index=\"" + str(self.get_start_index()) + \
+               "\" end_index=\"" + str(self.get_end_index()) + "\">" + \
+               "</subfield_record>"
+
 
 class FieldRecord(SubFieldRecord):
     """This class stores an ICAO field added to a flight plan record during ICAO
@@ -164,6 +175,27 @@ class FieldRecord(SubFieldRecord):
                      icao_subfield_id, False otherwise"""
         return icao_subfield_id in self.subfields
 
+    def field_as_xml(self, field_id):
+        # type: (FieldIdentifiers) -> str
+        """This method returns an XML representation of the contents of this class.
+
+        :return: An XML representation of the contents of this class as a string"""
+
+        # Build the subfield elements first if any are present
+        subfield_xml = ""
+        if len(self.subfields) > 0:
+            for subfield_id, subfield in self.subfields.items():
+                if len(subfield) > 0:
+                    for sf in subfield:
+                        subfield_xml = subfield_xml + sf.subfield_as_xml(subfield_id) + "\n"
+
+        return "   <field_record id=\"" + field_id.name + \
+               "\" name=\"" + self.get_field_text() + \
+               "\" start_index=\"" + str(self.get_start_index()) + \
+               "\" end_index=\"" + str(self.get_end_index()) + "\">\n" + \
+               subfield_xml + \
+               "   </field_record>"
+
 
 class ErrorRecord(SubFieldRecord):
     """This class contains information about an error detected during message processing.
@@ -192,6 +224,18 @@ class ErrorRecord(SubFieldRecord):
         """Gets the error message reported on this subfield
         :return: The error message"""
         return self.error_message
+
+    def field_error_as_xml(self):
+        # type: () -> str
+        """This method returns an XML representation of the contents of this class.
+
+        :return: An XML representation of the contents of this class as a string"""
+
+        return "   <error=\"" + self.get_field_text() + \
+               "\" start_index=\"" + str(self.get_start_index()) + \
+               "\" end_index=\"" + str(self.get_end_index()) + \
+               "\" error_message=\"" + self.get_error_message() + "\">" + \
+               "</error>"
 
 
 class FlightPlanRecord:
@@ -473,3 +517,38 @@ class FlightPlanRecord:
                 EnumerationConstants.AdjacentUnits
             :return: None"""
         self.sender_adjacent_unit_name = sender_adjacent_unit_name
+
+    def as_xml(self):
+        # type: () -> str
+        """This method returns an XML representation of the flight plan record.
+
+        :return: An XML representation of the flight plan record as an XML string"""
+
+        # Build the records as an XML
+        field_string = ""
+        if len(self.icao_fields) > 0:
+            field_string = "<icao_fields>\n"
+            for field_id, record in self.icao_fields.items():
+                field_string = field_string + record.field_as_xml(field_id) + "\n"
+            field_string = field_string + "</icao_fields>\n"
+
+        error_string = ""
+        if len(self.erroneous_fields) > 0:
+            error_string = "<icao_field_errors>\n"
+            for error_record in self.erroneous_fields:
+                error_string = error_string + error_record.field_error_as_xml() + "\n"
+            error_string = error_string + "</icao_field_errors\n"
+
+        # erroneous_fields: list[ErrorRecord] = []
+        return "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\" ?>\n" + \
+               "<flight_plan_record>\n" + \
+               "   <message_type>" + self.get_message_type().name + "</message_type>\n" + \
+               "   <original_message>" + self.get_message_complete() + "</original_message>\n" + \
+               "   <message_header>" + self.get_message_header() + "</message_header>\n" + \
+               "   <message_body>" + self.get_message_body() + "</message_body>\n" + \
+               "   <adjacent_unit sender=\"" + self.get_sender_adjacent_unit_name().name + \
+               "\" receiver=\"" + self.get_receiver_adjacent_unit_name().name + "\"></adjacent_unit>\n" + \
+               field_string + \
+               error_string + \
+               self.get_extracted_route_sequence().as_xml() + \
+               "\n</flight_plan_record>"

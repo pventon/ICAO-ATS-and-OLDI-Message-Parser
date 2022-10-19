@@ -19,6 +19,7 @@ OLDI messages have one further difference when compared to ATS messages; in addi
 </p>
 <p>Each field and its subfield(s) are parsed for correct syntax and semantics; should an error be detected, accurate error messages are generated describing an error found in a particular field. The zero based index of a field and subfield are stored with all fields and subfields; these indices can be used for highlighting errors in a GUI.
 </p>
+<p><b><i><u>A parsed message can be output as an XML string by calling FlightPlanRecord.as_xml()</u></i></b></p>
 <h2>Current Limitations</h2>
 The ICAO message Parser is not fully parsing the following fields:
 <ul>
@@ -31,7 +32,6 @@ The ICAO message Parser is not fully parsing the following fields:
 </p>
 <ul>
 <li>Fully parse the few remaining fields listed above in the 'Current Limitations' section;</li>
-<li>Output the FPR in XML format to simplify the interface for callers of this software;</li>
 <li>Implement the semantic checks on field 10;</li>
 <li>Once all this is done there are numerous consistency checks needed to check between fields (e.g. if field 'x' contains 'y' then field 'z' must contain 'n')</li>
 </ul>

@@ -1,4 +1,6 @@
 class ErrorMessages:
+    """This class contains a list of error messages in a dictionary with each error message indexed by
+    an integer value. The errors listed here are all the error messages used by the field 15 parser."""
     error_messages = {
         0: "ERROR UNDEFINED",
         1: "The first Field 15 element must be a SPEED/LEVEL and not '!'",
