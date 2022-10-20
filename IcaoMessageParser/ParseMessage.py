@@ -18,58 +18,57 @@ from IcaoMessageParser.Utils import Utils
 from Tokenizer.Tokenize import Tokenize, Tokens
 
 
-# This class is the entry point for parsing complete ICAO messages for both ATS
-# and OLDI messages. The parser is able to automatically evaluate if a message
-# contains a header or not. For ICAO ATS message the data definitions are set up
-# as a single data set; for OLDI messages the definitions vary depending on an
-# adjacent unit sending identifier.
-# The entry point method is 'parse_message()' that takes an instance of FlightPlanRecord
-# and a string containing the message to parse.
-# The FlightPlanRecord is populated by the parser and includes all extracted fields,
-# an extracted route if field 15 was present and any errors. It is a callers
-# responsibility to retrieve the errors.
-# If this software is used in conjunction with a GUI, all the fields are stored with
-# their zero based index into the message so that erroneous fields can be
-# highlighted in the GUI. This makes message correction quite simple for end users.
-# Note: Eventually this parser will also support ADEXP message parsing; currently
-# an error is reported when an ADEXP message is encountered.
-# This class is thread safe and can be used simultaneously on multiple threads.
-# This class includes the message field list definitions (the configuration data
-# for the parser) by instantiating the MessageDescriptions class and assigning
-# this the MCD member of this class.
 class ParseMessage:
-    # Minimum length of header text, anything less than this is considered
-    # junk and added to the message body.
+    """This class is the entry point for parsing complete ICAO format messages for both ATS and OLDI
+    messages. The parser is able to automatically evaluate if a message contains a header or not. For
+    ICAO ATS messages the data definitions are set up as a single data set; for OLDI messages the
+    definitions vary depending on an adjacent unit sending identifier.
+
+    The entry point method is 'parse_message()' that takes an instance of FlightPlanRecord and a
+    string containing the message to parse. The FlightPlanRecord is populated by the parser and
+    includes all extracted fields, an extracted route (if field 15 is present) and any errors. It
+    is a callers responsibility to retrieve the errors.
+
+    If this software is used in conjunction with a GUI, all the fields are stored with their zero
+    based index into the message so that erroneous fields can be highlighted in the GUI. This makes
+    message correction quite simple for end users.
+
+    Note: Eventually this parser will also support ADEXP message parsing; currently an error is reported
+    when an ADEXP message is encountered.
+
+    This class is thread safe and can be used simultaneously on multiple threads. This class includes
+    the message field list definitions (the configuration data for the parser) by instantiating the
+    MessageDescriptions class and assigning this the MCD member of this class.
+    """
+
     MINIMUM_HEADER_LENGTH: int = 20
+    """Minimum length of header text, anything less than this is considered junk and added to the message body."""
 
-    # Minimum message length under which a message is considered junk
-    # and no attempt made to parse it further. The shortest message
-    # is a LAM, LAML/E012E/L001 -> 15 characters minimum.
     MINIMUM_BODY_LENGTH: int = 12
+    """Minimum message length under which a message is considered junk, no attempt will be made to parse it 
+    further. The shortest message is a LAM, LAML/E012E/L001 -> 15 characters minimum."""
 
-    # Configuration data defining the fields in a message for all message titles
     FIM: FieldsInMessage = FieldsInMessage()
+    """Configuration data defining the fields in a message for all message titles"""
 
-    # Configuration data mapping ICAO fields to their respective subfields
     SFIF: SubFieldsInFields = SubFieldsInFields()
+    """Configuration data mapping ICAO fields to their respective subfields"""
 
-    # Configuration data providing subfield syntax definitions & other data
     SFD: SubFieldDescriptions = SubFieldDescriptions()
+    """Configuration data providing subfield syntax definitions & other data"""
 
-    # Configuration data containing all the error messages
     EM: ErrorMessages = ErrorMessages()
+    """Configuration data containing all the error messages"""
 
-    # This method determines the message type (ICAO ATS, OLDI or ADEXP) based on
-    # a message title.
-    # Arguments
-    # ---------
-    # f3:       A string containing a message title;
-    # return:   An enumeration from MessageDescriptions.MessageTypes;
-    #           if the title is undefined / not supported then
-    #           MessageDescriptions.MessageTypes.UNKNOWN is returned.
     @staticmethod
     def determine_message_type(f3):
         # type: (str) -> MessageTypes
+        """This method determines the message type (ICAO ATS, OLDI or ADEXP) based on a message title.
+
+        :param f3: The message title as a string
+        :return: An enumeration from MessageDescriptions.MessageTypes; if the title is undefined / not
+                 supported then MessageDescriptions.MessageTypes.UNKNOWN is returned.
+        """
         if len(f3) < 3:
             # Cannot be a message title, too short, error
             return MessageTypes.UNKNOWN
@@ -84,25 +83,21 @@ class ParseMessage:
 
         return MessageTypes.ATS
 
-    # This method gets the field list for a message based on its title, adjacent unit
-    # name and message type. The field list contains a list of ICAO fields that must
-    # be included in a message and is used by the field parsers to parse individual subfields.
-    # The field list is an instance of the MessageDescription class.
-    # Arguments
-    # ---------
-    # flight_plan_record:   The Flight Plan Record containing the message to parse
-    #                       and into which all the parsed data is written;
-    #                       The name of an adjacent unit or DEFAULT if no name is defined
-    #                       for the message title being processed.
-    # message_title:        The message title of the message being processed
-    # return:               An instance the MessageDescription class containing a list
-    #                       of all fields expected in a given message or None if a suitable
-    #                       field list could not be found. The latter case should never
-    #                       happen and most likely indicates an error in the configuration
-    #                       data.
     def get_message_description(self, flight_plan_record, message_title):
         # type: (FlightPlanRecord, MessageTitles) -> MessageDescription | None
+        """This method gets the field list for a message based on its title, adjacent unit name and message
+        type. The field list contains a list of ICAO fields that must be included in a message and is used
+        by the field parsers to parse individual subfields. The field list is contained in an instance of the
+        MessageDescription class.
 
+        :param flight_plan_record: The Flight Plan Record containing the message to parse and into which all
+               the parsed data is written; the name of an adjacent unit or DEFAULT if no name is defined
+               for the message title being processed.
+        :param message_title: The message title of the message being processed;
+        :return: An instance of the MessageDescription class containing a list of all fields expected in a
+                 given message or None if a suitable field list could not be found. The latter case should
+                 never happen and most likely indicates an error in the configuration data.
+        """
         md = self.FIM.get_message_content(flight_plan_record.get_message_type(),
                                           flight_plan_record.get_sender_adjacent_unit_name(), message_title)
         if md is None:
@@ -135,20 +130,18 @@ class ParseMessage:
             return None
         return md
 
-    # This method carries out some rudimentary checks for:
-    # - A 'null' message
-    # - An empty message
-    # - A short message (less than MINIMUM_HEADER_LENGTH characters is treated
-    #   as an erroneous case)
-    # Any of the erroneous cases result in an error being written to the
-    # Flight Plan Record.
-    # Arguments
-    # ---------
-    # flight_plan_record:   A flight plan record into which errors are written
-    # message:              The message being parsed
-    # return:               False if errors are detected, True otherwise
     def is_message_valid(self, flight_plan_record, message):
         # type: (FlightPlanRecord, str) -> bool
+        """This method carries out some rudimentary checks for:
+            - A 'null' message
+            - An empty message
+            - A short message (less than MINIMUM_HEADER_LENGTH characters is treated as an erroneous case)
+        Any of the erroneous cases result in an error being written to the Flight Plan Record.
+
+        :param flight_plan_record: A flight plan record into which errors are written;
+        :param message: The message being parsed;
+        :return: False if errors are detected, True otherwise;
+        """
         # Do some very basic checks to make sure we have a valid message
         if message is None:
             # Null message value
@@ -175,22 +168,21 @@ class ParseMessage:
         Utils.add_error(flight_plan_record, "ADEXP Not Supported", 0, 0, self.EM, ErrorId.MSG_ADEXP_NOT_SUPPORTED)
         return False
 
-    # Parses an ICAO ATS message; when this method is called the following is known:
-    # - The message type is ICAO ATS (MessageTypes.ATS)
-    # - The message title is valid but the MessageTitle enumeration must be obtained
-    # - As it's an ATS message, there is no adjacent unit identifier needed
-    # To obtain the appropriate field list for the message title the following are needed:
-    # - MessageTypes.ATS enumeration - Recover from the flight plan record
-    # - MessageTitles.<Title enumeration> - This method will get this from the message title
-    # - AdjacentUnit.DEFAULT - The default adjacent unit definition is used as there is
-    #   no adjacent unit for ATS messages
-    # Arguments
-    # ---------
-    # flight_plan_record:   The Flight Plan Record containing the message to parse;
-    # return:               True if a supported message title could be identified.
-    #                       False if any errors were detected.
     def parse_ats(self, flight_plan_record):
         # type: (FlightPlanRecord) -> bool
+        """Parses an ICAO ATS message; when this method is called the following is known:
+            - The message type is ICAO ATS (MessageTypes.ATS);
+            - The message title is valid but the MessageTitle enumeration must be obtained;
+            - As it's an ATS message, there is no adjacent unit identifier needed;
+        To obtain the appropriate field list for the message title the following are needed:
+            - MessageTypes.ATS enumeration: Recover from the flight plan record;
+            - MessageTitles.<Title enumeration>: This method will get this from the message title;
+            - AdjacentUnit.DEFAULT: The default adjacent unit definition is used as there is no adjacent
+              unit for ATS messages;
+
+        :param flight_plan_record: The Flight Plan Record containing the message to parse;
+        :return: True if a supported message title could be identified, False if any errors were detected.
+        """
 
         # Tokenize the message, open & closed brackets will be removed
         tokens = self.tokenize_message(flight_plan_record, "()-\r\n\t")
@@ -199,18 +191,21 @@ class ParseMessage:
         message_title = Utils.title_defined(
             tokens.get_first_token().get_token_string().replace(" ", "")[0:3])
 
-        return self.parse_ats_or_oldi(
-            flight_plan_record, tokens, message_title)
+        return self.parse_ats_or_oldi(flight_plan_record, tokens, message_title)
 
-    # This class parses an OLDI message. The difference between an ATS and OLDI
-    # message is that the field list, i.e. the content of a given message based
-    # on its title, varies depending on the adjacent unit that a message is being
-    # exchanged on.
-    # This method calls the F3 parser which establishes the adjacent unit from
-    # F3b and sets this in the FPR. The 'standard' ATS parser is then called which
-    # uses the adjacent unit to obtain the correct field content definition.
     def parse_oldi(self, flight_plan_record):
         # type: (FlightPlanRecord) -> bool
+        """This class parses an OLDI message. The difference between an ATS and OLDI message is that
+        the field list, i.e. the content of a given message based on its title, varies depending on the
+        adjacent unit that a message is being exchanged on.
+
+        This method calls the F3 parser which establishes the adjacent unit from F3b and sets this in
+        the FPR. The 'standard' ATS parser is then called which uses the adjacent unit to obtain the
+        correct field content definition.
+
+        :param flight_plan_record: The Flight Plan Record containing the message to parse;
+        :return: True if no errors were detected, False otherwise;
+        """
 
         # Tokenize the message, open & closed brackets will be removed
         tokens = self.tokenize_message(flight_plan_record, "()-\r\n\t")
@@ -234,19 +229,20 @@ class ParseMessage:
 
         return self.parse_ats_or_oldi(flight_plan_record, tokens, message_title)
 
-    # This method parses an ATS header and saves the fields to the FPR.
-    # The header parsing assumes correct message syntax, that is the fields are expected
-    # in the following order:
-    # <Priority Indicator> <One or more Addressees> <Filing Time> <Originator> <One or more Additional Addressees>
-    # The header is tokenized and the appropriate parser called on the fields in the expected
-    # order. If fields are missing and/or extra, an error is reported as are any syntax errors.
-    # Arguments
-    # ---------
-    # flight_plan_record:   Flight plan record containing the header field and where
-    #                       successfully parsed fields will be written to.
-    # return:               True if parsing was successful, false if errors are detected.
     def parse_ats_header(self, flight_plan_record):
         # type: (FlightPlanRecord) -> bool
+        """This method parses an ATS header and saves the fields to the FPR. The header parsing assumes
+        correct message semantics, that is the fields are expected in the following order:
+            - <Priority Indicator>
+            - <One or more Addressees>
+            - <Filing Time> <Originator>
+            - <One or more Additional Addressees>
+        The header is tokenized and the appropriate parser called on the fields in the expected order.
+        If fields are missing and/or extra, an error is reported as are any syntax errors.
+
+        :param flight_plan_record: Flight plan record containing the header field and where successfully
+               parsed fields will be written to.
+        :return: True if parsing was successful, false if errors are detected."""
 
         # Tokenize the header
         tokenize = Tokenize()
@@ -351,23 +347,22 @@ class ParseMessage:
 
         return flight_plan_record.errors_detected()
 
-    # This method determines parses the message fields. The field definition list
-    # is obtained based on the message type, adjacent unit name and message title.
-    # the field definition list contains information about all the subfields in each
-    # field and is used to parse individual subfields.
-    # the individual parser methods are implemented as callbacks and stored with the
-    # field definition list. Each parser callback adds the fields and subfields to the FPR.
-    # Once this method completes, The FPR is fully populated with the message field and
-    # subfield content.
-    # Arguments
-    # ---------
-    # flight_plan_record:   The Flight Plan Record containing the message to parse
-    #                       and into which all the parsed data is written;
-    # return:               True if the message was parsed without error, false
-    #                       if any errors were detected.
     def parse_ats_or_oldi(self, flight_plan_record, tokens, message_title):
         # type: (FlightPlanRecord, Tokens, MessageTitles) -> bool
+        """This method parses the message fields. The field definition list is obtained based on the
+        message type, adjacent unit name and message title. The field definition list contains
+        information about all the subfields in each field and is used to parse individual subfields.
 
+        The individual parser methods are implemented as callbacks and stored with the field definition
+        list. Each parser callback adds the fields and subfields to the FPR. Once this method completes,
+        The FPR is fully populated with the message field and subfield content.
+
+        :param flight_plan_record: The Flight Plan Record containing the message to parse and into
+               which all the parsed data is written;
+        :param tokens: The tokens containing individual ICAO fields;
+        :param message_title: The message title;
+        :return: True if the message was parsed without error, False if any errors were detected.
+        """
         # Obtain the field list definition for this message title
         md: MessageDescription = self.get_message_description(flight_plan_record, message_title)
 
@@ -397,6 +392,7 @@ class ParseMessage:
                                                   token.get_token_string(),
                                                   token.get_token_start_index(),
                                                   token.get_token_end_index())
+                # Get the appropriate field parser
                 fp = field_parsers[idx](flight_plan_record, self.SFIF, self.SFD)
                 # Parse the field
                 fp.parse_field()
@@ -414,13 +410,42 @@ class ParseMessage:
                             ErrorId.MSG_TOO_FEW_FIELDS)
         else:
             # Either the fields to parse are equal to those defined, or we have more
-            # fields in the message than defined for the messages
+            # fields in the message than defined for the message.
+            # One special case exists for the CHG and ACH message, these messages
+            # have F22 as the last field that uses hyphens as field separators. For
+            # these messages, the F22 fields need to be concatenated into a single field.
+            # Check if the last field specified for this message is F22
+            f22_index = len(field_identifiers) - 1
+            if field_identifiers[f22_index] == FieldIdentifiers.F22 or \
+                    field_identifiers[f22_index] == FieldIdentifiers.F22_SPECIFIC:
+                # The last field in the list of field_identifiers is F22, so this gives
+                # us the index into the token list where F22 starts, all tokens including
+                # this one up to the end of the token list are all F22 fields.
+
+                # Get the start index of field 22 in the original message
+                f22_start_index = tokens.get_token_at(f22_index).get_token_start_index()
+
+                # Get the end index of field 22 in the original message
+                f22_end_index = tokens.get_token_at(len(tokens.get_tokens()) - 1).get_token_end_index()
+
+                # Retrieve the F22 string from the original message
+                f22_concatenated = flight_plan_record.get_message_body()[f22_start_index - 1:f22_end_index]
+
+                # Save the field 22 string to the field 22 token along with its start and end index
+                tokens.get_token_at(f22_index).set_token_string(f22_concatenated)
+                tokens.get_token_at(f22_index).set_token_start_index(f22_start_index)
+                tokens.get_token_at(f22_index).set_token_end_index(f22_end_index)
+
+                # Lop off the remainder of the list
+                tokens.remove_tokens_from_end_of_list(f22_index)
+
             for field_parser in field_parsers:
                 # Save the field to be parsed to the flight plan
                 flight_plan_record.add_icao_field(field_identifiers[idx],
                                                   tokens.get_token_at(idx).get_token_string(),
                                                   tokens.get_token_at(idx).get_token_start_index(),
                                                   tokens.get_token_at(idx).get_token_end_index())
+                # Get the appropriate field parser
                 fp = field_parser(flight_plan_record, self.SFIF, self.SFD)
                 # Parse the field
                 fp.parse_field()
@@ -435,22 +460,18 @@ class ParseMessage:
 
         return flight_plan_record.errors_detected()
 
-    # This method is the entry point for message parsing; the method takes an
-    # instance of FlightPlanRecord (for output) and a string containing
-    # the message to parse.
-    # The FlightPlanRecord is populated by the parser and includes all
-    # extracted fields, if field 15 was present along with any route
-    # extraction any errors. It is a callers responsibility to retrieve the
-    # errors.
-    # Arguments
-    # ---------
-    # flight_plan_record:   A flight plan record into which all data extracted
-    #                       by the parser (including errors) are written
-    # message:              The message with or without header
-    # return:               False if errors are detected, True otherwise
     def parse_message(self, flight_plan_record, message):
         # type: (FlightPlanRecord, str | None) -> bool
+        """This method is the entry point for message parsing; the method takes an instance of FlightPlanRecord
+        (for output) and a string containing the message to parse. The FlightPlanRecord is populated by the
+        parser and includes all extracted fields, (if field 15 was present) is stored along with any route
+        extraction any errors. It is a callers responsibility to retrieve the errors.
 
+        :param flight_plan_record: A flight plan record into which all data extracted by the parser
+               (including errors) are written;
+        :param message: The message with or without header;
+        :return: False if errors are detected, True otherwise;
+        """
         # Check if the message is worthy of further processing
         if not self.is_message_valid(flight_plan_record, message):
             return False
@@ -480,6 +501,7 @@ class ParseMessage:
             case MessageTypes.UNKNOWN:
                 return False
 
+    # TODO This method may be removed if there are no application level headers, (I don't believe there are)
     @staticmethod
     def parse_oldi_header(flight_plan_record):
         # type: (FlightPlanRecord) -> bool
@@ -487,33 +509,32 @@ class ParseMessage:
             return True
         return True
 
-    # This method determines if a message contains a header and message body or
-    # if it's a message without a header.
-    # The message header and body are copied to the FPR if they are present.
-    # Differentiating between the message header and body is achieved by
-    # detecting the presence or not of the first hyphen or open bracket in a message.
-    # The action taken is as per the following truth table:
-    #            Open      Hyphen
-    #  Hyphen | Bracket |  Before |
-    # Present | Present | Bracket | Action
-    # --------+---------+---------+--------------------------------------------
-    #    No   |    No   |    x    | Save to message body + Process, no header
-    # --------+---------+---------+--------------------------------------------
-    #    No   |   Yes   |    x    | Split on Bracket, save to body and header + Process
-    # --------+---------+---------+--------------------------------------------
-    #   Yes   |    No   |    x    | Split on Hyphen, save to body and header + Process
-    # --------+---------+---------+--------------------------------------------
-    #   Yes   |   Yes   |   No    | Split on Bracket, save to body and header + Process
-    # --------+---------+---------+--------------------------------------------
-    #   Yes   |   Yes   |  Yes    | Split on Hyphen, save to body and header + Process
-    # --------+---------+---------+--------------------------------------------
-    # Arguments
-    # ----------
-    # flight_plan_record:   The Flight Plan Record containing the message to parse;
-    # return:               True if the message header and body have been identified
-    #                       and stored, False if any errors were detected.
     def set_message_body_and_header(self, flight_plan_record):
         # type: (FlightPlanRecord) -> None
+        """This method determines if a message contains a header and message body or if it's a message
+        without a header. The message header and body are copied to the FPR if they are present.
+
+        Differentiating between the message header and body is achieved by detecting the presence or not
+        of the first hyphen or open bracket in a message. The action taken is as per the following truth table:
+                   Open      Hyphen
+         Hyphen | Bracket |  Before |
+        Present | Present | Bracket | Action
+        --------+---------+---------+--------------------------------------------
+           No   |    No   |    x    | Save to message body + Process, no header
+        --------+---------+---------+--------------------------------------------
+           No   |   Yes   |    x    | Split on Bracket, save to body and header + Process
+        --------+---------+---------+--------------------------------------------
+          Yes   |    No   |    x    | Split on Hyphen, save to body and header + Process
+        --------+---------+---------+--------------------------------------------
+          Yes   |   Yes   |   No    | Split on Bracket, save to body and header + Process
+        --------+---------+---------+--------------------------------------------
+          Yes   |   Yes   |  Yes    | Split on Hyphen, save to body and header + Process
+        --------+---------+---------+--------------------------------------------
+
+        :param flight_plan_record: The Flight Plan Record containing the message to parse;
+        :return: True if the message header and body have been identified and stored, False if
+                 any errors were detected.
+        """
         msg = flight_plan_record.get_message_complete()
 
         # Get the indices of the two characters that could indicate the start
@@ -553,20 +574,17 @@ class ParseMessage:
                 flight_plan_record.set_message_header(msg[0:hyphen_index])
                 flight_plan_record.set_message_body(msg[hyphen_index:])
 
-    # This method sets the message type (ICAO ATS, OLDI or ADEXP) to the FPR.
-    # When this method is called, the FPR contains a message body and maybe
-    # a header (if the message included a header).
-    # This method recovers the message title from the start of the message body,
-    # and checks if it is a supported message title. Using the title, the message
-    # type can be ascertained and set with one of the enumeration values from
-    # the MessageDescriptions.MessageTypes class.
-    # Arguments
-    # ---------
-    # flight_plan_record:   The Flight Plan Record containing the message to parse;
-    # return:               True if a supported message title could be identified.
-    #                       False if any errors were detected.
     def set_message_type(self, flight_plan_record):
         # type: (FlightPlanRecord) -> bool
+        """This method sets the message type (ICAO ATS, OLDI or ADEXP) to the FPR. When this method
+        is called, the FPR contains a message body and maybe a header (if the message included a header).
+        This method recovers the message title from the start of the message body, and checks if it is a
+        supported message title. Using the title, the message type can be ascertained and set with one
+        of the enumeration values from the MessageDescriptions.MessageTypes class.
+
+        :param flight_plan_record: The Flight Plan Record containing the message to parse;
+        :return: True if a supported message title could be identified. False if any errors were detected.
+        """
         msg_body = flight_plan_record.get_message_body()
         msg_header = flight_plan_record.get_message_header()
 
@@ -614,7 +632,7 @@ class ParseMessage:
                 mm = re.match("[ \n\r\t]*[(]?[ \n\r\t]*[A-Z]{3,7}/[A-Z]{1,4}[0-9]{1,3}", msg_body)
                 message_title = Utils.title_defined(f3[0])
                 if (message_title is MessageTitles.ACP or message_title is MessageTitles.CDN or
-                        message_title is MessageTitles.CPL) and mm is not None:
+                    message_title is MessageTitles.CPL) and mm is not None:
                     flight_plan_record.set_message_type(MessageTypes.OLDI)
                 else:
                     flight_plan_record.set_message_type(message_type)
@@ -625,10 +643,17 @@ class ParseMessage:
             flight_plan_record.set_message_type(MessageTypes.UNKNOWN)
             return False
 
-    # This method tokenizes a field or message, any string passed to it.
     @staticmethod
     def tokenize_message(flight_plan_record, whitespace):
         # type: (FlightPlanRecord, str) -> Tokens
+        """This method tokenizes a field or message based on the token separators in the parameter
+        'whitespace'.
+
+        :param flight_plan_record: The Flight Plan Record containing the message to parse;
+        :param whitespace: The whitespace characters used to delimit the tokens, these are all consumed by
+               the parser apart from the forward slash character '/' which results in its own token.
+        :return: The list of tokens;
+        """
         tokenizer = Tokenize()
         tokenizer.set_string_to_tokenize(flight_plan_record.get_message_body())
         tokenizer.set_whitespace(whitespace)

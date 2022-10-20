@@ -193,6 +193,24 @@ class ParseMessageTests(unittest.TestCase):
         self.assertEqual(19, fpr.get_icao_subfield(FieldIdentifiers.F3, SubFieldIdentifiers.F3c4).get_start_index())
         self.assertEqual(22, fpr.get_icao_subfield(FieldIdentifiers.F3, SubFieldIdentifiers.F3c4).get_end_index())
 
+    def test_ParseMessage_ATS_check_f22_variants(self):
+        # The ACH and CHG messages have a field 22 as the last field. The issue is that F22 uses
+        # the same field separators (hyphen) as is used for all messages. This implies that
+        # some messages may have more fields than defined as the exact number is 'unknown' due
+        # to the variable number of F22 fields.
+        # Check too few fields reported...
+        self.do_test(True, 1, "(ACH-TEST01-EGLL0800-LOWW0200-221012)",
+                     ["Too few fields in this message; expecting at least 6 fields"])
+
+        # Check with a single F22 field...
+        self.do_test(False, 0, "(ACH-TEST01-EGLL0800-LOWW0200-221012-9/B737/M)", [""])
+
+        # Check with multiple F22 field...
+        self.do_test(False, 0, "(ACH-TEST01-EGLL0800-LOWW0200-221012-9/B737/M -    13/   LOWW0900-16/EGLL0100)", [""])
+
+        # Check CHG message...
+        self.do_test(False, 0, "(CHG-TEST01-EGLL0800-LOWW0200-221012-9/B737/M -    13/   LOWW0900-16/EGLL0100)", [""])
+
     def do_test(self, errors_detected, number_of_errors, message_to_parse, expected_error_text):
         # type: (bool, int, str, [str]) -> FlightPlanRecord
         fpr = FlightPlanRecord()

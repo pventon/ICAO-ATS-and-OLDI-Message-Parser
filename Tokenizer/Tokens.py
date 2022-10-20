@@ -140,6 +140,15 @@ class Tokens:
             :return: The 'current' Token in the list of tokens stored in this class;"""
         return self.get_token_at(self.current_token)
 
+    def remove_tokens_from_end_of_list(self, split_index):
+        # type: (int) -> None
+        """This method removes tokens from the list above the split_index
+
+        :param split_index: Index above which all tokens will be removed
+        :return: None
+        """
+        self.tokens = self.tokens[:split_index + 1]
+
     def print_tokens(self):
         # type: () -> None
         """This method prints the complete list of tokens. The method is provided to assist in debugging.
