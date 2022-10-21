@@ -236,10 +236,14 @@ class SubFieldIdentifiers(IntEnum):
     F22_f20 = auto()
     F22_f21 = auto()
     F22_f22 = auto()
+    F22_f80 = auto()
+    F22_f81 = auto()
     F80a = auto()
-    F80b = auto()
     F81a = auto()
+    F81ab = auto()
     F81b = auto()
+    F81bc = auto()
+    F81c = auto()
     MFS_SIG_POINT = auto()
     RQS_FREE_TEXT = auto()
     ANYTHING = auto()
@@ -451,6 +455,22 @@ class ErrorId(IntEnum):
     F22_UNRECOGNISED_DATA = auto()
     F22_UNRECOGNISED_KEYWORD = auto()
     F22_ZERO_OR_KEYWORDS = auto()
+
+    # Errors relating to Field 80
+    F80_MISSING = auto()
+    F80_F80A_SYNTAX = auto()
+    F80_TOO_MANY_FIELDS = auto()
+    F80_MORE_SUBFIELDS_EXPECTED = auto()
+
+    # Errors relating to Field 81
+    F81_MISSING = auto()
+    F81_F81A_SYNTAX = auto()
+    F81_F81AB_SYNTAX = auto()
+    F81_F81B_SYNTAX = auto()
+    F81_F81BC_SYNTAX = auto()
+    F81_F81C_SYNTAX = auto()
+    F81_TOO_MANY_FIELDS = auto()
+    F81_MORE_FIELDS_EXPECTED = auto()
 
     # Errors relating to the MFS significant point
     MFS_POINT_MISSING = auto()

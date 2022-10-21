@@ -33,11 +33,11 @@ class TestParseF8(unittest.TestCase):
 
         # Extra field with incorrect type of flight
         self.do_f8_test(True, 2, " IK  DD ", ["Expecting type of flight 'S', 'N', 'G', 'M' or 'X' instead of 'K'",
-                                              "Field 8 is correct but there is extra unwanted date, remove 'DD' "
+                                              "Field 8 is correct but there is extra unwanted data, remove 'DD' "
                                               "and / or check the overall syntax"])
 
         # Extra field with correct type of flight
-        self.do_f8_test(True, 1, " IX  DD ", ["Field 8 is correct but there is extra unwanted date, "
+        self.do_f8_test(True, 1, " IX  DD ", ["Field 8 is correct but there is extra unwanted data, "
                                               "remove 'DD' and / or check the overall syntax"])
 
         # Rules correct but nothing else present

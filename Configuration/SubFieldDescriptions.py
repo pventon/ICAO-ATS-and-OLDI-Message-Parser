@@ -205,7 +205,7 @@ class SubFieldDescriptions:
             SubFieldIdentifiers.F10ab: SubFieldDescription(
                 SubFieldIdentifiers.F10ab, 0, 20, "[/]", True),
             SubFieldIdentifiers.F10b: SubFieldDescription(
-                SubFieldIdentifiers.F10b, 0, 20, "[ABCDEGHILPSUVX12]", True),
+                SubFieldIdentifiers.F10b, 0, 20, "[ABCDEGHILPSUVX12]+", True),
 
             # F13 - ADEP and EOBT
             SubFieldIdentifiers.F13a: SubFieldDescription(
@@ -371,18 +371,25 @@ class SubFieldDescriptions:
             # Field 80 for OLDI
             # TODO - It appears that F80 is part of a custom F22, these definitions may be removed
             # TODO - For F80 it may be the syntax definitions go in the F22 parser
+            # F81a is identical to ICAO field 8b
             SubFieldIdentifiers.F80a: SubFieldDescription(
-                SubFieldIdentifiers.F80a, 0, 3, "[ABC]{0,3}", False),
-            SubFieldIdentifiers.F80b: SubFieldDescription(
-                SubFieldIdentifiers.F80b, 0, 3, "[DEF]{0,3}", False),
+                SubFieldIdentifiers.F80a, 1, 1, "[SNMGX]", True),
 
             # Field 81 for OLDI
             # TODO - It appears that F81 is part of a custom F22, these definitions may be removed
             # TODO - For F81 it may be the syntax definitions go in the F22 parser
+            # F80a is almost identical to ICAO field 10a
             SubFieldIdentifiers.F81a: SubFieldDescription(
-                SubFieldIdentifiers.F81b, 0, 3, "[ABC]{0,3}", False),
+                SubFieldIdentifiers.F81a, 1, 25, "[N]|([S]|[A-MOPRT-Z1-9]+|[A-MOPRT-Z1-9]+)|ADSB|ADSC", True),
+            SubFieldIdentifiers.F81ab: SubFieldDescription(
+                SubFieldIdentifiers.F81ab, 1, 1, "/", True),
             SubFieldIdentifiers.F81b: SubFieldDescription(
-                SubFieldIdentifiers.F81b, 0, 3, "[DEF]{0,3}", False),
+                SubFieldIdentifiers.F81b, 0, 3, "EQ|UN|NO", True),
+            SubFieldIdentifiers.F81bc: SubFieldDescription(
+                SubFieldIdentifiers.F81bc, 1, 1, "/", False),
+            # F80c is identical to ICAO field 10b
+            SubFieldIdentifiers.F81c: SubFieldDescription(
+                SubFieldIdentifiers.F81c, 0, 3, "[ABCDEGHILPSUVX12]+", False),
 
             # Special for the MFS
             SubFieldIdentifiers.MFS_SIG_POINT: SubFieldDescription(

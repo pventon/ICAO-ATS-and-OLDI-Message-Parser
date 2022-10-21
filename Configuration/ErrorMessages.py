@@ -94,7 +94,7 @@ class ErrorMessages:
             ErrorId.F8_MISSING: "There is no data in field 8",
             ErrorId.F8_F8A_SYNTAX: "Expecting flight rules 'I', 'V', 'Y' or 'Z' instead of '!'",
             ErrorId.F8_F8B_SYNTAX: "Expecting type of flight 'S', 'N', 'G', 'M' or 'X' instead of '!'",
-            ErrorId.F8_TOO_MANY_FIELDS: "Field 8 is correct but there is extra unwanted date, "
+            ErrorId.F8_TOO_MANY_FIELDS: "Field 8 is correct but there is extra unwanted data, "
                                         "remove '!' and / or check the overall syntax",
             ErrorId.F8_MORE_SUBFIELDS_EXPECTED: "Expecting type of flight after rules '!'",
 
@@ -234,6 +234,23 @@ class ErrorMessages:
             ErrorId.F22_ZERO_OR_KEYWORDS: "Field 22 contains no ICAO fields, must consist of one or more "
                                           "<ICAO field number>/<ICAO field> occurrences instead of '!'",
 
+            # Errors relating to Field 80
+            ErrorId.F80_MISSING: "There is no data in field 80",
+            ErrorId.F80_F80A_SYNTAX: "Expecting type of flight 'S', 'N', 'G', 'M' or 'X' instead of '!'",
+            ErrorId.F80_TOO_MANY_FIELDS: "Field 80 is correct but there is extra unwanted data, "
+                                        "remove '!' and / or check the overall syntax",
+            ErrorId.F80_MORE_SUBFIELDS_EXPECTED: "Expecting type of flight after rules '!'",
+
+            ErrorId.F81_MISSING: "There is no data in field 81",
+            ErrorId.F81_F81A_SYNTAX: "Expecting equipment code or surveillance class instead of '!'",
+            ErrorId.F81_F81AB_SYNTAX: "Expecting a forward slash '/' instead of '!'",
+            ErrorId.F81_F81B_SYNTAX: "Expecting equipment stats as 'EQ'.'UN' or 'NO' instead of '!'",
+            ErrorId.F81_F81BC_SYNTAX: "Expecting a forward slash '/' instead of '!'",
+            ErrorId.F81_F81C_SYNTAX: "Expecting surveillance equipment code instead of '!'",
+            ErrorId.F81_TOO_MANY_FIELDS: "Too many field(s) in Field 81, remove '!'",
+            ErrorId.F81_MORE_FIELDS_EXPECTED: "Field 81 is incomplete, field should be (equipment code '/' "
+                                              "equipment status) or (surveillance class '/' equipment status "
+                                              "'/' surveillance equipment code) instead of '!'",
         }
 
     def get_error_message(self, error_id):

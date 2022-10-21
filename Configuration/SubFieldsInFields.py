@@ -57,6 +57,7 @@ class SubFieldsInFields:
                                           ErrorId.FLD_MORE_SUBFIELDS_EXPECTED, ErrorId.AD_ADDRESSEE_MISSING]],
 
             # ICAO fields
+            # Field 3 parsing rules
             FieldIdentifiers.F3: [[SubFieldIdentifiers.F3a, SubFieldIdentifiers.F3b1, SubFieldIdentifiers.F3b2,
                                    SubFieldIdentifiers.F3b3, SubFieldIdentifiers.F3b4, SubFieldIdentifiers.F3c1,
                                    SubFieldIdentifiers.F3c2, SubFieldIdentifiers.F3c3, SubFieldIdentifiers.F3c4],
@@ -64,68 +65,99 @@ class SubFieldsInFields:
                                    ErrorId.F3_RX_SYNTAX, ErrorId.F3_SEQ_SYNTAX, ErrorId.F3_TX_SYNTAX,
                                    ErrorId.FLD_SLASH_SYNTAX, ErrorId.F3_RX_SYNTAX, ErrorId.F3_SEQ_SYNTAX,
                                    ErrorId.F3_TOO_MANY_FIELDS, ErrorId.F3_RX_TX_EXPECTED, ErrorId.F3_TITLE_MISSING]],
+
+            # Field 5 parsing rules
             FieldIdentifiers.F5: [[SubFieldIdentifiers.F5a, SubFieldIdentifiers.F5ab, SubFieldIdentifiers.F5b,
                                    SubFieldIdentifiers.F5bc, SubFieldIdentifiers.F5c],
                                   [ErrorId.F5_F5A_SYNTAX, ErrorId.F5_F5AB_EXPECTING_SLASH, ErrorId.F5_F5B_SYNTAX,
                                    ErrorId.F5_F5BC_EXPECTING_SLASH, ErrorId.F5_F5C_SYNTAX, ErrorId.F5_TOO_MANY_FIELDS,
                                    ErrorId.FLD_MORE_SUBFIELDS_EXPECTED, ErrorId.F5_MISSING]],
+
+            # Field 7 parsing rules
             FieldIdentifiers.F7: [[SubFieldIdentifiers.F7a, SubFieldIdentifiers.F7ab, SubFieldIdentifiers.F7b,
                                    SubFieldIdentifiers.F7c],
                                   [ErrorId.F7_F7A_SYNTAX, ErrorId.F7_F7AB_SYNTAX, ErrorId.F7_F7B_SYNTAX,
                                    ErrorId.F7_F7C_SYNTAX, ErrorId.F7_TOO_MANY_FIELDS,
                                    ErrorId.F7_MORE_SUBFIELDS_EXPECTED, ErrorId.F7_MISSING]],
+
+            # Field 8 parsing rules
             FieldIdentifiers.F8: [[SubFieldIdentifiers.F8a, SubFieldIdentifiers.F8b],
                                   [ErrorId.F8_F8A_SYNTAX, ErrorId.F8_F8B_SYNTAX,
                                    ErrorId.F8_TOO_MANY_FIELDS,
                                    ErrorId.F8_MORE_SUBFIELDS_EXPECTED, ErrorId.F8_MISSING]],
+
+            # Field 8a parsing rules
             FieldIdentifiers.F8a: [[SubFieldIdentifiers.F8a],
                                    [ErrorId.F8_F8A_SYNTAX, ErrorId.F8_TOO_MANY_FIELDS,
                                     ErrorId.F8_MORE_SUBFIELDS_EXPECTED, ErrorId.F8_MISSING]],
+
+            # Field 9 parsing rules
             FieldIdentifiers.F9: [[SubFieldIdentifiers.F9a, SubFieldIdentifiers.F9b, SubFieldIdentifiers.F9bc,
                                    SubFieldIdentifiers.F9c],
                                   [ErrorId.F9_F9A_SYNTAX, ErrorId.F9_F9B_SYNTAX, ErrorId.F9_F9BC_SYNTAX,
                                    ErrorId.F9_F9C_SYNTAX, ErrorId.F9_TOO_MANY_FIELDS,
                                    ErrorId.F9_MORE_SUBFIELDS_EXPECTED, ErrorId.F9_MISSING]],
+
+            # Field 10 parsing rules
             FieldIdentifiers.F10: [[SubFieldIdentifiers.F10a, SubFieldIdentifiers.F10ab, SubFieldIdentifiers.F10b],
                                    [ErrorId.F10_F10A_SYNTAX, ErrorId.F10_F10AB_SYNTAX, ErrorId.F10_F10B_SYNTAX,
                                     ErrorId.F10_TOO_MANY_FIELDS,
                                     ErrorId.F10_MORE_SUBFIELDS_EXPECTED, ErrorId.F10_MISSING]],
+
+            # Field 13 parsing rules
             FieldIdentifiers.F13: [[SubFieldIdentifiers.F13a, SubFieldIdentifiers.F13b],
                                    [ErrorId.F13_F13A_SYNTAX, ErrorId.F13_F13B_SYNTAX,
                                     ErrorId.F13_TOO_MANY_FIELDS,
                                     ErrorId.F13_MORE_SUBFIELDS_EXPECTED, ErrorId.F13_MISSING]],
+
+            # Field 13a parsing rules
             FieldIdentifiers.F13a: [[SubFieldIdentifiers.F13a],
                                     [ErrorId.F13_F13A_SYNTAX, ErrorId.F13_TOO_MANY_FIELDS,
                                      ErrorId.F13_MORE_SUBFIELDS_EXPECTED, ErrorId.F13_MISSING]],
+
+            # Field 14 parsing rules
             FieldIdentifiers.F14: [[SubFieldIdentifiers.F14a, SubFieldIdentifiers.F14ab, SubFieldIdentifiers.F14b,
                                     SubFieldIdentifiers.F14c, SubFieldIdentifiers.F14d, SubFieldIdentifiers.F14e],
                                    [ErrorId.F14_F14A_SYNTAX, ErrorId.F14_F14AB_SYNTAX, ErrorId.F14_F14B_SYNTAX,
                                     ErrorId.F14_F14C_SYNTAX, ErrorId.F14_F14D_SYNTAX, ErrorId.F14_F14E_SYNTAX,
                                     ErrorId.F14_TOO_MANY_FIELDS,
                                     ErrorId.F14_MORE_FIELDS_EXPECTED, ErrorId.F14_MISSING]],
+
+            # Field 14a parsing rules
             FieldIdentifiers.F14a: [[SubFieldIdentifiers.F14a],
                                     [ErrorId.F14_F14A_SYNTAX, ErrorId.F14_TOO_MANY_FIELDS,
                                      ErrorId.F14_MORE_FIELDS_EXPECTED, ErrorId.F14_MISSING]],
+
             # Field 15 has its own dedicated parser
             FieldIdentifiers.F15: [[SubFieldIdentifiers.F15], []],
+
+            # Field 16 parsing rules
             FieldIdentifiers.F16: [[SubFieldIdentifiers.F16a, SubFieldIdentifiers.F16b, SubFieldIdentifiers.F16c,
                                     SubFieldIdentifiers.F16d],
                                    [ErrorId.F16_F16A_SYNTAX, ErrorId.F16_F16B_SYNTAX,
                                     ErrorId.F16_F16C_SYNTAX, ErrorId.F16_F16D_SYNTAX,
                                     ErrorId.F16_TOO_MANY_FIELDS,
                                     ErrorId.FLD_MORE_SUBFIELDS_EXPECTED, ErrorId.F16_MISSING]],
+
+            # Field 16a parsing rules
             FieldIdentifiers.F16a: [[SubFieldIdentifiers.F16a],
                                     [ErrorId.F16_F16A_SYNTAX, ErrorId.F16_TOO_MANY_FIELDS,
                                      ErrorId.FLD_MORE_SUBFIELDS_EXPECTED, ErrorId.F16_MISSING]],
+
+            # Field 16ab parsing rules
             FieldIdentifiers.F16ab: [[SubFieldIdentifiers.F16a, SubFieldIdentifiers.F16b],
                                      [ErrorId.F16_F16A_SYNTAX, ErrorId.F16_F16B_SYNTAX,
                                       ErrorId.F16_TOO_MANY_FIELDS,
                                       ErrorId.FLD_MORE_SUBFIELDS_EXPECTED, ErrorId.F16_MISSING]],
+
+            # Field 16abc parsing rules
             FieldIdentifiers.F16abc: [[SubFieldIdentifiers.F16a, SubFieldIdentifiers.F16b, SubFieldIdentifiers.F16c],
                                       [ErrorId.F16_F16A_SYNTAX, ErrorId.F16_F16B_SYNTAX,
                                        ErrorId.F16_F16C_SYNTAX,
                                        ErrorId.F16_TOO_MANY_FIELDS,
                                        ErrorId.FLD_MORE_SUBFIELDS_EXPECTED, ErrorId.F16_MISSING]],
+
+            # Field 17 parsing rules
             FieldIdentifiers.F17: [[SubFieldIdentifiers.F17a, SubFieldIdentifiers.F17b, SubFieldIdentifiers.F17c],
                                    [ErrorId.F17_F17A_SYNTAX, ErrorId.F17_F17B_SYNTAX,
                                     ErrorId.F17_F17C_SYNTAX, ErrorId.F17_TOO_MANY_FIELDS,
@@ -133,6 +165,7 @@ class SubFieldsInFields:
 
             # TODO F18 Individual field parsing has to be implemented for this field.
             # TODO F18 The fields are all present in the FPR as of this implementation.
+            # Field 18 parsing rules
             FieldIdentifiers.F18: [
                 [SubFieldIdentifiers.F18altn, SubFieldIdentifiers.F18code, SubFieldIdentifiers.F18com,
                  SubFieldIdentifiers.F18dat, SubFieldIdentifiers.F18dep, SubFieldIdentifiers.F18dest,
@@ -151,13 +184,9 @@ class SubFieldsInFields:
                                        [ErrorId.F18_DOF_F18A_SYNTAX, ErrorId.F18_DOF_TOO_MANY_FIELDS,
                                         ErrorId.FLD_MORE_SUBFIELDS_EXPECTED, ErrorId.F18_DOF_MISSING]],
 
-            # MFS message significant point, has different point syntax to normal ICAO points
-            FieldIdentifiers.MFS_SIG_POINT: [[SubFieldIdentifiers.MFS_SIG_POINT],
-                                             [ErrorId.MFS_POINT_SYNTAX, ErrorId.MFS_POINT_TOO_MANY_FIELDS,
-                                              ErrorId.FLD_MORE_SUBFIELDS_EXPECTED, ErrorId.MFS_POINT_MISSING]],
-
             # TODO F19 Individual field parsing has to be implemented for this field.
             # TODO F19 The fields are all present in the FPR as of this implementation.
+            # Field 19 parsing rules
             FieldIdentifiers.F19: [[SubFieldIdentifiers.F19a, SubFieldIdentifiers.F19c, SubFieldIdentifiers.F19d,
                                     SubFieldIdentifiers.F19e, SubFieldIdentifiers.F19j, SubFieldIdentifiers.F19n,
                                     SubFieldIdentifiers.F19p, SubFieldIdentifiers.F19r, SubFieldIdentifiers.F19s],
@@ -189,17 +218,29 @@ class SubFieldsInFields:
             # TODO F22 The fields are all present in the FPR as of this implementation.
             FieldIdentifiers.F22: [[SubFieldIdentifiers.F22_f3],
                                    []],
+            # TODO F22_SPECIFIC Individual field parsing has to be implemented for this field.
+            # TODO F22_SPECIFIC The fields are all present in the FPR as of this implementation.
             FieldIdentifiers.F22_SPECIFIC: [[SubFieldIdentifiers.F22_f3],
                                             []],
 
-            # TODO Special for OLDI
-            # TODO - Have to figure out the exact content for the OLDI F80 & F81
-            # TODO it appears that F80 & F81 are custom F22 fields, these definition will
-            # TODO will be reviewed once the F22 implementation is done
-            FieldIdentifiers.F80: [[SubFieldIdentifiers.F80a, SubFieldIdentifiers.F80b],
-                                   []],
-            FieldIdentifiers.F81: [[SubFieldIdentifiers.F81a, SubFieldIdentifiers.F81b],
-                                   []],
+            # Field 80 parsing rules
+            FieldIdentifiers.F80: [[SubFieldIdentifiers.F80a],
+                                   [ErrorId.F80_F80A_SYNTAX, ErrorId.F80_TOO_MANY_FIELDS,
+                                   ErrorId.F80_MORE_SUBFIELDS_EXPECTED, ErrorId.F80_MISSING]],
+
+            # Field 81 parsing rules
+            FieldIdentifiers.F81: [[SubFieldIdentifiers.F81a, SubFieldIdentifiers.F81ab,
+                                    SubFieldIdentifiers.F81b, SubFieldIdentifiers.F81bc,
+                                    SubFieldIdentifiers.F81c],
+                                   [ErrorId.F81_F81A_SYNTAX, ErrorId.F81_F81AB_SYNTAX,
+                                    ErrorId.F81_F81B_SYNTAX, ErrorId.F81_F81BC_SYNTAX,
+                                    ErrorId.F81_F81C_SYNTAX, ErrorId.F81_TOO_MANY_FIELDS,
+                                   ErrorId.F81_MORE_FIELDS_EXPECTED, ErrorId.F81_MISSING]],
+
+            # MFS message significant point, has different point syntax to normal ICAO points
+            FieldIdentifiers.MFS_SIG_POINT: [[SubFieldIdentifiers.MFS_SIG_POINT],
+                                             [ErrorId.MFS_POINT_SYNTAX, ErrorId.MFS_POINT_TOO_MANY_FIELDS,
+                                              ErrorId.FLD_MORE_SUBFIELDS_EXPECTED, ErrorId.MFS_POINT_MISSING]],
         }
 
     def get_field_content_description(self, icao_field_id):

@@ -21,7 +21,7 @@ class TestParseF8a(unittest.TestCase):
         self.do_f8a_test(True, 1, "IIG", ["Expecting flight rules 'I', 'V', 'Y' or 'Z' instead of 'IIG'"])
 
         # Extra subfields
-        self.do_f8a_test(True, 1, "I IBB", ["Field 8 is correct but there is extra unwanted date, remove "
+        self.do_f8a_test(True, 1, "I IBB", ["Field 8 is correct but there is extra unwanted data, remove "
                                             "'IBB' and / or check the overall syntax"])
 
         # OK
@@ -31,7 +31,7 @@ class TestParseF8a(unittest.TestCase):
         self.do_f8a_test(False, 0, " Y ", [])
 
         # OK with extra tokens
-        self.do_f8a_test(True, 1, " Y EXTRA FIELDS", ["Field 8 is correct but there is extra unwanted date, "
+        self.do_f8a_test(True, 1, " Y EXTRA FIELDS", ["Field 8 is correct but there is extra unwanted data, "
                                                       "remove 'EXTRA FIELDS' and / or check the overall syntax"])
 
     def do_f8a_test(self, errors_detected, number_of_errors,
