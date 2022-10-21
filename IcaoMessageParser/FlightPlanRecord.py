@@ -1,13 +1,14 @@
 """The classes in this file together represent a complete flight plan; the overall
 structure for a flight plan record is made up from all the classes in this file in
 the following manner:
-FlightPlanRecord -+-->  FieldRecord -+--> SubFieldRecord
-                  |                  +--> SubFieldRecord
-                  |                  +--> SubFieldRecord
+
+FlightPlanRecord -+-->  FieldRecord -+--> [SubFieldRecord, ...]
+                  |                  +--> [SubFieldRecord, ...]
+                  |                  +--> [SubFieldRecord, ...]
                   |                  +--> ...
-                  +-->  FieldRecord -+--> SubFieldRecord
-                  |                  +--> SubFieldRecord
-                  |                  +--> SubFieldRecord
+                  +-->  FieldRecord -+--> [SubFieldRecord, ...]
+                  |                  +--> [SubFieldRecord, ...]
+                  |                  +--> [SubFieldRecord, ...]
                   |                  +--> ...
                   +-->  ...
                   +--> ErrorRecord
@@ -18,7 +19,9 @@ FlightPlanRecord -+-->  FieldRecord -+--> SubFieldRecord
 2. SubFieldRecord classes are stored in a FieldRecord dictionary and indexed
    with enumeration values from SubFieldIdentifiers;
 3. ErrorRecord classes are stored in a FlightPlanRecord list; ErrorRecord's
-   inherit from the SubFieldRecord class."""
+   inherit from the SubFieldRecord class.
+4. Note that the subfields are in a list; this covers the case for some field 18 subfields
+   such as the RMK and STS subfields that can occur more than once in field 18."""
 from Configuration.EnumerationConstants import MessageTypes, FieldIdentifiers, SubFieldIdentifiers, AdjacentUnits
 from F15_Parser.ExtractedRouteSequence import ExtractedRouteSequence, ExtractedRouteRecord
 
@@ -153,6 +156,17 @@ class FieldRecord(SubFieldRecord):
             return self.subfields[icao_subfield_id][0]
         else:
             return None
+
+    def get_subfield_dictionary(self):
+        # type: () -> (SubFieldIdentifiers, [SubFieldRecord])
+        """This method returns the complete subfield dictionary stored in this field record; for
+        fields such as F18, F19 or F22 there may be a lot of subfields. This method is used primarily
+        to loop over the subfields of compound fields such as F18, F19 and F22 to parse the individual
+        subfields.
+        :return: A dictionary with SubFieldIdentifiers as key and a list of one or more subfields as the
+        value;
+        """
+        return self.subfields
 
     def get_all_subfields(self, icao_subfield_id):
         # type: (SubFieldIdentifiers) -> [SubFieldRecord]

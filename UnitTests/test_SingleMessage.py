@@ -8,8 +8,11 @@ class MyTestCase(unittest.TestCase):
 
     def test_ParseMessage_ATS_check_f22_variants(self):
 
-        # Check CHG message...
-        self.do_test(False, 0, "(CHG-TEST01-EGLL0800-LOWW0200-221012-9/B737/M -    13/   LOWW0900-16/EGLL0100)", [""])
+        self.do_test(True, 3, "(CHG-TEST01-EGLL0800-LOWW0200-221012"
+                              "-9/B737/M-15/N0450f350 F*F-16/EGLL0100-9/F34/L)",
+                     ["F22 - Field number '9/F34/L' is duplicated and should be removed",
+                      "F22 - The first Field 15 element must be a SPEED/LEVEL and not 'N0450f350'",
+                      "F22 - The element 'F*F' is an unrecognised Field 15 element"])
 
     def do_test(self, errors_detected, number_of_errors, message_to_parse, expected_error_text):
         # type: (bool, int, str, [str]) -> FlightPlanRecord

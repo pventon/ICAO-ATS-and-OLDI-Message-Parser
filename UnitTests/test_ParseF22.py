@@ -50,7 +50,10 @@ class TestParseF22(unittest.TestCase):
 
         self.do_f22_test(True, 1, "5/", ["Expecting data following field 22 ICAO field number '5/'"])
 
-        self.do_f22_test(False, 0, "8/9/B737/M ", [""])
+        self.do_f22_test(True, 2, "8/9/B737/M ",
+                         ["F22 - Expecting flight rules 'I', 'V', 'Y' or 'Z' instead of '9'",
+                          "F22 - Field 8 is correct but there is extra unwanted data, remove 'B737/M' "
+                          "and / or check the overall syntax"])
 
         self.do_f22_test(True, 1, "-8/-9/B737/M", ["Expecting data following field 22 ICAO field number '8/'"])
 
@@ -71,6 +74,9 @@ class TestParseF22(unittest.TestCase):
 
         self.do_f22_test(True, 1, "-7/TEST - 8 / IS - 9 / B737/M-11/SOMETHING", [
             "Field 22 ICAO field number '11/SOMETHING' unrecognised"])
+
+        self.do_f22_test(True, 1, "-7/TEST - 8 / IS - 9 / B737/M -80/N -81/A/EN", [
+            "F22 - Expecting equipment stats as 'EQ'.'UN' or 'NO' instead of 'EN'"])
 
         fpr = self.do_f22_test(False, 0,
                                "-3/FPL-7/TEST01-8/IS-9/B737/M-10/S/C-13/LOWW0800-15/N0450F350 PNT-16/EGLL0200-18/0",
@@ -94,6 +100,22 @@ class TestParseF22(unittest.TestCase):
             FieldIdentifiers.F22, SubFieldIdentifiers.F22_f16).get_field_text())
         self.assertEqual("0", fpr.get_icao_subfield(
             FieldIdentifiers.F22, SubFieldIdentifiers.F22_f18).get_field_text())
+
+        # Field 22 error...
+        self.do_f22_test(True, 1,
+                         "-9/B737/M-13/LO*W0900-16/EGLL0100",
+                         ["F22 - Expecting departure aerodrome as an ICAO location indicator, e.g. "
+                          "EGLL instead of 'LO*W'"])
+
+        # Check CHG message with Field 22 field 15 error...
+        self.do_f22_test(True, 2, "-9/B737/M-15/N0450f350 F*F-16/EGLL0100",
+                         ["F22 - The first Field 15 element must be a SPEED/LEVEL and not 'N0450f350'",
+                          "F22 - The element 'F*F' is an unrecognised Field 15 element", ""])
+
+        self.do_f22_test(True, 3, "-9/B737/M-15/N0450f350 F*F-16/EGLL0100-9/F34/L",
+                     ["F22 - Field number '9/F34/L' is duplicated and should be removed",
+                      "F22 - The first Field 15 element must be a SPEED/LEVEL and not 'N0450f350'",
+                      "F22 - The element 'F*F' is an unrecognised Field 15 element"])
 
     def do_f22_test(self, errors_detected, number_of_errors, string_to_parse, expected_error_text):
         # type: (bool, int, str, [str]) -> FlightPlanRecord

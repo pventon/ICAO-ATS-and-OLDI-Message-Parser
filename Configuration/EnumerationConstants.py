@@ -455,6 +455,7 @@ class ErrorId(IntEnum):
     F22_UNRECOGNISED_DATA = auto()
     F22_UNRECOGNISED_KEYWORD = auto()
     F22_ZERO_OR_KEYWORDS = auto()
+    F22_FIELD_DUPLICATED = auto()
 
     # Errors relating to Field 80
     F80_MISSING = auto()

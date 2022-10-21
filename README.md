@@ -19,13 +19,18 @@ OLDI messages have one further difference when compared to ATS messages; in addi
 </p>
 <p>Each field and its subfield(s) are parsed for correct syntax and semantics; should an error be detected, accurate error messages are generated describing an error found in a particular field. The zero based index of a field and subfield are stored with all fields and subfields; these indices can be used for highlighting errors in a GUI.
 </p>
+<h2>Current Functionality</h2>
+<p>The current implementation parses all the 'basic' ICAO fields F3, F5, F7, F8, F9, F10, F13, F14, F15, F16, F17, F20 and F21.
+ The ICAO fields F18, F19 and F22 are 'compound' fields made up of numerous subfields. The current implementation fully parses F22 and all its subfields. The flight plan record stores a complete F22 flight plan that is populated by F22 subfields. Theoretically, F22 is able to specify all the fields for a complete flight plan, hence an F22 flight plan is stored within the flight plan proper. Any errors reported for F22 subfields are copied to the main flight plan record for convenience to the caller. Duplicated F22 subfield errors are also reported.</p>
+<p>Fields F18 and F19 are parsed for correct keyword/data format with all subfields copied to the flight plan. Errors are reported if the keyword/data format is found to be incorrect or text is found outside a keyword/data subfield. However, the individual subfields of these two fields are currently not parsed, this functionality will be implemented shortly.</p>
+<p>OLDI define two extra fields 80 and 81, the parser fully supports these two fields with appropriate error messages etc. These fields are an addition to the ICAO F22 suite of subfields.</p>
 <p><b><i><u>A parsed message can be output as an XML string by calling FlightPlanRecord.as_xml()</u></i></b></p>
+
 <h2>Current Limitations</h2>
 The ICAO message Parser is not fully parsing the following fields:
 <ul>
-<li>ICAO fields 10 (syntax only)</li>
-<li>ICAO fields 18, 19 and 22 are being parse for correct and valid keywords and copied to the FPR, but the individual subfields are not being parsed;</li>
-<li>OLDI fields 80 and 81 are not parsed; these fields are copied to the FPR in dedicated fields but individual items in these fields are not parsed;</li>
+<li>ICAO field F10 (syntax only); this field is horribly complicated with fiddly letters indicating different surveillance and communication capabilities. This was made worse by the FPL 2012 changes. Support to fully parse this field will be provided at a later date. Parsing of this field also depends on the presence of certain F18 subfields, hence the F18 parsing must be completed before implementing the parsing for this field.</li>
+<li>ICAO fields F18 and F19 are being parse for correct and valid keyword/data construct and copied to the FPR, but the individual subfields are not being parsed yet; not all the F18 and F19 subfields require parsing, many are plain text that require no further processing than what is already implemented by the parser. However, there are a few subfields that do need to be checked, this implementation will be coming soon.</li>
 </ul>
 <h2>Future Upgrades</h2>
 <p>In the coming weeks support will be provided to enhance the ICAO ATS and OLDI Message Parser to:
@@ -33,7 +38,7 @@ The ICAO message Parser is not fully parsing the following fields:
 <ul>
 <li>Fully parse the few remaining fields listed above in the 'Current Limitations' section;</li>
 <li>Implement the semantic checks on field 10;</li>
-<li>Once all this is done there are numerous consistency checks needed to check between fields (e.g. if field 'x' contains 'y' then field 'z' must contain 'n')</li>
+<li>Once all this is done there are numerous consistency checks needed to check between fields (e.g. if field 'x' contains 'y' then field 'z' must contain 'n'). For example, consistency checks have to be made between F10 and certain F18 subfields; the flight rules have to be checked against the route description (the F15 parser is able to derive the flight rule from the route), hence a consistency check can be made between field 8 and field 15. This will all be implemented in time.</li>
 </ul>
 <h2>Errata and Faults</h2>
 Although every attempt has been made to reduce the number of software coding errors and resulting chaos that can ensue as a result of such errors, it is highly likely that this early release will have a few bugs. The possible combinations of message structure and semantics run into millions of combinations, and it's impossible to test them all. There are a lot of unit tests that check the individual field parsers and messages in their entirety, but even with so many tests, there may still be some bugs in the software. 

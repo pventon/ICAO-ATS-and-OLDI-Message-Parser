@@ -233,6 +233,7 @@ class ErrorMessages:
             ErrorId.F22_UNRECOGNISED_KEYWORD: "Field 22 ICAO field number '!' unrecognised",
             ErrorId.F22_ZERO_OR_KEYWORDS: "Field 22 contains no ICAO fields, must consist of one or more "
                                           "<ICAO field number>/<ICAO field> occurrences instead of '!'",
+            ErrorId.F22_FIELD_DUPLICATED: "F22 - Field number '!' is duplicated and should be removed",
 
             # Errors relating to Field 80
             ErrorId.F80_MISSING: "There is no data in field 80",
