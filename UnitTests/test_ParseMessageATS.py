@@ -45,7 +45,7 @@ class ParseMessageTests(unittest.TestCase):
                      [""])
         self.do_test(False, 0,
                      "(ALR-INCERFA/ABCDEFGH/FREE TEXT-TEST01-IS-B737/M-S/C-EGLL0800-N0450F350 "
-                     "PNT B9 NMB-LOWL0100 LOWZ LOWG-0-E/2131-BA GF 1234 123.23 N23W123 VOR CALLED_EMERGENCY CRASHING)",
+                     "PNT B9 NMB-LOWL0100 LOWZ LOWG-0-E/2131-BA GF 1234 123.23 23N123W VOR CALLED_EMERGENCY CRASHING)",
                      [""])
         self.do_test(False, 0,
                      "(APL-TEST01-IS-B737/M-S/C-EGLL0800-PNT/1234F350F200A-N0450F350 PNT B9 "

@@ -191,6 +191,79 @@ class ErrorMessages:
             ErrorId.F18_ZERO_OR_KEYWORDS: "Field 18 contains no keywords, can be '0' or 'n' "
                                           "keyword/data occurrences instead of '!'",
             ErrorId.F18_UNRECOGNISED_KEYWORD: "Field 18 Keyword '!' unrecognised",
+            ErrorId.F18_ALTN_SYNTAX: "The F18 ALTN field contains illegal characters, only A-Z, 0-9 "
+                                     "and spaces allowed instead of '!'",
+            ErrorId.F18_CODE_SYNTAX: "Expecting F18 CODE as hexadecimal address with 7 HEX digits "
+                                     "starting at F000000 instead of '!'",
+            ErrorId.F18_COM_SYNTAX: "Expecting F18 COM as communication capabilities (only A-Z, 0-9 and spaces) "
+                                    "not specified in ICAO field 10a instead of '!'",
+            ErrorId.F18_DAT_SYNTAX: "Expecting F18 DAT as data application capabilities (only A-Z, 0-9 and spaces) "
+                                    "not specified in ICAO field 10a instead of '!'",
+            ErrorId.F18_DEP_SYNTAX: "Expecting F18 DEP as name and location of departure aerodrome if ZZZZ inserted "
+                                    "in ICAO field 13a, (only A-Z, 0-9 and spaces) instead of '!'",
+            ErrorId.F18_DEST_SYNTAX: "Expecting F18 DEST as name and location of destination aerodrome if ZZZZ "
+                                     "inserted in ICAO field 16a, (only A-Z, 0-9 and spaces) instead of '!'",
+            ErrorId.F18_DLE_TOO_SHORT: "Expected F18 DLE as 'point HHMM' instead of '!', (can be any kind of point)",
+            ErrorId.F18_DLE_PNT_SYNTAX: "Expected F18 DLE point as a PRP, Latitude/Longitude "
+                                        "(with or without minutes) or bearing distance instead of '!'",
+            ErrorId.F18_DLE_TIME_SYNTAX: "Expected F18 DLE time in HHMM format instead of '!'",
+            ErrorId.F18_DLE_TOO_MANY: "Too many fields in F18 DLE, expecting single field as point & "
+                                      "time instead of '!'",
+            ErrorId.F18_EET_PNT_SYNTAX: "Expected F18 EET point as a PRP, Latitude/Longitude "
+                                        "(with or without minutes) or bearing distance instead of '!'",
+            ErrorId.F18_EET_TIME_SYNTAX: "Expected F18 EET time in HHMM format instead of '!'",
+            ErrorId.F18_EST_SYNTAX: "Expecting F18 EST as estimate data (not sure of the syntax for this at "
+                                    "the moment), (only A-Z, 0-9 and spaces) instead of '!'",
+            ErrorId.F18_IFP_SYNTAX: "Expecting F18 IFP as 'ERROUTRAD', 'ERROUTWE', 'ERROUTE', 'ERRTYPE', "
+                                    "'ERRLEVEL', 'ERREOBT', 'NON833', '833UNKNOWN', 'MODESASP', 'RVSMVIOLATION', "
+                                    "'NONRVSM' or 'RVSMUNKNOWN' instead of '!'",
+            ErrorId.F18_NAV_SYNTAX: "Expecting F18 NAV as significant navigation equipment as one or more "
+                                    "space separated designators, (only A-Z, 0-9 and spaces) instead of '!'",
+            ErrorId.F18_OPR_SYNTAX: "Expecting F18 OPR as name of aircraft operating agency, "
+                                    "(only A-Z, 0-9 and spaces) instead of '!'",
+            ErrorId.F18_ORGN_SYNTAX: "Expected F18 ORGN as an 8 or 7 character facility address instead of '!'",
+            ErrorId.F18_ORGN_TOO_SHORT: "F18 ORGN is too short, 8 or 7 character facility address expected "
+                                        "instead of '!'",
+            ErrorId.F18_ORGN_TOO_MANY: "Too many fields in F18 ORGN, expecting single field as facility address "
+                                      "instead of '!'",
+            ErrorId.F18_PBN_TOO_LONG: "Maximum length of F18 PBN is 16 characters, shorten the field '!'",
+            ErrorId.F18_PBN_SYNTAX: "F18 PBN syntax incorrect, expecting 1 to 8 of either A1, B1-B6, "
+                                    "C1-C4, D1-D4, L1, O1-O4, S1, S2, T1 or T2 instead of '!'",
+            ErrorId.F18_PBN_TOO_MANY: "The F18 PBN field should be a single field instead of '!'",
+            ErrorId.F18_PBN_TOO_SHORT: "F18 PBN must be at least two characters long, expecting 1 to eight of "
+                                       "either A1, B1-B6, C1-C4, D1-D4, L1, O1-O4, S1, S2, T1 or T2 instead of '!'",
+            ErrorId.F18_PER_SYNTAX: "F18 PER syntax incorrect, expecting a single character A to Z instead of '!'",
+            ErrorId.F18_PER_TOO_MANY: "The F18 PER field should be a single field instead of '!'",
+            ErrorId.F18_RALT_SYNTAX: "Expecting F18 RALT as location indicator, alternate arrival aerodrome name "
+                                     "or location as a latitude/longitude, (only A-Z, 0-9 and spaces) instead of '!'",
+            ErrorId.F18_REG_SYNTAX: "Expecting F18 REG as nationality or mark and aircraft registration "
+                                    "(only A-Z, 0-9 and spaces) instead of '!'",
+            ErrorId.F18_RIF_SYNTAX: "Expecting F18 RIF revised route to destination aerodrome, "
+                                    "(only A-Z, 0-9 and spaces) instead of '!'",
+            ErrorId.F18_RFP_SYNTAX: "Expecting F18 RIF as Q[1-9] instead of '!'",
+            ErrorId.F18_RFP_TOO_MANY: "Too many F18 RIF fields, should only be one field as Q[1-9] instead of '!'",
+            ErrorId.F18_RMK_SYNTAX: "The F18 RMK field must only contain characters A-Z, 0-9, '.', ':', ';' and ',' "
+                                      "instead of '!'",
+            ErrorId.F18_RVR_SYNTAX: "Expecting F18 RVR as 1 to 3 digit number instead of '!'",
+            ErrorId.F18_RVR_TOO_MANY: "Too many F18 RVR fields, should only be one field as 1 to 3 digit "
+                                      "number instead of '!'",
+            ErrorId.F18_SEL_SYNTAX: "Expecting F18 SEL as 4 to 5 alpha characters instead of '!'",
+            ErrorId.F18_SEL_TOO_MANY: "Too many F18 SEL fields, should only be one field as 4 to 5 alpha characters "
+                                      "instead of '!'",
+            ErrorId.F18_STS_SYNTAX: "Expecting F18 STS as 'ALTRV', 'ATFMX', 'FFR', 'FLTCK', 'HAZMAT', 'HEAD', "
+                                    "'HOSP', 'HUM', 'MARSA', 'MEDEVAC', 'NONRVSM', 'SAR' or 'STATE' instead of '!'",
+            ErrorId.F18_STS_TOO_MANY: "Too many F18 STS fields, should only be one field as 'ALTRV', 'ATFMX', "
+                                      "'FFR', 'FLTCK', 'HAZMAT', 'HEAD', 'HOSP', 'HUM', 'MARSA', 'MEDEVAC', "
+                                      "'NONRVSM', 'SAR' or 'STATE' instead of '!'",
+            ErrorId.F18_SRC_SYNTAX: "Expecting F18 SRC as 'RPL', 'FPL', 'AFIL', 'MFS', 'FNM', 'RQP', 'AFP', 'DIV' "
+                                    "or a 4 character location indicator instead of '!'",
+            ErrorId.F18_SRC_TOO_MANY: "Too many F18 SRC fields, should only be one field as 'RPL', 'FPL', 'AFIL', "
+                                      "'MFS', 'FNM', 'RQP', 'AFP', 'DIV' or a 4 character location instead of '!'",
+            ErrorId.F18_SUR_SYNTAX: "The F18 SUR field should contain surveillance application capabilities using "
+                                    "characters A-Z, 0-9 instead of '!'",
+            ErrorId.F18_TALT_SYNTAX: "Expecting F18 TALT as location indicator, alternate departure aerodrome name "
+                                     "or location as a latitude/longitude, (only A-Z, 0-9 and spaces) instead of '!'",
+            ErrorId.F18_TYP_SYNTAX: "Expecting number (optional) and type of aircraft instead of '!'",
 
             # Field 19 is handled by its own parser
             ErrorId.F19_NO_F19_KEYWORDS_FOUND: "Expecting field 19 keyword/data instead of '!'",

@@ -25,19 +25,19 @@ class TestParseF21(unittest.TestCase):
             "More subfields expected after '123.45'"])
 
         # 21a & 21b & 21c
-        self.do_f21_test(True, 1, "1234 123.45 N34E021", [
-            "More subfields expected after 'N34E021'"])
+        self.do_f21_test(True, 1, "1234 123.45 34N021E", [
+            "More subfields expected after '34N021E'"])
 
         # 21a & 21b & 21c & 21d
-        self.do_f21_test(True, 1, "1234 123.45 N34E021 2001", [
+        self.do_f21_test(True, 1, "1234 123.45 34N021E 2001", [
             "More subfields expected after '2001'"])
 
         # 21a & 21b & 21c & 21d & 21e
-        self.do_f21_test(True, 1, "1234 123.45 N34E021 2001 COM", [
+        self.do_f21_test(True, 1, "1234 123.45 34N021E 2001 COM", [
             "More subfields expected after 'COM'"])
 
         # 21a & 21b & 21c & 21d & 21e & 21f
-        self.do_f21_test(False, 0, "1234 123.45 N34E021 2001 COM REMARKS", [
+        self.do_f21_test(False, 0, "1234 123.45 34N021E 2001 COM REMARKS", [
             "More subfields expected after 'F21F'"])
 
         # Error in 21a
@@ -54,20 +54,20 @@ class TestParseF21(unittest.TestCase):
             "point/bearing/distance instead of 'N91E321'"])
 
         # Error in 21d
-        self.do_f21_test(True, 1, "1234 123.45 N34E021 2501 COM REMARKS", [
+        self.do_f21_test(True, 1, "1234 123.45 34N021E 2501 COM REMARKS", [
             "Expecting time in HHMM instead of '2501'"])
 
         # Error in 21e
-        self.do_f21_test(True, 1, "1234 123.45 N34E121 2001 CO*M REMARKS", [
+        self.do_f21_test(True, 1, "1234 123.45 34N121E 2001 CO*M REMARKS", [
             "Invalid characters in field 21e, expecting A to Z, 0 to 9 instead of 'CO*M'"])
 
         # Error in 21f
-        self.do_f21_test(True, 1, "1234 123.45 N34E021 2001 COM REMA*RKS", [
+        self.do_f21_test(True, 1, "1234 123.45 34N021E 2001 COM REMA*RKS", [
             "Invalid characters in field 21f, expecting A to Z, 0 to 9 instead of 'REMA*RKS'"])
 
         # What happens with extra fields at the end? The result is not really ideal
         self.do_f21_test(True, 1,
-                         "1234 123.45 N34E021 2001 COM REMARKS SOME MORE FIELDS AT THE END", [
+                         "1234 123.45 34N021E 2001 COM REMARKS SOME MORE FIELDS AT THE END", [
                           "Too many fields in Field 21, remove 'SOME MORE FIELDS AT THE END'"])
 
     def do_f21_test(self, errors_detected, number_of_errors,

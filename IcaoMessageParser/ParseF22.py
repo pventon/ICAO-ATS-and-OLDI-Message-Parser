@@ -112,7 +112,35 @@ class ParseF22(ParseFieldsCommon):
             self.add_error("", 0, 0, ErrorId.F22_DATA_MISSING)
 
     def parse_compound_subfields(self, subfield_start, subfield_end):
+        # type: (SubFieldIdentifiers, SubFieldIdentifiers) -> None
+        """This method parses the individual F22 subfields by looping over all the subfields
+        stored in the flight plans F22 record. All F22 subfields are fields that already
+        have parsers implemented.
 
+        The process to parse the F22 subfields works as follows:
+            - Get the F22 field record;
+            - Retrieve the list of subfields from the field record that contains a list of
+              all the F22 subfields;
+            - Create a new flight plan record and copy it into the flight plan record used by
+              this parser self.get_flight_plan_record().set_f22_flight_plan(new_fpr)), the
+              flight plan record maintains a flight plan record of the F22 subfields;
+            - Loop over the subfields and:
+                * Check if there is more than one subfield in the list of subfields, this implies
+                  a subfield appears twice in field 22, an error is reported if this is the case;
+                * Copy the subfield into the new flight plan record;
+                * Parse the subfield as is done fo any flight plan field;
+            - The 'new' flight plan now contains all the F22 subfields as fields with their respective
+              subfields along with any errors;
+            - Check if there are any errors, if there are, copy them from the new flight plan
+              into the flight plan record this field parser is working on;
+        When looping over the F22 subfields, the F22 subfield enumeration values are used as the loop range;
+        this ensures when looping over the F22 subfields that only F22 subfields are 'addressed' and reduces
+        the processing time by limiting the number of enumerations to the F22 subset;
+
+            :param subfield_start: The first F22 subfield enumeration value;
+            :param subfield_end: The last F22 subfield enumeration value;
+            :return: None
+        """
         # Set up a dictionary of field parser callbacks...
         parse_field_x = {SubFieldIdentifiers.F22_f3: [FieldIdentifiers.F3, ParseF3],
                          SubFieldIdentifiers.F22_f5: [FieldIdentifiers.F5, ParseF5],

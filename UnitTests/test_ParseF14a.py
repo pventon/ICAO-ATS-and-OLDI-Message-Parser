@@ -30,36 +30,36 @@ class TestParseF14a(unittest.TestCase):
             "point/bearing/distance instead of 'P3PP'"])
 
         # Point is Lat / Long in degrees, OK
-        self.do_f14a_test(False, 0, "N65W156", [""])
+        self.do_f14a_test(False, 0, "65N156W", [""])
 
         # Latitude degrees error > 90
-        self.do_f14a_test(True, 1, "N91W179", [
+        self.do_f14a_test(True, 1, "91N179W", [
             "Expecting point as PRP, Lat/Long in degrees, Lat/Long in degrees/minutes "
-            "or point/bearing/distance instead of 'N91W179'"])
+            "or point/bearing/distance instead of '91N179W'"])
 
         # Longitude degrees error > 180
-        self.do_f14a_test(True, 1, "N89W181", [
+        self.do_f14a_test(True, 1, "89N181W", [
             "Expecting point as PRP, Lat/Long in degrees, Lat/Long in degrees/minutes "
-            "or point/bearing/distance instead of 'N89W181'"])
+            "or point/bearing/distance instead of '89N181W'"])
 
         # Latitude minutes error > 59
-        self.do_f14a_test(True, 1, "N8960W17900", [
+        self.do_f14a_test(True, 1, "8960N17900W", [
             "Expecting point as PRP, Lat/Long in degrees, Lat/Long in degrees/minutes "
-            "or point/bearing/distance instead of 'N8960W17900'"])
+            "or point/bearing/distance instead of '8960N17900W'"])
 
         # Longitude minutes error > 59
-        self.do_f14a_test(True, 1, "N9050W18060", [
+        self.do_f14a_test(True, 1, "9050N18060W", [
             "Expecting point as PRP, Lat/Long in degrees, Lat/Long in "
-            "degrees/minutes or point/bearing/distance instead of 'N9050W18060'"])
+            "degrees/minutes or point/bearing/distance instead of '9050N18060W'"])
 
         # Point/Bearing/Distance OK
         self.do_f14a_test(False, 0, "PPP120333", [])
 
         # Lat/Long in Degrees/Bearing/Distance OK
-        self.do_f14a_test(False, 0, "N12W123222333", [])
+        self.do_f14a_test(False, 0, "12N123W222333", [])
 
         # Lat/Long in Degrees & Minutes/Bearing/Distance OK
-        self.do_f14a_test(False, 0, "N1234W12345240456", [])
+        self.do_f14a_test(False, 0, "1234N12345W240456", [])
 
         # Lat/Long in Degrees & Minutes/Bearing/Distance -> Lat Minutes > 59
         self.do_f14a_test(True, 1, "N1260W12345", [

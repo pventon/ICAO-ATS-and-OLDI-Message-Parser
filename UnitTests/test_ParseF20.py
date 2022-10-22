@@ -33,11 +33,11 @@ class TestParseF20(unittest.TestCase):
             "More subfields expected after '132.45'"])
 
         # 20a & 20b & 20c & 20d & 20e
-        self.do_f20_test(True, 1, "BRITISH_AIRWAYS LAST_UNIT 1234 132.45 N23W123", [
-            "More subfields expected after 'N23W123'"])
+        self.do_f20_test(True, 1, "BRITISH_AIRWAYS LAST_UNIT 1234 132.45 23N123W", [
+            "More subfields expected after '23N123W'"])
 
         # 20a & 20b & 20c & 20d & 20e & 20f
-        self.do_f20_test(True, 1, "BRITISH_AIRWAYS LAST_UNIT 1234 132.45 N2334W12343 F20F", [
+        self.do_f20_test(True, 1, "BRITISH_AIRWAYS LAST_UNIT 1234 132.45 2334N12343W F20F", [
             "More subfields expected after 'F20F'"])
 
         # 20a & 20b & 20c & 20d & 20e & 20f & F20g

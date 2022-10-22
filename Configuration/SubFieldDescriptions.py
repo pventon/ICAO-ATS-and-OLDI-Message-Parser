@@ -28,10 +28,10 @@ class SubFieldDescriptions:
     aero = "[A-Z]{4}"
     """Regular expression for location indicator"""
 
-    ll = "[NS]([0-8][0-9]|90)[EW](0[0-9]{2}|1[0-7][0-9]|180)"
+    ll = "([0-8][0-9]|90)[NS](0[0-9]{2}|1[0-7][0-9]|180)[EW]"
     """Regular expression Latitude/Longitude in degrees 00 to 90 & 000 to 180"""
 
-    llmm = "[NS]([0-8][0-9][0-5][0-9]|9000)[EW](0[0-9]{2}[0-5][0-9]|1[0-7][0-9][0-5][0-9]|18000)"
+    llmm = "([0-8][0-9][0-5][0-9]|9000)[NS](0[0-9]{2}[0-5][0-9]|1[0-7][0-9][0-5][0-9]|18000)[EW]"
     """Regular expression Latitude/Longitude in degrees & minutes 0000 to 9000 & 00000 to 18000"""
 
     prp = "[A-Z]{2,5}"
@@ -74,6 +74,8 @@ class SubFieldDescriptions:
     point = ""
     """Reporting point, defined in the constructor"""
 
+    pbn = ""
+
     def __init__(self):
         # type: () -> None
         # AIP Published Route Point
@@ -88,6 +90,22 @@ class SubFieldDescriptions:
                     "(" + self.ll + self.bear + self.dist + ")|" \
                     "(" + self.llmm + self.bear + self.dist + ")"
 
+        a_ = "A1"
+        b_ = "B[1-6]"
+        c_ = "C[1-4]"
+        d_ = "D[1-4]"
+        l_ = "L1"
+        o_ = "O[1-4]"
+        s_ = "S[12]"
+        t_ = "T[12]"
+        self.pbn = a_ + \
+            "|(" + a_ + b_ + ")" + \
+            "|(" + a_ + b_ + c_ + ")" + \
+            "|(" + a_ + b_ + c_ + d_ + ")" + \
+            "|(" + a_ + b_ + c_ + d_ + l_ + ")" + \
+            "|(" + a_ + b_ + c_ + d_ + l_ + o_ + ")" + \
+            "|(" + a_ + b_ + c_ + d_ + l_ + o_ + s_ + ")" + \
+            "|(" + a_ + b_ + c_ + d_ + l_ + o_ + s_ + t_ + ")"
         # Format when assigning data descriptions to a FieldDescription instance is:
         # SubFieldDescription(
         #   ICAO Field Number / identifier as defined SubFieldIdentifiers,

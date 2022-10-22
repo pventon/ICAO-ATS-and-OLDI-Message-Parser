@@ -17,22 +17,24 @@ class ParseFieldsCommon:
 
     - ICAO Fields 3, 5, 7, 8, 9, 10, 13, 16, 17, 20, and 21, also OLDI field 80 and 81) - These are 'basic' fields
       that all have similar parsing requirements; this splits a field into its constituent subfields
-      and parses each subfield before storing the fields and associated subfields in the flight plan record.
+      and parses each subfield before storing the fields and associated subfields in a flight plan record.
       Program entry point for the basic field parser is the method self.parse_field() in this class.
-    - Field 15 stands on its own as a special field requiring special parsing that is implemented
+    - Field 15 stands on its own as a field requiring special parsing that is implemented
       in a stand-alone parser. Field 15 describes the route an aircraft will follow, the dedicated
       field 15 parser takes the route information and creates an extracted route sequence that is
       copied as a whole to the flight plan record.
     - Fields 18, 19 and 22 - These are what could be referred to as 'compound' fields as they contain
-      'n' occurrences of subfields that require individual parsing. Note that this parser currently does
-      NOT parse the individual subfields from these fields. All subfields are stored in the flight plan record.
+      'n' occurrences of subfields that require individual parsing.
+
+      All subfields are stored in the flight plan record.
       Program entry point for the compound field parser is self.parse_compound_field_common() in this class.
 
     This parser copies all the fields into the Flight Plan Record (FPR), an instance of the FlightPlanRecord class.
-    This is done by adding instances of the 'FieldRecord' class for each field parsed. The 'FieldRecord' classes
-    stores one or more individual subfields (instances of SubFiledRecord) that a field is comprised from. For
-    compound fields, the subfields are copied as individual subfields of the compound field. Currently, the
-    subfields from compound fields are not individually parsed..
+    This is done by adding instances of the 'FieldRecord' class for each field parsed. The 'FieldRecord' class
+    stores one or more individual subfields (instances of SubFiledRecord) that a field is comprised off. For
+    compound fields, the subfields are copied as individual subfields of the compound field into a field record.
+    The compound fields subfields, are in themselves 'field' with subfields that require dedicated parsing
+    for each field.
     """
 
     tokens: Tokens = None
@@ -63,19 +65,19 @@ class ParseFieldsCommon:
         This base class tokenizes a field and stores its field identifier, the subfields that the field
         comprises and a list of errors associated with each subfield should an error be detected.
             :param flight_plan_record: An instance of FlightPlanRecord that this parser write its date to,
-               this includes the fields and subfields parsed along with any associated errors.
+                   this includes the fields and subfields parsed along with any associated errors.
             :param sfd: Configuration data that describes individual subfields that includes the regular expression
-                    used to parse individual subfields.
+                   used to parse individual subfields.
             :param field_identifier: An enumeration value from the FieldIdentifiers class that identifies the
-                                 field being parsed.
+                   field being parsed.
             :param whitespace: The whitespace characters used to tokenize a field, these differ depending on the field
-                           being parsed and are set by subclasses of this class based on the individual requirements
-                           of a given field.
-            :param sub_field_list: Configuration data containing a list of subfields that the field being parsed comprises.
-                               These are given as a list of enumeration values from the SubFieldDescriptions class.
+                   being parsed and are set by subclasses of this class based on the individual requirements
+                   of a given field.
+            :param sub_field_list: Configuration data containing a list of subfields that the field being parsed
+                   comprises. These are given as a list of enumeration values from the SubFieldDescriptions class.
             :param error_list: A list of errors that may be reported by this parser; there is a dedicated syntax error
-                           message for each subfield as well as some generic messages relating to none-syntactical
-                           errors such as field / subfields missing etc.
+                   message for each subfield as well as some generic messages relating to none-syntactical
+                   errors such as field / subfields missing etc.
             :return: None"""
         # Save the field to the FPR
         self.flight_plan_record = flight_plan_record
@@ -314,12 +316,12 @@ class ParseFieldsCommon:
         Unrecognised subfields are not written to the flight plan record and an error is reported.
         Anything else found that is not a subfield will cause an error to be reported.
             :param error_codes: A list of enumeration values from the ErrorId class identifying an error for
-                                each subfield in the field. The error message definition is made in the
-                                SubFieldsInFields class.
+                   each subfield in the field. The error message definition is made in the
+                   SubFieldsInFields class.
             :param keyword_checker: A callback method used to check if a subfield keyword is valid for the
-                                    field being parsed. Because this method is used by all the compound field
-                                    parsers, each has its own unique field identifier when calling the
-                                    method self.is_compound_field_keyword()
+                   field being parsed. Because this method is used by all the compound field
+                   parsers, each has its own unique field identifier when calling the
+                   method self.is_compound_field_keyword()
             :return: None"""
         # Two or more tokens present in field 18 if we get this far
         idx = 0
@@ -583,7 +585,8 @@ class ParseFieldsCommon:
         if len(tokens) == 0:
             return
         # Don't save the keyword and the '/', hence the + 1
-        start_idx = tokens[0].get_token_end_index() + 1
+        # Token idx 0 is the keyword, token idx 1 is the '/'
+        start_idx = tokens[1].get_token_end_index()
         end_idx = tokens[len(tokens) - 1].get_token_end_index()
         self.get_flight_plan_record().add_icao_subfield(self.get_field_identifier(), subfield_id,
                                                         field_text[start_idx:end_idx], start_idx, end_idx)

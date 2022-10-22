@@ -47,7 +47,7 @@ class TestParseF14(unittest.TestCase):
             "point/bearing/distance instead of 'P3PP'"])
 
         # Point is Lat / Long in degrees, OK
-        self.do_f14_test(False, 0, "N65W156/2334A105M1203A", [])
+        self.do_f14_test(False, 0, "65N156W/2334A105M1203A", [])
 
         # Latitude degrees error > 90
         self.do_f14_test(True, 1, "N91W179/0000A120M1122A", [
@@ -73,23 +73,23 @@ class TestParseF14(unittest.TestCase):
         self.do_f14_test(False, 0, "PPP/0000A120M1122A", [])
 
         # Lat/Long in Degrees/Bearing/Distance OK
-        self.do_f14_test(False, 0, "N12W123/0000A120M1122A", [])
+        self.do_f14_test(False, 0, "12N123W/0000A120M1122A", [])
 
         # Lat/Long in Degrees & Minutes/Bearing/Distance OK
-        self.do_f14_test(False, 0, "N1234W12345/0000A120M1122A", [])
+        self.do_f14_test(False, 0, "1234N12345W/0000A120M1122A", [])
 
         # Lat/Long in Degrees & Minutes/Bearing/Distance -> Lat Minutes > 59
-        self.do_f14_test(True, 1, "N1260W12345/0000A120M1122A", [
+        self.do_f14_test(True, 1, "1260N12345W/0000A120M1122A", [
             "Expecting point as PRP, Lat/Long in degrees, Lat/Long in "
-            "degrees/minutes or point/bearing/distance instead of 'N1260W12345'"])
+            "degrees/minutes or point/bearing/distance instead of '1260N12345W'"])
 
         # Lat/Long in Degrees & Minutes/Bearing/Distance -> Long Minutes > 59
-        self.do_f14_test(True, 1, "N1259W12360/0000A120M1122A", [
+        self.do_f14_test(True, 1, "1259N12360W/0000A120M1122A", [
             "Expecting point as PRP, Lat/Long in degrees, Lat/Long in "
-            "degrees/minutes or point/bearing/distance instead of 'N1259W12360'"])
+            "degrees/minutes or point/bearing/distance instead of '1259N12360W'"])
 
         # Crossing time incorrect
-        self.do_f14_test(True, 1, "N1259W12334/2360A120M1122A", [
+        self.do_f14_test(True, 1, "1259N12334W/2360A120M1122A", [
             "Expecting boundary crossing time in '/HHMM' instead of '2360'"])
 
         # Invalid crossing level, 'G' instead of 'F' or 'A'
