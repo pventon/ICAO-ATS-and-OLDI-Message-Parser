@@ -21,8 +21,8 @@ OLDI messages have one further difference when compared to ATS messages; in addi
 </p>
 <h2>Current Functionality</h2>
 <p>The current implementation parses all the 'basic' ICAO fields F3, F5, F7, F8, F9, F10, F13, F14, F15, F16, F17, F20 and F21.
- The ICAO fields F18, F19 and F22 are 'compound' fields made up of numerous subfields. The current implementation fully parses F18 and F22 (F!( still needs some work) and all their subfields. The flight plan record stores a complete F22 flight plan that is populated by F22 subfields. Theoretically, F22 is able to specify all the fields for a complete flight plan, hence an F22 flight plan is stored within the flight plan proper. Any errors reported for F22 subfields are copied to the main flight plan record for convenience to the caller. Duplicated F22 subfield errors are also reported.</p>
-<p>Fields F18 and F19 are parsed for correct keyword/data format with all subfields copied to the flight plan. Errors are reported if the keyword/data format is found to be incorrect or text is found outside a keyword/data subfield. All F18 subfields are fully parsed, however, the individual subfields of F19 are currently not parsed, this functionality will be implemented shortly.</p>
+ The ICAO fields F18, F19 and F22 are 'compound' fields made up of numerous subfields. This parser fully parses F18, F19 and F22 and all their subfields. The flight plan record stores a complete F22 flight plan that is populated by F22 subfields. Theoretically, F22 is able to specify all the fields for a complete flight plan, hence an F22 flight plan is stored within the flight plan proper. Any errors reported for F22 subfields are copied to the main flight plan record for convenience to the caller. Duplicated F22 subfield errors are also reported.</p>
+<p>Fields F18 and F19 are parsed for correct keyword/data format with all subfields copied to the flight plan. Errors are reported if the keyword/data format is found to be incorrect or text is found outside a keyword/data subfield. All F18 and F19 subfields are fully parsed.</p>
 <p>OLDI define two extra fields 80 and 81, the parser fully supports these two fields with appropriate error messages etc. These fields are an addition to the ICAO F22 suite of subfields.</p>
 <p><b><i><u>A parsed message can be output as an XML string by calling FlightPlanRecord.as_xml()</u></i></b></p>
 
@@ -30,7 +30,6 @@ OLDI messages have one further difference when compared to ATS messages; in addi
 The ICAO message Parser is not fully parsing the following fields:
 <ul>
 <li>ICAO field F10 (syntax only); this field is horribly complicated with fiddly letters indicating different surveillance and communication capabilities. This was made worse by the FPL 2012 changes. Support to fully parse this field will be provided at a later date. Parsing of this field also depends on the presence of certain F18 subfields.</li>
-<li>ICAO field F19 is being parsed for correct and valid keyword/data construct and copied to the FPR, but the individual subfields are not being parsed yet; not all the F19 subfields require parsing, many are plain text that require no further processing than what is already implemented by the parser. However, there are a few subfields that do need to be checked, this implementation will be coming soon.</li>
 </ul>
 <h2>Future Upgrades</h2>
 <p>In the coming weeks support will be provided to enhance the ICAO ATS and OLDI Message Parser to:

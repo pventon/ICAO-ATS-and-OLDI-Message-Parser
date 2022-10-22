@@ -9,11 +9,8 @@ class MyTestCase(unittest.TestCase):
     def test_ParseMessage_ATS_check_f22_variants(self):
 
         self.do_test(True, 1, "(FPL-TEST01-IS-B737/M-S/C-EGLL0800-N0450F350 BBB-LOWW0200-"
-                              "-RMK/REMARK 1 RMK/REMARK 2 RMK/REMARK 3 "
-                              "STS/FFR STS/HAZMAT STS/MARSA "
-                              "RVR/200 SRC/RPL DATA TALT/TALT DATA)",
-                     ["Too many F18 SRC fields, should only be one field as 'RPL', 'FPL', 'AFIL', 'MFS', 'FNM', "
-                      "'RQP', 'AFP', 'DIV' or a 4 character location instead of 'RPL DATA'"])
+                              "-0-C   /   PILOTS. NAME)",
+                     ["Expecting pilot name (A-Z, 0-9 and spaces) instead of '   PILOTS. NAME' in F19 'C'"])
 
     def do_test(self, errors_detected, number_of_errors, message_to_parse, expected_error_text):
         # type: (bool, int, str, [str]) -> FlightPlanRecord

@@ -272,6 +272,35 @@ class ErrorMessages:
             ErrorId.F19_UNRECOGNISED_KEYWORD: "Field 19 Keyword '!' unrecognised",
             ErrorId.F19_ZERO_OR_KEYWORDS: "Field 19 contains no keywords, must consist of one or more "
                                           "keyword/data occurrences instead of '!'",
+            ErrorId.F19_A_SYNTAX: "Expecting other significant markings and / or aircraft color (A-Z, 0-9 and spaces) "
+                                  "instead of '!' in F19 'A'",
+            ErrorId.F19_C_SYNTAX: "Expecting pilot name (A-Z, 0-9 and spaces) instead of '!' in F19 'C'",
+            ErrorId.F19_Da_SYNTAX: "Expecting number of dinghies as 1 to 2 digits instead of '!' in F19 'D'",
+            ErrorId.F19_Db_SYNTAX: "Expecting number of people that can be carried in total in all dinghies "
+                                   "as 1 to 3 digits instead of '!' in F19 'D'",
+            ErrorId.F19_Dc_SYNTAX: "Expecting 'C' to indicate dinghies are covered instead of '!' in F19 'D'",
+            ErrorId.F19_Dd_SYNTAX: "Expecting the colour of the dinghies instead of '!' in F19 'D'",
+            ErrorId.F19_D_TOO_MANY: "Too many fields in F19 'D', remove '!'",
+            ErrorId.F19_D_TOO_FEW: "Expecting number of dinghies, dinghy capacity, covered or not and dinghy color, "
+                                   "too few fields in F19 'D', '!'",
+            ErrorId.F19_E_SYNTAX: "Expecting fuel endurance in HHMM format instead of '!' in F19 'E'",
+            ErrorId.F19_E_TOO_MANY: "Only one field expected in F19 'E' as fuel endurance in HHMM format "
+                                    "instead of '!'",
+            ErrorId.F19_J_SYNTAX: "Expecting life jacket equipment as one or more of 'F', 'L', 'U' or 'V' "
+                                  "indicators instead of '!' in F19 'J'",
+            ErrorId.F19_J_TOO_MANY: "Only one field expected in F19 'J' as life jacket equipment as "
+                                    "'F', 'L', 'U' or 'V' instead of '!'",
+            ErrorId.F19_N_SYNTAX: "Expecting other survival equipment and useful remarks (A-Z, 1-9 and spaces) "
+                                  "instead of '!' in F19 'N'",
+            ErrorId.F19_P_SYNTAX: "Expecting number of passengers on board as 1 to 3 digits instead of '!' in F19 'P'",
+            ErrorId.F19_P_TOO_MANY: "Only one field expected in F19 'P' as 1 to 3 digits instead of '!'",
+            ErrorId.F19_R_SYNTAX: "Expecting frequency availability on board as one or more of 'E', 'U' or 'V' "
+                                  "instead of '!' in F19 'R'",
+            ErrorId.F19_R_TOO_MANY: "Only one field expected in F19 'R' as 'E', 'U' or 'V' instead of '!'",
+            ErrorId.F19_S_SYNTAX: "Expecting survival equipment on board as one or more of 'D', 'J', 'M' or 'P' "
+                                  "instead of '!' in F19 'S'",
+            ErrorId.F19_S_TOO_MANY: "Only one field expected in F19, one or more of "
+                                    "'S' as 'D', 'J', 'M' or 'P' instead of '!'",
 
             # Errors relating to Field 20
             ErrorId.F20_MISSING: "There is no data in field 20",
