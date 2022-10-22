@@ -45,8 +45,8 @@ class Token:
         self.token_string = token_string
         self.token_start_index = token_start_index
         self.token_end_index = token_end_index
-        self.token_base_type = 0
-        self.token_sub_type = 0
+        # self.token_base_type = 0
+        # self.token_sub_type = 0
 
     def set_token_string(self, token_string):
         # type: (str) -> None

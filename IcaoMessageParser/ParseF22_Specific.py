@@ -5,7 +5,7 @@ from Configuration.SubFieldDescriptions import SubFieldDescriptions
 from IcaoMessageParser.FlightPlanRecord import FlightPlanRecord
 
 
-class ParseF22_Specific(ParseFieldsCommon):
+class ParseF22Specific(ParseFieldsCommon):
 
     def __init__(self, flight_plan_record, sfif, sfd):
         # type: (FlightPlanRecord, SubFieldsInFields, SubFieldDescriptions) -> None

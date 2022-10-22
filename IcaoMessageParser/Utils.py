@@ -1,10 +1,8 @@
 import re
 
 from Configuration.ErrorMessages import ErrorMessages
-from Configuration.EnumerationConstants import ErrorId, MessageTitles, SubFieldIdentifiers
-from Configuration.SubFieldDescriptions import SubFieldDescriptions
+from Configuration.EnumerationConstants import ErrorId, MessageTitles
 from IcaoMessageParser.FlightPlanRecord import FlightPlanRecord, SubFieldRecord
-from Tokenizer.Tokenize import Tokenize
 
 
 class Utils:

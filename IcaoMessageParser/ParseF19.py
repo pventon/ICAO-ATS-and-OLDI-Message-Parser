@@ -103,20 +103,20 @@ class ParseF19(ParseFieldsCommon):
                             Utils.parse_for_regexp(
                                 self.get_flight_plan_record(), subfield, ErrorId.F19_C_SYNTAX, "[A-Z0-9 ]+")
                         case SubFieldIdentifiers.F19d:
-                            self.parse_f19_d(self.get_flight_plan_record(), subfield, self.sfd)
+                            self.parse_f19_d(self.get_flight_plan_record(), subfield)
                         case SubFieldIdentifiers.F19e:
                             self.parse_f19_e(self.get_flight_plan_record(), subfield, self.sfd)
                         case SubFieldIdentifiers.F19j:
-                            self.parse_f19_j(self.get_flight_plan_record(), subfield, self.sfd)
+                            self.parse_f19_j(self.get_flight_plan_record(), subfield)
                         case SubFieldIdentifiers.F19n:
                             Utils.parse_for_regexp(
                                 self.get_flight_plan_record(), subfield, ErrorId.F19_N_SYNTAX, "[A-Z0-9 ]+")
                         case SubFieldIdentifiers.F19p:
-                            self.parse_f19_p(self.get_flight_plan_record(), subfield, self.sfd)
+                            self.parse_f19_p(self.get_flight_plan_record(), subfield)
                         case SubFieldIdentifiers.F19r:
-                            self.parse_f19_r(self.get_flight_plan_record(), subfield, self.sfd)
+                            self.parse_f19_r(self.get_flight_plan_record(), subfield)
                         case SubFieldIdentifiers.F19s:
-                            self.parse_f19_s(self.get_flight_plan_record(), subfield, self.sfd)
+                            self.parse_f19_s(self.get_flight_plan_record(), subfield)
                         case _:
                             # The following F18 require no special parsing other than
                             # checking for valid characters;
@@ -124,13 +124,12 @@ class ParseF19(ParseFieldsCommon):
                             pass
 
     @staticmethod
-    def parse_f19_d(flight_plan_record, subfield, sfd):
-        # type: (FlightPlanRecord, SubFieldRecord, SubFieldDescriptions) -> None
+    def parse_f19_d(flight_plan_record, subfield):
+        # type: (FlightPlanRecord, SubFieldRecord) -> None
         """This method validates that the F19 'D' subfields are syntactically and semantically correct.
 
         :param flight_plan_record: The flight plan into which an error may be written;
         :param subfield: The subfield whose field text is being parsed;
-        :param sfd: Configuration data containing the subfield syntax definitions;
         :return: None
         """
         # Tokenize the IFP subfield
@@ -224,14 +223,13 @@ class ParseF19(ParseFieldsCommon):
         Utils.parse_for_regexp(flight_plan_record, subfield, ErrorId.F19_E_SYNTAX, "[ ]*" + sfd.hhmm + "[ ]*")
 
     @staticmethod
-    def parse_f19_j(flight_plan_record, subfield, sfd):
-        # type: (FlightPlanRecord, SubFieldRecord, SubFieldDescriptions) -> None
+    def parse_f19_j(flight_plan_record, subfield):
+        # type: (FlightPlanRecord, SubFieldRecord) -> None
         """This method validates that the F19 'J' subfield syntax conforms to one of the frequency
         life jacket capability indicators 'F', 'L', 'U' or 'V'.
 
         :param flight_plan_record: The flight plan into which an error may be written;
         :param subfield: The subfield whose field text is being parsed;
-        :param sfd: Configuration data containing the subfield syntax definitions;
         :return: None
         """
         # Check if there is more than a single token
@@ -251,14 +249,13 @@ class ParseF19(ParseFieldsCommon):
         Utils.parse_for_regexp(flight_plan_record, subfield, ErrorId.F19_J_SYNTAX, "[ ]*[FLUV]{1,4}[ ]*")
 
     @staticmethod
-    def parse_f19_p(flight_plan_record, subfield, sfd):
-        # type: (FlightPlanRecord, SubFieldRecord, SubFieldDescriptions) -> None
+    def parse_f19_p(flight_plan_record, subfield):
+        # type: (FlightPlanRecord, SubFieldRecord) -> None
         """This method validates that the F19 'P' subfield syntax conforms to 1 to 3 digits
         format.
 
         :param flight_plan_record: The flight plan into which an error may be written;
         :param subfield: The subfield whose field text is being parsed;
-        :param sfd: Configuration data containing the subfield syntax definitions;
         :return: None
         """
         # Check if there is more than a single token
@@ -269,14 +266,13 @@ class ParseF19(ParseFieldsCommon):
         Utils.parse_for_regexp(flight_plan_record, subfield, ErrorId.F19_P_SYNTAX, "[ ]*[0-9]{1,3}[ ]*")
 
     @staticmethod
-    def parse_f19_r(flight_plan_record, subfield, sfd):
-        # type: (FlightPlanRecord, SubFieldRecord, SubFieldDescriptions) -> None
+    def parse_f19_r(flight_plan_record, subfield):
+        # type: (FlightPlanRecord, SubFieldRecord) -> None
         """This method validates that the F19 'R' subfield syntax conforms to one of the frequency
         available indicators 'U', 'V' or 'E'.
 
         :param flight_plan_record: The flight plan into which an error may be written;
         :param subfield: The subfield whose field text is being parsed;
-        :param sfd: Configuration data containing the subfield syntax definitions;
         :return: None
         """
         # Check if there is more than a single token
@@ -295,14 +291,13 @@ class ParseF19(ParseFieldsCommon):
         Utils.parse_for_regexp(flight_plan_record, subfield, ErrorId.F19_R_SYNTAX, "[ ]*[EUV]{1,3}[ ]*")
 
     @staticmethod
-    def parse_f19_s(flight_plan_record, subfield, sfd):
-        # type: (FlightPlanRecord, SubFieldRecord, SubFieldDescriptions) -> None
+    def parse_f19_s(flight_plan_record, subfield):
+        # type: (FlightPlanRecord, SubFieldRecord) -> None
         """This method validates that the F19 'S' subfield syntax conforms to one of the survival
         equipment indicators 'D', 'J', 'M' or 'P'.
 
         :param flight_plan_record: The flight plan into which an error may be written;
         :param subfield: The subfield whose field text is being parsed;
-        :param sfd: Configuration data containing the subfield syntax definitions;
         :return: None
         """
         # Check if there is more than a single token

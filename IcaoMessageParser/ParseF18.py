@@ -39,7 +39,7 @@ class ParseF18(ParseFieldsCommon):
         # type: () -> None
         """This method is the program entry point to parse ICAO field 18. Most of the parsing
         is carried out by the super class ParseFieldCommon.parse_compound_field_common().
-        This method perform rudimentary checks, sets up a list of errors that are
+        This method performs rudimentary checks, sets up a list of errors that are
         general to all keyword/subfields and calls the parser in the super class.
             :return: None"""
 
@@ -74,7 +74,7 @@ class ParseF18(ParseFieldsCommon):
 
     def parse_compound_subfields(self, subfield_start, subfield_end):
         # type: (SubFieldIdentifiers, SubFieldIdentifiers) -> None
-        """This method loops over all the F!* subfields and parses the individual subfields.
+        """This method loops over all the F18 subfields and parses the individual subfields.
 
         :param subfield_start: The lowest F18 subfield enumeration value to limit the range of
                loop when looping over the subfields, only need to loop over the F18 subfields;

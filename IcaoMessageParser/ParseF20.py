@@ -3,7 +3,6 @@ from IcaoMessageParser.ParseFieldsCommon import ParseFieldsCommon
 from Configuration.SubFieldsInFields import SubFieldsInFields
 from Configuration.SubFieldDescriptions import SubFieldDescriptions
 from IcaoMessageParser.FlightPlanRecord import FlightPlanRecord
-from IcaoMessageParser.Utils import Utils
 
 
 class ParseF20(ParseFieldsCommon):

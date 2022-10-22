@@ -16,7 +16,7 @@ from IcaoMessageParser.ParseF19 import ParseF19
 from IcaoMessageParser.ParseF20 import ParseF20
 from IcaoMessageParser.ParseF21 import ParseF21
 from IcaoMessageParser.ParseF22 import ParseF22
-from IcaoMessageParser.ParseF22_Specific import ParseF22_Specific
+from IcaoMessageParser.ParseF22_Specific import ParseF22Specific
 from IcaoMessageParser.ParseF3 import ParseF3
 from IcaoMessageParser.ParseF5 import ParseF5
 from IcaoMessageParser.ParseF7 import ParseF7
@@ -429,7 +429,7 @@ class FieldsInMessage:
                             ParseF13a,
                             ParseF14,
                             ParseF16a,
-                            ParseF22_Specific], [
+                            ParseF22Specific], [
                             FieldIdentifiers.F3,
                             FieldIdentifiers.F7,
                             FieldIdentifiers.F13a,
@@ -450,7 +450,7 @@ class FieldsInMessage:
                             ParseF13a,
                             ParseF14,
                             ParseF16a,
-                            ParseF22_Specific], [
+                            ParseF22Specific], [
                             FieldIdentifiers.F3,
                             FieldIdentifiers.F7,
                             FieldIdentifiers.F13a,
@@ -465,7 +465,7 @@ class FieldsInMessage:
                             ParseF7,
                             ParseF13a,
                             ParseF16a,
-                            ParseF22_Specific], [
+                            ParseF22Specific], [
                             FieldIdentifiers.F3,
                             FieldIdentifiers.F7,
                             FieldIdentifiers.F13a,
@@ -501,7 +501,7 @@ class FieldsInMessage:
                             ParseF13,
                             ParseF16ab,
                             ParseF18dof,
-                            ParseF22_Specific], [
+                            ParseF22Specific], [
                             FieldIdentifiers.F3,
                             FieldIdentifiers.F7,
                             FieldIdentifiers.F13,
@@ -515,7 +515,7 @@ class FieldsInMessage:
                             ParseF7,
                             ParseF13a,
                             ParseF16a,
-                            ParseF22_Specific], [
+                            ParseF22Specific], [
                             FieldIdentifiers.F3,
                             FieldIdentifiers.F7,
                             FieldIdentifiers.F13a,
@@ -548,7 +548,7 @@ class FieldsInMessage:
                             ParseF13a,
                             ParseF14,
                             ParseF16a,
-                            ParseF22_Specific], [
+                            ParseF22Specific], [
                             FieldIdentifiers.F3,
                             FieldIdentifiers.F7,
                             FieldIdentifiers.F13a,
@@ -562,7 +562,7 @@ class FieldsInMessage:
                             ParseF7,
                             ParseF13a,
                             ParseF16a,
-                            ParseF22_Specific], [
+                            ParseF22Specific], [
                             FieldIdentifiers.F3,
                             FieldIdentifiers.F7,
                             FieldIdentifiers.F13a,
@@ -577,7 +577,7 @@ class FieldsInMessage:
                             ParseF14,
                             ParseF16a,
                             ParseF18dof,
-                            ParseF22_Specific], [
+                            ParseF22Specific], [
                             FieldIdentifiers.F3,
                             FieldIdentifiers.F7,
                             FieldIdentifiers.F13a,
@@ -622,7 +622,7 @@ class FieldsInMessage:
                         "OLDI Request Oceanic Clearance Message", [
                             ParseF3,
                             ParseF7,
-                            ParseF22_Specific,
+                            ParseF22Specific,
                             ParseF13a,
                             ParseF14,
                             ParseF16a], [
@@ -660,7 +660,7 @@ class FieldsInMessage:
                             ParseF13a,
                             ParseF14,
                             ParseF16a,
-                            ParseF22_Specific], [
+                            ParseF22Specific], [
                             FieldIdentifiers.F3,
                             FieldIdentifiers.F7,
                             FieldIdentifiers.F13a,
@@ -676,7 +676,7 @@ class FieldsInMessage:
                             ParseF7,
                             ParseF13a,
                             ParseF16a,
-                            ParseF22_Specific], [
+                            ParseF22Specific], [
                             FieldIdentifiers.F3,
                             FieldIdentifiers.F7,
                             FieldIdentifiers.F13a,
@@ -690,7 +690,7 @@ class FieldsInMessage:
                             ParseF13a,
                             ParseF14,
                             ParseF16a,
-                            ParseF22_Specific], [
+                            ParseF22Specific], [
                             FieldIdentifiers.F3,
                             FieldIdentifiers.F7,
                             FieldIdentifiers.F13a,
@@ -707,7 +707,7 @@ class FieldsInMessage:
                             ParseF13a,
                             ParseF14,
                             ParseF16a,
-                            ParseF22_Specific], [
+                            ParseF22Specific], [
                             FieldIdentifiers.F3,
                             FieldIdentifiers.F7,
                             FieldIdentifiers.F13a,
@@ -722,7 +722,7 @@ class FieldsInMessage:
                             ParseF13a,
                             ParseF14,
                             ParseF16a,
-                            ParseF22_Specific], [
+                            ParseF22Specific], [
                             FieldIdentifiers.F3,
                             FieldIdentifiers.F7,
                             FieldIdentifiers.F13a,
@@ -737,7 +737,7 @@ class FieldsInMessage:
                             ParseF13a,
                             ParseF14a,
                             ParseF16a,
-                            ParseF22_Specific], [
+                            ParseF22Specific], [
                             FieldIdentifiers.F3,
                             FieldIdentifiers.F7,
                             FieldIdentifiers.F13a,
@@ -753,7 +753,7 @@ class FieldsInMessage:
                             ParseF13a,
                             ParseF14a,
                             ParseF16a,
-                            ParseF22_Specific], [
+                            ParseF22Specific], [
                             FieldIdentifiers.F3,
                             FieldIdentifiers.F7,
                             FieldIdentifiers.F13a,
@@ -770,7 +770,7 @@ class FieldsInMessage:
                             ParseF13a,
                             ParseF14,
                             ParseF16a,
-                            ParseF22_Specific], [
+                            ParseF22Specific], [
                             FieldIdentifiers.F3,
                             FieldIdentifiers.F7,
                             FieldIdentifiers.F13a,
@@ -784,7 +784,7 @@ class FieldsInMessage:
                             ParseF7,
                             ParseF13a,
                             ParseF16a,
-                            ParseF22_Specific], [
+                            ParseF22Specific], [
                             FieldIdentifiers.F3,
                             FieldIdentifiers.F7,
                             FieldIdentifiers.F13a,
@@ -800,7 +800,7 @@ class FieldsInMessage:
                             ParseF13a,
                             ParseF14,
                             ParseF16a,
-                            ParseF22_Specific], [
+                            ParseF22Specific], [
                             FieldIdentifiers.F3,
                             FieldIdentifiers.F7,
                             FieldIdentifiers.F13a,
@@ -830,7 +830,7 @@ class FieldsInMessage:
                             ParseF13a,
                             ParseF14,
                             ParseF16a,
-                            ParseF22_Specific], [
+                            ParseF22Specific], [
                             FieldIdentifiers.F3,
                             FieldIdentifiers.F7,
                             FieldIdentifiers.F13a,
@@ -841,7 +841,7 @@ class FieldsInMessage:
                         MessageTitles.RJC.name,
                         "OLDI Reject Coordination Message", [
                             ParseF3,
-                            ParseF22_Specific], [
+                            ParseF22Specific], [
                             FieldIdentifiers.F3,
                             FieldIdentifiers.F22_SPECIFIC], [FieldIdentifiers.F18]),
                     MessageTitles.ROC: MessageDescription(
@@ -853,7 +853,7 @@ class FieldsInMessage:
                             ParseF13a,
                             ParseF14,
                             ParseF16a,
-                            ParseF22_Specific], [
+                            ParseF22Specific], [
                             FieldIdentifiers.F3,
                             FieldIdentifiers.F7,
                             FieldIdentifiers.F22,
@@ -878,7 +878,7 @@ class FieldsInMessage:
                             ParseF14,
                             ParseF16a,
                             ParseF18dof,
-                            ParseF22_Specific], [
+                            ParseF22Specific], [
                             FieldIdentifiers.F3,
                             FieldIdentifiers.F7,
                             FieldIdentifiers.F13a,
@@ -920,7 +920,7 @@ class FieldsInMessage:
                             ParseF7,
                             ParseF13a,
                             ParseF16a,
-                            ParseF22_Specific], [
+                            ParseF22Specific], [
                             FieldIdentifiers.F3,
                             FieldIdentifiers.F7,
                             FieldIdentifiers.F13a,
@@ -935,7 +935,7 @@ class FieldsInMessage:
                             ParseF14,
                             ParseF16a,
                             ParseF18dof,
-                            ParseF22_Specific], [
+                            ParseF22Specific], [
                             FieldIdentifiers.F3,
                             FieldIdentifiers.F7,
                             FieldIdentifiers.F13a,
@@ -951,7 +951,7 @@ class FieldsInMessage:
                             ParseF7,
                             ParseF13,
                             ParseF16a,
-                            ParseF22_Specific], [
+                            ParseF22Specific], [
                             FieldIdentifiers.F3,
                             FieldIdentifiers.F7,
                             FieldIdentifiers.F13,
@@ -968,7 +968,7 @@ class FieldsInMessage:
                             ParseF13a,
                             ParseF14,
                             ParseF16a,
-                            ParseF22_Specific], [
+                            ParseF22Specific], [
                             FieldIdentifiers.F3,
                             FieldIdentifiers.F7,
                             FieldIdentifiers.F22,
@@ -985,7 +985,7 @@ class FieldsInMessage:
                             ParseF7,
                             ParseF14,
                             ParseF16a,
-                            ParseF22_Specific], [
+                            ParseF22Specific], [
                             FieldIdentifiers.F3,
                             FieldIdentifiers.F7,
                             FieldIdentifiers.F14,

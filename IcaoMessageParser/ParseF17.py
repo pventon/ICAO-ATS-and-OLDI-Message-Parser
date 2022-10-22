@@ -4,7 +4,6 @@ from Configuration.SubFieldsInFields import SubFieldsInFields
 from Configuration.SubFieldDescriptions import SubFieldDescriptions
 from IcaoMessageParser.FlightPlanRecord import FlightPlanRecord
 from IcaoMessageParser.Utils import Utils
-from Tokenizer.Token import Token
 
 
 class ParseF17(ParseFieldsCommon):
@@ -42,7 +41,7 @@ class ParseF17(ParseFieldsCommon):
                 self.split_and_insert_token(0, index)
 
         # Parse the field
-        num_parsed = self.parse_field_base()
+        self.parse_field_base()
 
         # Parse any free text
         self.parse_extra_optional_tokens()

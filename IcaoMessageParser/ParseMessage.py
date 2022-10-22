@@ -516,7 +516,7 @@ class ParseMessage:
 
         Differentiating between the message header and body is achieved by detecting the presence or not
         of the first hyphen or open bracket in a message. The action taken is as per the following truth table:
-                   Open      Hyphen
+                   Open     Hyphen '-'
          Hyphen | Bracket |  Before |
         Present | Present | Bracket | Action
         --------+---------+---------+--------------------------------------------
@@ -632,7 +632,7 @@ class ParseMessage:
                 mm = re.match("[ \n\r\t]*[(]?[ \n\r\t]*[A-Z]{3,7}/[A-Z]{1,4}[0-9]{1,3}", msg_body)
                 message_title = Utils.title_defined(f3[0])
                 if (message_title is MessageTitles.ACP or message_title is MessageTitles.CDN or
-                    message_title is MessageTitles.CPL) and mm is not None:
+                        message_title is MessageTitles.CPL) and mm is not None:
                     flight_plan_record.set_message_type(MessageTypes.OLDI)
                 else:
                     flight_plan_record.set_message_type(message_type)
