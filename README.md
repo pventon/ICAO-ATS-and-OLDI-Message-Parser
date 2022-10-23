@@ -27,17 +27,23 @@ OLDI messages have one further difference when compared to ATS messages; in addi
 <p><b><i><u>A parsed message can be output as an XML string by calling FlightPlanRecord.as_xml()</u></i></b></p>
 
 <h2>Current Limitations</h2>
-The ICAO message Parser is not fully parsing the following fields:
+The ICAO ATS and OLDI Message Parser lacks the current functionality:
 <ul>
-<li>ICAO field F10 (syntax only); this field is horribly complicated with fiddly letters indicating different surveillance and communication capabilities. This was made worse by the FPL 2012 changes. Support to fully parse this field will be provided at a later date. Parsing of this field also depends on the presence of certain F18 subfields.</li>
+<li>There is no consistency checking implemented between F10a or F10b and F18; F10a and F10b are fully parsed to cater for all categories of equipment. The consistency checks will be implemented soon.</li>
+<li>The F15 route extraction can set the overall flight rules automatically but is currently not doing so; once this is implemented its possible to perform consistency checking between the rules given in F8a and that derived by the F15 route extraction process.</li>
+<li>No consistency check between F18 and F13 when F13a is ZZZZ;</li>
+<li>No consistency check between F18 and F16 when F16a is ZZZZ;</li>
+<li>No consistency check between F18 and F9 when F9b is ZZZZ;</li>
 </ul>
 <h2>Future Upgrades</h2>
 <p>In the coming weeks support will be provided to enhance the ICAO ATS and OLDI Message Parser to:
 </p>
 <ul>
-<li>Fully parse the few remaining fields listed above in the 'Current Limitations' section;</li>
-<li>Implement the semantic checks on field 10;</li>
-<li>Once all this is done there are numerous consistency checks needed to check between fields (e.g. if field 'x' contains 'y' then field 'z' must contain 'n'). For example, consistency checks have to be made between F10 and certain F18 subfields; the flight rules have to be checked against the route description (the F15 parser is able to derive the flight rule from the route), hence a consistency check can be made between field 8 and field 15. This will all be implemented in time.</li>
+<li>Implement the consistency checks between F18 and F9;</li>
+<li>Implement the consistency checks between F18 and F10;</li>
+<li>Implement the consistency checks between F18 and F13;</li>
+<li>Implement the consistency checks between F18 and F16;</li>
+<li>Implement the consistency checks between F8 and F15;</li>
 </ul>
 <h2>Errata and Faults</h2>
 Although every attempt has been made to reduce the number of software coding errors and resulting chaos that can ensue as a result of such errors, it is highly likely that this early release will have a few bugs. The possible combinations of message structure and semantics run into millions of combinations, and it's impossible to test them all. There are a lot of unit tests that check the individual field parsers and messages in their entirety, but even with so many tests, there may still be some bugs in the software. 

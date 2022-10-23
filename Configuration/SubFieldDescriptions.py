@@ -219,11 +219,24 @@ class SubFieldDescriptions:
 
             # F10 - Equipment
             SubFieldIdentifiers.F10a: SubFieldDescription(
-                SubFieldIdentifiers.F10a, 1, 25, "[N]|([S]|[A-MOPRT-Z1-9]+|[A-MOPRT-Z1-9]+)", True),
+                # "N" | ( 1 { "A" | "B" | "C" | "D" | "E1" | "E2" | "E3" | "F" | "G" | "H" | "I" |
+                #       "J1" | "J2"| "J3" | "J4" | "J5" | "J6" | "J7" | "K" | "L" | "M1" | "M2"|
+                #       "M3" | "O" | "P1"| "P2"| "P3"| "P4"| "P5"| "P6"| "P7"| "P8"| "P9" | "R" |
+                #       "S" | "T" | "U" | "V" | "W" | "X" | "Y" | "Z" } )
+                SubFieldIdentifiers.F10a, 1, 25, "N|((A){0,1}(B){0,1}(C){0,1}(D){0,1}(E1){0,1}(E2){0,1}(E3){0,1}"
+                                                 "(F){0,1}(G){0,1}(H){0,1}(I){0,1}(J1){0,1}(J2){0,1}(J3){0,1}"
+                                                 "(J4){0,1}(J5){0,1}(J6){0,1}(J7){0,1}(K){0,1}(L){0,1}(M1){0,1}"
+                                                 "(M2){0,1}(M3){0,1}(O){0,1}(P1){0,1}(P2){0,1}(P3){0,1}(P4){0,1}"
+                                                 "(P5){0,1}(P6){0,1}(P7){0,1}(P8){0,1}(P9){0,1}(R){0,1}(S){0,1}"
+                                                 "(T){0,1}(U){0,1}(V){0,1}(W){0,1}(X){0,1}(Y){0,1}(Z){0,1})", True),
             SubFieldIdentifiers.F10ab: SubFieldDescription(
                 SubFieldIdentifiers.F10ab, 0, 20, "[/]", True),
             SubFieldIdentifiers.F10b: SubFieldDescription(
-                SubFieldIdentifiers.F10b, 0, 20, "[ABCDEGHILPSUVX12]+", True),
+                # "N" | (1{ ("I" | "P" | "X") | "A" | "C"}3 | (1{ "A" | "C" | "E" | "H" | "L" | "S"}6) )
+                #       [1{"B1"| "B2" | "D1" | "G1" | "U1" | "U2" | "V1" | "V2"}8]
+                SubFieldIdentifiers.F10b, 0, 20,
+                "N|(([IPX]{0,1}(A){0,1}(C){0,1})|((A){0,1}(C){0,1}(E){0,1}(H){0,1}(L){0,1}(S){0,1}))"
+                "((B1){0,1}(B2){0,1}(D1){0,1}(G1){0,1}(U1){0,1}(U2){0,1}(V1){0,1}(V2){0,1}){0,1}", True),
 
             # F13 - ADEP and EOBT
             SubFieldIdentifiers.F13a: SubFieldDescription(

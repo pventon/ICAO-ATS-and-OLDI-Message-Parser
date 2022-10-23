@@ -115,9 +115,9 @@ class ErrorMessages:
             ErrorId.F10_F10AB_SYNTAX: "Expecting surveillance capabilities as 'N' or one or more of 'A', 'B1-2', "
                                       "'C', 'D1', 'E', 'G1', 'H', 'I', 'L', 'P', 'S', 'U1-2', 'V1-2' or 'X' instead of "
                                       "'!'",
-            ErrorId.F10_F10B_SYNTAX: "Expecting surveillance capabilities as 'N' or one or more of 'A', 'B1-2', "
-                                     "'C', 'D1', 'E', 'G1', 'H', 'I', 'L', 'P', 'S', 'U1-2', 'V1-2' or 'X' instead of "
-                                     "'!'",
+            ErrorId.F10_F10B_SYNTAX: "Expecting surveillance capabilities as 'N' or ('I', 'P', 'X') 'A', 'C' or "
+                                     "'A', 'C', 'E', 'H', 'L', 'S' followed optionally by "
+                                     "'B1', B2', 'D1', 'G1', 'U1', 'U2', 'V1', 'V2' instead of '!'",
             ErrorId.F10_TOO_MANY_FIELDS:
                 "Field 10 is correct, remove the extra fields '!' and / or check the overall syntax",
             ErrorId.F10_MORE_SUBFIELDS_EXPECTED: "Expecting communications and surveillance "
