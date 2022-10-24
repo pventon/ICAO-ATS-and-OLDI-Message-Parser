@@ -357,6 +357,36 @@ class ParseMessage:
         return True
 
     @staticmethod
+    def correct_ers_indices(flight_plan_record):
+        # type: (FlightPlanRecord) -> None
+        """This method corrects the Field 15 extracted route records start and end indices to add the
+        start index of Field 15's position in the message as a whole. The ERS records (and any associated
+        ERS error records) start and end indices were calculated based on the start of field 15, (any
+        field parsing always starts at zero). To correctly index a field 15 token with respect to the
+        message as a whole, the field 15 start index must be added to all start and end indices in the
+        ERS records.
+
+        :param flight_plan_record: The flight plan having its ERS records modified;
+        :return: None
+        """
+
+        # Make sure we have the resources needed to resolve the field 15 ERS indices
+        if flight_plan_record.get_icao_field(FieldIdentifiers.F15) is None:
+            return
+        if flight_plan_record.get_extracted_route_sequence() is None:
+            return
+
+        f15_field_start_index = flight_plan_record.get_icao_field(FieldIdentifiers.F15).get_start_index()
+
+        for ers_record in flight_plan_record.get_extracted_route_sequence().get_all_elements():
+            ers_record.set_start_index(ers_record.get_start_index() + f15_field_start_index)
+            ers_record.set_end_index(ers_record.get_end_index() + f15_field_start_index)
+
+        for ers_error in flight_plan_record.get_extracted_route_sequence().get_all_errors():
+            ers_error.set_start_index(ers_error.get_start_index() + f15_field_start_index)
+            ers_error.set_end_index(ers_error.get_end_index() + f15_field_start_index)
+
+    @staticmethod
     def determine_message_type(f3):
         # type: (str) -> MessageTypes
         """This method determines the message type (ICAO ATS, OLDI or ADEXP) based on a message title.
@@ -684,10 +714,11 @@ class ParseMessage:
             # There are fewer fields to parse than fields defined for this message
             for token in tokens.get_tokens():
                 # Save the field to be parsed to the flight plan
-                flight_plan_record.add_icao_field(field_identifiers[idx],
-                                                  token.get_token_string(),
-                                                  token.get_token_start_index(),
-                                                  token.get_token_end_index())
+                flight_plan_record.add_icao_field(
+                    field_identifiers[idx],
+                    token.get_token_string(),
+                    token.get_token_start_index() + len(flight_plan_record.get_message_header()),
+                    token.get_token_end_index() + len(flight_plan_record.get_message_header()))
                 # Get the appropriate field parser
                 fp = field_parsers[idx](flight_plan_record, self.SFIF, self.SFD)
                 # Parse the field
@@ -737,10 +768,11 @@ class ParseMessage:
 
             for field_parser in field_parsers:
                 # Save the field to be parsed to the flight plan
-                flight_plan_record.add_icao_field(field_identifiers[idx],
-                                                  tokens.get_token_at(idx).get_token_string(),
-                                                  tokens.get_token_at(idx).get_token_start_index(),
-                                                  tokens.get_token_at(idx).get_token_end_index())
+                flight_plan_record.add_icao_field(
+                    field_identifiers[idx],
+                    tokens.get_token_at(idx).get_token_string(),
+                    tokens.get_token_at(idx).get_token_start_index() + len(flight_plan_record.get_message_header()),
+                    tokens.get_token_at(idx).get_token_end_index() + len(flight_plan_record.get_message_header()))
                 # Get the appropriate field parser
                 fp = field_parser(flight_plan_record, self.SFIF, self.SFD)
                 # Parse the field
@@ -799,6 +831,9 @@ class ParseMessage:
 
         # Call the consistency checking routines
         self.consistency_check(flight_plan_record)
+
+        # Correct the Extracted route start and end indices to reference them against the message as a whole
+        self.correct_ers_indices(flight_plan_record)
 
         return not (flight_plan_record.errors_detected() or len(flight_plan_record.get_erroneous_fields()))
 

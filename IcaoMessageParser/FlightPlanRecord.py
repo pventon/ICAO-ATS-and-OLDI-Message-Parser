@@ -331,6 +331,41 @@ class FlightPlanRecord:
         self.erroneous_fields.append(ErrorRecord(
             erroneous_field_text, error_text, start_index, end_index))
 
+    def add_extracted_route(self, extracted_route):
+        # type: (ExtractedRouteSequence) -> None
+        """Sets an extracted route derived from ICAO field 15; field 15 is parsed by a dedicated parser
+        that creates an extracted route sequence output into an instance of the
+        ExtractedRouteSequence class.
+            :param extracted_route: An instance of the ExtractedRouteSequence class containing an extracted route
+            :return: None"""
+        self.extracted_route = extracted_route
+
+    def add_icao_field(self, field_id, field, start_index, end_index):
+        # type: (FieldIdentifiers, str, int, int) -> None
+        """This method adds an ICAO field to this flight plan record. All ICAO fields are stored
+        in a dedicated dictionary indexed with enumeration values found in
+        the EnumerationConstants.FieldIdentifiers class.
+            :param field_id: ICAO field identifier as defined in the EnumerationConstants.FieldIdentifiers class
+            :param field: The text that is the ICAO field
+            :param start_index: The zero based start index of the ICAO fields position in the original message string
+            :param end_index: The zero based end index of the ICAO fields position in the original message string
+            :return: None"""
+        self.icao_fields[field_id] = FieldRecord(field, start_index, end_index)
+
+    def add_icao_subfield(self, field_id, subfield_id, field, start_index, end_index):
+        # type: (FieldIdentifiers, SubFieldIdentifiers, str, int, int) -> None
+        """This method adds an ICAO subfield to this flight plan record. All ICAO subfields are stored
+        in a dedicated dictionary indexed with enumeration values found in
+        the EnumerationConstants.SubFieldIdentifiers class.
+            :param field_id: ICAO field identifier as defined in the EnumerationConstants.FieldIdentifiers class
+            :param subfield_id: ICAO subfield identifier as defined in the EnumerationConstants.SubFieldIdentifiers
+            class
+            :param field: The text that is the ICAO subfield
+            :param start_index: The zero based start index of the ICAO subfields position in the original message string
+            :param end_index: The zero based end index of the ICAO subfields position in the original message string
+            :return: None"""
+        self.get_icao_field(field_id).add_subfield(subfield_id, SubFieldRecord(field, start_index, end_index))
+
     def as_xml(self):
         # type: () -> str
         """This method returns an XML representation of the flight plan record.
@@ -367,35 +402,31 @@ class FlightPlanRecord:
                self.get_extracted_route_sequence().as_xml() + \
                "\n</flight_plan_record>"
 
-    def set_message_title(self, message_title):
-        # type: (MessageTitles) -> None
-        """Set the message title, assigned during F3 parsing.
-        Will be assigned 'UNKNOWN' if a message did not contain F3.
+    def errors_detected(self):
+        # type: () -> bool
+        """Return True if this flight plan record contains any erroneous fields
+        :return: true if any erroneous fields are present in this flight plan record"""
+        return len(self.erroneous_fields) > 0
 
-        :param message_title: The message title as an enumeration value from the MessageTitles class;
-        :return: None
+    def f15_errors_exist(self):
+        # type: () -> bool
+        """Check if the Extracted Route Sequence has any errors
+
+            :return: True if errors were detected while parsing ICAO field 15, False otherwise"""
+        if self.get_extracted_route_sequence() is None:
+            return False
+        return self.get_extracted_route_sequence().get_number_of_errors() > 0
+
+    def get_all_icao_subfields(self, field_id, subfield_id):
+        # type: (FieldIdentifiers, SubFieldIdentifiers) -> [SubFieldRecord]
+        """Gets all subfields associated with an ICAO field that can contains multiple subfields with the
+        same subfield identifier, e.g. Field 18 may contain mor ethan one STS or RMK field.
+            :param field_id: ICAO field identifier as defined in the EnumerationConstants.FieldIdentifiers class
+            :param subfield_id: ICAO subfield identifier as defined in the EnumerationConstants.SubFieldIdentifiers
+            class
+            :return: A list contain one or more instances of the SubFieldRecord class that contains an ICAO subfield
         """
-        self.message_title = message_title
-
-    def get_message_title(self):
-        # type: () -> MessageTitles
-        """Get the message title assigned to this flight plan record during F3 parsing.
-        Will be assigned 'UNKNOWN' if a message did not contain F3.
-
-        :return: The message title as an enumeration value from the MessageTitles class;
-        """
-        return self.message_title
-
-    def set_derived_flight_rules(self, derived_flight_rules):
-        # type: (FlightRules) -> None
-        """Set the flight rules from F15 parsing; this is not the rules from F8, this is the rules
-        derived from the route extraction parsing.
-
-        :param derived_flight_rules: The flight rules to set as derived by parsing F15 as an
-               enumeration value from the FlightRules enumeration class;
-        :return: None
-        """
-        self.derived_flight_rules = derived_flight_rules
+        return self.get_icao_field(field_id).get_all_subfields(subfield_id)
 
     def get_derived_flight_rules(self):
         # type: () -> FlightRules
@@ -413,79 +444,32 @@ class FlightPlanRecord:
         :return: The erroneous field text as it appears in the original message being parsed"""
         return self.erroneous_fields
 
-    def errors_detected(self):
-        # type: () -> bool
-        """Return True if this flight plan record contains any erroneous fields
-        :return: true if any erroneous fields are present in this flight plan record"""
-        return len(self.erroneous_fields) > 0
+    def get_extracted_route(self):
+        # type: () -> ExtractedRouteSequence
+        """Gets the extracted route for this flight plan; field 15 is parsed by a dedicated parser that creates
+        an instance of the ExtractedRouteSequence class.
+        :return: The extracted route sequence as an instance of the ExtractedRouteSequence class"""
+        return self.extracted_route
 
-    def set_message_complete(self, message_complete):
-        # type: (str) -> None
-        """Stores the complete message being parsed from the start of its header
-        (if present) to the end of the message
-            :param message_complete: The ICAO message being stored
-            :return: None"""
-        self.message_complete = message_complete
+    def get_extracted_route_sequence(self):
+        # type: () -> ExtractedRouteSequence | None
+        """Get the Extracted Route Sequence from the flight plan record
 
-    def set_message_header(self, message_header):
-        # type: (str) -> None
-        """Stores the message header (if present) as received in the message being parsed,
-        the message header is defined ICAO Annex 10, Vol II
-            :param message_header: The ICAO message header
-            :return: None"""
-        self.message_header = message_header
+            :return: The extracted route sequence as derived by the field 15 parser from ICAO field 15"""
+        return self.extracted_route
 
-    def set_message_body(self, message_body):
-        # type: (str) -> None
-        """Stores the message body as received in the message being parsed,
-        the message body is defined ICAO DOC 4444 and the OLDI 4.2 specification
-            :param message_body: The ICAO message body
-            :return: None"""
-        self.message_body = message_body
+    def get_f15_errors(self):
+        # type: () -> [ExtractedRouteRecord]
+        """Return the list of field 15 error records (contain errors etc.)
 
-    def get_message_complete(self):
-        # type: () -> str
-        """Gets the complete ICAO message including the header (if present)
-            :return: The ICAO message as input for parsing"""
-        return self.message_complete
+            :return: A list of errors reported by the ICAO field 15 parser"""
+        return self.get_extracted_route_sequence().get_all_errors()
 
-    def get_message_header(self):
-        # type: () -> str
-        """Gets the ICAO message header (if present)
-            :return: The ICAO message header as input for parsing"""
-        return self.message_header
-
-    def get_message_body(self):
-        # type: () -> str
-        """Gets the complete ICAO message body
-            :return: The ICAO message body as input for parsing"""
-        return self.message_body
-
-    def add_icao_field(self, field_id, field, start_index, end_index):
-        # type: (FieldIdentifiers, str, int, int) -> None
-        """This method adds an ICAO field to this flight plan record. All ICAO fields are stored
-        in a dedicated dictionary indexed with enumeration values found in
-        the EnumerationConstants.FieldIdentifiers class.
-            :param field_id: ICAO field identifier as defined in the EnumerationConstants.FieldIdentifiers class
-            :param field: The text that is the ICAO field
-            :param start_index: The zero based start index of the ICAO fields position in the original message string
-            :param end_index: The zero based end index of the ICAO fields position in the original message string
-            :return: None"""
-        self.icao_fields[field_id] = FieldRecord(field, start_index, end_index)
-
-    def add_icao_subfield(self, field_id, subfield_id, field, start_index, end_index):
-        # type: (FieldIdentifiers, SubFieldIdentifiers, str, int, int) -> None
-        """This method adds an ICAO subfield to this flight plan record. All ICAO subfields are stored
-        in a dedicated dictionary indexed with enumeration values found in
-        the EnumerationConstants.SubFieldIdentifiers class.
-            :param field_id: ICAO field identifier as defined in the EnumerationConstants.FieldIdentifiers class
-            :param subfield_id: ICAO subfield identifier as defined in the EnumerationConstants.SubFieldIdentifiers
-            class
-            :param field: The text that is the ICAO subfield
-            :param start_index: The zero based start index of the ICAO subfields position in the original message string
-            :param end_index: The zero based end index of the ICAO subfields position in the original message string
-            :return: None"""
-        self.get_icao_field(field_id).add_subfield(subfield_id, SubFieldRecord(field, start_index, end_index))
+    def get_f22_flight_plan(self):
+        # type: () -> FlightPlanRecord
+        """Gets an instance of this class that contains F22 fields extracted from a flight plan field 22.
+        :return: An instance of this class that contains F22 fields extracted from a flight plan field 22"""
+        return self.f22_flight_plan
 
     def get_icao_field(self, field_id):
         # type: (FieldIdentifiers) -> FieldRecord | None
@@ -511,54 +495,32 @@ class FlightPlanRecord:
             return None
         return self.get_icao_field(field_id).get_subfield(subfield_id)
 
-    def get_all_icao_subfields(self, field_id, subfield_id):
-        # type: (FieldIdentifiers, SubFieldIdentifiers) -> [SubFieldRecord]
-        """Gets all subfields associated with an ICAO field that can contains multiple subfields with the
-        same subfield identifier, e.g. Field 18 may contain mor ethan one STS or RMK field.
-            :param field_id: ICAO field identifier as defined in the EnumerationConstants.FieldIdentifiers class
-            :param subfield_id: ICAO subfield identifier as defined in the EnumerationConstants.SubFieldIdentifiers
-            class
-            :return: A list contain one or more instances of the SubFieldRecord class that contains an ICAO subfield
+    def get_message_body(self):
+        # type: () -> str
+        """Gets the complete ICAO message body
+            :return: The ICAO message body as input for parsing"""
+        return self.message_body
+
+    def get_message_complete(self):
+        # type: () -> str
+        """Gets the complete ICAO message including the header (if present)
+            :return: The ICAO message as input for parsing"""
+        return self.message_complete
+
+    def get_message_header(self):
+        # type: () -> str
+        """Gets the ICAO message header (if present)
+            :return: The ICAO message header as input for parsing"""
+        return self.message_header
+
+    def get_message_title(self):
+        # type: () -> MessageTitles
+        """Get the message title assigned to this flight plan record during F3 parsing.
+        Will be assigned 'UNKNOWN' if a message did not contain F3.
+
+        :return: The message title as an enumeration value from the MessageTitles class;
         """
-        return self.get_icao_field(field_id).get_all_subfields(subfield_id)
-
-    def set_f22_flight_plan(self, f22_flight_plan):
-        # type: (FlightPlanRecord) -> None
-        """Sets an instance of this class that contains F22 fields extracted from a flight plan field 22.
-
-            :param f22_flight_plan: An instance of FlightPlanRecord containing fields extracted from ICAO F22
-            :return: None"""
-        self.f22_flight_plan = f22_flight_plan
-
-    def get_f22_flight_plan(self):
-        # type: () -> FlightPlanRecord
-        """Gets an instance of this class that contains F22 fields extracted from a flight plan field 22.
-        :return: An instance of this class that contains F22 fields extracted from a flight plan field 22"""
-        return self.f22_flight_plan
-
-    def add_extracted_route(self, extracted_route):
-        # type: (ExtractedRouteSequence) -> None
-        """Sets an extracted route derived from ICAO field 15; field 15 is parsed by a dedicated parser
-        that creates an extracted route sequence output into an instance of the
-        ExtractedRouteSequence class.
-            :param extracted_route: An instance of the ExtractedRouteSequence class containing an extracted route
-            :return: None"""
-        self.extracted_route = extracted_route
-
-    def get_extracted_route(self):
-        # type: () -> ExtractedRouteSequence
-        """Gets the extracted route for this flight plan; field 15 is parsed by a dedicated parser that creates
-        an instance of the ExtractedRouteSequence class.
-        :return: The extracted route sequence as an instance of the ExtractedRouteSequence class"""
-        return self.extracted_route
-
-    def set_message_type(self, message_type):
-        # type: (MessageTypes) -> None
-        """Sets the message type, OLDI, ATS, ADEXP or UNKNOWN as defined in the
-        EnumerationConstants.AdjacentUnits class.
-            :param message_type: Message type as, enumeration value from EnumerationConstants.MessageTypes
-            :return: None"""
-        self.message_type = message_type
+        return self.message_title
 
     def get_message_type(self):
         # type: () -> MessageTypes
@@ -566,29 +528,6 @@ class FlightPlanRecord:
 
             :return: Message type as one of the enumeration values from the EnumerationConstants.MessageTypes class"""
         return self.message_type
-
-    def get_extracted_route_sequence(self):
-        # type: () -> ExtractedRouteSequence | None
-        """Get the Extracted Route Sequence from the flight plan record
-
-            :return: The extracted route sequence as derived by the field 15 parser from ICAO field 15"""
-        return self.extracted_route
-
-    def f15_errors_exist(self):
-        # type: () -> bool
-        """Check if the Extracted Route Sequence has any errors
-
-            :return: True if errors were detected while parsing ICAO field 15, False otherwise"""
-        if self.get_extracted_route_sequence() is None:
-            return False
-        return self.get_extracted_route_sequence().get_number_of_errors() > 0
-
-    def get_f15_errors(self):
-        # type: () -> [ExtractedRouteRecord]
-        """Return the list of field 15 error records (contain errors etc.)
-
-            :return: A list of errors reported by the ICAO field 15 parser"""
-        return self.get_extracted_route_sequence().get_all_errors()
 
     def get_receiver_adjacent_unit_name(self):
         # type: () -> AdjacentUnits
@@ -604,6 +543,67 @@ class FlightPlanRecord:
             :return: Adjacent unit name as an enumeration value from EnumerationConstants.AdjacentUnits"""
         return self.sender_adjacent_unit_name
 
+    def set_derived_flight_rules(self, derived_flight_rules):
+        # type: (FlightRules) -> None
+        """Set the flight rules from F15 parsing; this is not the rules from F8, this is the rules
+        derived from the route extraction parsing.
+
+        :param derived_flight_rules: The flight rules to set as derived by parsing F15 as an
+               enumeration value from the FlightRules enumeration class;
+        :return: None
+        """
+        self.derived_flight_rules = derived_flight_rules
+
+    def set_f22_flight_plan(self, f22_flight_plan):
+        # type: (FlightPlanRecord) -> None
+        """Sets an instance of this class that contains F22 fields extracted from a flight plan field 22.
+
+            :param f22_flight_plan: An instance of FlightPlanRecord containing fields extracted from ICAO F22
+            :return: None"""
+        self.f22_flight_plan = f22_flight_plan
+
+    def set_message_body(self, message_body):
+        # type: (str) -> None
+        """Stores the message body as received in the message being parsed,
+        the message body is defined ICAO DOC 4444 and the OLDI 4.2 specification
+            :param message_body: The ICAO message body
+            :return: None"""
+        self.message_body = message_body
+
+    def set_message_complete(self, message_complete):
+        # type: (str) -> None
+        """Stores the complete message being parsed from the start of its header
+        (if present) to the end of the message
+            :param message_complete: The ICAO message being stored
+            :return: None"""
+        self.message_complete = message_complete
+
+    def set_message_header(self, message_header):
+        # type: (str) -> None
+        """Stores the message header (if present) as received in the message being parsed,
+        the message header is defined ICAO Annex 10, Vol II
+            :param message_header: The ICAO message header
+            :return: None"""
+        self.message_header = message_header
+
+    def set_message_title(self, message_title):
+        # type: (MessageTitles) -> None
+        """Set the message title, assigned during F3 parsing.
+        Will be assigned 'UNKNOWN' if a message did not contain F3.
+
+        :param message_title: The message title as an enumeration value from the MessageTitles class;
+        :return: None
+        """
+        self.message_title = message_title
+
+    def set_message_type(self, message_type):
+        # type: (MessageTypes) -> None
+        """Sets the message type, OLDI, ATS, ADEXP or UNKNOWN as defined in the
+        EnumerationConstants.AdjacentUnits class.
+            :param message_type: Message type as, enumeration value from EnumerationConstants.MessageTypes
+            :return: None"""
+        self.message_type = message_type
+
     def set_receiver_adjacent_unit_name(self, receiver_adjacent_unit_name):
         # type: (AdjacentUnits) -> None
         """Sets the receiver adjacent unit name as extracted from ICAO field 3b; stored
@@ -613,7 +613,6 @@ class FlightPlanRecord:
             :return: None"""
         self.receiver_adjacent_unit_name = receiver_adjacent_unit_name
 
-    # Set sender unit adjacent unit name
     def set_sender_adjacent_unit_name(self, sender_adjacent_unit_name):
         # type: (AdjacentUnits) -> None
         """Sets the sending adjacent unit name as extracted from ICAO field 3b; stored

@@ -80,13 +80,14 @@ class ExtractedRouteSequence:
         """This method generates an XML string containing a complete ERS
         :return: A string in XML format;
         """
-        # Add the derived rules
-        xml_string = "<derived_flight_rules rules=\"" + \
-                     self.get_derived_flight_rules() + \
-                     "\"></derived_flight_rules rules>\n"
 
         # Generate the XML for all ERS records
-        xml_string = xml_string + "<ers>\n"
+        xml_string = "   <ers>\n"
+
+        # Add the derived rules
+        xml_string = xml_string + "      <derived_flight_rules rules=\"" + \
+                                  self.get_derived_flight_rules() + \
+                                  "\"></derived_flight_rules rules>\n"
         for item in self.get_all_elements():
             xml_string = xml_string + "   " + item.as_xml(False) + "\n"
 
@@ -97,7 +98,7 @@ class ExtractedRouteSequence:
                 xml_string = xml_string + "      " + item.as_xml(True) + "\n"
             xml_string = xml_string + "   </ers_errors>\n"
 
-        xml_string = xml_string + "</ers>"
+        xml_string = xml_string + "   </ers>"
 
         return xml_string
 

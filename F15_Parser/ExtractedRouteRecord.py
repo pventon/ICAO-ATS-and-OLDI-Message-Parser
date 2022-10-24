@@ -549,7 +549,7 @@ class ExtractedRouteRecord:
             error_or_break = self.get_break_text()
             rec_type = "ers_record"
             attr_name = "break_text"
-        return "<" + rec_type + \
+        return "   <" + rec_type + \
                " name=\"" + self.get_name() + "\"" + \
                " start_index=\"" + str(self.get_start_index()) + "\"" + \
                " end_index=\"" + str(self.get_end_index()) + "\"" + \
