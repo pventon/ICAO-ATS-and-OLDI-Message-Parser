@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="flight_plan_record" type="flight_plan_recordType"/>
+  <xs:complexType name="subfield_recordType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="id" use="required"/>
+        <xs:attribute type="xs:integer" name="start_index" use="required"/>
+        <xs:attribute type="xs:integer" name="end_index" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="field_recordType" mixed="true">
+    <xs:sequence>
+      <xs:element type="subfield_recordType" name="subfield_record" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="id" use="required"/>
+    <xs:attribute type="xs:integer" name="start_index" use="required"/>
+    <xs:attribute type="xs:integer" name="end_index" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="icao_fieldsType">
+    <xs:sequence>
+      <xs:element type="field_recordType" name="field_record" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="errorType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:integer" name="start_index" use="required"/>
+        <xs:attribute type="xs:integer" name="end_index" use="required"/>
+        <xs:attribute type="xs:string" name="error_message" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="icao_field_errorsType">
+    <xs:sequence>
+      <xs:element type="errorType" name="error" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ers_recordType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:integer" name="start_index" use="required"/>
+        <xs:attribute type="xs:integer" name="end_index" use="required"/>
+        <xs:attribute type="xs:integer" name="base_type" use="optional"/>
+        <xs:attribute type="xs:integer" name="sub_type" use="optional"/>
+        <xs:attribute type="xs:string" name="speed" use="required"/>
+        <xs:attribute type="xs:float" name="speed_si" use="required"/>
+        <xs:attribute type="xs:string" name="altitude" use="required"/>
+        <xs:attribute type="xs:float" name="altitude_si" use="required"/>
+        <xs:attribute type="xs:float" name="bearing" use="required"/>
+        <xs:attribute type="xs:float" name="distance" use="required"/>
+        <xs:attribute type="xs:string" name="flight_rules" use="required"/>
+        <xs:attribute type="xs:integer" name="stay_time" use="required"/>
+        <xs:attribute type="xs:string" name="altitude_cruise_to" use="optional"/>
+        <xs:attribute type="xs:float" name="altitude_cruise_to_si" use="optional"/>
+        <xs:attribute type="xs:float" name="latitude" use="required"/>
+        <xs:attribute type="xs:float" name="longitude" use="required"/>
+        <xs:attribute type="xs:string" name="break_text" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="error_recordType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:integer" name="start_index"/>
+        <xs:attribute type="xs:integer" name="end_index"/>
+        <xs:attribute type="xs:integer" name="base_type"/>
+        <xs:attribute type="xs:integer" name="sub_type"/>
+        <xs:attribute type="xs:string" name="speed"/>
+        <xs:attribute type="xs:float" name="speed_si"/>
+        <xs:attribute type="xs:string" name="altitude"/>
+        <xs:attribute type="xs:float" name="altitude_si"/>
+        <xs:attribute type="xs:float" name="bearing"/>
+        <xs:attribute type="xs:float" name="distance"/>
+        <xs:attribute type="xs:string" name="flight_rules"/>
+        <xs:attribute type="xs:integer" name="stay_time"/>
+        <xs:attribute type="xs:string" name="altitude_cruise_to"/>
+        <xs:attribute type="xs:float" name="altitude_cruise_to_si"/>
+        <xs:attribute type="xs:float" name="latitude"/>
+        <xs:attribute type="xs:float" name="longitude"/>
+        <xs:attribute type="xs:string" name="error_text"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="ers_errorsType">
+    <xs:sequence>
+      <xs:element type="error_recordType" name="error_record"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ersType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="derived_flight_rules"/>
+      <xs:element type="ers_recordType" name="ers_record" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element type="ers_errorsType" name="ers_errors"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="flight_plan_recordType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="derived_flight_rules"/>
+      <xs:element type="xs:string" name="message_type"/>
+      <xs:element type="xs:string" name="original_message"/>
+      <xs:element type="xs:string" name="message_header"/>
+      <xs:element type="xs:string" name="message_body"/>
+      <xs:element type="xs:string" name="adjacent_unit_sender"/>
+      <xs:element type="xs:string" name="adjacent_unit_receiver"/>
+      <xs:element type="icao_fieldsType" name="icao_fields"/>
+      <xs:element type="icao_field_errorsType" name="icao_field_errors"/>
+      <xs:element type="ersType" name="ers"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

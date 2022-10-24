@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<flight_plan_record>
+   <derived_flight_rules>IFR</derived_flight_rules>
+   <message_type>ATS</message_type>
+   <original_message>FF ABCDEFGH 241309 IJKLMNOP (FPL-TEST01-IS-B737/M-S/C-LOWW0800-N0450F350 PNT44444 23N123W BBB B9 AAA STAY1/ 1234-LOWW0200-RMK/REMARK 1 STS/STS 1 RMK/REMARK 2)</original_message>
+   <message_header>FF ABCDEFGH 241309 IJKLMNOP </message_header>
+   <message_body>(FPL-TEST01-IS-B737/M-S/C-LOWW0800-N0450F350 PNT44444 23N123W BBB B9 AAA STAY1/ 1234-LOWW0200-RMK/REMARK 1 STS/STS 1 RMK/REMARK 2)</message_body>
+   <adjacent_unit_sender>DEFAULT</adjacent_unit_sender>
+   <adjacent_unit_receiver>DEFAULT</adjacent_unit_receiver>
+   <icao_fields>
+      <field_record id="PRIORITY_INDICATOR" start_index="0" end_index="2">FF
+         <subfield_record id="PRIORITY_INDICATOR" start_index="0" end_index="2">FF</subfield_record>
+      </field_record>
+      <field_record id="ADDRESS" start_index="3" end_index="11">ABCDEFGH
+         <subfield_record id="ADDRESS1" start_index="3" end_index="11">ABCDEFGH</subfield_record>
+      </field_record>
+      <field_record id="FILING_TIME" start_index="12" end_index="18">241309
+         <subfield_record id="FILING_TIME" start_index="12" end_index="18">241309</subfield_record>
+      </field_record>
+      <field_record id="ORIGINATOR" start_index="19" end_index="27">IJKLMNOP
+         <subfield_record id="ORIGINATOR" start_index="19" end_index="27">IJKLMNOP</subfield_record>
+      </field_record>
+      <field_record id="ADADDRESS" start_index="28" end_index="28">
+      </field_record>
+      <field_record id="F3" start_index="29" end_index="32">FPL
+         <subfield_record id="F3a" start_index="29" end_index="32">FPL</subfield_record>
+      </field_record>
+      <field_record id="F7" start_index="33" end_index="39">TEST01
+         <subfield_record id="F7a" start_index="33" end_index="39">TEST01</subfield_record>
+      </field_record>
+      <field_record id="F8" start_index="40" end_index="42">IS
+         <subfield_record id="F8a" start_index="40" end_index="41">I</subfield_record>
+         <subfield_record id="F8b" start_index="41" end_index="42">S</subfield_record>
+      </field_record>
+      <field_record id="F9" start_index="43" end_index="49">B737/M
+         <subfield_record id="F9a" start_index="43" end_index="43">00</subfield_record>
+         <subfield_record id="F9b" start_index="43" end_index="47">B737</subfield_record>
+         <subfield_record id="F9bc" start_index="47" end_index="48">/</subfield_record>
+         <subfield_record id="F9c" start_index="48" end_index="49">M</subfield_record>
+      </field_record>
+      <field_record id="F10" start_index="50" end_index="53">S/C
+         <subfield_record id="F10a" start_index="50" end_index="51">S</subfield_record>
+         <subfield_record id="F10ab" start_index="51" end_index="52">/</subfield_record>
+         <subfield_record id="F10b" start_index="52" end_index="53">C</subfield_record>
+      </field_record>
+      <field_record id="F13" start_index="54" end_index="62">LOWW0800
+         <subfield_record id="F13a" start_index="54" end_index="58">LOWW</subfield_record>
+         <subfield_record id="F13b" start_index="58" end_index="62">0800</subfield_record>
+      </field_record>
+      <field_record id="F15" start_index="63" end_index="112">N0450F350 PNT44444 23N123W BBB B9 AAA STAY1/ 1234
+      </field_record>
+      <field_record id="F16" start_index="113" end_index="121">LOWW0200
+         <subfield_record id="F16a" start_index="113" end_index="117">LOWW</subfield_record>
+         <subfield_record id="F16b" start_index="117" end_index="121">0200</subfield_record>
+      </field_record>
+      <field_record id="F18" start_index="122" end_index="157">RMK/REMARK 1 STS/STS 1 RMK/REMARK 2
+         <subfield_record id="F18rmk" start_index="4" end_index="12">REMARK 1</subfield_record>
+         <subfield_record id="F18rmk" start_index="27" end_index="35">REMARK 2</subfield_record>
+         <subfield_record id="F18sts" start_index="17" end_index="22">STS 1</subfield_record>
+      </field_record>
+   </icao_fields>
+   <icao_field_errors>
+      <error start_index="17" end_index="20" error_message="Expecting F18 STS as 'ALTRV', 'ATFMX', 'FFR', 'FLTCK', 'HAZMAT', 'HEAD', 'HOSP', 'HUM', 'MARSA', 'MEDEVAC', 'NONRVSM', 'SAR' or 'STATE' instead of 'STS'">STS</error>
+      <error start_index="21" end_index="22" error_message="Expecting F18 STS as 'ALTRV', 'ATFMX', 'FFR', 'FLTCK', 'HAZMAT', 'HEAD', 'HOSP', 'HUM', 'MARSA', 'MEDEVAC', 'NONRVSM', 'SAR' or 'STATE' instead of '1'">1</error>
+   </icao_field_errors>
+   <ers>
+      <derived_flight_rules>I</derived_flight_rules>
+      <ers_record start_index="63" end_index="63" base_type="TokenBaseType.F15_POINT" sub_type="TokenSubType.F15_SB_PRP_AERO" speed="N0450" speed_si="231.00" altitude="F350" altitude_si="10668.00" bearing="0.00" distance="0.00" flight_rules="IFR" stay_time="0" altitude_cruise_to="" altitude_cruise_to_si="0.00" latitude="0.00" longitude="0.00" break_text="">ADEP</ers_record>
+      <ers_record start_index="82" end_index="89" base_type="TokenBaseType.F15_POINT" sub_type="TokenSubType.F15_SB_LL_DEG" speed="N0450" speed_si="231.00" altitude="F350" altitude_si="10668.00" bearing="0.00" distance="0.00" flight_rules="IFR" stay_time="0" altitude_cruise_to="" altitude_cruise_to_si="0.00" latitude="23.00" longitude="-123.00" break_text="">23N123W</ers_record>
+      <ers_record start_index="90" end_index="93" base_type="TokenBaseType.F15_POINT" sub_type="TokenSubType.F15_SB_PRP" speed="N0450" speed_si="231.00" altitude="F350" altitude_si="10668.00" bearing="0.00" distance="0.00" flight_rules="IFR" stay_time="0" altitude_cruise_to="" altitude_cruise_to_si="0.00" latitude="0.00" longitude="0.00" break_text="">BBB</ers_record>
+      <ers_record start_index="94" end_index="96" base_type="TokenBaseType.F15_ROUTE" sub_type="TokenSubType.F15_SB_ATS" speed="N0450" speed_si="231.00" altitude="F350" altitude_si="10668.00" bearing="0.00" distance="0.00" flight_rules="IFR" stay_time="0" altitude_cruise_to="" altitude_cruise_to_si="0.00" latitude="0.00" longitude="0.00" break_text="">B9</ers_record>
+      <ers_record start_index="97" end_index="100" base_type="TokenBaseType.F15_POINT" sub_type="TokenSubType.F15_SB_PRP" speed="N0450" speed_si="231.00" altitude="F350" altitude_si="10668.00" bearing="0.00" distance="0.00" flight_rules="IFR" stay_time="754" altitude_cruise_to="" altitude_cruise_to_si="0.00" latitude="0.00" longitude="0.00" break_text="">AAA</ers_record>
+      <ers_record start_index="63" end_index="63" base_type="TokenBaseType.F15_POINT" sub_type="TokenSubType.F15_SB_PRP_AERO" speed="" speed_si="0.00" altitude="" altitude_si="0.00" bearing="0.00" distance="0.00" flight_rules="IFR" stay_time="0" altitude_cruise_to="" altitude_cruise_to_si="0.00" latitude="0.00" longitude="0.00" break_text="">ADES</ers_record>
+   <ers_errors>
+         <error_record start_index="73" end_index="81" base_type="TokenBaseType.F15_UNKNOWN" sub_type="TokenSubType.F15_SB_UNKNOWN" speed="" speed_si="0.00" altitude="" altitude_si="0.00" bearing="0.00" distance="0.00" flight_rules="" stay_time="0" altitude_cruise_to="" altitude_cruise_to_si="0.00" latitude="0.00" longitude="0.00" error_text="The element 'PNT44444' is an unrecognised Field 15 element">PNT44444</error_record>
+   </ers_errors>
+   </ers>
+</flight_plan_record>
