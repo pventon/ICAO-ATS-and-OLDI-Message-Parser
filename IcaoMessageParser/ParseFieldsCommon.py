@@ -280,9 +280,8 @@ class ParseFieldsCommon:
         if field_id == FieldIdentifiers.F18:
             for keyword in SubFieldIdentifiers:
                 if SubFieldIdentifiers.F17c < keyword < SubFieldIdentifiers.F19a:
-                    if 2 < len(keyword.name[3:]) < 5:
-                        if keyword.name[3:].upper() == candidate_keyword:
-                            return keyword
+                    if keyword.name[3:].upper() == candidate_keyword:
+                        return keyword
         elif field_id == FieldIdentifiers.F19:
             for keyword in SubFieldIdentifiers:
                 if SubFieldIdentifiers.F18typ < keyword < SubFieldIdentifiers.F20a:

@@ -1,4 +1,4 @@
-from Configuration.EnumerationConstants import FieldIdentifiers, AdjacentUnits
+from Configuration.EnumerationConstants import FieldIdentifiers, AdjacentUnits, MessageTitles
 from IcaoMessageParser.ParseFieldsCommon import ParseFieldsCommon
 from Configuration.SubFieldsInFields import SubFieldsInFields
 from Configuration.SubFieldDescriptions import SubFieldDescriptions
@@ -67,15 +67,20 @@ class ParseF3(ParseFieldsCommon):
         # Parse any extra tokens that may be present
         self.check_if_tokens_left_over()
 
+        # Assign the message title to the flight plan record
+        if self.get_tokens().get_number_of_tokens() > 0:
+            self.get_flight_plan_record().set_message_title(MessageTitles.get_message_title(
+                self.get_tokens().get_first_token().get_token_string()))
+
         # Save any adjacent unit sender and receiver names to the FPR
         if self.get_tokens().get_number_of_tokens() > 2:
             # Save the adjacent unit sender
             self.get_flight_plan_record().set_sender_adjacent_unit_name(
-                self.set_adjacent_unit(self.get_tokens().get_token_at(1).get_token_string()))
+                AdjacentUnits.get_adjacent_unit(self.get_tokens().get_token_at(1).get_token_string()))
         if self.get_tokens().get_number_of_tokens() > 4:
             # Save the adjacent unit receiver
             self.get_flight_plan_record().set_receiver_adjacent_unit_name(
-                self.set_adjacent_unit(self.get_tokens().get_token_at(3).get_token_string()))
+                AdjacentUnits.get_adjacent_unit(self.get_tokens().get_token_at(3).get_token_string()))
 
         # Need to check if full 'sets' of optional fields are present, Field 3 is horrible!
         # If one or mor tokens from field 3b are present then they must all be present
@@ -97,11 +102,3 @@ class ParseF3(ParseFieldsCommon):
                            concatenated[1],
                            concatenated[2],
                            self.get_more_subfields_expected_error())
-
-    @staticmethod
-    def set_adjacent_unit(adjacent_unit_name):
-        # type: (str) -> AdjacentUnits
-        for unit in AdjacentUnits:
-            if unit.name == adjacent_unit_name:
-                return unit
-        return AdjacentUnits.DEFAULT

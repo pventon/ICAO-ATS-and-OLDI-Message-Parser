@@ -101,9 +101,14 @@ class ParseF18(ParseFieldsCommon):
                         case SubFieldIdentifiers.F18altn:
                             Utils.parse_for_alpha_num(
                                 self.get_flight_plan_record(), subfield, ErrorId.F18_ALTN_SYNTAX)
+                        case SubFieldIdentifiers.F18awr:
+                            self.parse_f18_awr(
+                                self.get_flight_plan_record(), subfield,
+                                self.sfd.get_subfield_description(subfield_key).get_field_syntax())
                         case SubFieldIdentifiers.F18code:
-                            Utils.parse_for_hex_address(
-                                self.get_flight_plan_record(), subfield, ErrorId.F18_CODE_SYNTAX)
+                            self.parse_f18_code(
+                                self.get_flight_plan_record(), subfield,
+                                self.sfd.get_subfield_description(subfield_key).get_field_syntax())
                         case SubFieldIdentifiers.F18com:
                             Utils.parse_for_alpha_num(
                                 self.get_flight_plan_record(), subfield, ErrorId.F18_COM_SYNTAX)
@@ -134,7 +139,6 @@ class ParseF18(ParseFieldsCommon):
                         case SubFieldIdentifiers.F18ifp:
                             self.parse_f18_ifp(self.get_flight_plan_record(), subfield)
                         case SubFieldIdentifiers.F18nav:
-                            # TODO F18 NAV May require further work once F10 parsing is done
                             Utils.parse_for_alpha_num(
                                 self.get_flight_plan_record(), subfield, ErrorId.F18_NAV_SYNTAX)
                         case SubFieldIdentifiers.F18opr:
@@ -163,6 +167,13 @@ class ParseF18(ParseFieldsCommon):
                             self.parse_f18_rvr(self.get_flight_plan_record(), subfield)
                         case SubFieldIdentifiers.F18sel:
                             self.parse_f18_sel(self.get_flight_plan_record(), subfield)
+                        case SubFieldIdentifiers.F18stayinfo1 | SubFieldIdentifiers.F18stayinfo2 | \
+                            SubFieldIdentifiers.F18stayinfo3 | SubFieldIdentifiers.F18stayinfo4 | \
+                            SubFieldIdentifiers.F18stayinfo5 | SubFieldIdentifiers.F18stayinfo6 | \
+                            SubFieldIdentifiers.F18stayinfo7 | SubFieldIdentifiers.F18stayinfo8 | \
+                                SubFieldIdentifiers.F18stayinfo9:
+                            Utils.parse_for_alpha_num(
+                                self.get_flight_plan_record(), subfield, ErrorId.F18_STAYINFO_SYNTAX)
                         case SubFieldIdentifiers.F18sts:
                             self.parse_f18_sts(self.get_flight_plan_record(), subfield)
                         case SubFieldIdentifiers.F18src:
@@ -180,6 +191,40 @@ class ParseF18(ParseFieldsCommon):
                             # checking for valid characters;
                             # [A-Z0-9., \n\r\t:;']
                             pass
+
+    @staticmethod
+    def parse_f18_awr(flight_plan_record, subfield, regexp):
+        # type: (FlightPlanRecord, SubFieldRecord, str) -> None
+        """This method validates that the F18 AWR subfield syntax conforms to the AWR indicator R[1 to 9].
+
+        :param flight_plan_record: The flight plan into which an error may be written;
+        :param subfield: The subfield whose field text is being parsed;
+        :param regexp: Regular expression describing the syntax for this subfield;
+        :return: None
+        """
+        # Check if there is more than a single token
+        if not Utils.check_too_many_fields(flight_plan_record, subfield, ErrorId.F18_AWR_TOO_MANY):
+            return
+
+        # Parse the RFP for a valid 'R'n indicator
+        Utils.parse_for_regexp(flight_plan_record, subfield, ErrorId.F18_AWR_SYNTAX, "[ ]*" + regexp + "[ ]*")
+
+    @staticmethod
+    def parse_f18_code(flight_plan_record, subfield, regexp):
+        # type: (FlightPlanRecord, SubFieldRecord, str) -> None
+        """This method validates that the F18 CODE subfield syntax conforms to a HEX value.
+
+        :param flight_plan_record: The flight plan into which an error may be written;
+        :param subfield: The subfield whose field text is being parsed;
+        :param regexp: Regular expression describing the syntax for this subfield;
+        :return: None
+        """
+        # Check if there is more than a single token
+        if not Utils.check_too_many_fields(flight_plan_record, subfield, ErrorId.F18_CODE_TOO_MANY):
+            return
+
+        # Parse the CODE for a valid HEX value
+        Utils.parse_for_regexp(flight_plan_record, subfield, ErrorId.F18_CODE_SYNTAX, "[ ]*" + regexp + "[ ]*")
 
     @staticmethod
     def parse_f18_dle(flight_plan_record, subfield, sfd):
@@ -358,8 +403,8 @@ class ParseF18(ParseFieldsCommon):
         tokens = tokenize.get_tokens()
 
         # Regular expression for the subfield tokens
-        regexp = "[ ]*(ERROUTRAD|ERROUTWE|ERROUTE|ERRTYPE|ERRLEVEL|ERREOBT|NON833|833UNKNOWN" \
-                 "|MODESASP|RVSMVIOLATION|NONRVSM|RVSMUNKNOWN)[ ]*"
+        regexp = "ERROUTRAD|ERROUTWE|ERROUTE|ERRTYPE|ERRLEVEL|ERREOBT|NON833|833UNKNOWN" \
+                 "|MODESASP|RVSMVIOLATION|NONRVSM|RVSMUNKNOWN"
 
         # Loop over the tokens
         for token in tokens.get_tokens():
@@ -516,13 +561,29 @@ class ParseF18(ParseFieldsCommon):
         :param subfield: The subfield whose field text is being parsed;
         :return: None
         """
-        # Check if there is more than a single token
-        if not Utils.check_too_many_fields(flight_plan_record, subfield, ErrorId.F18_STS_TOO_MANY):
-            return
+        # Tokenize the IFP subfield
+        tokenize = Tokenize()
+        tokenize.set_string_to_tokenize(subfield.get_field_text())
+        tokenize.set_whitespace(" /n/t/r")
+        tokenize.tokenize()
+        tokens = tokenize.get_tokens()
 
-        # Parse the STS subfield
-        Utils.parse_for_regexp(flight_plan_record, subfield, ErrorId.F18_STS_SYNTAX,
-                               "[ ]*(ALTRV|ATFMX|FFR|FLTCK|HAZMAT|HEAD|HOSP|HUM|MARSA|MEDEVAC|NONRVSM|SAR|STATE)[ ]*")
+        # Regular expression for the subfield tokens
+        regexp = "ALTRV|ATFMX|FFR|FLTCK|HAZMAT|HEAD|HOSP|HUM|MARSA|MEDEVAC|NONRVSM|SAR|STATE"
+
+        # Loop over the tokens
+        for token in tokens.get_tokens():
+
+            # Validate the subfield against the valid syntax
+            mo = re.fullmatch(regexp, token.get_token_string())
+            if mo is None:
+                # Did not match, report an error
+                Utils.add_error(flight_plan_record,
+                                token.get_token_string(),
+                                token.get_token_start_index() + subfield.get_start_index(),
+                                token.get_token_end_index() + subfield.get_start_index(),
+                                ErrorMessages(),
+                                ErrorId.F18_STS_SYNTAX)
 
     @staticmethod
     def parse_f18_src(flight_plan_record, subfield):

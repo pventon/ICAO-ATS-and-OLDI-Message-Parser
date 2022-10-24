@@ -3,7 +3,7 @@ import copy
 from F15_Parser.ErrorMessageDefinitions import ErrorMessages
 from F15_Parser.ExtractedRouteRecord import ExtractedRouteRecord
 from F15_Parser.ExtractedRouteSequence import ExtractedRouteSequence
-from F15_Parser.F15TokenSyntaxDescriptions import TokenBaseType, TokenSubType, F15TokenSyntaxDefinition
+from F15_Parser.F15TokenSyntaxDescriptions import TokenSubType, TokenBaseType, F15TokenSyntaxDefinition
 from Tokenizer.Tokens import Tokens
 from Tokenizer.Token import Token
 from Utilities.Utils import Utils
@@ -109,6 +109,20 @@ class ParseF15:
         if previous is None:
             return ers.get_number_of_errors() == 0
         ades.set_flight_rules(previous.get_flight_rules())
+
+        # Figure out the flight rules from the extracted route
+        if ers.get_first_element().get_flight_rules() == "VFR":
+            ers.set_derived_flight_rules("V")
+            for ers_record in ers.get_all_elements():
+                if ers_record.get_flight_rules() == "IFR":
+                    ers.set_derived_flight_rules("Z")
+                    break
+        else:
+            ers.set_derived_flight_rules("I")
+            for ers_record in ers.get_all_elements():
+                if ers_record.get_flight_rules() == "VFR":
+                    ers.set_derived_flight_rules("Y")
+                    break
 
         # Return True if no errors have been reported
         return ers.get_number_of_errors() == 0

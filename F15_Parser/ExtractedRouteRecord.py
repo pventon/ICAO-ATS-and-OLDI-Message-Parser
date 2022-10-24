@@ -492,11 +492,11 @@ class ExtractedRouteRecord:
 
             :return: None"""
         str_ = self.get_name() + " " + \
-               self.get_flight_rules() + " " + \
-               self.get_speed() + " " + \
-               self.get_altitude() + " " + \
-               self.get_break_text() + " " + \
-               self.get_error_text()
+            self.get_flight_rules() + " " + \
+            self.get_speed() + " " + \
+            self.get_altitude() + " " + \
+            self.get_break_text() + " " + \
+            self.get_error_text()
         return str_.rstrip(" ")
 
     def to_string(self, error):
@@ -567,5 +567,5 @@ class ExtractedRouteRecord:
                " altitude_cruise_to_si=\"" + "{0:.2f}".format(self.get_altitude_cruise_to_si()) + "\"" + \
                " latitude=\"" + "{0:>.2f}".format(self.get_latitude()) + "\"" + \
                " longitude=\"" + "{0:>.2f}".format(self.get_longitude()) + "\"" + \
-               " " + attr_name + "=\"" + error_or_break  + "\"" + \
+               " " + attr_name + "=\"" + error_or_break + "\"" + \
                "></" + rec_type + ">"

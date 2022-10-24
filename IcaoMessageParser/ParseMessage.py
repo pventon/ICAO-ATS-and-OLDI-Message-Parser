@@ -1,6 +1,7 @@
 import re
 
-from Configuration.EnumerationConstants import MessageTypes, MessageTitles, AdjacentUnits, ErrorId, FieldIdentifiers
+from Configuration.EnumerationConstants import MessageTypes, MessageTitles, AdjacentUnits, ErrorId, FieldIdentifiers, \
+    SubFieldIdentifiers, FlightRules
 from Configuration.ErrorMessages import ErrorMessages
 from Configuration.FieldsInMessage import FieldsInMessage
 from Configuration.SubFieldsInFields import SubFieldsInFields
@@ -59,6 +60,301 @@ class ParseMessage:
 
     EM: ErrorMessages = ErrorMessages()
     """Configuration data containing all the error messages"""
+
+    def consistency_check(self, flight_plan_record):
+        # type: (FlightPlanRecord) -> bool
+        """This method performs consistency checking between various fields, that includes:
+            - Flight rules between F8a and the flight rules derived by the F15 parsing and route
+              extraction process; these must match.
+            - If F10a contains the letter 'Z' then one or more of the F18 subfields
+              'COM', 'NAV' or 'DAT' must be present;
+            - If F10a contains the letter 'R' then the F18 'PBN' subfield must be present and
+              contain one or more of the indicators 'B1', 'B2', 'B3', 'B4' or 'B5';
+            - If F18 contains the subfield 'PBN', F10a must contain an 'R';
+            - If F18 'PBN' contains one or more of the indicators 'B1', 'B2', 'C1', 'C2', 'D1',
+              'D2', 'O1' or 'O2', then F10a must contain the letter 'G';
+            - If F18 'PBN' contains one or more of the indicators 'B1', 'B3', 'C1', 'C3', 'D1',
+              'D3', 'O1' or 'O3', then F10a must contain the letter 'D';
+            - If F18 'PBN' contains one or more of the indicators 'B1' or 'B4', then F10a must
+              contain either an 'O' or 'S' and a 'D';
+            - If F18 'PBN' contains one or more of the indicators 'B1', 'B5', 'C1', 'C4', 'D1',
+              'D4', 'O1' or 'O4', then F10a must contain the letter 'I';
+            - If F18 'PBN' contains one or more of the indicators 'C1', 'C4', 'D1', 'D4', 'O1'
+              or 'O4', then F10a must contain the letter 'D';
+
+        These consistency checks are only carried out on message titles defined to contain both field 10
+        and field 18, and/or field 8 and 15. These messages are:
+            - AFP
+            - ALR
+            - APL
+            - CPL
+            - FPL
+
+        :param flight_plan_record: Flight plan record used for checking consistency;
+        :return: False if errors are detected, True if all is OK;
+        """
+        if flight_plan_record.get_message_title() is not MessageTitles.AFP and \
+                flight_plan_record.get_message_title() is not MessageTitles.ALR and \
+                flight_plan_record.get_message_title() is not MessageTitles.APL and \
+                flight_plan_record.get_message_title() is not MessageTitles.CPL and \
+                flight_plan_record.get_message_title() is not MessageTitles.FPL:
+            return True
+
+        # Consistency check the flight rules in F8a and those derived from F15
+        result1: bool = self.consistency_check_flight_rules(flight_plan_record)
+
+        # Check if the flight plan contains f10
+        if flight_plan_record.get_icao_field(FieldIdentifiers.F10) is None:
+            return result1
+
+        # Get field 10a
+        if flight_plan_record.get_icao_subfield(FieldIdentifiers.F10, SubFieldIdentifiers.F10a) is None:
+            f10a = ""
+        else:
+            f10a = flight_plan_record.get_icao_subfield(FieldIdentifiers.F10, SubFieldIdentifiers.F10a).get_field_text()
+
+        # Check various field 10 consistency checks
+        result2 = self.consistency_check_f10a_r(flight_plan_record, f10a)
+        result3 = self.consistency_check_f10a_z(flight_plan_record, f10a)
+        result4 = self.consistency_check_pbn(flight_plan_record, f10a)
+        result5 = self.consistency_check_f9b_dep(flight_plan_record)
+        result6 = self.consistency_check_f13a_dep(flight_plan_record)
+        result7 = self.consistency_check_f16a_dep(flight_plan_record)
+
+        return result1 or result2 or result3 or result4 or result5 or result6 or result7
+
+    def consistency_check_pbn(self, flight_plan_record, f10a):
+        # type: (FlightPlanRecord, str) -> bool
+        """This method consistency checks that one of the following dealing with the field
+        18 PBN subfield:
+            - If F18 contains the subfield 'PBN', F10a must contain an 'R';
+            - If F18 'PBN' contains one or more of the indicators 'B1', 'B2', 'C1', 'C2', 'D1',
+              'D2', 'O1' or 'O2', then F10a must contain the letter 'G';
+            - If F18 'PBN' contains one or more of the indicators 'B1', 'B3', 'C1', 'C3', 'D1',
+              'D3', 'O1' or 'O3', then F10a must contain the letter 'D';
+            - If F18 'PBN' contains one or more of the indicators 'B1' or 'B4', then F10a must
+              contain either an O' or 'S' and a 'D';
+            - If F18 'PBN' contains one or more of the indicators 'B1', 'B5', 'C1', 'C4', 'D1',
+              'D4', 'O1' or 'O4', then F10a must contain the letter 'I';
+            - If F18 'PBN' contains one or more of the indicators 'C1', 'C4', 'D1', 'D4', 'O1'
+              or 'O4', then F10a must contain the letter 'D';
+        Another way to simplify the logic is to use a table to identify the permutations:
+             | B1| B2| B3| B4| B5| C1| C2| C3| C4| D1| D2| D3| D4| O1| O2| O3| O4|
+          D  | X |   | X | X |   | X |   | X | X | X |   | X | X | X |   | X | X |
+          G  | X | X |   |   |   | X | X |   |   | X | X |   |   | X | X |   |   |
+          I  | X |   |   |   | X | X |   |   | X | X |   |   | X | X |   |   | X |
+         O|S | X |   |   | X |   |   |   |   |   |   |   |   |   |   |   |   |   |
+          R  | X | X | X | X | X |   |   |   |   |   |   |   |   |   |   |   |   |
+
+        :param flight_plan_record: Flight plan record used for checking consistency;
+        :param f10a: The contents of field 10a;
+        :return: False if errors are detected, True if all is OK;
+        """
+        result = True
+        pbn = flight_plan_record.get_icao_subfield(FieldIdentifiers.F18, SubFieldIdentifiers.F18pbn)
+        if pbn is not None:
+            if len(re.findall("B1|B3|B4|C1|C3|C4|D1|D3|D4|O1|O3|O4", pbn.get_field_text())) != 0:
+                if f10a.find("D") == -1:
+                    # Missing 'D' in field 10a, error
+                    Utils.add_error(flight_plan_record, "'PBN'", 0, 0, self.EM, ErrorId.CONSISTENCY_PBN_D)
+                    result = False
+            if len(re.findall("B1|B2|C1|C2|D1|D2|O1|O2", pbn.get_field_text())) != 0:
+                if f10a.find("G") == -1:
+                    # Missing 'G' in field 10a, error
+                    Utils.add_error(flight_plan_record, "'PBN'", 0, 0, self.EM, ErrorId.CONSISTENCY_PBN_G)
+                    result = False
+            if len(re.findall("B1|B5|C1|C4|D1|D4|O1|O4", pbn.get_field_text())) != 0:
+                if f10a.find("I") == -1:
+                    # Missing 'I' in field 10a, error
+                    Utils.add_error(flight_plan_record, "'PBN'", 0, 0, self.EM, ErrorId.CONSISTENCY_PBN_I)
+                    result = False
+            if len(re.findall("B1|B4", pbn.get_field_text())) != 0:
+                if len(re.findall("[OS]", f10a)) == 0:
+                    # Missing 'O' and 'S' in field 10a, error
+                    Utils.add_error(flight_plan_record, "'PBN'", 0, 0, self.EM, ErrorId.CONSISTENCY_PBN_OS)
+                    result = False
+            if len(re.findall("B[1-5]", pbn.get_field_text())) != 0:
+                if f10a.find("R") == -1:
+                    # Missing 'R' in field 10a, error
+                    Utils.add_error(flight_plan_record, "'PBN'", 0, 0, self.EM, ErrorId.CONSISTENCY_PBN_R)
+                    result = False
+
+        return result
+
+    def consistency_check_f9b_dep(self, flight_plan_record):
+        # type: (FlightPlanRecord) -> bool
+        """This method consistency checks that if F9b contains 'ZZZZ' that there is
+        a field 18 TYP subfield;
+
+        :param flight_plan_record: Flight plan record used for checking consistency;
+        :return: False if errors are detected, True if all is OK;
+        """
+        # Check if the flight plan contains f9
+        if flight_plan_record.get_icao_field(FieldIdentifiers.F9) is None:
+            return True
+
+        # Get field 9b
+        if flight_plan_record.get_icao_subfield(FieldIdentifiers.F9, SubFieldIdentifiers.F9b) is None:
+            f9b = ""
+        else:
+            f9b = flight_plan_record.get_icao_subfield(FieldIdentifiers.F9, SubFieldIdentifiers.F9b).get_field_text()
+
+        # Check if field 9b contains 'ZZZZ'
+        if f9b == "ZZZZ":
+            if flight_plan_record.get_icao_subfield(FieldIdentifiers.F18, SubFieldIdentifiers.F18typ) is None:
+                # Missing field 18 subfield TYP, error
+                Utils.add_error(flight_plan_record, "", 0, 0, self.EM, ErrorId.CONSISTENCY_F9B_TYP)
+                return False
+
+        return True
+
+    def consistency_check_f10a_r(self, flight_plan_record, f10a):
+        # type: (FlightPlanRecord, str) -> bool
+        """This method consistency checks that if F10a contains the letter 'R' then the F18
+        'PBN' subfield must be present and contain one or more of the indicators
+        'B1', 'B2', 'B3', 'B4' or 'B5';;
+
+        :param flight_plan_record: Flight plan record used for checking consistency;
+        :param f10a: The contents of field 10a;
+        :return: False if errors are detected, True if all is OK;
+        """
+        # Check if field 10a contains an 'Z'
+        if f10a.find("Z") > -1:
+            if flight_plan_record.get_icao_subfield(FieldIdentifiers.F18, SubFieldIdentifiers.F18com) is None and \
+                    flight_plan_record.get_icao_subfield(FieldIdentifiers.F18, SubFieldIdentifiers.F18nav) is None and \
+                    flight_plan_record.get_icao_subfield(FieldIdentifiers.F18, SubFieldIdentifiers.F18dat) is None:
+                # Missing field 18 subfields, error
+                Utils.add_error(flight_plan_record, "'COM', 'NAV' or 'DAT'", 0, 0,
+                                self.EM, ErrorId.CONSISTENCY_F10_Z)
+                return False
+
+        return True
+
+    def consistency_check_f10a_z(self, flight_plan_record, f10a):
+        # type: (FlightPlanRecord, str) -> bool
+        """This method consistency checks that if F10a contains the letter 'Z' then one or
+        more of the F18 subfields 'COM', 'NAV' or 'DAT' must be present;
+
+        :param flight_plan_record: Flight plan record used for checking consistency;
+        :param f10a: The contents of field 10a;
+        :return: False if errors are detected, True if all is OK;
+        """
+        # Check if field 10a contains an 'R'
+        if f10a.find("R") > -1:
+            pbn = flight_plan_record.get_icao_subfield(FieldIdentifiers.F18, SubFieldIdentifiers.F18pbn)
+            if pbn is None:
+                # Missing field 18 PBN subfield, error
+                Utils.add_error(flight_plan_record, "'PBN'", 0, 0, self.EM, ErrorId.CONSISTENCY_F10_R)
+                return False
+            else:
+                if len(re.findall("B[1-5]", pbn.get_field_text())) == 0:
+                    # Missing field 18 PBN B[1-5] indicators, error
+                    Utils.add_error(flight_plan_record, "'PBN'", 0, 0, self.EM, ErrorId.CONSISTENCY_F10_R)
+                    return False
+
+        return True
+
+    def consistency_check_f13a_dep(self, flight_plan_record):
+        # type: (FlightPlanRecord) -> bool
+        """This method consistency checks that if F13a contains 'ZZZZ' that there is
+        a field 18 DEP subfield;
+
+        :param flight_plan_record: Flight plan record used for checking consistency;
+        :return: False if errors are detected, True if all is OK;
+        """
+        # Check if the flight plan contains f13
+        if flight_plan_record.get_icao_field(FieldIdentifiers.F13) is None:
+            return True
+
+        # Get field 13a
+        if flight_plan_record.get_icao_subfield(FieldIdentifiers.F13, SubFieldIdentifiers.F13a) is None:
+            f13a = ""
+        else:
+            f13a = flight_plan_record.get_icao_subfield(FieldIdentifiers.F13, SubFieldIdentifiers.F13a).get_field_text()
+
+        # Check if field 13a contains an 'ZZZZ'
+        if f13a == "ZZZZ":
+            if flight_plan_record.get_icao_subfield(FieldIdentifiers.F18, SubFieldIdentifiers.F18dep) is None:
+                # Missing field 18 subfield DEP, error
+                Utils.add_error(flight_plan_record, "", 0, 0,
+                                self.EM, ErrorId.CONSISTENCY_F13A_DEP)
+                return False
+
+        return True
+
+    def consistency_check_f16a_dep(self, flight_plan_record):
+        # type: (FlightPlanRecord) -> bool
+        """This method consistency checks that if F16a contains 'ZZZZ' that there is
+        a field 18 DEST subfield;
+
+        :param flight_plan_record: Flight plan record used for checking consistency;
+        :return: False if errors are detected, True if all is OK;
+        """
+        # Check if the flight plan contains f16
+        if flight_plan_record.get_icao_field(FieldIdentifiers.F16) is None:
+            return True
+
+        # Get field 16a
+        if flight_plan_record.get_icao_subfield(FieldIdentifiers.F16, SubFieldIdentifiers.F16a) is None:
+            f16a = ""
+        else:
+            f16a = flight_plan_record.get_icao_subfield(FieldIdentifiers.F16, SubFieldIdentifiers.F16a).get_field_text()
+
+        # Check if field 16a contains an 'ZZZZ'
+        if f16a == "ZZZZ":
+            if flight_plan_record.get_icao_subfield(FieldIdentifiers.F18, SubFieldIdentifiers.F18dest) is None:
+                # Missing field 18 subfield DEST, error
+                Utils.add_error(flight_plan_record, "", 0, 0,
+                                self.EM, ErrorId.CONSISTENCY_F16A_DEST)
+                return False
+
+        return True
+
+    def consistency_check_flight_rules(self, flight_plan_record):
+        # type: (FlightPlanRecord) -> bool
+        """This method consistency checks the flight rules given in Field 8a and
+        the rules derived from parsing and generated the extracted route from F15.
+
+        :param flight_plan_record: Flight plan record used for checking the flight rules consistency;
+        :return: False if errors are detected, True if all is OK;
+        """
+        # If there is no extracted route bail out
+        if flight_plan_record.get_extracted_route_sequence() is None:
+            return True
+
+        # Get the derived flight rules from the extracted route and set the derived rules
+        # to the flight plan record
+        flight_plan_record.set_derived_flight_rules(
+            FlightRules.get_flight_rules(
+                flight_plan_record.get_extracted_route_sequence().get_derived_flight_rules()))
+
+        # Get the flight rules from field 8
+        if flight_plan_record.get_icao_subfield(FieldIdentifiers.F8, SubFieldIdentifiers.F8a) is None:
+            f8a = ""
+        else:
+            f8a = flight_plan_record.get_icao_subfield(FieldIdentifiers.F8, SubFieldIdentifiers.F8a).get_field_text()
+
+        # Get the derived flight rules
+        derived_rules = flight_plan_record.get_derived_flight_rules()
+        if f8a == "":
+            if derived_rules is not FlightRules.UNKNOWN:
+                # Error, derived rules exist, nothing in Field 8a
+                Utils.add_error(flight_plan_record, derived_rules.name, 0, 0,
+                                self.EM, ErrorId.CONSISTENCY_F8_F8A_UNKNOWN)
+                return False
+        elif derived_rules is FlightRules.UNKNOWN:
+            if f8a != "":
+                # Error, derived rules unknown but Field 8a has a rule assigned
+                Utils.add_error(flight_plan_record, f8a, 0, 0,
+                                self.EM, ErrorId.CONSISTENCY_F8_DERIVED_UNKNOWN)
+                return False
+        elif FlightRules.get_flight_rules(f8a) is not derived_rules:
+            # Error, both flight rules available but different
+            Utils.add_error(flight_plan_record, derived_rules.name, 0, 0,
+                            self.EM, ErrorId.CONSISTENCY_F8_F8_DERIVED_DIFFERENT)
+            return False
+
+        return True
 
     @staticmethod
     def determine_message_type(f3):
@@ -128,6 +424,7 @@ class ParseMessage:
                 flight_plan_record.set_sender_adjacent_unit_name(AdjacentUnits.DEFAULT)
                 return md
             return None
+
         return md
 
     def is_message_valid(self, flight_plan_record, message):
@@ -159,6 +456,7 @@ class ParseMessage:
             Utils.add_error(flight_plan_record, message, 0, len(message), self.EM, ErrorId.MSG_TOO_SHORT)
             flight_plan_record.set_message_type(MessageTypes.UNKNOWN)
             return False
+
         return True
 
     # TODO Eventually a separate ADEXP parser will be added, for now this format is not supported
@@ -183,7 +481,6 @@ class ParseMessage:
         :param flight_plan_record: The Flight Plan Record containing the message to parse;
         :return: True if a supported message title could be identified, False if any errors were detected.
         """
-
         # Tokenize the message, open & closed brackets will be removed
         tokens = self.tokenize_message(flight_plan_record, "()-\r\n\t")
 
@@ -206,7 +503,6 @@ class ParseMessage:
         :param flight_plan_record: The Flight Plan Record containing the message to parse;
         :return: True if no errors were detected, False otherwise;
         """
-
         # Tokenize the message, open & closed brackets will be removed
         tokens = self.tokenize_message(flight_plan_record, "()-\r\n\t")
 
@@ -242,8 +538,8 @@ class ParseMessage:
 
         :param flight_plan_record: Flight plan record containing the header field and where successfully
                parsed fields will be written to.
-        :return: True if parsing was successful, false if errors are detected."""
-
+        :return: True if parsing was successful, false if errors are detected.
+        """
         # Tokenize the header
         tokenize = Tokenize()
         tokenize.set_string_to_tokenize(flight_plan_record.get_message_header())
@@ -494,12 +790,17 @@ class ParseMessage:
                 return self.parse_adexp(flight_plan_record)
             case MessageTypes.ATS:
                 self.parse_ats_header(flight_plan_record)
-                return self.parse_ats(flight_plan_record)
+                self.parse_ats(flight_plan_record)
             case MessageTypes.OLDI:
                 self.parse_oldi_header(flight_plan_record)
-                return self.parse_oldi(flight_plan_record)
+                self.parse_oldi(flight_plan_record)
             case MessageTypes.UNKNOWN:
                 return False
+
+        # Call the consistency checking routines
+        self.consistency_check(flight_plan_record)
+
+        return not (flight_plan_record.errors_detected() or len(flight_plan_record.get_erroneous_fields()))
 
     # TODO This method may be removed if there are no application level headers, (I don't believe there are)
     @staticmethod

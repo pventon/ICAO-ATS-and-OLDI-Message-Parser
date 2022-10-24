@@ -8,8 +8,7 @@ class MyTestCase(unittest.TestCase):
 
     def test_ParseMessage_ATS_check_f22_variants(self):
 
-        self.do_test(True, 1, "(FPL-TEST01-IS-B737/M-S/C-EGLL0800-N0450F350 BBB-LOWW0200-"
-                              "-0-C   /   PILOTS. NAME)",
+        self.do_test(False, 0, "(CPLE/L001 -TEST01-LOWL0800-LOWW0200-221212-9/B737/M)",
                      ["Expecting pilot name (A-Z, 0-9 and spaces) instead of '   PILOTS. NAME' in F19 'C'"])
 
     def do_test(self, errors_detected, number_of_errors, message_to_parse, expected_error_text):

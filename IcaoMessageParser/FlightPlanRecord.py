@@ -22,7 +22,8 @@ FlightPlanRecord -+-->  FieldRecord -+--> [SubFieldRecord, ...]
    inherit from the SubFieldRecord class.
 4. Note that the subfields are in a list; this covers the case for some field 18 subfields
    such as the RMK and STS subfields that can occur more than once in field 18."""
-from Configuration.EnumerationConstants import MessageTypes, FieldIdentifiers, SubFieldIdentifiers, AdjacentUnits
+from Configuration.EnumerationConstants import MessageTypes, FieldIdentifiers, SubFieldIdentifiers, AdjacentUnits, \
+    MessageTitles, FlightRules
 from F15_Parser.ExtractedRouteSequence import ExtractedRouteSequence, ExtractedRouteRecord
 
 
@@ -294,6 +295,12 @@ class FlightPlanRecord:
     This member is a data type 'FlightPlanRecord' (recurse on this class). Python does not allow
     a recursive type definition here, hence the type is set on the getter and setter."""
 
+    message_title: MessageTitles = MessageTitles.UNKNOWN
+    """The message title as an enumeration value from the MessageTitles enumeration class."""
+
+    derived_flight_rules: FlightRules = FlightRules.UNKNOWN
+    """The flight rules as derived from Field 15 route extraction processing;"""
+
     def __init__(self):
         """Constructor that initialises all members in this class, strings are set to empty
         strings, data structures are set to None or empty lists / dictionaries."""
@@ -307,6 +314,8 @@ class FlightPlanRecord:
         self.f22_flight_plan = None
         self.receiver_adjacent_unit_name = AdjacentUnits.DEFAULT
         self.sender_adjacent_unit_name = AdjacentUnits.DEFAULT
+        self.message_title = MessageTitles.UNKNOWN
+        self.derived_flight_rules = FlightRules.UNKNOWN
 
     def add_erroneous_field(self, erroneous_field_text, error_text, start_index, end_index):
         # type: (str, str, int, int) -> None
@@ -321,6 +330,82 @@ class FlightPlanRecord:
             :return: None"""
         self.erroneous_fields.append(ErrorRecord(
             erroneous_field_text, error_text, start_index, end_index))
+
+    def as_xml(self):
+        # type: () -> str
+        """This method returns an XML representation of the flight plan record.
+
+        :return: An XML representation of the flight plan record as an XML string"""
+
+        # Build the records as an XML
+        field_string = ""
+        if len(self.icao_fields) > 0:
+            field_string = "<icao_fields>\n"
+            for field_id, record in self.icao_fields.items():
+                field_string = field_string + record.field_as_xml(field_id) + "\n"
+            field_string = field_string + "</icao_fields>\n"
+
+        error_string = ""
+        if len(self.erroneous_fields) > 0:
+            error_string = "<icao_field_errors>\n"
+            for error_record in self.erroneous_fields:
+                error_string = error_string + error_record.field_error_as_xml() + "\n"
+            error_string = error_string + "</icao_field_errors\n"
+
+        # erroneous_fields: list[ErrorRecord] = []
+        return "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\" ?>\n" + \
+               "<flight_plan_record>\n" + \
+               "   <derived_flight_rules>" + self.get_derived_flight_rules().name + "</derived_flight_rules>\n"\
+               "   <message_type>" + self.get_message_type().name + "</message_type>\n" + \
+               "   <original_message>" + self.get_message_complete() + "</original_message>\n" + \
+               "   <message_header>" + self.get_message_header() + "</message_header>\n" + \
+               "   <message_body>" + self.get_message_body() + "</message_body>\n" + \
+               "   <adjacent_unit sender=\"" + self.get_sender_adjacent_unit_name().name + \
+               "\" receiver=\"" + self.get_receiver_adjacent_unit_name().name + "\"></adjacent_unit>\n" + \
+               field_string + \
+               error_string + \
+               self.get_extracted_route_sequence().as_xml() + \
+               "\n</flight_plan_record>"
+
+    def set_message_title(self, message_title):
+        # type: (MessageTitles) -> None
+        """Set the message title, assigned during F3 parsing.
+        Will be assigned 'UNKNOWN' if a message did not contain F3.
+
+        :param message_title: The message title as an enumeration value from the MessageTitles class;
+        :return: None
+        """
+        self.message_title = message_title
+
+    def get_message_title(self):
+        # type: () -> MessageTitles
+        """Get the message title assigned to this flight plan record during F3 parsing.
+        Will be assigned 'UNKNOWN' if a message did not contain F3.
+
+        :return: The message title as an enumeration value from the MessageTitles class;
+        """
+        return self.message_title
+
+    def set_derived_flight_rules(self, derived_flight_rules):
+        # type: (FlightRules) -> None
+        """Set the flight rules from F15 parsing; this is not the rules from F8, this is the rules
+        derived from the route extraction parsing.
+
+        :param derived_flight_rules: The flight rules to set as derived by parsing F15 as an
+               enumeration value from the FlightRules enumeration class;
+        :return: None
+        """
+        self.derived_flight_rules = derived_flight_rules
+
+    def get_derived_flight_rules(self):
+        # type: () -> FlightRules
+        """Get the flight rules derived and set from parsing F15; this is not the rules from F8,
+        this is the rules derived from the route extraction parsing.
+
+        :return: The flight rules as derived by parsing F15 as an enumeration value from the
+                 FlightRules enumeration class;
+        """
+        return self.derived_flight_rules
 
     def get_erroneous_fields(self):
         # type: () -> [ErrorRecord]
@@ -403,21 +488,27 @@ class FlightPlanRecord:
         self.get_icao_field(field_id).add_subfield(subfield_id, SubFieldRecord(field, start_index, end_index))
 
     def get_icao_field(self, field_id):
-        # type: (FieldIdentifiers) -> FieldRecord
+        # type: (FieldIdentifiers) -> FieldRecord | None
         """Gets an ICAO field from this flight plan record
 
             :param field_id: ICAO field identifier as defined in the EnumerationConstants.FieldIdentifiers class
-            :return: An instance of FieldRecord that contains an ICAO field"""
+            :return: An instance of FieldRecord that contains an ICAO field or None if the flight pla
+                     record does not contain the field identified by field_id"""
+        # Check if the flight plan contains the field 'field_id'
+        if field_id not in self.icao_fields:
+            return None
         return self.icao_fields[field_id]
 
     def get_icao_subfield(self, field_id, subfield_id):
-        # type: (FieldIdentifiers, SubFieldIdentifiers) -> SubFieldRecord
+        # type: (FieldIdentifiers, SubFieldIdentifiers) -> SubFieldRecord | None
         """Gets an ICAO subfield from this flight plan record
 
             :param field_id: ICAO field identifier as defined in the EnumerationConstants.FieldIdentifiers class
             :param subfield_id: ICAO subfield identifier as defined in the EnumerationConstants.SubFieldIdentifiers
             class
             :return: An instance of SubFieldRecord that contains an ICAO subfield"""
+        if self.get_icao_field(field_id) is None:
+            return None
         return self.get_icao_field(field_id).get_subfield(subfield_id)
 
     def get_all_icao_subfields(self, field_id, subfield_id):
@@ -531,38 +622,3 @@ class FlightPlanRecord:
                 EnumerationConstants.AdjacentUnits
             :return: None"""
         self.sender_adjacent_unit_name = sender_adjacent_unit_name
-
-    def as_xml(self):
-        # type: () -> str
-        """This method returns an XML representation of the flight plan record.
-
-        :return: An XML representation of the flight plan record as an XML string"""
-
-        # Build the records as an XML
-        field_string = ""
-        if len(self.icao_fields) > 0:
-            field_string = "<icao_fields>\n"
-            for field_id, record in self.icao_fields.items():
-                field_string = field_string + record.field_as_xml(field_id) + "\n"
-            field_string = field_string + "</icao_fields>\n"
-
-        error_string = ""
-        if len(self.erroneous_fields) > 0:
-            error_string = "<icao_field_errors>\n"
-            for error_record in self.erroneous_fields:
-                error_string = error_string + error_record.field_error_as_xml() + "\n"
-            error_string = error_string + "</icao_field_errors\n"
-
-        # erroneous_fields: list[ErrorRecord] = []
-        return "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\" ?>\n" + \
-               "<flight_plan_record>\n" + \
-               "   <message_type>" + self.get_message_type().name + "</message_type>\n" + \
-               "   <original_message>" + self.get_message_complete() + "</original_message>\n" + \
-               "   <message_header>" + self.get_message_header() + "</message_header>\n" + \
-               "   <message_body>" + self.get_message_body() + "</message_body>\n" + \
-               "   <adjacent_unit sender=\"" + self.get_sender_adjacent_unit_name().name + \
-               "\" receiver=\"" + self.get_receiver_adjacent_unit_name().name + "\"></adjacent_unit>\n" + \
-               field_string + \
-               error_string + \
-               self.get_extracted_route_sequence().as_xml() + \
-               "\n</flight_plan_record>"

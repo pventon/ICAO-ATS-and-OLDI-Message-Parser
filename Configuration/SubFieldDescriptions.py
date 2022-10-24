@@ -25,7 +25,7 @@ class SubFieldDescriptions:
     ddhhmm = "(([012][0-9]|3[01])" + hhmm + ")"
     """Regular expression for filing time as DDHHMM 0000 to 2359"""
 
-    aero = "[A-Z]{4}"
+    aerodrome = "[A-Z]{4}"
     """Regular expression for location indicator"""
 
     ll = "([0-8][0-9]|90)[NS](0[0-9]{2}|1[0-7][0-9]|180)[EW]"
@@ -37,19 +37,19 @@ class SubFieldDescriptions:
     prp = "[A-Z]{2,5}"
     """Regular expression published route point"""
 
-    bear = "([012][0-9]{2}|3[0-5][0-9]|360)"
+    bearing = "([012][0-9]{2}|3[0-5][0-9]|360)"
     """Regular expression for bearing 000 to 360"""
 
-    dist = "[0-9]{3}"
+    distance = "[0-9]{3}"
     """Regular expression for distance 000 to 999"""
 
     fac = "([A-Z]{8}|[A-Z]{3}[A-Z0-9]{4})"
     """# Regular expression for facility address"""
 
-    prio = "FF|GG|DD|KK|SS"
+    priority = "FF|GG|DD|KK|SS"
     """Regular expression for priority indicator"""
 
-    level = "(F[0-9]{2}[05]|A[0-9]{3}|[SM][0-9]{4})"
+    altitude = "(F[0-9]{2}[05]|A[0-9]{3}|[SM][0-9]{4})"
     """Regular expression for flight level and altitudes"""
 
     free = "[A-Z0-9 _:/.\r\n\t]*"
@@ -68,44 +68,67 @@ class SubFieldDescriptions:
     seq_num = "[0-9]{3}"
     """Channel sequence number"""
 
-    freq = "[0-9]{2,4}[.][0-9]{1,2}"
+    frequency = "[0-9]{2,4}[.][0-9]{1,2}"
     """A frequency"""
 
-    point = ""
-    """Reporting point, defined in the constructor"""
+    point = "(" + prp + ")|" \
+            "(" + ll + ")|" \
+            "(" + llmm + ")|" \
+            "(" + prp + bearing + distance + ")|" \
+            "(" + ll + bearing + distance + ")|" \
+            "(" + llmm + bearing + distance + ")"
+    """
+    Reporting point defined as one of the following:
+        AIP Published Route Point
+          "(" + self.prp + ")|"
+        Latitude longitude in degrees
+          "(" + self.ll + ")|"
+        Latitude longitude in degrees and minutes
+          "(" + self.llmm + ")|"
+        Point Bearing Distance
+          "(" + self.prp + self.bear + self.dist + ")|"
+        Latitude longitude in degrees bearing distance
+          "(" + self.ll + self.bear + self.dist + ")|"
+        Latitude longitude in degrees and minutes bearing distance
+          "(" + self.llmm + self.bear + self.dist + ")", True),"""
 
-    pbn = ""
+    pbn = "(A1){0,1}(B1){0,1}(B2){0,1}(B3){0,1}(B4){0,1}(B5){0,1}(B6){0,1}(C1){0,1}(C2){0,1}" \
+          "(C3){0,1}(C4){0,1}(D1){0,1}(D2){0,1}(D3){0,1}(D4){0,1}(L1){0,1}(O1){0,1}(O2){0,1}" \
+          "(O3){0,1}(O4){0,1}(S1){0,1}(S2){0,1}(T1){0,1}(T2){0,1}"
+    """
+    F18 PBN field, EUROCONTROL Definition:
+        1 { "A1" | "B1" | "B2" | "B3" | "B4" | "B5" | "B6" | "C1" | "C2" | "C3" | "C4" | "D1" | "D2" | "D3"
+        | "D4" | "L1" | "O1" | "O2" | "O3" | "O4" | "S1" | "S2" | "T1" | "T2" } 8"""
+
+    equipment_code = "N|((A){0,1}(B){0,1}(C){0,1}(D){0,1}(E1){0,1}(E2){0,1}(E3){0,1}" \
+                     "(F){0,1}(G){0,1}(H){0,1}(I){0,1}(J1){0,1}(J2){0,1}(J3){0,1}" \
+                     "(J4){0,1}(J5){0,1}(J6){0,1}(J7){0,1}(K){0,1}(L){0,1}(M1){0,1}" \
+                     "(M2){0,1}(M3){0,1}(O){0,1}(P1){0,1}(P2){0,1}(P3){0,1}(P4){0,1}" \
+                     "(P5){0,1}(P6){0,1}(P7){0,1}(P8){0,1}(P9){0,1}(R){0,1}(S){0,1}" \
+                     "(T){0,1}(U){0,1}(V){0,1}(W){0,1}(X){0,1}(Y){0,1}(Z){0,1})"
+    """
+    This is ICAO F10a, EUROCONTROL Definition:
+        "N" | 
+        ( 1 { "A" | "B" | "C" | "D" | "E1" | "E2" | "E3" | "F" | "G" | "H" | "I" |
+        "J1" | "J2"| "J3" | "J4" | "J5" | "J6" | "J7" | "K" | "L" | "M1" | "M2"|
+        "M3" | "O" | "P1"| "P2"| "P3"| "P4"| "P5"| "P6"| "P7"| "P8"| "P9" | "R" |
+        "S" | "T" | "U" | "V" | "W" | "X" | "Y" | "Z" } )
+    """
+
+    equipment_status = "EQ|NO|UN"
+    """Equipment status, this is used in the custom F22 OLDI fields 80 and 81;"""
+
+    surveillance_class = "A|S|ADSB|ADSC"
+    """Surveillance class, this is used in the custom F22 OLDI fields 80 and 81;"""
+
+    surveillance_equipment_code = "A|B1|B2|C|D1|E|G1|H|I|L|P|S|U1|U2|V1|V2|X"
+    """Surveillance equipment code, this is used in the custom F22 OLDI fields 80 and 81;"""
+
+    flight_type = "[SNMGX]"
+    """Type of flight, ICAO field 8b and field 80a"""
 
     def __init__(self):
         # type: () -> None
-        # AIP Published Route Point
-        # Latitude longitude in degrees
-        # Latitude longitude in degrees and minutes
-        # Latitude longitude in degrees bearing distance
-        # Latitude longitude in degrees and minutes bearing distance
-        self.point = "(" + self.prp + ")|" \
-                    "(" + self.ll + ")|" \
-                    "(" + self.llmm + ")|" \
-                    "(" + self.prp + self.bear + self.dist + ")|" \
-                    "(" + self.ll + self.bear + self.dist + ")|" \
-                    "(" + self.llmm + self.bear + self.dist + ")"
-
-        a_ = "A1"
-        b_ = "B[1-6]"
-        c_ = "C[1-4]"
-        d_ = "D[1-4]"
-        l_ = "L1"
-        o_ = "O[1-4]"
-        s_ = "S[12]"
-        t_ = "T[12]"
-        self.pbn = a_ + \
-            "|(" + a_ + b_ + ")" + \
-            "|(" + a_ + b_ + c_ + ")" + \
-            "|(" + a_ + b_ + c_ + d_ + ")" + \
-            "|(" + a_ + b_ + c_ + d_ + l_ + ")" + \
-            "|(" + a_ + b_ + c_ + d_ + l_ + o_ + ")" + \
-            "|(" + a_ + b_ + c_ + d_ + l_ + o_ + s_ + ")" + \
-            "|(" + a_ + b_ + c_ + d_ + l_ + o_ + s_ + t_ + ")"
         # Format when assigning data descriptions to a FieldDescription instance is:
         # SubFieldDescription(
         #   ICAO Field Number / identifier as defined SubFieldIdentifiers,
@@ -116,7 +139,7 @@ class SubFieldDescriptions:
         self.subfield_description = {
             # Message header subfields
             SubFieldIdentifiers.PRIORITY_INDICATOR: SubFieldDescription(
-                SubFieldIdentifiers.PRIORITY_INDICATOR, 2, 2, self.prio, True),
+                SubFieldIdentifiers.PRIORITY_INDICATOR, 2, 2, self.priority, True),
             SubFieldIdentifiers.FILING_TIME: SubFieldDescription(
                 SubFieldIdentifiers.FILING_TIME, 6, 6, self.ddhhmm, True),
             SubFieldIdentifiers.ORIGINATOR: SubFieldDescription(
@@ -205,7 +228,7 @@ class SubFieldDescriptions:
             SubFieldIdentifiers.F8a: SubFieldDescription(
                 SubFieldIdentifiers.F8a, 1, 1, "[IVYZ]", True),
             SubFieldIdentifiers.F8b: SubFieldDescription(
-                SubFieldIdentifiers.F8b, 1, 1, "[SNMGX]", True),
+                SubFieldIdentifiers.F8b, 1, 1, self.flight_type, True),
 
             # F9 - Number, type of aircraft and WTC
             SubFieldIdentifiers.F9a: SubFieldDescription(
@@ -219,16 +242,7 @@ class SubFieldDescriptions:
 
             # F10 - Equipment
             SubFieldIdentifiers.F10a: SubFieldDescription(
-                # "N" | ( 1 { "A" | "B" | "C" | "D" | "E1" | "E2" | "E3" | "F" | "G" | "H" | "I" |
-                #       "J1" | "J2"| "J3" | "J4" | "J5" | "J6" | "J7" | "K" | "L" | "M1" | "M2"|
-                #       "M3" | "O" | "P1"| "P2"| "P3"| "P4"| "P5"| "P6"| "P7"| "P8"| "P9" | "R" |
-                #       "S" | "T" | "U" | "V" | "W" | "X" | "Y" | "Z" } )
-                SubFieldIdentifiers.F10a, 1, 25, "N|((A){0,1}(B){0,1}(C){0,1}(D){0,1}(E1){0,1}(E2){0,1}(E3){0,1}"
-                                                 "(F){0,1}(G){0,1}(H){0,1}(I){0,1}(J1){0,1}(J2){0,1}(J3){0,1}"
-                                                 "(J4){0,1}(J5){0,1}(J6){0,1}(J7){0,1}(K){0,1}(L){0,1}(M1){0,1}"
-                                                 "(M2){0,1}(M3){0,1}(O){0,1}(P1){0,1}(P2){0,1}(P3){0,1}(P4){0,1}"
-                                                 "(P5){0,1}(P6){0,1}(P7){0,1}(P8){0,1}(P9){0,1}(R){0,1}(S){0,1}"
-                                                 "(T){0,1}(U){0,1}(V){0,1}(W){0,1}(X){0,1}(Y){0,1}(Z){0,1})", True),
+                SubFieldIdentifiers.F10a, 1, 25, self.equipment_code, True),
             SubFieldIdentifiers.F10ab: SubFieldDescription(
                 SubFieldIdentifiers.F10ab, 0, 20, "[/]", True),
             SubFieldIdentifiers.F10b: SubFieldDescription(
@@ -240,33 +254,21 @@ class SubFieldDescriptions:
 
             # F13 - ADEP and EOBT
             SubFieldIdentifiers.F13a: SubFieldDescription(
-                SubFieldIdentifiers.F13a, 4, 4, self.aero, True),
+                SubFieldIdentifiers.F13a, 4, 4, self.aerodrome, True),
             SubFieldIdentifiers.F13b: SubFieldDescription(
                 SubFieldIdentifiers.F13b, 4, 4, self.hhmm, True),
 
             # F14 - Estimate data
             SubFieldIdentifiers.F14a: SubFieldDescription(
                 SubFieldIdentifiers.F14a, 1, 15, self.point, True),
-            #                # Published Route Point
-            #                "(" + self.prp + ")|"
-            #                # Latitude longitude in degrees
-            #                "(" + self.ll + ")|"
-            #                # Latitude longitude in degrees and minutes
-            #                "(" + self.llmm + ")|"
-            #                # Point Bearing Distance
-            #                "(" + self.prp + self.bear + self.dist + ")|"
-            #                # Latitude longitude in degrees bearing distance
-            #                "(" + self.ll + self.bear + self.dist + ")|"
-            #                # Latitude longitude in degrees and minutes bearing distance
-            #                "(" + self.llmm + self.bear + self.dist + ")", True),
             SubFieldIdentifiers.F14ab: SubFieldDescription(
                 SubFieldIdentifiers.F14ab, 1, 1, "[/]", True),
             SubFieldIdentifiers.F14b: SubFieldDescription(
                 SubFieldIdentifiers.F14b, 4, 4, self.hhmm, True),
             SubFieldIdentifiers.F14c: SubFieldDescription(
-                SubFieldIdentifiers.F14c, 4, 5, self.level, True),
+                SubFieldIdentifiers.F14c, 4, 5, self.altitude, True),
             SubFieldIdentifiers.F14d: SubFieldDescription(
-                SubFieldIdentifiers.F14d, 4, 5, self.level, False),
+                SubFieldIdentifiers.F14d, 4, 5, self.altitude, False),
             SubFieldIdentifiers.F14e: SubFieldDescription(
                 SubFieldIdentifiers.F14e, 1, 1, "[AB]", False),
 
@@ -276,17 +278,17 @@ class SubFieldDescriptions:
 
             # F16 - ADES, EET and alternate Aerodromes
             SubFieldIdentifiers.F16a: SubFieldDescription(
-                SubFieldIdentifiers.F16a, 4, 4, self.aero, True),
+                SubFieldIdentifiers.F16a, 4, 4, self.aerodrome, True),
             SubFieldIdentifiers.F16b: SubFieldDescription(
                 SubFieldIdentifiers.F16b, 4, 4, self.hhmm, True),
             SubFieldIdentifiers.F16c: SubFieldDescription(
-                SubFieldIdentifiers.F16c, 4, 4, self.aero, False),
+                SubFieldIdentifiers.F16c, 4, 4, self.aerodrome, False),
             SubFieldIdentifiers.F16d: SubFieldDescription(
-                SubFieldIdentifiers.F16d, 4, 4, self.aero, False),
+                SubFieldIdentifiers.F16d, 4, 4, self.aerodrome, False),
 
             # F17 - Arrival Aerodrome and time
             SubFieldIdentifiers.F17a: SubFieldDescription(
-                SubFieldIdentifiers.F17a, 4, 4, self.aero, True),
+                SubFieldIdentifiers.F17a, 4, 4, self.aerodrome, True),
             SubFieldIdentifiers.F17b: SubFieldDescription(
                 SubFieldIdentifiers.F17b, 4, 4, self.hhmm, True),
             SubFieldIdentifiers.F17c: SubFieldDescription(
@@ -295,8 +297,10 @@ class SubFieldDescriptions:
             # F18 - Other information
             SubFieldIdentifiers.F18altn: SubFieldDescription(
                 SubFieldIdentifiers.F18altn, 0, 20, self.free, False),
+            SubFieldIdentifiers.F18awr: SubFieldDescription(
+                SubFieldIdentifiers.F18awr, 2, 2, "R[1-9]", False),
             SubFieldIdentifiers.F18code: SubFieldDescription(
-                SubFieldIdentifiers.F18code, 0, 10, self.free, False),
+                SubFieldIdentifiers.F18code, 0, 7, "F[A-F0-9]{6}", False),
             SubFieldIdentifiers.F18com: SubFieldDescription(
                 SubFieldIdentifiers.F18com, 0, 15, self.free, False),
             SubFieldIdentifiers.F18dat: SubFieldDescription(
@@ -322,7 +326,7 @@ class SubFieldDescriptions:
             SubFieldIdentifiers.F18orgn: SubFieldDescription(
                 SubFieldIdentifiers.F18orgn, 0, 20, self.free, False),
             SubFieldIdentifiers.F18pbn: SubFieldDescription(
-                SubFieldIdentifiers.F18pbn, 0, 10, self.free, False),
+                SubFieldIdentifiers.F18pbn, 0, 10, self.pbn, False),
             SubFieldIdentifiers.F18per: SubFieldDescription(
                 SubFieldIdentifiers.F18per, 0, 10, self.free, False),
             SubFieldIdentifiers.F18ralt: SubFieldDescription(
@@ -360,15 +364,15 @@ class SubFieldDescriptions:
             SubFieldIdentifiers.F19e: SubFieldDescription(
                 SubFieldIdentifiers.F19e, 0, 4, self.hhmm, False),
             SubFieldIdentifiers.F19j: SubFieldDescription(
-                SubFieldIdentifiers.F19j, 0, 4, "[JFUV]{0,4}", False),
+                SubFieldIdentifiers.F19j, 0, 4, "[LFUV]{1,4}", False),
             SubFieldIdentifiers.F19n: SubFieldDescription(
                 SubFieldIdentifiers.F19n, 0, 20, self.free, False),
             SubFieldIdentifiers.F19p: SubFieldDescription(
                 SubFieldIdentifiers.F19p, 0, 3, "[0-9]{1,3}", False),
             SubFieldIdentifiers.F19r: SubFieldDescription(
-                SubFieldIdentifiers.F19r, 0, 3, "[UVE]{0,3}", False),
+                SubFieldIdentifiers.F19r, 0, 3, "[UVE]{1,3}", False),
             SubFieldIdentifiers.F19s: SubFieldDescription(
-                SubFieldIdentifiers.F19s, 0, 4, "[PDMJ]{0,4}", False),
+                SubFieldIdentifiers.F19s, 0, 4, "[PDMJ]{1,4}", False),
 
             SubFieldIdentifiers.F20a: SubFieldDescription(
                 SubFieldIdentifiers.F20a, 1, 100, self.free, True),
@@ -377,7 +381,7 @@ class SubFieldDescriptions:
             SubFieldIdentifiers.F20c: SubFieldDescription(
                 SubFieldIdentifiers.F20c, 4, 4, self.hhmm, True),
             SubFieldIdentifiers.F20d: SubFieldDescription(
-                SubFieldIdentifiers.F20d, 4, 7, self.freq, True),
+                SubFieldIdentifiers.F20d, 4, 7, self.frequency, True),
             SubFieldIdentifiers.F20e: SubFieldDescription(
                 SubFieldIdentifiers.F20e, 1, 15, self.point, True),
             SubFieldIdentifiers.F20f: SubFieldDescription(
@@ -389,7 +393,7 @@ class SubFieldDescriptions:
             SubFieldIdentifiers.F21a: SubFieldDescription(
                 SubFieldIdentifiers.F21a, 4, 4, self.hhmm, True),
             SubFieldIdentifiers.F21b: SubFieldDescription(
-                SubFieldIdentifiers.F21b, 4, 7, self.freq, True),
+                SubFieldIdentifiers.F21b, 4, 7, self.frequency, True),
             SubFieldIdentifiers.F21c: SubFieldDescription(
                 SubFieldIdentifiers.F21c, 1, 15, self.point, True),
             SubFieldIdentifiers.F21d: SubFieldDescription(
@@ -400,27 +404,22 @@ class SubFieldDescriptions:
                 SubFieldIdentifiers.F21f, 0, 100, self.free, True),
 
             # Field 80 for OLDI
-            # TODO - It appears that F80 is part of a custom F22, these definitions may be removed
-            # TODO - For F80 it may be the syntax definitions go in the F22 parser
             # F81a is identical to ICAO field 8b
             SubFieldIdentifiers.F80a: SubFieldDescription(
-                SubFieldIdentifiers.F80a, 1, 1, "[SNMGX]", True),
+                SubFieldIdentifiers.F80a, 1, 1, self.flight_type, True),
 
             # Field 81 for OLDI
-            # TODO - It appears that F81 is part of a custom F22, these definitions may be removed
-            # TODO - For F81 it may be the syntax definitions go in the F22 parser
-            # F80a is almost identical to ICAO field 10a
             SubFieldIdentifiers.F81a: SubFieldDescription(
-                SubFieldIdentifiers.F81a, 1, 25, "[N]|([S]|[A-MOPRT-Z1-9]+|[A-MOPRT-Z1-9]+)|ADSB|ADSC", True),
+                SubFieldIdentifiers.F81a, 1, 25,
+                "(" + self.equipment_code + ")|(" + self.surveillance_class + ")", True),
             SubFieldIdentifiers.F81ab: SubFieldDescription(
                 SubFieldIdentifiers.F81ab, 1, 1, "/", True),
             SubFieldIdentifiers.F81b: SubFieldDescription(
-                SubFieldIdentifiers.F81b, 0, 3, "EQ|UN|NO", True),
+                SubFieldIdentifiers.F81b, 0, 3, self.equipment_status, True),
             SubFieldIdentifiers.F81bc: SubFieldDescription(
                 SubFieldIdentifiers.F81bc, 1, 1, "/", False),
-            # F80c is identical to ICAO field 10b
             SubFieldIdentifiers.F81c: SubFieldDescription(
-                SubFieldIdentifiers.F81c, 0, 3, "[ABCDEGHILPSUVX12]+", False),
+                SubFieldIdentifiers.F81c, 0, 3, self.equipment_code, False),
 
             # Special for the MFS
             SubFieldIdentifiers.MFS_SIG_POINT: SubFieldDescription(

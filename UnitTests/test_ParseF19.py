@@ -41,7 +41,7 @@ class TestParseF19(unittest.TestCase):
         self.do_f19_test(True, 2, "E/", ["Expecting data following field 19 keyword 'E/'",
                                          "Expecting fuel endurance in HHMM format instead of '' in F19 'E'"])
 
-        self.do_f19_test(True, 2, "N/P/23 ", [
+        self.do_f19_test(True, 1, "N/P/23 ", [
             "Expecting data following field 19 keyword 'N/'",
             "Expecting other survival equipment and useful remarks (A-Z, 1-9 and spaces) instead of '' in F19 'N'"])
 
@@ -82,7 +82,7 @@ class TestParseF19(unittest.TestCase):
         self.assertEqual(None, fpr.get_all_icao_subfields(
             FieldIdentifiers.F19, SubFieldIdentifiers.F19c))
 
-        self.do_f19_test(True, 3, "C/H/GARBAGE J/F", [
+        self.do_f19_test(True, 2, "C/H/GARBAGE J/F", [
             "Expecting data following field 19 keyword 'C/'",
             "Field 19 Keyword 'H/GARBAGE' unrecognised",
             "Expecting pilot name (A-Z, 0-9 and spaces) instead of '' in F19 'C'"])
@@ -201,9 +201,9 @@ class TestParseF19(unittest.TestCase):
         self.do_f19_test(False, 0, "   N   /   PLAIN LANGUAGE SURVIVAL AND OTHER REMARKS 123 ", [""])
 
         # Illegal character - error
-        self.do_f19_test(True, 1, "N/PLAIN. LANGUAGE SURVIVAL AND OTHER REMARKS 123 ", [
+        self.do_f19_test(True, 1, "N/PLAIN^ LANGUAGE SURVIVAL AND OTHER REMARKS 123 ", [
             "Expecting other survival equipment and useful remarks (A-Z, 1-9 and spaces) instead "
-            "of 'PLAIN. LANGUAGE SURVIVAL AND OTHER REMARKS 123' in F19 'N'"])
+            "of 'PLAIN^ LANGUAGE SURVIVAL AND OTHER REMARKS 123' in F19 'N'"])
 
     def test_parse_f19_p(self):
         # OK

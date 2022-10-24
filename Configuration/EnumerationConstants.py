@@ -19,11 +19,29 @@ ErrorId -> Enumeration used to index error messages."""
 from enum import IntEnum, auto
 
 
+class FlightRules(IntEnum):
+    """This class contains enumeration values for each of the 4 possible flight rules."""
+    UNKNOWN = 0
+    IFR = auto()
+    VFR = auto()
+    Y = auto()
+    Z = auto()
+
+    @staticmethod
+    def get_flight_rules(flight_rules):
+        # type: (str) -> FlightRules
+        for rules in FlightRules:
+            if rules.name[0:1] == flight_rules:
+                return rules
+        return MessageTitles.UNKNOWN
+
+
 class MessageTitles(IntEnum):
     """This enumeration class defines a unique identifier for each of the supported ICAO and OLDI
     message titles."""
     # ATS Messages
-    ACH = 0
+    UNKNOWN = 0
+    ACH = auto()
     ACP = auto()  # This title is also defined as an OLDI message
     AFP = auto()
     ALR = auto()
@@ -63,6 +81,14 @@ class MessageTitles(IntEnum):
     ROC = auto()
     RRV = auto()
     SBY = auto()
+
+    @staticmethod
+    def get_message_title(message_title):
+        # type: (str) -> MessageTitles
+        for title in MessageTitles:
+            if title.name == message_title:
+                return title
+        return MessageTitles.UNKNOWN
 
 
 class FieldIdentifiers(IntEnum):
@@ -170,6 +196,7 @@ class SubFieldIdentifiers(IntEnum):
     F17b = auto()
     F17c = auto()
     F18altn = auto()
+    F18awr = auto()
     F18code = auto()
     F18com = auto()
     F18dat = auto()
@@ -179,6 +206,7 @@ class SubFieldIdentifiers(IntEnum):
     F18dof = auto()
     F18eet = auto()
     F18est = auto()
+    F18eur = auto()
     F18ifp = auto()
     F18nav = auto()
     F18opr = auto()
@@ -192,6 +220,15 @@ class SubFieldIdentifiers(IntEnum):
     F18rmk = auto()
     F18rvr = auto()
     F18sel = auto()
+    F18stayinfo1 = auto()
+    F18stayinfo2 = auto()
+    F18stayinfo3 = auto()
+    F18stayinfo4 = auto()
+    F18stayinfo5 = auto()
+    F18stayinfo6 = auto()
+    F18stayinfo7 = auto()
+    F18stayinfo8 = auto()
+    F18stayinfo9 = auto()
     F18sts = auto()
     F18src = auto()
     F18sur = auto()
@@ -272,6 +309,14 @@ class AdjacentUnits(IntEnum):
     BB = auto()
     CC = auto()
     L = auto()
+
+    @staticmethod
+    def get_adjacent_unit(adjacent_unit_name):
+        # type: (str) -> AdjacentUnits
+        for unit in AdjacentUnits:
+            if unit.name == adjacent_unit_name:
+                return unit
+        return AdjacentUnits.DEFAULT
 
 
 class ErrorId(IntEnum):
@@ -420,7 +465,10 @@ class ErrorId(IntEnum):
     F18_GARBAGE = auto()
     F18_UNRECOGNISED_KEYWORD = auto()
     F18_ALTN_SYNTAX = auto()
+    F18_AWR_SYNTAX = auto()
+    F18_AWR_TOO_MANY = auto()
     F18_CODE_SYNTAX = auto()
+    F18_CODE_TOO_MANY = auto()
     F18_COM_SYNTAX = auto()
     F18_DAT_SYNTAX = auto()
     F18_DEP_SYNTAX = auto()
@@ -454,6 +502,7 @@ class ErrorId(IntEnum):
     F18_RVR_TOO_MANY = auto()
     F18_SEL_SYNTAX = auto()
     F18_SEL_TOO_MANY = auto()
+    F18_STAYINFO_SYNTAX = auto()
     F18_STS_SYNTAX = auto()
     F18_STS_TOO_MANY = auto()
     F18_SRC_SYNTAX = auto()
@@ -538,3 +587,18 @@ class ErrorId(IntEnum):
     MFS_POINT_MISSING = auto()
     MFS_POINT_SYNTAX = auto()
     MFS_POINT_TOO_MANY_FIELDS = auto()
+
+    # Errors related to consistency checking
+    CONSISTENCY_F8_F8A_UNKNOWN = auto()
+    CONSISTENCY_F8_DERIVED_UNKNOWN = auto()
+    CONSISTENCY_F8_F8_DERIVED_DIFFERENT = auto()
+    CONSISTENCY_F10_R = auto()
+    CONSISTENCY_F10_Z = auto()
+    CONSISTENCY_F13A_DEP = auto()
+    CONSISTENCY_F16A_DEST = auto()
+    CONSISTENCY_F9B_TYP = auto()
+    CONSISTENCY_PBN_D = auto()
+    CONSISTENCY_PBN_G = auto()
+    CONSISTENCY_PBN_I = auto()
+    CONSISTENCY_PBN_OS = auto()
+    CONSISTENCY_PBN_R = auto()

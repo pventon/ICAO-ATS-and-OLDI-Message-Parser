@@ -193,8 +193,12 @@ class ErrorMessages:
             ErrorId.F18_UNRECOGNISED_KEYWORD: "Field 18 Keyword '!' unrecognised",
             ErrorId.F18_ALTN_SYNTAX: "The F18 ALTN field contains illegal characters, only A-Z, 0-9 "
                                      "and spaces allowed instead of '!'",
+            ErrorId.F18_AWR_SYNTAX: "Expecting F18 AWR as R[1-9] instead of '!'",
+            ErrorId.F18_AWR_TOO_MANY: "Too many F18 AWR fields, should only be one field as R[1-9] instead of '!'",
             ErrorId.F18_CODE_SYNTAX: "Expecting F18 CODE as hexadecimal address with 7 HEX digits "
                                      "starting at F000000 instead of '!'",
+            ErrorId.F18_CODE_TOO_MANY: "Too many F18 CODE fields, should only be one field  with 7 HEX digits "
+                                       "instead of '!'",
             ErrorId.F18_COM_SYNTAX: "Expecting F18 COM as communication capabilities (only A-Z, 0-9 and spaces) "
                                     "not specified in ICAO field 10a instead of '!'",
             ErrorId.F18_DAT_SYNTAX: "Expecting F18 DAT as data application capabilities (only A-Z, 0-9 and spaces) "
@@ -250,6 +254,8 @@ class ErrorMessages:
             ErrorId.F18_SEL_SYNTAX: "Expecting F18 SEL as 4 to 5 alpha characters instead of '!'",
             ErrorId.F18_SEL_TOO_MANY: "Too many F18 SEL fields, should only be one field as 4 to 5 alpha characters "
                                       "instead of '!'",
+            ErrorId.F18_STAYINFO_SYNTAX: "The F18 STAYINFO field contains illegal characters, only A-Z, 0-9 "
+                                     "and spaces allowed instead of '!'",
             ErrorId.F18_STS_SYNTAX: "Expecting F18 STS as 'ALTRV', 'ATFMX', 'FFR', 'FLTCK', 'HAZMAT', 'HEAD', "
                                     "'HOSP', 'HUM', 'MARSA', 'MEDEVAC', 'NONRVSM', 'SAR' or 'STATE' instead of '!'",
             ErrorId.F18_STS_TOO_MANY: "Too many F18 STS fields, should only be one field as 'ALTRV', 'ATFMX', "
@@ -354,6 +360,35 @@ class ErrorMessages:
             ErrorId.F81_MORE_FIELDS_EXPECTED: "Field 81 is incomplete, field should be (equipment code '/' "
                                               "equipment status) or (surveillance class '/' equipment status "
                                               "'/' surveillance equipment code) instead of '!'",
+            ErrorId.CONSISTENCY_F8_F8A_UNKNOWN: "Field 15 infers flight rule is '!', but rules are missing in Field 8;",
+            ErrorId.CONSISTENCY_F8_DERIVED_UNKNOWN: "Field 8 flight rules specified as '!' but unable to confirm"
+                                                    "flight rules from field 15 ",
+            ErrorId.CONSISTENCY_F8_F8_DERIVED_DIFFERENT: "Flight rules derived from field 15 ('!') differ from "
+                                                         "the rules given in field 8",
+            ErrorId.CONSISTENCY_F9B_TYP: "Field 9b contains 'ZZZZ' and the field 18 'TYP' subfield is missing, "
+                                          "enter a 'TYP' subfield in field 18.",
+            ErrorId.CONSISTENCY_F10_R: "Field 10a contains an 'R', therefore field 18 must contain the "
+                                       "subfield ! with one or more of the indicators 'B1', 'B2', 'B3', 'B4' or 'B5'",
+            ErrorId.CONSISTENCY_F10_Z: "Field 10a contains a 'Z', therefore field 18 must contain one of the "
+                                       "subfields !",
+            ErrorId.CONSISTENCY_F13A_DEP: "Field 13a contains 'ZZZZ' and the field 18 'DEP' subfield is missing, "
+                                          "enter a 'DEP' subfield in field 18.",
+            ErrorId.CONSISTENCY_F16A_DEST: "Field 16a contains 'ZZZZ' and the field 18 'DEST' subfield is missing, "
+                                          "enter a 'DEST' subfield in field 18.",
+            ErrorId.CONSISTENCY_PBN_D: "Field 18 ! contains one or more of the indicators "
+                                       "'B1', 'B3', 'B4', 'C1', 'C3', 'C4', 'D1', 'D3', 'D4', 'O1', "
+                                       "'O3' or 'O4', therefore F10a must contain the letter 'D'",
+            ErrorId.CONSISTENCY_PBN_G: "Field 18 ! contains one or more of the indicators "
+                                       "'B1', 'B2', 'C1', 'C2', 'D1', 'D2', 'O1' or 'O2', therefore F10a "
+                                       "must contain the letter 'G'",
+            ErrorId.CONSISTENCY_PBN_I: "Field 18 ! contains one or more of the indicators "
+                                       "'B1', 'B5', 'C1', 'C4', 'D1', 'D4', 'O1' or 'O4', therefore F10a "
+                                       "must contain the letter 'I'",
+            ErrorId.CONSISTENCY_PBN_OS: "Field 18 ! contains one or more of the indicators "
+                                         "'B1' or 'B4', therefore F10a must contain one or more of the letters "
+                                         "'D' and 'O' or 'S'",
+            ErrorId.CONSISTENCY_PBN_R: "Field 18 ! contains one or more of the indicators "
+                                       "'B1', 'B2', 'B3', 'B4' or 'B5', therefore F10a must contain the letter 'R'"
         }
 
     def get_error_message(self, error_id):

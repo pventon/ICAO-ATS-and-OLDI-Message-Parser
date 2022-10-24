@@ -13,6 +13,9 @@ class ExtractedRouteSequence:
     error_records: [ExtractedRouteRecord] = []
     """A list of extracted route items with errors"""
 
+    derived_flight_rules = ""
+    """The flight rules derived from parsing field 15, can be 'I', 'V', 'Y' or 'Z'"""
+
     def __init__(self):
         # type: () -> None
         """Constructor without any initialized extracted route record;
@@ -72,6 +75,32 @@ class ExtractedRouteSequence:
         self.extracted_route_records.append(record)
         return self.get_last_element()
 
+    def as_xml(self):
+        # type: () -> str
+        """This method generates an XML string containing a complete ERS
+        :return: A string in XML format;
+        """
+        # Add the derived rules
+        xml_string = "<derived_flight_rules rules=\"" + \
+                     self.get_derived_flight_rules() + \
+                     "\"></derived_flight_rules rules>\n"
+
+        # Generate the XML for all ERS records
+        xml_string = xml_string + "<ers>\n"
+        for item in self.get_all_elements():
+            xml_string = xml_string + "   " + item.as_xml(False) + "\n"
+
+        # If there are errors, add these as XML output
+        if self.get_number_of_errors() > 0:
+            xml_string = xml_string + "   <ers_errors>\n"
+            for item in self.get_all_errors():
+                xml_string = xml_string + "      " + item.as_xml(True) + "\n"
+            xml_string = xml_string + "   </ers_errors>\n"
+
+        xml_string = xml_string + "</ers>"
+
+        return xml_string
+
     def create_append_element(self, element_text, element_start_index, element_end_index,
                               element_base_type, element_sub_type):
         # type: (str, int, int, TokenBaseType, TokenSubType) -> ExtractedRouteRecord
@@ -102,6 +131,14 @@ class ExtractedRouteSequence:
 
         :return: A list of ExtractedRouteRecord instances that contain errors;"""
         return self.error_records
+
+    def get_derived_flight_rules(self):
+        # type: () -> str
+        """Get the flight rules derived and set from parsing F15;
+
+        :return: The flight rules as derived by parsing F15;
+        """
+        return self.derived_flight_rules
 
     def get_element_at(self, index):
         # type: (int) -> ExtractedRouteRecord | None
@@ -155,26 +192,14 @@ class ExtractedRouteSequence:
                  instance of ExtractedRouteRecord;"""
         return self.get_element_at(self.get_number_of_elements() - 2)
 
-    def as_xml(self):
-        # type: () -> str
-        """This method generates an XML string containing a complete ERS
-        :return: A string in XML format;
+    def set_derived_flight_rules(self, derived_flight_rules):
+        # type: (str) -> None
+        """Set the flight rules derived from F15 parsing;
+
+        :param derived_flight_rules: The flight rules to set as derived by parsing F15;
+        :return: None
         """
-        # Generate the XML for all ERS records
-        xml_string = "<ers>\n"
-        for item in self.get_all_elements():
-            xml_string = xml_string + "   " + item.as_xml(False) + "\n"
-
-        # If there are errors, add these as XML output
-        if self.get_number_of_errors() > 0:
-            xml_string = xml_string + "   <ers_errors>\n"
-            for item in self.get_all_errors():
-                xml_string = xml_string + "      " + item.as_xml(True) + "\n"
-            xml_string = xml_string + "   </ers_errors>\n"
-
-        xml_string = xml_string + "</ers>"
-
-        return xml_string
+        self.derived_flight_rules = derived_flight_rules
 
     def print_ers(self):
         # type: () -> None

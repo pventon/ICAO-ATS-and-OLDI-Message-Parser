@@ -26,25 +26,34 @@ OLDI messages have one further difference when compared to ATS messages; in addi
 <p>OLDI define two extra fields 80 and 81, the parser fully supports these two fields with appropriate error messages etc. These fields are an addition to the ICAO F22 suite of subfields.</p>
 <p><b><i><u>A parsed message can be output as an XML string by calling FlightPlanRecord.as_xml()</u></i></b></p>
 
+<h2>Consistency Checking</h2>
+<p>The ICAO ATS and OLDI Message Parser performs consistency checking between various fields once a flight plan has been parsed. The consistency checking can only be carried out on messages that contain the required fields, the message titles subject to consistency checking are:</p>
+<ul>
+<li>AFP</li>
+<li>ALR</li>
+<li>APL</li>
+<li>CPL</li>
+<li>FPL</li>
+</ul>
+<p>The consistency checks carried out are:</p>
+<ul>
+<li>Flight rules between F8a and the flight rules derived by the F15 parsing and route extraction process; these must match.</li>
+<li>If F10a contains the letter 'Z' then one or more of the F18 subfields 'COM', 'NAV' or 'DAT' must be present;</li>
+<li>If F10a contains the letter 'R' then the F18 'PBN' subfield must be present and contain one or more of the indicators 'B1', 'B2', 'B3', 'B4' or 'B5';</li>
+<li>If F18 contains the subfield 'PBN', F10a must contain an 'R';</li>
+<li>If F18 'PBN' contains one or more of the indicators 'B1', 'B2', 'C1', 'C2', 'D1', 'D2', 'O1' or 'O2', then F10a must contain the letter 'G';</li>
+<li>If F18 'PBN' contains one or more of the indicators 'B1', 'B3', 'C1', 'C3', 'D1', 'D3', 'O1' or 'O3', then F10a must contain the letter 'D';</li>
+<li>If F18 'PBN' contains one or more of the indicators 'B1' or 'B4', then F10a must contain either an 'O' or 'S' and a 'D';</li>
+<li>If F18 'PBN' contains one or more of the indicators 'B1', 'B5', 'C1', 'C4', 'D1', 'D4', 'O1' or 'O4', then F10a must contain the letter 'I';</li>
+<li>If F18 'PBN' contains one or more of the indicators 'C1', 'C4', 'D1', 'D4', 'O1' or 'O4', then F10a must contain the letter 'D';</li>
+<li>If F9b contains ZZZZ then field 18 must contain the TYP subfield;</li>
+<li>If F13a contains ZZZZ then field 18 must contain the DEP subfield;</li>
+<li>If F16a contains ZZZZ then field 18 must contain the DEST subfield;</li>
+</ul>
 <h2>Current Limitations</h2>
-The ICAO ATS and OLDI Message Parser lacks the current functionality:
-<ul>
-<li>There is no consistency checking implemented between F10a or F10b and F18; F10a and F10b are fully parsed to cater for all categories of equipment. The consistency checks will be implemented soon.</li>
-<li>The F15 route extraction can set the overall flight rules automatically but is currently not doing so; once this is implemented its possible to perform consistency checking between the rules given in F8a and that derived by the F15 route extraction process.</li>
-<li>No consistency check between F18 and F13 when F13a is ZZZZ;</li>
-<li>No consistency check between F18 and F16 when F16a is ZZZZ;</li>
-<li>No consistency check between F18 and F9 when F9b is ZZZZ;</li>
-</ul>
+<p>None as 23rd October 2022 that the author is currently aware of;</p>
 <h2>Future Upgrades</h2>
-<p>In the coming weeks support will be provided to enhance the ICAO ATS and OLDI Message Parser to:
-</p>
-<ul>
-<li>Implement the consistency checks between F18 and F9;</li>
-<li>Implement the consistency checks between F18 and F10;</li>
-<li>Implement the consistency checks between F18 and F13;</li>
-<li>Implement the consistency checks between F18 and F16;</li>
-<li>Implement the consistency checks between F8 and F15;</li>
-</ul>
+<p>No modifications pending as of 23rd October 2022;</p>
 <h2>Errata and Faults</h2>
 Although every attempt has been made to reduce the number of software coding errors and resulting chaos that can ensue as a result of such errors, it is highly likely that this early release will have a few bugs. The possible combinations of message structure and semantics run into millions of combinations, and it's impossible to test them all. There are a lot of unit tests that check the individual field parsers and messages in their entirety, but even with so many tests, there may still be some bugs in the software. 
 <p>Should any use be made of this software and errors found, do not hesitate to contact me at peter.venton@flightatm.com, so I may attempt to fix/correct any issues, or alternatively post any errors on the discussion page or bug tracker that I believe is supplied as part of GitHub.

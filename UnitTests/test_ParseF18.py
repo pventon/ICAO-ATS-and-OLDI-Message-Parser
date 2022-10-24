@@ -96,6 +96,19 @@ class TestParseF18(unittest.TestCase):
                          ["The F18 ALTN field contains illegal characters, only A-Z, "
                           "0-9 and spaces allowed instead of 'AN AI#RPORT'"])
 
+    def test_awr(self):
+        # OK
+        self.do_f18_test(False, 0, " AWR/ R5", [""])
+        self.do_f18_test(False, 0, " AWR/R9", [""])
+
+        # NOK
+        self.do_f18_test(True, 1, "AWR/R0",
+                         ["Expecting F18 AWR as R[1-9] instead of 'R0'"])
+        self.do_f18_test(True, 1, "AWR/R1 R9",
+                         ["Too many F18 AWR fields, should only be one field as R[1-9] instead of 'R1 R9'"])
+        self.do_f18_test(True, 1, "AWR/R3 EXTRA",
+                         ["Too many F18 AWR fields, should only be one field as R[1-9] instead of 'R3 EXTRA'"])
+
     def test_code(self):
         # OK
         self.do_f18_test(False, 0, " CODE /F123ABF", [""])
@@ -117,8 +130,8 @@ class TestParseF18(unittest.TestCase):
 
         # NOK - Extra fields
         self.do_f18_test(True, 1, "CODE/F123ABC F000000",
-                         ["Expecting F18 CODE as hexadecimal address with 7 HEX digits "
-                          "starting at F000000 instead of 'F123ABC F000000'"])
+                         ["Too many F18 CODE fields, should only be one field  with 7 HEX "
+                          "digits instead of 'F123ABC F000000'"])
 
     def test_com(self):
         # OK
@@ -418,6 +431,47 @@ class TestParseF18(unittest.TestCase):
         self.do_f18_test(True, 1, "SEL/ABCDEF",
                          ["Expecting F18 SEL as 4 to 5 alpha characters instead of 'ABCDEF'"])
 
+    def test_stayinfo(self):
+        # OK
+        self.do_f18_test(False, 0, " STAYINFO1 /STAY INFORMATION", [""])
+        self.do_f18_test(False, 0, " STAYINFO2 /STAY INFORMATION", [""])
+        self.do_f18_test(False, 0, " STAYINFO3 /STAY INFORMATION", [""])
+        self.do_f18_test(False, 0, " STAYINFO4 /STAY INFORMATION", [""])
+        self.do_f18_test(False, 0, " STAYINFO5 /STAY INFORMATION", [""])
+        self.do_f18_test(False, 0, " STAYINFO6 /STAY INFORMATION", [""])
+        self.do_f18_test(False, 0, " STAYINFO7 /STAY INFORMATION", [""])
+        self.do_f18_test(False, 0, " STAYINFO8 /STAY INFORMATION", [""])
+        self.do_f18_test(False, 0, " STAYINFO9 /STAY INFORMATION", [""])
+
+        # NOK
+        self.do_f18_test(True, 1, "STAYINFO1/STAY ^INFORMATION",
+                         ["The F18 STAYINFO field contains illegal characters, only A-Z, "
+                          "0-9 and spaces allowed instead of 'STAY ^INFORMATION'"])
+        self.do_f18_test(True, 1, "STAYINFO2/STAY ^INFORMATION",
+                         ["The F18 STAYINFO field contains illegal characters, only A-Z, "
+                          "0-9 and spaces allowed instead of 'STAY ^INFORMATION'"])
+        self.do_f18_test(True, 1, "STAYINFO3/STAY ^INFORMATION",
+                         ["The F18 STAYINFO field contains illegal characters, only A-Z, "
+                          "0-9 and spaces allowed instead of 'STAY ^INFORMATION'"])
+        self.do_f18_test(True, 1, "STAYINFO4/STAY ^INFORMATION",
+                         ["The F18 STAYINFO field contains illegal characters, only A-Z, "
+                          "0-9 and spaces allowed instead of 'STAY ^INFORMATION'"])
+        self.do_f18_test(True, 1, "STAYINFO5/STAY ^INFORMATION",
+                         ["The F18 STAYINFO field contains illegal characters, only A-Z, "
+                          "0-9 and spaces allowed instead of 'STAY ^INFORMATION'"])
+        self.do_f18_test(True, 1, "STAYINFO6/STAY ^INFORMATION",
+                         ["The F18 STAYINFO field contains illegal characters, only A-Z, "
+                          "0-9 and spaces allowed instead of 'STAY ^INFORMATION'"])
+        self.do_f18_test(True, 1, "STAYINFO7/STAY ^INFORMATION",
+                         ["The F18 STAYINFO field contains illegal characters, only A-Z, "
+                          "0-9 and spaces allowed instead of 'STAY ^INFORMATION'"])
+        self.do_f18_test(True, 1, "STAYINFO8/STAY ^INFORMATION",
+                         ["The F18 STAYINFO field contains illegal characters, only A-Z, "
+                          "0-9 and spaces allowed instead of 'STAY ^INFORMATION'"])
+        self.do_f18_test(True, 1, "STAYINFO9/STAY ^INFORMATION",
+                         ["The F18 STAYINFO field contains illegal characters, only A-Z, "
+                          "0-9 and spaces allowed instead of 'STAY ^INFORMATION'"])
+
     def test_sts(self):
         # OK
         self.do_f18_test(False, 0, "STS/  ALTRV", [""])
@@ -433,16 +487,17 @@ class TestParseF18(unittest.TestCase):
         self.do_f18_test(False, 0, "STS/  NONRVSM", [""])
         self.do_f18_test(False, 0, "STS/  SAR", [""])
         self.do_f18_test(False, 0, "STS/  STATE", [""])
+        self.do_f18_test(False, 0, "STS/  STATE SAR", [""])
+        self.do_f18_test(False, 0, "STS/MEDEVAC HUM HAZMAT MARSA", [""])
 
         # NOK
         self.do_f18_test(True, 1, "STS/ABCD",
                          ["Expecting F18 STS as 'ALTRV', 'ATFMX', 'FFR', 'FLTCK', 'HAZMAT', 'HEAD', "
                           "'HOSP', 'HUM', 'MARSA', 'MEDEVAC', 'NONRVSM', 'SAR' or 'STATE' instead of 'ABCD'"])
 
-        self.do_f18_test(True, 1, "STS/MEDEVAC HUM",
-                         ["Too many F18 STS fields, should only be one field as 'ALTRV', 'ATFMX', "
-                          "'FFR', 'FLTCK', 'HAZMAT', 'HEAD', 'HOSP', 'HUM', 'MARSA', 'MEDEVAC', "
-                          "'NONRVSM', 'SAR' or 'STATE' instead of 'MEDEVAC HUM'"])
+        self.do_f18_test(True, 1, "STS/MEDEVAC HUM HAZMAT UNKNOWN MARSA", [
+            "Expecting F18 STS as 'ALTRV', 'ATFMX', 'FFR', 'FLTCK', 'HAZMAT', 'HEAD', 'HOSP', 'HUM', "
+            "'MARSA', 'MEDEVAC', 'NONRVSM', 'SAR' or 'STATE' instead of 'UNKNOWN'"])
 
     def test_src(self):
         # OK
