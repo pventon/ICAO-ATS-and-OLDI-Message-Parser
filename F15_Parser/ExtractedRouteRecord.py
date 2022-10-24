@@ -550,7 +550,6 @@ class ExtractedRouteRecord:
             rec_type = "ers_record"
             attr_name = "break_text"
         return "   <" + rec_type + \
-               " name=\"" + self.get_name() + "\"" + \
                " start_index=\"" + str(self.get_start_index()) + "\"" + \
                " end_index=\"" + str(self.get_end_index()) + "\"" + \
                " base_type=\"" + str(self.get_base_type()) + "\"" + \
@@ -568,4 +567,4 @@ class ExtractedRouteRecord:
                " latitude=\"" + "{0:>.2f}".format(self.get_latitude()) + "\"" + \
                " longitude=\"" + "{0:>.2f}".format(self.get_longitude()) + "\"" + \
                " " + attr_name + "=\"" + error_or_break + "\"" + \
-               "></" + rec_type + ">"
+               ">" + self.get_name() + "</" + rec_type + ">"

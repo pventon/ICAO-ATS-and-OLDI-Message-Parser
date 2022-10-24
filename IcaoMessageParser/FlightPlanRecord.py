@@ -86,11 +86,10 @@ class SubFieldRecord:
         """This method returns an XML representation of the contents of this class.
 
         :return: An XML representation of the contents of this class as a string"""
-        return "      <subfield_record id=\"" + subfield_id.name + \
-               "\" name=\"" + self.get_field_text() + \
+        return "         <subfield_record id=\"" + subfield_id.name + \
                "\" start_index=\"" + str(self.get_start_index()) + \
                "\" end_index=\"" + str(self.get_end_index()) + "\">" + \
-               "</subfield_record>"
+               self.get_field_text() + "</subfield_record>"
 
 
 class FieldRecord(SubFieldRecord):
@@ -204,12 +203,11 @@ class FieldRecord(SubFieldRecord):
                     for sf in subfield:
                         subfield_xml = subfield_xml + sf.subfield_as_xml(subfield_id) + "\n"
 
-        return "   <field_record id=\"" + field_id.name + \
-               "\" name=\"" + self.get_field_text() + \
+        return "      <field_record id=\"" + field_id.name + \
                "\" start_index=\"" + str(self.get_start_index()) + \
-               "\" end_index=\"" + str(self.get_end_index()) + "\">\n" + \
+               "\" end_index=\"" + str(self.get_end_index()) + "\">" + self.get_field_text() + "\n" + \
                subfield_xml + \
-               "   </field_record>"
+               "      </field_record>"
 
 
 class ErrorRecord(SubFieldRecord):
@@ -246,11 +244,11 @@ class ErrorRecord(SubFieldRecord):
 
         :return: An XML representation of the contents of this class as a string"""
 
-        return "   <error=\"" + self.get_field_text() + \
-               "\" start_index=\"" + str(self.get_start_index()) + \
+        return "      <error " + \
+               "start_index=\"" + str(self.get_start_index()) + \
                "\" end_index=\"" + str(self.get_end_index()) + \
                "\" error_message=\"" + self.get_error_message() + "\">" + \
-               "</error>"
+               self.get_field_text() + "</error>"
 
 
 class FlightPlanRecord:
@@ -375,17 +373,17 @@ class FlightPlanRecord:
         # Build the records as an XML
         field_string = ""
         if len(self.icao_fields) > 0:
-            field_string = "<icao_fields>\n"
+            field_string = "   <icao_fields>\n"
             for field_id, record in self.icao_fields.items():
                 field_string = field_string + record.field_as_xml(field_id) + "\n"
-            field_string = field_string + "</icao_fields>\n"
+            field_string = field_string + "   </icao_fields>\n"
 
         error_string = ""
         if len(self.erroneous_fields) > 0:
-            error_string = "<icao_field_errors>\n"
+            error_string = "   <icao_field_errors>\n"
             for error_record in self.erroneous_fields:
                 error_string = error_string + error_record.field_error_as_xml() + "\n"
-            error_string = error_string + "</icao_field_errors\n"
+            error_string = error_string + "   </icao_field_errors>\n"
 
         # erroneous_fields: list[ErrorRecord] = []
         return "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\" ?>\n" + \
@@ -395,8 +393,10 @@ class FlightPlanRecord:
                "   <original_message>" + self.get_message_complete() + "</original_message>\n" + \
                "   <message_header>" + self.get_message_header() + "</message_header>\n" + \
                "   <message_body>" + self.get_message_body() + "</message_body>\n" + \
-               "   <adjacent_unit sender=\"" + self.get_sender_adjacent_unit_name().name + \
-               "\" receiver=\"" + self.get_receiver_adjacent_unit_name().name + "\"></adjacent_unit>\n" + \
+               "   <adjacent_unit_sender>" + self.get_sender_adjacent_unit_name().name + \
+               "</adjacent_unit_sender>\n" + \
+               "   <adjacent_unit_receiver>" + self.get_receiver_adjacent_unit_name().name + \
+               "</adjacent_unit_receiver>\n" + \
                field_string + \
                error_string + \
                self.get_extracted_route_sequence().as_xml() + \

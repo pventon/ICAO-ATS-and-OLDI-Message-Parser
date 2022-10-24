@@ -85,9 +85,9 @@ class ExtractedRouteSequence:
         xml_string = "   <ers>\n"
 
         # Add the derived rules
-        xml_string = xml_string + "      <derived_flight_rules rules=\"" + \
+        xml_string = xml_string + "      <derived_flight_rules>" + \
                                   self.get_derived_flight_rules() + \
-                                  "\"></derived_flight_rules rules>\n"
+                                  "</derived_flight_rules>\n"
         for item in self.get_all_elements():
             xml_string = xml_string + "   " + item.as_xml(False) + "\n"
 

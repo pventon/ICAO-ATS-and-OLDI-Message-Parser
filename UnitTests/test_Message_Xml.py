@@ -27,7 +27,7 @@ class ParseMessageTests(unittest.TestCase):
                               "-N0450F350 PNT44444 23N123W BBB B9 AAA STAY1/ 1234"
                               "-LOWW0200"
                               "-RMK/REMARK 1 STS/STS 1 RMK/REMARK 2)")
-        # print(self.fpr.as_xml())
+        print(self.fpr.as_xml())
 
     def test_ParseMessage_02(self):
         self.pm.parse_message(self.fpr,
