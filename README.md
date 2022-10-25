@@ -8,7 +8,7 @@
 </p>
 <p>The <b>ICAO ATS and OLDI Message Parser</b> uses a standalone <b>ICAO Field 15 Parser</b> that is also available as an open source <a href="https://github.com/">GitHub</a> project that can be found <a href="https://github.com/pventon/ICAO-F15-Parser">here</a>.
 </p>
-<p>All software on both the <b>ICAO ATS and OLDI Message Parser</b> and <b>ICAO Field 15 Parser</b> <a href="https://github.com/">GitHub</a> repositories has been written by Peter Venton (user pventon on <a href="https://github.com/">GitHub</a>).</p>
+<p>All software on both the <b>ICAO ATS and OLDI Message Parser</b> and <b>ICAO Field 15 Parser</b> <a href="https://github.com/">GitHub</a> repositories has been written by Peter Venton (user <a href="https://github.com/pventon">pventon</a> on <a href="https://github.com/">GitHub</a>).</p>
 
 <h1>Overview</h1>
 <p>ICAO ATS and OLDI messages conform to the syntax and semantic standards described in ICAO DOC 4444.
