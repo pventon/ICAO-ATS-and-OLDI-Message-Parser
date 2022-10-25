@@ -1,4 +1,5 @@
 # ICAO ATS and OLDI Message Parser
+<meta name="google-site-verification" content="awWwElk8GXFJIvmNuEuEowc-MlPdyv4D-TgYx4_UHsA" />
 This repository contains an ICAO ATS and OLDI Message Parser. The ICAO ATS and OLDI Message Parser is implemented using Python version 3.10.7. A more recent version of Python must be used in order to support <b>switch</b> statements used in the source code.
 <p>An acronym list is provided at the end of this readme for readers unfamiliar with ATC acronyms.
 </p>
