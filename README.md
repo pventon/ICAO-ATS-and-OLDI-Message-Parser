@@ -1,5 +1,20 @@
 # ICAO ATS and OLDI Message Parser
+<head>
+<title>ICAO ATS and OLDI Message Parser</title>
 <meta name="google-site-verification" content="awWwElk8GXFJIvmNuEuEowc-MlPdyv4D-TgYx4_UHsA" />
+<meta name="author" content="pventon"/>
+<meta name="author" content="Peter Venton"/>
+<meta name="description" content="ICAO ATS and OLDI Message Parser"/>
+<meta name="description" content="OLDI Parser"/>
+<meta name="description" content="ICAO Parser"/>
+<meta name="description" content="ICAO Message Parser"/>
+<meta name="description" content="OLDI Message Parser"/>
+<meta name="description" content="ATS Parser"/>
+<meta name="description" content="ICAO ATS Parser"/>
+<meta name="description" content="ICAO ATS Message Parser"/>
+<meta name="description" content="ICAO DOC 4444 Compliant Parser"/>
+<meta name="keyword" content="ICAO OLDI ATS Parser Message Messages"/>
+</head>
 <p>This <a href="https://github.com/">GitHub</a> repository contains an <b>ICAO ATS and OLDI Message Parser</b>. The <b>ICAO ATS and OLDI Message Parser</b> is implemented using Python version 3.10.7. A more recent version of Python must be used in order to support <b>switch</b> statements used in the source code.
 </p>
 <p>An acronym list is provided at the end of this readme for readers unfamiliar with ATC acronyms.
