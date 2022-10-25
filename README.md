@@ -1,10 +1,10 @@
 # ICAO ATS and OLDI Message Parser
 <meta name="google-site-verification" content="awWwElk8GXFJIvmNuEuEowc-MlPdyv4D-TgYx4_UHsA" />
-This repository contains an ICAO ATS and OLDI Message Parser. The ICAO ATS and OLDI Message Parser is implemented using Python version 3.10.7. A more recent version of Python must be used in order to support <b>switch</b> statements used in the source code.
+This <a href="https://github.com/">GitHub</a> repository contains an <b>ICAO ATS and OLDI Message Parser</b>. The <b>ICAO ATS and OLDI Message Parser</b> is implemented using Python version 3.10.7. A more recent version of Python must be used in order to support <b>switch</b> statements used in the source code.
 <p>An acronym list is provided at the end of this readme for readers unfamiliar with ATC acronyms.
 </p>
-<p>The open source GitHub repository for the <b>ICAO ATS and OLDI Message Parser</b> can be found <a href="https://github.com/pventon/ICAO-ATS-and-OLDI-Message-Parser">here</a>.</p>
-<p>The <b>ICAO ATS and OLDI Message Parser</b> uses a standalone <b>ICAO Field 15 Parser</b> that is also available as an open source GitHub project that can be found <a href="https://github.com/pventon/ICAO-F15-Parser">here</a>.</p>
+<p>The open source <a href="https://github.com/">GitHub</a> repository for the <b>ICAO ATS and OLDI Message Parser</b> can be found <a href="https://github.com/pventon/ICAO-ATS-and-OLDI-Message-Parser">here</a>.</p>
+<p>The <b>ICAO ATS and OLDI Message Parser</b> uses a standalone <b>ICAO Field 15 Parser</b> that is also available as an open source <a href="https://github.com/">GitHub</a> project that can be found <a href="https://github.com/pventon/ICAO-F15-Parser">here</a>.</p>
 
 <h1>Overview</h1>
 <p>ICAO ATS and OLDI messages conform to the syntax and semantic standards described in ICAO DOC 4444. 
