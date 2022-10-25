@@ -1,23 +1,32 @@
 # ICAO ATS and OLDI Message Parser
 <meta name="google-site-verification" content="awWwElk8GXFJIvmNuEuEowc-MlPdyv4D-TgYx4_UHsA" />
-This <a href="https://github.com/">GitHub</a> repository contains an <b>ICAO ATS and OLDI Message Parser</b>. The <b>ICAO ATS and OLDI Message Parser</b> is implemented using Python version 3.10.7. A more recent version of Python must be used in order to support <b>switch</b> statements used in the source code.
+<p>This <a href="https://github.com/">GitHub</a> repository contains an <b>ICAO ATS and OLDI Message Parser</b>. The <b>ICAO ATS and OLDI Message Parser</b> is implemented using Python version 3.10.7. A more recent version of Python must be used in order to support <b>switch</b> statements used in the source code.
+</p>
 <p>An acronym list is provided at the end of this readme for readers unfamiliar with ATC acronyms.
 </p>
-<p>The open source <a href="https://github.com/">GitHub</a> repository for the <b>ICAO ATS and OLDI Message Parser</b> can be found <a href="https://github.com/pventon/ICAO-ATS-and-OLDI-Message-Parser">here</a>.</p>
-<p>The <b>ICAO ATS and OLDI Message Parser</b> uses a standalone <b>ICAO Field 15 Parser</b> that is also available as an open source <a href="https://github.com/">GitHub</a> project that can be found <a href="https://github.com/pventon/ICAO-F15-Parser">here</a>.</p>
+<p>The open source <a href="https://github.com/">GitHub</a> repository for the <b>ICAO ATS and OLDI Message Parser</b> can be found <a href="https://github.com/pventon/ICAO-ATS-and-OLDI-Message-Parser">here</a>.
+</p>
+<p>The <b>ICAO ATS and OLDI Message Parser</b> uses a standalone <b>ICAO Field 15 Parser</b> that is also available as an open source <a href="https://github.com/">GitHub</a> project that can be found <a href="https://github.com/pventon/ICAO-F15-Parser">here</a>.
+</p>
+<p>All software on both the <b>ICAO ATS and OLDI Message Parser</b> and <b>ICAO Field 15 Parser</b> <a href="https://github.com/">GitHub</a> repositories has been written by Peter Venton (user pventon on <a href="https://github.com/">GitHub</a>).</p>
 
 <h1>Overview</h1>
-<p>ICAO ATS and OLDI messages conform to the syntax and semantic standards described in ICAO DOC 4444. 
+<p>ICAO ATS and OLDI messages conform to the syntax and semantic standards described in ICAO DOC 4444.
+</p>
 <p>ATS messages contain an application header described in the ICAO Annex 10, Volume II document. OLDI messages do not have an application header. Both types of message have additional header information that is processed by the appropriate protocol handler, this parser does not deal with the protocol handler header.
-The ICAO ATS and OLDI Message Parser is able to process the following:
+</p>
+<p>The <b>ICAO ATS and OLDI Message Parser</b> is able to process the following:</p>
 <ul>
 <li>Messages with or without the application header;</li>
 <li>Messages with or without an application header, with or without the open and closed brackets;</li>
 </ul>
-<p>The ICAO ATS and OLDI Message Parser automatically determines if messages have the header and/or brackets. 
-All fields are parsed and copied to an FPR for the caller to process further. ICAO field 15 is processed using a dedicated Field 15 Parser (also available on another repository).
+<p>The <b>ICAO ATS and OLDI Message Parser</b> automatically determines if messages have the header and/or brackets.
+</p>
+<p>All fields are parsed and copied to an FPR for the caller to process further. ICAO field 15 is processed using a dedicated Field 15 Parser (available <a href="https://github.com/pventon/ICAO-F15-Parser">here</a>).
+</p>
 <p>Message content is defined in configuration data; each message title consists of a finite set of ICAO fields. This is the same for OLDI messages although the OLDI messages have some additional fields defined, however, the principle is the same.
-OLDI messages have one further difference when compared to ATS messages; in addition to the content defined for a given title, the field content varies depending on the adjacent unit OLDI messages are exchanged on. The ICAO ATS and OLDI Message Parser determines the adjacent unit identifier from a message and selects the field content using a combination of the message title and adjacent unit name.
+</p>
+<p>OLDI messages have one further difference when compared to ATS messages; in addition to the content defined for a given title, the field content varies depending on the adjacent unit OLDI messages are exchanged on. The <b>ICAO ATS and OLDI Message Parser</b> determines the adjacent unit identifier from a message and selects the field content using a combination of the message title and adjacent unit name.
 </p>
 <p>Route extraction is performed on field 15 and the extracted route stored in the FPR. For details on Field 15 parsing refer to the ICAO Field 15 Parser repository.
 </p>
@@ -25,13 +34,18 @@ OLDI messages have one further difference when compared to ATS messages; in addi
 </p>
 <h2>Current Functionality</h2>
 <p>The current implementation parses all the 'basic' ICAO fields F3, F5, F7, F8, F9, F10, F13, F14, F15, F16, F17, F20 and F21.
- The ICAO fields F18, F19 and F22 are 'compound' fields made up of numerous subfields. This parser fully parses F18, F19 and F22 and all their subfields. The flight plan record stores a complete F22 flight plan that is populated by F22 subfields. Theoretically, F22 is able to specify all the fields for a complete flight plan, hence an F22 flight plan is stored within the flight plan proper. Any errors reported for F22 subfields are copied to the main flight plan record for convenience to the caller. Duplicated F22 subfield errors are also reported.</p>
-<p>Fields F18 and F19 are parsed for correct keyword/data format with all subfields copied to the flight plan. Errors are reported if the keyword/data format is found to be incorrect or text is found outside a keyword/data subfield. All F18 and F19 subfields are fully parsed.</p>
-<p>OLDI define two extra fields 80 and 81, the parser fully supports these two fields with appropriate error messages etc. These fields are an addition to the ICAO F22 suite of subfields.</p>
-<p><b><i><u>A parsed message can be output as an XML string by calling FlightPlanRecord.as_xml()</u></i></b></p>
+The ICAO fields F18, F19 and F22 are 'compound' fields made up of numerous subfields. This parser fully parses F18, F19 and F22 and all their subfields. The flight plan record stores a complete F22 flight plan that is populated by F22 subfields. Theoretically, F22 is able to specify all the fields for a complete flight plan, hence an F22 flight plan is stored within the flight plan proper. Any errors reported for F22 subfields are copied to the main flight plan record for convenience to the caller. Duplicated F22 subfield errors are also reported.
+</p>
+<p>Fields F18 and F19 are parsed for correct keyword/data format with all subfields copied to the flight plan. Errors are reported if the keyword/data format is found to be incorrect or text is found outside a keyword/data subfield. All F18 and F19 subfields are fully parsed.
+</p>
+<p>OLDI define two extra fields 80 and 81, the parser fully supports these two fields with appropriate error messages etc. These fields are an addition to the ICAO F22 suite of subfields.
+</p>
+<p><b><i>A parsed message can be output as an XML string by calling FlightPlanRecord.as_xml()</i></b>
+</p>
 
 <h2>Consistency Checking</h2>
-<p>The ICAO ATS and OLDI Message Parser performs consistency checking between various fields once a flight plan has been parsed. The consistency checking can only be carried out on messages that contain the required fields, the message titles subject to consistency checking are:</p>
+<p>The <b>ICAO ATS and OLDI Message Parser</b> performs consistency checking between various fields once a flight plan has been parsed. The consistency checking can only be carried out on messages that contain the required fields, the message titles subject to consistency checking are:
+</p>
 <ul>
 <li>AFP</li>
 <li>ALR</li>
@@ -59,11 +73,14 @@ OLDI messages have one further difference when compared to ATS messages; in addi
 <h2>Future Upgrades</h2>
 <p>No modifications pending as of 23rd October 2022;</p>
 <h2>Errata and Faults</h2>
-Although every attempt has been made to reduce the number of software coding errors and resulting chaos that can ensue as a result of such errors, it is highly likely that this early release will have a few bugs. The possible combinations of message structure and semantics run into millions of combinations, and it's impossible to test them all. There are a lot of unit tests that check the individual field parsers and messages in their entirety, but even with so many tests, there may still be some bugs in the software. 
+<p>Although every attempt has been made to reduce the number of software coding errors and resulting chaos that can ensue as a result of such errors, it is highly likely that this early release will have a few bugs. The possible combinations of message structure and semantics run into millions of combinations, and it's impossible to test them all. There are a lot of unit tests that check the individual field parsers and messages in their entirety, but even with so many tests, there may still be some bugs in the software.
+</p>
 <p>Should any use be made of this software and errors found, do not hesitate to contact me at peter.venton@flightatm.com, so I may attempt to fix/correct any issues, or alternatively post any errors on the discussion page or bug tracker that I believe is supplied as part of GitHub.
+</p>
 <p><b>Good luck!</b>
 <h1>ICAO ATS and OLDI Message Parser Usage</h1>
-In the root directory of the repository there is a class called <b>IcaoAtsMessageParser</b> that is the calling interface to the ICAO ATS and OLDI Message Parser
+<p>In the root directory of the repository there is a class called <b>IcaoAtsMessageParser</b> that is the calling interface to the ICAO ATS and OLDI Message Parser.
+</p>
 <p>Example usage of the ICAO ATS and OLDI Message Parser;</p>
 <pre><code>
 # The following example ATS FPL message will be used for the discussions that follow...
