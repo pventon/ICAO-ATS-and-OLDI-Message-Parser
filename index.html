@@ -1,21 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>ICAO ATS and OLDI Message Parser</title>
-    <meta name="google-site-verification" content="awWwElk8GXFJIvmNuEuEowc-MlPdyv4D-TgYx4_UHsA">
-    <meta name="author" content="pventon">
-    <meta name="author" content="Peter Venton">
-    <meta name="description" content="ICAO ATS and OLDI Message Parser">
-    <meta name="description" content="OLDI Parser">
-    <meta name="description" content="ICAO Parser">
-    <meta name="description" content="ICAO Message Parser">
-    <meta name="description" content="OLDI Message Parser">
-    <meta name="description" content="ATS Parser">
-    <meta name="description" content="ICAO ATS Parser">
-    <meta name="description" content="ICAO ATS Message Parser">
-    <meta name="description" content="ICAO DOC 4444 Compliant Parser">
-    <meta name="keyword" content="ICAO OLDI ATS Parser Message Messages">
+    <meta charset="UTF-8"/>
+    <meta name='viewport' content='width=device-width,initial-scale=1.0'/>
+    <title>ICAO ATS and OLDI Message Parser,
+           ICAO ATS Parser,
+           ICAO OLDI Parser,
+           ICAO ATS Message Parser,
+           ICAO OLDI Message Parser,
+           ICAO Message Parser,
+           ICAO Parser,
+           ATS Parser,
+           OLDI Parser,
+           ATS Message Parser,
+           OLDI Message Parser,
+    </title>
+    <meta name="google-site-verification" content="awWwElk8GXFJIvmNuEuEowc-MlPdyv4D-TgYx4_UHsA"/>
+    <meta name="author" content="pventon"/>
+    <meta name="author" content="Peter Venton"/>
+    <meta name="description" content="ICAO ATS and OLDI Message Parser"/>
+    <meta name="description" content="OLDI Parser"/>
+    <meta name="description" content="ICAO Parser"/>
+    <meta name="description" content="ICAO Message Parser"/>
+    <meta name="description" content="OLDI Message Parser"/>
+    <meta name="description" content="ATS Parser"/>
+    <meta name="description" content="ICAO ATS Parser"/>
+    <meta name="description" content="ICAO ATS Message Parser"/>
+    <meta name="description" content="ICAO DOC 4444 Compliant Parser"/>
+    <meta name="keyword" content="ICAO OLDI ATS Parser Message Messages"/>
 </head>
 
 <body>
@@ -113,6 +125,7 @@
         </ul>
         <p>The consistency checks carried out are:
         </p>
+
         <ul>
             <li>Flight rules between F8a and the flight rules derived by the F15 parsing and route extraction
                 process; these must match.</li>
@@ -136,6 +149,27 @@
             <li>If F16a contains ZZZZ then field 18 must contain the DEST subfield;</li>
         </ul>
 
+        <p>To simplify the consistency requirements between F10 and F18 shown above, (these were taken from the
+            EUROCONTROL FPL 2012 URD), they can be viewed in a tabular form where each row shows that the letter
+            in the first column must be present in F10a if any of the items in the remaining columns appears in the
+            F18 PBN subfield.
+        </p>
+        <table>
+            <colgroup>
+                <col span="1" style="background-color:darkgrey">
+                <col span="17" style="background-color:lightgrey">
+            </colgroup>
+            <tr><th>Compulsory</th></tr>
+            <tr><th>in F10 'a'</th><th>B1</th><th>B2</th><th>B3</th><th>B4</th><th>B5</th><th>C1</th><th>C2</th><th>C3</th><th>C4</th><th>D1</th><th>D2</th><th>D3</th><th>D4</th><th>O1</th><th>O2</th><th>O3</th><th>O4</th></tr>
+            <tr><td>D</td><td>X</td><td></td><td>X</td><td>X</td><td></td><td>X</td><td></td><td>X</td><td>X</td><td>X</td><td></td><td>X</td><td>X</td><td>X</td><td></td><td>X</td><td>X</td></tr>
+            <tr><td>G</td><td>X</td><td>X</td><td></td><td></td><td></td><td>X</td><td>X</td><td></td><td></td><td>X</td><td>X</td><td></td><td></td><td>X</td><td>X</td><td></td><td></td></tr>
+            <tr><td>I</td><td>X</td><td></td><td></td><td></td><td>X</td><td>X</td><td></td><td></td><td>X</td><td>X</td><td></td><td></td><td>X</td><td>X</td><td></td><td></td><td>X</td></tr>
+            <tr><td>O or S</td><td>X</td><td></td><td></td><td>X</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td>R</td><td>X</td><td>X</td><td>X</td><td>X</td><td>X</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        </table>
+
+
+
     <h2>Current Limitations</h2>
         <p>None as 23rd October 2022 that the author is currently aware of;
         </p>
@@ -153,11 +187,11 @@
             still be some bugs in the software.
         </p>
         <p>Should any use be made of this software and errors found, do not hesitate to contact me at
-            <a href="mailto:peter.venton@flightatm.com">Send Email</a>, so I may attempt to fix/correct any
-            issues, or alternatively post any errors on the discussion page or bug tracker that I believe
-            is supplied as part of GitHub.
+            <a href="mailto:peter.venton@flightatm.com">peter.venton@flightatm.com</a>, so I may attempt to
+            fix/correct any issues, or alternatively post any errors on the discussion page or bug tracker
+            that I believe is supplied as part of GitHub.
         </p>
-        <p><b>Good luck!</b>
+        <p><b>Good luck and Enjoy!</b>
         </p>
 
 <h1>ICAO ATS and OLDI Message Parser Usage</h1>
@@ -167,132 +201,137 @@
     <p>Example usage of the ICAO ATS and OLDI Message Parser;
     </p>
 
-    <pre><code>
-        # The following example ATS FPL message will be used for the discussions that follow...
-        # icao_message: str = "(FPL-TEST01-IS-B737/M-S/C-LOWW0800-N0450f350 PNT B9 LNZ1A-EGLL0200-0)"
-    </code></pre>
+    <table>
+        <colgroup>
+            <col span="1" style="background-color:lightgrey">
+        </colgroup>
+        <tr><td><pre><code> # The following example ATS FPL message will be used for the discussions that follow...
+ icao_message: str = "(FPL-TEST01-IS-B737/M-S/C-LOWW0800-N0450f350 PNT B9 LNZ1A-EGLL0200-0)"
+    </code></pre></td></tr>
+    </table>
 
     <p>There are two methods provided for parsing a message titled Option 1 and Option 2 below.
     </p>
 
     <h2>Option 1</h2>
-        <pre><code>
-        # Instantiate the parser...
-        icao_message_parser: IcaoAtsMessageParser = IcaoAtsMessageParser()
-        <br>
-        # Parse the message...
-        flight_plan_record: FlightPlanRecord = icao_message_parser.parse_message_p1(icao_message)
-        <br>
-        # Check if any errors were reported in the basic field processing...
-        if flight_plan_record.errors_detected():
-            # For fields other than field 15 call the following method, this returns a list of ErrorRecord's...
-            basic_field_errors: [ErrorRecord] = flight_plan_record.get_erroneous_fields()
-        <br>
-        # For field 15, get the Extracted Route Sequence and get the errors, returns a list of Tokens...
-        if flight_plan_record.get_extracted_route_sequence().get_number_of_errors() > 0:
-            field_15_errors: [Token] = flight_plan_record.get_extracted_route_sequence().get_all_errors()
-        <br>
-        # To extract fields and / or subfields use the methods in the following example code...
-            # Get the complete ICAO Field 9
-            f9: str = flight_plan_record.get_icao_field(FieldIdentifiers.F9).get_field_text()
-        <br>
-        # Get the ICAO subfield 9c, WTC
-        f9c: str = flight_plan_record.get_icao_subfield(
-                    FieldIdentifiers.F9, SubFieldIdentifiers.F9c).get_field_text()
-        </code></pre>
+    <table>
+        <colgroup>
+            <col span="1" style="background-color:lightgrey">
+        </colgroup>
+        <tr><td><pre><code> # Instantiate the parser...
+ icao_message_parser: IcaoAtsMessageParser = IcaoAtsMessageParser()</code></pre></td></tr>
+        <tr><td><pre><code> # Parse the message...
+ flight_plan_record: FlightPlanRecord = icao_message_parser.parse_message_p1(icao_message)</code></pre></td></tr>
+        <tr><td><pre><code> # Check if any errors were reported in the basic field processing...
+ if flight_plan_record.errors_detected():
+     # For fields other than field 15 call the following method, this returns a list of ErrorRecord's...
+     basic_field_errors: [ErrorRecord] = flight_plan_record.get_erroneous_fields()</code></pre></td></tr>
+        <tr><td><pre><code> # For field 15, get the Extracted Route Sequence and get the errors, returns a list of Tokens...
+ if flight_plan_record.get_extracted_route_sequence().get_number_of_errors() > 0:
+     field_15_errors: [Token] = flight_plan_record.get_extracted_route_sequence().get_all_errors()</code></pre></td></tr>
+        <tr><td><pre><code> # To extract fields and / or subfields use the methods in the following example code...
+ # Get the complete ICAO Field 9
+     f9: str = flight_plan_record.get_icao_field(FieldIdentifiers.F9).get_field_text()</code></pre></td></tr>
+        <tr><td><pre><code> # Get the ICAO subfield 9c, WTC
+ f9c: str = flight_plan_record.get_icao_subfield(
+            FieldIdentifiers.F9, SubFieldIdentifiers.F9c).get_field_text()</code></pre></td></tr>
+    </table>
 
     <h2>Option 2</h2>
-        <pre><code>
-        # Instantiate a FlightPlanRecord, the output is written into this class instance.
-        flight_plan_record: FlightPlanRecord = FlightPlanRecord()
-        <br>
-        # Instantiate the parser...
-        icao_message_parser = IcaoAtsMessageParser()
-        <br>
-        # Parse the message...
-        result = icao_message_parser.parse_message_p2(flight_plan_record, icao_message)
-        <br>
-        # If errors were detected, result will be False; to get the error records do the following...
-        if not result:
-            # For fields other than field 15 call the following method, this returns a list of ErrorRecord's...
-            basic_field_errors: [ErrorRecord] = flight_plan_record.get_erroneous_fields()
-        <br>
-        # For field 15, get the Extracted Route Sequence and get the errors, returns a list of Tokens...
-        if flight_plan_record.get_extracted_route_sequence().get_number_of_errors() > 0:
-            field_15_errors: [Token] = flight_plan_record.get_extracted_route_sequence().get_all_errors()
-        <br>
-        # To extract fields and / or subfields use the methods in the following example code...
-        # Get the complete ICAO Field 13
-        f13: str = flight_plan_record.get_icao_field(FieldIdentifiers.F13).get_field_text()
-        <br>
-        # Get the ICAO field 16 EET (Field 16 'b')
-        f16b: str = flight_plan_record.get_icao_subfield(
-                        FieldIdentifiers.F16, SubFieldIdentifiers.F16b).get_field_text()
-    </code></pre>
+    <table>
+        <colgroup>
+            <col span="1" style="background-color:lightgrey">
+        </colgroup>
+        <tr><td><pre><code> # Instantiate a FlightPlanRecord, the output is written into this class instance.
+ flight_plan_record: FlightPlanRecord = FlightPlanRecord() </code></pre></td></tr>
+        <tr><td><pre><code> # Instantiate the parser...
+ icao_message_parser = IcaoAtsMessageParser() </code></pre></td></tr>
+        <tr><td><pre><code> # Parse the message...
+ result = icao_message_parser.parse_message_p2(flight_plan_record, icao_message) </code></pre></td></tr>
+        <tr><td><pre><code> # If errors were detected, result will be False; to get the error records do the following...
+ if not result:
+     # For fields other than field 15 call the following method, this returns a list of ErrorRecord's...
+     basic_field_errors: [ErrorRecord] = flight_plan_record.get_erroneous_fields() </code></pre></td></tr>
+        <tr><td><pre><code> # For field 15, get the Extracted Route Sequence and get the errors, returns a list of Tokens...
+ if flight_plan_record.get_extracted_route_sequence().get_number_of_errors() > 0:
+     field_15_errors: [Token] = flight_plan_record.get_extracted_route_sequence().get_all_errors() </code></pre></td></tr>
+        <tr><td><pre><code> # To extract fields and / or subfields use the methods in the following example code...
+ # Get the complete ICAO Field 13
+ f13: str = flight_plan_record.get_icao_field(FieldIdentifiers.F13).get_field_text() </code></pre></td></tr>
+        <tr><td><pre><code> # Get the ICAO field 16 EET (Field 16 'b')
+ f16b: str = flight_plan_record.get_icao_subfield(
+     FieldIdentifiers.F16, SubFieldIdentifiers.F16b).get_field_text() </code></pre></td></tr>
+    </table>
 
 <h1>Acronyms</h1>
-<ul>
-<li>ABI     OLDI Advanced Boundary Information</li>
-<li>ACH     ATS ATC Change Message</li>
-<li>ACT     OLDI Activation Message</li>
-<li>ACP     ATS Advanced Coordination Procedure Message</li>
-<li>ACP     OLDI Advanced Coordination Procedure Message</li>
-<li>ADEP    Aerodrome of Departure (Given as an ICAO Location Indicator)</li>
-<li>ADES    Aerodrome of Destination (Given as an ICAO Location Indicator)</li>
-<li>AFP     ATS ATC Flightplan Proposal Message</li>
-<li>AIP     Aeronautical Information Publication</li>
-<li>ALR     ATS ATC Alerting Message</li>
-<li>AMA     OLDI Arrival Management Message</li>
-<li>APL     ATS ATC Flight Plan Message</li>
-<li>ARR     ATS Arrival Message</li>
-<li>ATC     Air Traffic Control</li>
-<li>ATS     Air Traffic Service</li>
-<li>CDN     ATS Change Message</li>
-<li>CDN     OLDI Coordination Message</li>
-<li>CFMU    Central Flow Management Unit</li>
-<li>CNL     ATS Cancel Message</li>
-<li>COD     OLDI Advanced Coordination Procedure</li>
-<li>CPL     OLDI Current Flight Plan Message</li>
-<li>CPL     ATS Current Flight Plan Message</li>
-<li>DCT     Direct (used to specify direct routing between points)</li>
-<li>DEP     ATS Departure Message</li>
-<li>DLA     ATS Delay Message</li>
-<li>ERS     Extracted Route Sequence</li>
-<li>EST     ATS Estimate Message</li>
-<li>ETO     Estimated Time Over</li>
-<li>FPL     ATS Flight Plan Message</li>
-<li>FPR     Flight Plan Record</li>
-<li>FNM     Gander Oceanic Message</li>
-<li>GAT     General Air Traffic</li>
-<li>GUI     Graphical User Interface</li>
-<li>ICAO    International Civil Aviation Organisation</li>
-<li>IFR     Instrument Flight Rules</li>
-<li>IFPS    Initial Flight Planing System</li>
-<li>IFPSTOP Indicates end of IFR routing (used by the CFMU IFPS)</li>
-<li>IFPSTART Indicates start of IFR routing (used by the CFMU IFPS)</li>
-<li>INF     OLDI Information Message</li>
-<li>LAM     OLDI Logical Acknowledgement</li>
-<li>MAC     OLDI Message for the Abrogation of Coordination</li>
-<li>MFS     Oceanic Centre Message</li>
-<li>OAT     Operational Air Traffic (typically military)</li>
-<li>OCM     OLDI Oceanic Clearance Message</li>
-<li>PAC     OLDI Preliminary Activation Message</li>
-<li>PRP     Published Route Points</li>
-<li>RAP     OLDI Referred Activate Proposal Message</li>
-<li>RCF     ATS Radio communication failure</li>
-<li>REJ     OLDI Reject Message</li>
-<li>REV     OLDI Revision Message</li>
-<li>RJC     OLDI Reject Coordination Message</li>
-<li>ROC     OLDI Request Oceanic Clearance Message</li>
-<li>RRV     OLDI Referred Revision Proposal Message</li>
-<li>RQP     ATS Request Flight Plan Message</li>
-<li>RQS     ATS Request Supplementary Flight Plan Information Message</li>
-<li>SBY     OLDI Standby Message</li>
-<li>SI      Metric measurement system</li>
-<li>SID     Standard Instrument Departure</li>
-<li>SPL     ATS Supplementary Flight Plan Message</li>
-<li>STAR    Standard Arrival Route</li>
-<li>VFR     Visual Flight Rules</li>
-</ul>
+<table>
+    <colgroup>
+        <col span="1" style="background-color:darkgrey">
+        <col style="background-color:lightgrey">
+    </colgroup>
+    <tr><th>Acronym</th><th>Acronym Definition</th></tr>
+    <tr><td>ABI</td><td>OLDI Advanced Boundary Information</td></tr>
+    <tr><td>ACH</td><td>ATS ATC Change Message</td></tr>
+    <tr><td>ACT</td><td>OLDI Activation Message</td></tr>
+    <tr><td>ACP</td><td>ATS Advanced Coordination Procedure Message</td></tr>
+    <tr><td>ACP</td><td>OLDI Advanced Coordination Procedure Message</td></tr>
+    <tr><td>ADEP</td><td>Aerodrome of Departure (Given as an ICAO Location Indicator)</td></tr>
+    <tr><td>ADES</td><td>Aerodrome of Destination (Given as an ICAO Location Indicator)</td></tr>
+    <tr><td>AFP</td><td>ATS ATC Flightplan Proposal Message</td></tr>
+    <tr><td>AIP</td><td>Aeronautical Information Publication</td></tr>
+    <tr><td>ALR</td><td>ATS ATC Alerting Message</td></tr>
+    <tr><td>AMA</td><td>OLDI Arrival Management Message</td></tr>
+    <tr><td>APL</td><td>ATS ATC Flight Plan Message</td></tr>
+    <tr><td>ARR</td><td>ATS Arrival Message</td></tr>
+    <tr><td>ATC</td><td>Air Traffic Control</td></tr>
+    <tr><td>ATS</td><td>Air Traffic Service</td></tr>
+    <tr><td>CDN</td><td>ATS Change Message</td></tr>
+    <tr><td>CDN</td><td>OLDI Coordination Message</td></tr>
+    <tr><td>CFMU</td><td>Central Flow Management Unit</td></tr>
+    <tr><td>CNL</td><td>ATS Cancel Message</td></tr>
+    <tr><td>COD</td><td>OLDI Advanced Coordination Procedure</td></tr>
+    <tr><td>CPL</td><td>OLDI Current Flight Plan Message</td></tr>
+    <tr><td>CPL</td><td>ATS Current Flight Plan Message</td></tr>
+    <tr><td>DCT</td><td>Direct (used to specify direct routing between points)</td></tr>
+    <tr><td>DEP</td><td>ATS Departure Message</td></tr>
+    <tr><td>DLA</td><td>ATS Delay Message</td></tr>
+    <tr><td>ERS</td><td>Extracted Route Sequence</td></tr>
+    <tr><td>EST</td><td>ATS Estimate Message</td></tr>
+    <tr><td>ETO</td><td>Estimated Time Over</td></tr>
+    <tr><td>FPL</td><td>ATS Flight Plan Message</td></tr>
+    <tr><td>FPR</td><td>Flight Plan Record</td></tr>
+    <tr><td>FNM</td><td>Gander Oceanic Message</td></tr>
+    <tr><td>GAT</td><td>General Air Traffic</td></tr>
+    <tr><td>GUI</td><td>Graphical User Interface</td></tr>
+    <tr><td>ICAO</td><td>International Civil Aviation Organisation</td></tr>
+    <tr><td>IFR</td><td>Instrument Flight Rules</td></tr>
+    <tr><td>IFPS</td><td>Initial Flight Planing System</td></tr>
+    <tr><td>IFPSTOP</td><td>Indicates end of IFR routing (used by the CFMU IFPS)</td></tr>
+    <tr><td>IFPSTART</td><td>Indicates start of IFR routing (used by the CFMU IFPS)</td></tr>
+    <tr><td>INF</td><td>OLDI Information Message</td></tr>
+    <tr><td>LAM</td><td>OLDI Logical Acknowledgement</td></tr>
+    <tr><td>MAC</td><td>OLDI Message for the Abrogation of Coordination</td></tr>
+    <tr><td>MFS</td><td>Oceanic Centre Message</td></tr>
+    <tr><td>OAT</td><td>Operational Air Traffic (typically military)</td></tr>
+    <tr><td>OCM</td><td>OLDI Oceanic Clearance Message</td></tr>
+    <tr><td>PAC</td><td>OLDI Preliminary Activation Message</td></tr>
+    <tr><td>PRP</td><td>Published Route Points</td></tr>
+    <tr><td>RAP</td><td>OLDI Referred Activate Proposal Message</td></tr>
+    <tr><td>RCF</td><td>ATS Radio communication failure</td></tr>
+    <tr><td>REJ</td><td>OLDI Reject Message</td></tr>
+    <tr><td>REV</td><td>OLDI Revision Message</td></tr>
+    <tr><td>RJC</td><td>OLDI Reject Coordination Message</td></tr>
+    <tr><td>ROC</td><td>OLDI Request Oceanic Clearance Message</td></tr>
+    <tr><td>RRV</td><td>OLDI Referred Revision Proposal Message</td></tr>
+    <tr><td>RQP</td><td>ATS Request Flight Plan Message</td></tr>
+    <tr><td>RQS</td><td>ATS Request Supplementary Flight Plan Information Message</td></tr>
+    <tr><td>SBY</td><td>OLDI Standby Message</td></tr>
+    <tr><td>SI</td><td>Metric measurement system</td></tr>
+    <tr><td>SID</td><td>Standard Instrument Departure</td></tr>
+    <tr><td>SPL</td><td>ATS Supplementary Flight Plan Message</td></tr>
+    <tr><td>STAR</td><td>Standard Arrival Route</td></tr>
+    <tr><td>VFR</td><td>Visual Flight Rules</td></tr>
+</table>
+
 </body>
 </html>
