@@ -319,14 +319,14 @@ class ParseMessage:
         :return: False if errors are detected, True if all is OK;
         """
         # If there is no extracted route bail out
-        if flight_plan_record.get_extracted_route_sequence() is None:
+        if flight_plan_record.get_extracted_route() is None:
             return True
 
         # Get the derived flight rules from the extracted route and set the derived rules
         # to the flight plan record
         flight_plan_record.set_derived_flight_rules(
             FlightRules.get_flight_rules(
-                flight_plan_record.get_extracted_route_sequence().get_derived_flight_rules()))
+                flight_plan_record.get_extracted_route().get_derived_flight_rules()))
 
         # Get the flight rules from field 8
         if flight_plan_record.get_icao_subfield(FieldIdentifiers.F8, SubFieldIdentifiers.F8a) is None:
@@ -373,16 +373,16 @@ class ParseMessage:
         # Make sure we have the resources needed to resolve the field 15 ERS indices
         if flight_plan_record.get_icao_field(FieldIdentifiers.F15) is None:
             return
-        if flight_plan_record.get_extracted_route_sequence() is None:
+        if flight_plan_record.get_extracted_route() is None:
             return
 
         f15_field_start_index = flight_plan_record.get_icao_field(FieldIdentifiers.F15).get_start_index()
 
-        for ers_record in flight_plan_record.get_extracted_route_sequence().get_all_elements():
+        for ers_record in flight_plan_record.get_extracted_route().get_all_elements():
             ers_record.set_start_index(ers_record.get_start_index() + f15_field_start_index)
             ers_record.set_end_index(ers_record.get_end_index() + f15_field_start_index)
 
-        for ers_error in flight_plan_record.get_extracted_route_sequence().get_all_errors():
+        for ers_error in flight_plan_record.get_extracted_route().get_all_errors():
             ers_error.set_start_index(ers_error.get_start_index() + f15_field_start_index)
             ers_error.set_end_index(ers_error.get_end_index() + f15_field_start_index)
 

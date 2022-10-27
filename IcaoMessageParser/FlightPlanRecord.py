@@ -399,7 +399,7 @@ class FlightPlanRecord:
                "</adjacent_unit_receiver>\n" + \
                field_string + \
                error_string + \
-               self.get_extracted_route_sequence().as_xml() + \
+               self.get_extracted_route().as_xml() + \
                "\n</flight_plan_record>"
 
     def errors_detected(self):
@@ -413,9 +413,9 @@ class FlightPlanRecord:
         """Check if the Extracted Route Sequence has any errors
 
             :return: True if errors were detected while parsing ICAO field 15, False otherwise"""
-        if self.get_extracted_route_sequence() is None:
+        if self.get_extracted_route() is None:
             return False
-        return self.get_extracted_route_sequence().get_number_of_errors() > 0
+        return self.get_extracted_route().get_number_of_errors() > 0
 
     def get_all_icao_subfields(self, field_id, subfield_id):
         # type: (FieldIdentifiers, SubFieldIdentifiers) -> [SubFieldRecord]
@@ -451,19 +451,12 @@ class FlightPlanRecord:
         :return: The extracted route sequence as an instance of the ExtractedRouteSequence class"""
         return self.extracted_route
 
-    def get_extracted_route_sequence(self):
-        # type: () -> ExtractedRouteSequence | None
-        """Get the Extracted Route Sequence from the flight plan record
-
-            :return: The extracted route sequence as derived by the field 15 parser from ICAO field 15"""
-        return self.extracted_route
-
     def get_f15_errors(self):
         # type: () -> [ExtractedRouteRecord]
         """Return the list of field 15 error records (contain errors etc.)
 
             :return: A list of errors reported by the ICAO field 15 parser"""
-        return self.get_extracted_route_sequence().get_all_errors()
+        return self.get_extracted_route().get_all_errors()
 
     def get_f22_flight_plan(self):
         # type: () -> FlightPlanRecord
