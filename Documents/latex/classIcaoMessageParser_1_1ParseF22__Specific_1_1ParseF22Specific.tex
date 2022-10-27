@@ -1,0 +1,99 @@
+\hypertarget{classIcaoMessageParser_1_1ParseF22__Specific_1_1ParseF22Specific}{}\doxysection{Icao\+Message\+Parser.\+Parse\+F22\+\_\+\+Specific.\+Parse\+F22\+Specific Class Reference}
+\label{classIcaoMessageParser_1_1ParseF22__Specific_1_1ParseF22Specific}\index{IcaoMessageParser.ParseF22\_Specific.ParseF22Specific@{IcaoMessageParser.ParseF22\_Specific.ParseF22Specific}}
+
+
+Inheritance diagram for Icao\+Message\+Parser.\+Parse\+F22\+\_\+\+Specific.\+Parse\+F22\+Specific\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=247pt]{classIcaoMessageParser_1_1ParseF22__Specific_1_1ParseF22Specific__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Icao\+Message\+Parser.\+Parse\+F22\+\_\+\+Specific.\+Parse\+F22\+Specific\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=247pt]{classIcaoMessageParser_1_1ParseF22__Specific_1_1ParseF22Specific__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1ParseF22__Specific_1_1ParseF22Specific_a583144cc8cfca9ce9a8f47cf1ed1d5de}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a93341de2e606a5ad85e0dd34f0336c00}{flight\+\_\+plan\+\_\+record}}, sfif, \mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a48a759a0835373c4ffbfa523d3566cdd}{sfd}})
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1ParseF22__Specific_1_1ParseF22Specific_a5635804dfe9c4fb189f14ef91f69b90b}{parse\+\_\+field}} (self)
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseF22__Specific_1_1ParseF22Specific_a583144cc8cfca9ce9a8f47cf1ed1d5de}\label{classIcaoMessageParser_1_1ParseF22__Specific_1_1ParseF22Specific_a583144cc8cfca9ce9a8f47cf1ed1d5de}} 
+\index{IcaoMessageParser.ParseF22\_Specific.ParseF22Specific@{IcaoMessageParser.ParseF22\_Specific.ParseF22Specific}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!IcaoMessageParser.ParseF22\_Specific.ParseF22Specific@{IcaoMessageParser.ParseF22\_Specific.ParseF22Specific}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Parse\+F22\+\_\+\+Specific.\+Parse\+F22\+Specific.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{flight\+\_\+plan\+\_\+record,  }\item[{}]{sfif,  }\item[{}]{sfd }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Constructor to set up the field parser for specific ICAO field 22 subfields.
+Arguments
+---------
+flight_plan_record:   Flight plan to populate
+sfif:                 Configuration data defining the subfields in an ICAO field
+sfd:                  Configuration data describing the syntax and other information about all subfields\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{10     \textcolor{keyword}{def }\_\_init\_\_(self, flight\_plan\_record, sfif, sfd):}
+\DoxyCodeLine{11         \textcolor{comment}{\# type: (FlightPlanRecord, SubFieldsInFields, SubFieldDescriptions) -\/> None}}
+\DoxyCodeLine{12         \textcolor{stringliteral}{"""Constructor to set up the field parser for specific ICAO field 22 subfields.}}
+\DoxyCodeLine{13 \textcolor{stringliteral}{        Arguments}}
+\DoxyCodeLine{14 \textcolor{stringliteral}{        -\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{15 \textcolor{stringliteral}{        flight\_plan\_record:   Flight plan to populate}}
+\DoxyCodeLine{16 \textcolor{stringliteral}{        sfif:                 Configuration data defining the subfields in an ICAO field}}
+\DoxyCodeLine{17 \textcolor{stringliteral}{        sfd:                  Configuration data describing the syntax and other information about all subfields"""}}
+\DoxyCodeLine{18         super().\_\_init\_\_(flight\_plan\_record,  \textcolor{comment}{\# Flight plan to populate}}
+\DoxyCodeLine{19                          sfd,  \textcolor{comment}{\# Configuration data describing individual subfields}}
+\DoxyCodeLine{20                          FieldIdentifiers.F22\_SPECIFIC,  \textcolor{comment}{\# ICAO field identifier}}
+\DoxyCodeLine{21                          \textcolor{stringliteral}{" \(\backslash\)n\(\backslash\)t\(\backslash\)r"},  \textcolor{comment}{\# Whitespace to tokenize the field}}
+\DoxyCodeLine{22                          sfif.get\_field\_content\_description(FieldIdentifiers.F22\_SPECIFIC),  \textcolor{comment}{\# Subfields in this field}}
+\DoxyCodeLine{23                          sfif.get\_field\_errors(FieldIdentifiers.F22\_SPECIFIC))  \textcolor{comment}{\# Errors associated with this field}}
+\DoxyCodeLine{24 }
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseF22__Specific_1_1ParseF22Specific_a5635804dfe9c4fb189f14ef91f69b90b}\label{classIcaoMessageParser_1_1ParseF22__Specific_1_1ParseF22Specific_a5635804dfe9c4fb189f14ef91f69b90b}} 
+\index{IcaoMessageParser.ParseF22\_Specific.ParseF22Specific@{IcaoMessageParser.ParseF22\_Specific.ParseF22Specific}!parse\_field@{parse\_field}}
+\index{parse\_field@{parse\_field}!IcaoMessageParser.ParseF22\_Specific.ParseF22Specific@{IcaoMessageParser.ParseF22\_Specific.ParseF22Specific}}
+\doxysubsubsection{\texorpdfstring{parse\_field()}{parse\_field()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Parse\+F22\+\_\+\+Specific.\+Parse\+F22\+Specific.\+parse\+\_\+field (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This method is the program entry point for the basic field parser to parse ICAO fields 3, 5, 7,
+8, 9, 10, 13, 14, 16, 17, 80 and 81.
+
+This method calls the 'base' parser self.parse_field_base() to do most of the heavy lifting. Once
+the base parse is finished, this method checks that all fields are present, not missing any nor
+any extra fields present.
+    :return: None\end{DoxyVerb}
+ 
+
+Reimplemented from \mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a395ea8f9247a4abe9881d3fa6eb437b4}{Icao\+Message\+Parser.\+Parse\+Fields\+Common.\+Parse\+Fields\+Common}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{25     \textcolor{keyword}{def }parse\_field(self):}
+\DoxyCodeLine{26         \textcolor{comment}{\# type: () -\/> None}}
+\DoxyCodeLine{27         \textcolor{keywordflow}{pass}}
+\DoxyCodeLine{28         \textcolor{comment}{\# Call the dedicated specific field 22 fields parser}}
+\DoxyCodeLine{29         \textcolor{comment}{\# TODO Implement the specific field 22 fields parser in here}}
+\DoxyCodeLine{30         \textcolor{comment}{\# print("Specific Field 22 Parser to be implemented -\/ no parsing of this field yet!!")}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Icao\+Message\+Parser/\mbox{\hyperlink{ParseF22__Specific_8py}{Parse\+F22\+\_\+\+Specific.\+py}}\end{DoxyCompactItemize}

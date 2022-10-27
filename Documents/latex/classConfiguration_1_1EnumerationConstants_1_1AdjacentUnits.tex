@@ -1,0 +1,115 @@
+\hypertarget{classConfiguration_1_1EnumerationConstants_1_1AdjacentUnits}{}\doxysection{Configuration.\+Enumeration\+Constants.\+Adjacent\+Units Class Reference}
+\label{classConfiguration_1_1EnumerationConstants_1_1AdjacentUnits}\index{Configuration.EnumerationConstants.AdjacentUnits@{Configuration.EnumerationConstants.AdjacentUnits}}
+
+
+Inheritance diagram for Configuration.\+Enumeration\+Constants.\+Adjacent\+Units\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=227pt]{classConfiguration_1_1EnumerationConstants_1_1AdjacentUnits__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Configuration.\+Enumeration\+Constants.\+Adjacent\+Units\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=227pt]{classConfiguration_1_1EnumerationConstants_1_1AdjacentUnits__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{classConfiguration_1_1EnumerationConstants_1_1AdjacentUnits_a688ec3d3a37e838b3ea61b01e1ea3762}{get\+\_\+adjacent\+\_\+unit}} (adjacent\+\_\+unit\+\_\+name)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classConfiguration_1_1EnumerationConstants_1_1AdjacentUnits_affb23240da7b598df6c109de252e5ee9}{D\+E\+F\+A\+U\+LT}} = 0
+\item 
+\mbox{\hyperlink{classConfiguration_1_1EnumerationConstants_1_1AdjacentUnits_a13478184a1ae4243b32864519c8eee4b}{AA}} = auto()
+\item 
+\mbox{\hyperlink{classConfiguration_1_1EnumerationConstants_1_1AdjacentUnits_afdedb7a6e6d3154c9756fed9d8278eec}{AX}} = auto()
+\item 
+\mbox{\hyperlink{classConfiguration_1_1EnumerationConstants_1_1AdjacentUnits_ab876b40319641d8bc455921050cfe1c3}{BB}} = auto()
+\item 
+\mbox{\hyperlink{classConfiguration_1_1EnumerationConstants_1_1AdjacentUnits_ad29bfac2141803453ddb8d870a72096e}{CC}} = auto()
+\item 
+\mbox{\hyperlink{classConfiguration_1_1EnumerationConstants_1_1AdjacentUnits_aef9ef38b077ff00d89c85fb3efc2785b}{L}} = auto()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Enumeration to identify an adjacent unit for OLDI messages. The field content for OLDI
+messages varies depending on the adjacent unit that an OLDI message is exchanged over.
+supported OLDI adjacent units. Using a combination of the message title, message type and
+adjacent unit a precise field list can be defined for a given OLDI message title, type
+and adjacent unit.\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classConfiguration_1_1EnumerationConstants_1_1AdjacentUnits_a688ec3d3a37e838b3ea61b01e1ea3762}\label{classConfiguration_1_1EnumerationConstants_1_1AdjacentUnits_a688ec3d3a37e838b3ea61b01e1ea3762}} 
+\index{Configuration.EnumerationConstants.AdjacentUnits@{Configuration.EnumerationConstants.AdjacentUnits}!get\_adjacent\_unit@{get\_adjacent\_unit}}
+\index{get\_adjacent\_unit@{get\_adjacent\_unit}!Configuration.EnumerationConstants.AdjacentUnits@{Configuration.EnumerationConstants.AdjacentUnits}}
+\doxysubsubsection{\texorpdfstring{get\_adjacent\_unit()}{get\_adjacent\_unit()}}
+{\footnotesize\ttfamily def Configuration.\+Enumeration\+Constants.\+Adjacent\+Units.\+get\+\_\+adjacent\+\_\+unit (\begin{DoxyParamCaption}\item[{}]{adjacent\+\_\+unit\+\_\+name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{314     \textcolor{keyword}{def }get\_adjacent\_unit(adjacent\_unit\_name):}
+\DoxyCodeLine{315         \textcolor{comment}{\# type: (str) -\/> AdjacentUnits}}
+\DoxyCodeLine{316         \textcolor{keywordflow}{for} unit \textcolor{keywordflow}{in} AdjacentUnits:}
+\DoxyCodeLine{317             \textcolor{keywordflow}{if} unit.name == adjacent\_unit\_name:}
+\DoxyCodeLine{318                 \textcolor{keywordflow}{return} unit}
+\DoxyCodeLine{319         \textcolor{keywordflow}{return} AdjacentUnits.DEFAULT}
+\DoxyCodeLine{320 }
+\DoxyCodeLine{321 }
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classConfiguration_1_1EnumerationConstants_1_1AdjacentUnits_a13478184a1ae4243b32864519c8eee4b}\label{classConfiguration_1_1EnumerationConstants_1_1AdjacentUnits_a13478184a1ae4243b32864519c8eee4b}} 
+\index{Configuration.EnumerationConstants.AdjacentUnits@{Configuration.EnumerationConstants.AdjacentUnits}!AA@{AA}}
+\index{AA@{AA}!Configuration.EnumerationConstants.AdjacentUnits@{Configuration.EnumerationConstants.AdjacentUnits}}
+\doxysubsubsection{\texorpdfstring{AA}{AA}}
+{\footnotesize\ttfamily Configuration.\+Enumeration\+Constants.\+Adjacent\+Units.\+AA = auto()\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classConfiguration_1_1EnumerationConstants_1_1AdjacentUnits_afdedb7a6e6d3154c9756fed9d8278eec}\label{classConfiguration_1_1EnumerationConstants_1_1AdjacentUnits_afdedb7a6e6d3154c9756fed9d8278eec}} 
+\index{Configuration.EnumerationConstants.AdjacentUnits@{Configuration.EnumerationConstants.AdjacentUnits}!AX@{AX}}
+\index{AX@{AX}!Configuration.EnumerationConstants.AdjacentUnits@{Configuration.EnumerationConstants.AdjacentUnits}}
+\doxysubsubsection{\texorpdfstring{AX}{AX}}
+{\footnotesize\ttfamily Configuration.\+Enumeration\+Constants.\+Adjacent\+Units.\+AX = auto()\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classConfiguration_1_1EnumerationConstants_1_1AdjacentUnits_ab876b40319641d8bc455921050cfe1c3}\label{classConfiguration_1_1EnumerationConstants_1_1AdjacentUnits_ab876b40319641d8bc455921050cfe1c3}} 
+\index{Configuration.EnumerationConstants.AdjacentUnits@{Configuration.EnumerationConstants.AdjacentUnits}!BB@{BB}}
+\index{BB@{BB}!Configuration.EnumerationConstants.AdjacentUnits@{Configuration.EnumerationConstants.AdjacentUnits}}
+\doxysubsubsection{\texorpdfstring{BB}{BB}}
+{\footnotesize\ttfamily Configuration.\+Enumeration\+Constants.\+Adjacent\+Units.\+BB = auto()\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classConfiguration_1_1EnumerationConstants_1_1AdjacentUnits_ad29bfac2141803453ddb8d870a72096e}\label{classConfiguration_1_1EnumerationConstants_1_1AdjacentUnits_ad29bfac2141803453ddb8d870a72096e}} 
+\index{Configuration.EnumerationConstants.AdjacentUnits@{Configuration.EnumerationConstants.AdjacentUnits}!CC@{CC}}
+\index{CC@{CC}!Configuration.EnumerationConstants.AdjacentUnits@{Configuration.EnumerationConstants.AdjacentUnits}}
+\doxysubsubsection{\texorpdfstring{CC}{CC}}
+{\footnotesize\ttfamily Configuration.\+Enumeration\+Constants.\+Adjacent\+Units.\+CC = auto()\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classConfiguration_1_1EnumerationConstants_1_1AdjacentUnits_affb23240da7b598df6c109de252e5ee9}\label{classConfiguration_1_1EnumerationConstants_1_1AdjacentUnits_affb23240da7b598df6c109de252e5ee9}} 
+\index{Configuration.EnumerationConstants.AdjacentUnits@{Configuration.EnumerationConstants.AdjacentUnits}!DEFAULT@{DEFAULT}}
+\index{DEFAULT@{DEFAULT}!Configuration.EnumerationConstants.AdjacentUnits@{Configuration.EnumerationConstants.AdjacentUnits}}
+\doxysubsubsection{\texorpdfstring{DEFAULT}{DEFAULT}}
+{\footnotesize\ttfamily int Configuration.\+Enumeration\+Constants.\+Adjacent\+Units.\+D\+E\+F\+A\+U\+LT = 0\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classConfiguration_1_1EnumerationConstants_1_1AdjacentUnits_aef9ef38b077ff00d89c85fb3efc2785b}\label{classConfiguration_1_1EnumerationConstants_1_1AdjacentUnits_aef9ef38b077ff00d89c85fb3efc2785b}} 
+\index{Configuration.EnumerationConstants.AdjacentUnits@{Configuration.EnumerationConstants.AdjacentUnits}!L@{L}}
+\index{L@{L}!Configuration.EnumerationConstants.AdjacentUnits@{Configuration.EnumerationConstants.AdjacentUnits}}
+\doxysubsubsection{\texorpdfstring{L}{L}}
+{\footnotesize\ttfamily Configuration.\+Enumeration\+Constants.\+Adjacent\+Units.\+L = auto()\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Configuration/\mbox{\hyperlink{EnumerationConstants_8py}{Enumeration\+Constants.\+py}}\end{DoxyCompactItemize}

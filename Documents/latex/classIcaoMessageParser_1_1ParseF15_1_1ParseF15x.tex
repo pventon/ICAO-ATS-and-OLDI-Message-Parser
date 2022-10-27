@@ -1,0 +1,112 @@
+\hypertarget{classIcaoMessageParser_1_1ParseF15_1_1ParseF15x}{}\doxysection{Icao\+Message\+Parser.\+Parse\+F15.\+Parse\+F15x Class Reference}
+\label{classIcaoMessageParser_1_1ParseF15_1_1ParseF15x}\index{IcaoMessageParser.ParseF15.ParseF15x@{IcaoMessageParser.ParseF15.ParseF15x}}
+
+
+Inheritance diagram for Icao\+Message\+Parser.\+Parse\+F15.\+Parse\+F15x\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=247pt]{classIcaoMessageParser_1_1ParseF15_1_1ParseF15x__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Icao\+Message\+Parser.\+Parse\+F15.\+Parse\+F15x\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=247pt]{classIcaoMessageParser_1_1ParseF15_1_1ParseF15x__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1ParseF15_1_1ParseF15x_a2314e68fcb9dadadcce1efe27ac7e945}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a93341de2e606a5ad85e0dd34f0336c00}{flight\+\_\+plan\+\_\+record}}, sfif, \mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a48a759a0835373c4ffbfa523d3566cdd}{sfd}})
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1ParseF15_1_1ParseF15x_ab69a173777f50907895e0397951c5a08}{parse\+\_\+field}} (self)
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseF15_1_1ParseF15x_a2314e68fcb9dadadcce1efe27ac7e945}\label{classIcaoMessageParser_1_1ParseF15_1_1ParseF15x_a2314e68fcb9dadadcce1efe27ac7e945}} 
+\index{IcaoMessageParser.ParseF15.ParseF15x@{IcaoMessageParser.ParseF15.ParseF15x}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!IcaoMessageParser.ParseF15.ParseF15x@{IcaoMessageParser.ParseF15.ParseF15x}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Parse\+F15.\+Parse\+F15x.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{flight\+\_\+plan\+\_\+record,  }\item[{}]{sfif,  }\item[{}]{sfd }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Constructor to set up the field parser for ICAO field 15.
+Arguments
+---------
+flight_plan_record:   Flight plan to populate
+sfif:                 Configuration data defining the subfields in an ICAO field
+sfd:                  Configuration data describing the syntax and other information about all subfields\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{13     \textcolor{keyword}{def }\_\_init\_\_(self, flight\_plan\_record, sfif, sfd):}
+\DoxyCodeLine{14         \textcolor{comment}{\# type: (FlightPlanRecord, SubFieldsInFields, SubFieldDescriptions) -\/> None}}
+\DoxyCodeLine{15         \textcolor{stringliteral}{"""Constructor to set up the field parser for ICAO field 15.}}
+\DoxyCodeLine{16 \textcolor{stringliteral}{        Arguments}}
+\DoxyCodeLine{17 \textcolor{stringliteral}{        -\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{18 \textcolor{stringliteral}{        flight\_plan\_record:   Flight plan to populate}}
+\DoxyCodeLine{19 \textcolor{stringliteral}{        sfif:                 Configuration data defining the subfields in an ICAO field}}
+\DoxyCodeLine{20 \textcolor{stringliteral}{        sfd:                  Configuration data describing the syntax and other information about all subfields"""}}
+\DoxyCodeLine{21         super().\_\_init\_\_(flight\_plan\_record,  \textcolor{comment}{\# Flight plan to populate}}
+\DoxyCodeLine{22                          sfd,  \textcolor{comment}{\# Configuration data describing individual subfields}}
+\DoxyCodeLine{23                          FieldIdentifiers.F15,  \textcolor{comment}{\# ICAO field identifier}}
+\DoxyCodeLine{24                          \textcolor{stringliteral}{" /\(\backslash\)n\(\backslash\)t\(\backslash\)r"},  \textcolor{comment}{\# Whitespace to tokenize the field}}
+\DoxyCodeLine{25                          sfif.get\_field\_content\_description(FieldIdentifiers.F15),  \textcolor{comment}{\# Subfields in this field}}
+\DoxyCodeLine{26                          sfif.get\_field\_errors(FieldIdentifiers.F15))  \textcolor{comment}{\# Errors associated with this field}}
+\DoxyCodeLine{27 }
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseF15_1_1ParseF15x_ab69a173777f50907895e0397951c5a08}\label{classIcaoMessageParser_1_1ParseF15_1_1ParseF15x_ab69a173777f50907895e0397951c5a08}} 
+\index{IcaoMessageParser.ParseF15.ParseF15x@{IcaoMessageParser.ParseF15.ParseF15x}!parse\_field@{parse\_field}}
+\index{parse\_field@{parse\_field}!IcaoMessageParser.ParseF15.ParseF15x@{IcaoMessageParser.ParseF15.ParseF15x}}
+\doxysubsubsection{\texorpdfstring{parse\_field()}{parse\_field()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Parse\+F15.\+Parse\+F15x.\+parse\+\_\+field (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This method is the program entry point for the basic field parser to parse ICAO fields 3, 5, 7,
+8, 9, 10, 13, 14, 16, 17, 80 and 81.
+
+This method calls the 'base' parser self.parse_field_base() to do most of the heavy lifting. Once
+the base parse is finished, this method checks that all fields are present, not missing any nor
+any extra fields present.
+    :return: None\end{DoxyVerb}
+ 
+
+Reimplemented from \mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a395ea8f9247a4abe9881d3fa6eb437b4}{Icao\+Message\+Parser.\+Parse\+Fields\+Common.\+Parse\+Fields\+Common}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{28     \textcolor{keyword}{def }parse\_field(self):}
+\DoxyCodeLine{29         \textcolor{comment}{\# type: () -\/> None}}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31         \textcolor{comment}{\# Check if the field contains anything at all...}}
+\DoxyCodeLine{32         \textcolor{keywordflow}{if} self.no\_tokens():}
+\DoxyCodeLine{33             self.add\_error(\textcolor{stringliteral}{""}, 0, 0, ErrorId.F15\_MISSING)}
+\DoxyCodeLine{34             \textcolor{keywordflow}{return}}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36         \textcolor{comment}{\# Create an ERS instance to store the extracted route in}}
+\DoxyCodeLine{37         ers = ExtractedRouteSequence()}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39         \textcolor{comment}{\# Create a field 15 parser}}
+\DoxyCodeLine{40         f15parser = \mbox{\hyperlink{classF15__Parser_1_1F15Parse_1_1ParseF15}{F15\_Parser.F15Parse.ParseF15}}()}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42         \textcolor{comment}{\# Parse field 15}}
+\DoxyCodeLine{43         f15parser.parse\_f15(ers, self.get\_tokens())}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45         \textcolor{comment}{\# Add the ERS to the flight plan}}
+\DoxyCodeLine{46         self.get\_flight\_plan\_record().add\_extracted\_route(ers)}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Icao\+Message\+Parser/\mbox{\hyperlink{ParseF15_8py}{Parse\+F15.\+py}}\end{DoxyCompactItemize}

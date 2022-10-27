@@ -1,0 +1,174 @@
+\hypertarget{classIcaoMessageParser_1_1ParseF3_1_1ParseF3}{}\doxysection{Icao\+Message\+Parser.\+Parse\+F3.\+Parse\+F3 Class Reference}
+\label{classIcaoMessageParser_1_1ParseF3_1_1ParseF3}\index{IcaoMessageParser.ParseF3.ParseF3@{IcaoMessageParser.ParseF3.ParseF3}}
+
+
+Inheritance diagram for Icao\+Message\+Parser.\+Parse\+F3.\+Parse\+F3\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=247pt]{classIcaoMessageParser_1_1ParseF3_1_1ParseF3__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Icao\+Message\+Parser.\+Parse\+F3.\+Parse\+F3\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=247pt]{classIcaoMessageParser_1_1ParseF3_1_1ParseF3__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1ParseF3_1_1ParseF3_a8127aa8e784b76e2a1c8eda5af2540fd}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a93341de2e606a5ad85e0dd34f0336c00}{flight\+\_\+plan\+\_\+record}}, sfif, \mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a48a759a0835373c4ffbfa523d3566cdd}{sfd}})
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1ParseF3_1_1ParseF3_abf8d85267ddd4be292a50f609574c924}{parse\+\_\+field}} (self)
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}The adjacent unit identifier extracted from F3b sending unit;
+This may be used to assist in setting the message type and as
+an index into identifying the field content for a given message
+title, type and unit combination.\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseF3_1_1ParseF3_a8127aa8e784b76e2a1c8eda5af2540fd}\label{classIcaoMessageParser_1_1ParseF3_1_1ParseF3_a8127aa8e784b76e2a1c8eda5af2540fd}} 
+\index{IcaoMessageParser.ParseF3.ParseF3@{IcaoMessageParser.ParseF3.ParseF3}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!IcaoMessageParser.ParseF3.ParseF3@{IcaoMessageParser.ParseF3.ParseF3}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Parse\+F3.\+Parse\+F3.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{flight\+\_\+plan\+\_\+record,  }\item[{}]{sfif,  }\item[{}]{sfd }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Constructor to set up the field parser for ICAO field 3.
+Arguments
+---------
+flight_plan_record:   Flight plan to populate
+sfif:                 Configuration data defining the subfields in an ICAO field
+sfd:                  Configuration data describing the syntax and other information about all subfields\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{16     \textcolor{keyword}{def }\_\_init\_\_(self, flight\_plan\_record, sfif, sfd):}
+\DoxyCodeLine{17         \textcolor{comment}{\# type: (FlightPlanRecord, SubFieldsInFields, SubFieldDescriptions) -\/> None}}
+\DoxyCodeLine{18         \textcolor{stringliteral}{"""Constructor to set up the field parser for ICAO field 3.}}
+\DoxyCodeLine{19 \textcolor{stringliteral}{        Arguments}}
+\DoxyCodeLine{20 \textcolor{stringliteral}{        -\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{21 \textcolor{stringliteral}{        flight\_plan\_record:   Flight plan to populate}}
+\DoxyCodeLine{22 \textcolor{stringliteral}{        sfif:                 Configuration data defining the subfields in an ICAO field}}
+\DoxyCodeLine{23 \textcolor{stringliteral}{        sfd:                  Configuration data describing the syntax and other information about all subfields"""}}
+\DoxyCodeLine{24         super().\_\_init\_\_(flight\_plan\_record,  \textcolor{comment}{\# Flight plan to populate}}
+\DoxyCodeLine{25                          sfd,  \textcolor{comment}{\# Configuration data describing individual subfields}}
+\DoxyCodeLine{26                          FieldIdentifiers.F3,  \textcolor{comment}{\# ICAO field identifier}}
+\DoxyCodeLine{27                          \textcolor{stringliteral}{" /\(\backslash\)n\(\backslash\)t\(\backslash\)r"},  \textcolor{comment}{\# Whitespace to tokenize the field}}
+\DoxyCodeLine{28                          sfif.get\_field\_content\_description(FieldIdentifiers.F3),  \textcolor{comment}{\# Subfields in this field}}
+\DoxyCodeLine{29                          sfif.get\_field\_errors(FieldIdentifiers.F3))  \textcolor{comment}{\# Errors associated with this field}}
+\DoxyCodeLine{30 }
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseF3_1_1ParseF3_abf8d85267ddd4be292a50f609574c924}\label{classIcaoMessageParser_1_1ParseF3_1_1ParseF3_abf8d85267ddd4be292a50f609574c924}} 
+\index{IcaoMessageParser.ParseF3.ParseF3@{IcaoMessageParser.ParseF3.ParseF3}!parse\_field@{parse\_field}}
+\index{parse\_field@{parse\_field}!IcaoMessageParser.ParseF3.ParseF3@{IcaoMessageParser.ParseF3.ParseF3}}
+\doxysubsubsection{\texorpdfstring{parse\_field()}{parse\_field()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Parse\+F3.\+Parse\+F3.\+parse\+\_\+field (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This method is the program entry point for the basic field parser to parse ICAO fields 3, 5, 7,
+8, 9, 10, 13, 14, 16, 17, 80 and 81.
+
+This method calls the 'base' parser self.parse_field_base() to do most of the heavy lifting. Once
+the base parse is finished, this method checks that all fields are present, not missing any nor
+any extra fields present.
+    :return: None\end{DoxyVerb}
+ 
+
+Reimplemented from \mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a395ea8f9247a4abe9881d3fa6eb437b4}{Icao\+Message\+Parser.\+Parse\+Fields\+Common.\+Parse\+Fields\+Common}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{31     \textcolor{keyword}{def }parse\_field(self):}
+\DoxyCodeLine{32         \textcolor{comment}{\# type: () -\/> None}}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34         \textcolor{comment}{\# Check if the field contains anything at all...}}
+\DoxyCodeLine{35         \textcolor{keywordflow}{if} self.no\_tokens():}
+\DoxyCodeLine{36             self.add\_error(\textcolor{stringliteral}{""}, 0, 0, self.get\_missing\_subfield\_error())}
+\DoxyCodeLine{37             \textcolor{keywordflow}{return}}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39         \textcolor{comment}{\# Some horrible processing needed to 'split' the F3 field into the adjacent unit names and sequence numbers}}
+\DoxyCodeLine{40         \textcolor{keywordflow}{if} len(self.get\_tokens().get\_token\_at(0).get\_token\_string()) > 3:}
+\DoxyCodeLine{41             \textcolor{comment}{\# We have a possible F3b following F3a, have to split F3a from the start of F3b}}
+\DoxyCodeLine{42             self.split\_and\_insert\_token(0, 3)}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44         \textcolor{comment}{\# Sort out the F3b receiver and sequence number and the start of F3c}}
+\DoxyCodeLine{45         \textcolor{keywordflow}{if} self.get\_tokens().get\_number\_of\_tokens() > 3:}
+\DoxyCodeLine{46             \textcolor{comment}{\# Assume we have some parts of F3b and F3c}}
+\DoxyCodeLine{47             \textcolor{comment}{\# Search for the sequence number from F3b}}
+\DoxyCodeLine{48             index = Utils.get\_first\_digit\_index(self.get\_tokens().get\_token\_at(3).get\_token\_string())}
+\DoxyCodeLine{49             \textcolor{keywordflow}{if} index > 0:}
+\DoxyCodeLine{50                 \textcolor{comment}{\# F3b sequence number found, save the receiver of F3b}}
+\DoxyCodeLine{51                 self.split\_and\_insert\_token(3, index)}
+\DoxyCodeLine{52                 index = Utils.get\_first\_alpha\_index(self.get\_tokens().get\_token\_at(4).get\_token\_string())}
+\DoxyCodeLine{53                 \textcolor{keywordflow}{if} index > -\/1:}
+\DoxyCodeLine{54                     self.split\_and\_insert\_token(4, index)}
+\DoxyCodeLine{55         \textcolor{comment}{\# Sort out the F3c receiver and sequence number}}
+\DoxyCodeLine{56         \textcolor{keywordflow}{if} self.get\_tokens().get\_number\_of\_tokens() > 7:}
+\DoxyCodeLine{57             \textcolor{comment}{\# Assume we have the receiver and sequence number of F3c}}
+\DoxyCodeLine{58             \textcolor{comment}{\# Search for the sequence number from F3c}}
+\DoxyCodeLine{59             index = Utils.get\_first\_digit\_index(self.get\_tokens().get\_token\_at(7).get\_token\_string())}
+\DoxyCodeLine{60             \textcolor{keywordflow}{if} index > 0:}
+\DoxyCodeLine{61                 \textcolor{comment}{\# F3c sequence number found, save the receiver of F3b}}
+\DoxyCodeLine{62                 self.split\_and\_insert\_token(7, index)}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64         \textcolor{comment}{\# Parse the Field}}
+\DoxyCodeLine{65         num\_parsed = self.parse\_field\_base()}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67         \textcolor{comment}{\# Parse any extra tokens that may be present}}
+\DoxyCodeLine{68         self.check\_if\_tokens\_left\_over()}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70         \textcolor{comment}{\# Assign the message title to the flight plan record}}
+\DoxyCodeLine{71         \textcolor{keywordflow}{if} self.get\_tokens().get\_number\_of\_tokens() > 0:}
+\DoxyCodeLine{72             self.get\_flight\_plan\_record().set\_message\_title(MessageTitles.get\_message\_title(}
+\DoxyCodeLine{73                 self.get\_tokens().get\_first\_token().get\_token\_string()))}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{75         \textcolor{comment}{\# Save any adjacent unit sender and receiver names to the FPR}}
+\DoxyCodeLine{76         \textcolor{keywordflow}{if} self.get\_tokens().get\_number\_of\_tokens() > 2:}
+\DoxyCodeLine{77             \textcolor{comment}{\# Save the adjacent unit sender}}
+\DoxyCodeLine{78             self.get\_flight\_plan\_record().set\_sender\_adjacent\_unit\_name(}
+\DoxyCodeLine{79                 AdjacentUnits.get\_adjacent\_unit(self.get\_tokens().get\_token\_at(1).get\_token\_string()))}
+\DoxyCodeLine{80         \textcolor{keywordflow}{if} self.get\_tokens().get\_number\_of\_tokens() > 4:}
+\DoxyCodeLine{81             \textcolor{comment}{\# Save the adjacent unit receiver}}
+\DoxyCodeLine{82             self.get\_flight\_plan\_record().set\_receiver\_adjacent\_unit\_name(}
+\DoxyCodeLine{83                 AdjacentUnits.get\_adjacent\_unit(self.get\_tokens().get\_token\_at(3).get\_token\_string()))}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{85         \textcolor{comment}{\# Need to check if full 'sets' of optional fields are present, Field 3 is horrible!}}
+\DoxyCodeLine{86         \textcolor{comment}{\# If one or mor tokens from field 3b are present then they must all be present}}
+\DoxyCodeLine{87         \textcolor{comment}{\# This bit of code is horrible, but it seems to do the job}}
+\DoxyCodeLine{88         \textcolor{keywordflow}{if} len(self.get\_sub\_field\_list()) > num\_parsed != 1 \textcolor{keywordflow}{and} num\_parsed != 5 \textcolor{keywordflow}{and} num\_parsed != 9:}
+\DoxyCodeLine{89             \textcolor{comment}{\# If we have e.g. FPLAA/BB001 (F3a \& F3b) or FPLAA/BB002CC/DD003 (F3a, F3b \& F3c)}}
+\DoxyCodeLine{90             \textcolor{comment}{\# The first example will create 5 tokens, the latter example 8 tokens}}
+\DoxyCodeLine{91             \textcolor{comment}{\# If we have token quantities that are not 5 or 8 then we have partially}}
+\DoxyCodeLine{92             \textcolor{comment}{\# complete F3b and/or F3c and errors must be reported.}}
+\DoxyCodeLine{93             \textcolor{comment}{\# We want to concatenate all the tokens from a specific erroneous set of}}
+\DoxyCodeLine{94             \textcolor{comment}{\# fields to report an accurate error}}
+\DoxyCodeLine{95             start\_index = 0}
+\DoxyCodeLine{96             \textcolor{keywordflow}{if} 1 < num\_parsed < 5:}
+\DoxyCodeLine{97                 start\_index = 1}
+\DoxyCodeLine{98             \textcolor{keywordflow}{elif} 4 < num\_parsed < 10:}
+\DoxyCodeLine{99                 start\_index = 5}
+\DoxyCodeLine{100             concatenated = self.concatenate\_token\_text(start\_index, self.get\_tokens().get\_number\_of\_tokens())}
+\DoxyCodeLine{101             self.add\_error(concatenated[0],}
+\DoxyCodeLine{102                            concatenated[1],}
+\DoxyCodeLine{103                            concatenated[2],}
+\DoxyCodeLine{104                            self.get\_more\_subfields\_expected\_error())}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Icao\+Message\+Parser/\mbox{\hyperlink{ParseF3_8py}{Parse\+F3.\+py}}\end{DoxyCompactItemize}

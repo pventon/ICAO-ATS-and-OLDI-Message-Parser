@@ -1,0 +1,289 @@
+\hypertarget{classIcaoMessageParser_1_1FlightPlanRecord_1_1FieldRecord}{}\doxysection{Icao\+Message\+Parser.\+Flight\+Plan\+Record.\+Field\+Record Class Reference}
+\label{classIcaoMessageParser_1_1FlightPlanRecord_1_1FieldRecord}\index{IcaoMessageParser.FlightPlanRecord.FieldRecord@{IcaoMessageParser.FlightPlanRecord.FieldRecord}}
+
+
+Inheritance diagram for Icao\+Message\+Parser.\+Flight\+Plan\+Record.\+Field\+Record\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=229pt]{classIcaoMessageParser_1_1FlightPlanRecord_1_1FieldRecord__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Icao\+Message\+Parser.\+Flight\+Plan\+Record.\+Field\+Record\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=229pt]{classIcaoMessageParser_1_1FlightPlanRecord_1_1FieldRecord__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1FlightPlanRecord_1_1FieldRecord_a8f45aff9112bf9ba83d37b1639482a44}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classIcaoMessageParser_1_1FlightPlanRecord_1_1SubFieldRecord_a0767a76554c5006d53f49c14a864a9aa}{field\+\_\+text}}, \mbox{\hyperlink{classIcaoMessageParser_1_1FlightPlanRecord_1_1SubFieldRecord_aded697110a65cdba10638b2bddfd76e3}{start\+\_\+index}}, \mbox{\hyperlink{classIcaoMessageParser_1_1FlightPlanRecord_1_1SubFieldRecord_a887e8024a79415b9906c2ce5e19139d3}{end\+\_\+index}})
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1FlightPlanRecord_1_1FieldRecord_abad95b0dd93d05666fc7c2c9da851513}{add\+\_\+subfield}} (self, icao\+\_\+subfield\+\_\+id, subfield)
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1FlightPlanRecord_1_1FieldRecord_ad09f06af263d16b5a77d66b070f8b8ee}{get\+\_\+subfield}} (self, icao\+\_\+subfield\+\_\+id)
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1FlightPlanRecord_1_1FieldRecord_a32f0bede6ebbbcec7c60b1219d77163a}{get\+\_\+subfield\+\_\+dictionary}} (self)
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1FlightPlanRecord_1_1FieldRecord_a1db3b8b2de4b02fbeaab7642fd6018ae}{get\+\_\+all\+\_\+subfields}} (self, icao\+\_\+subfield\+\_\+id)
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1FlightPlanRecord_1_1FieldRecord_a2a99049f785cae510e5d92328d0c6dc8}{contains\+\_\+subfield}} (self, icao\+\_\+subfield\+\_\+id)
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1FlightPlanRecord_1_1FieldRecord_a5d5103862af78d5f61d1971b620ab628}{field\+\_\+as\+\_\+xml}} (self, field\+\_\+id)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classIcaoMessageParser_1_1FlightPlanRecord_1_1FieldRecord_a0b4922f736d10c1f6d58fbd85766a3b0}{subfields}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}This class stores an ICAO field added to a flight plan record during ICAO
+message parsing. There are 'n' ICAO fields contained in a flight plan record
+created by the ICAO message parser.
+
+This class inherits from the SubFieldRecord.
+
+A field is stored with its zero based start and end index into the original
+message.
+
+The ICAO message parser creates and adds a FieldRecord for each ICAO field located
+in a message; the ICAO field is further decomposed into its constitute subfields and
+the subfields are stored in this class in a dictionary using the SubFieldIdentifiers
+enumeration as the dictionary key. Some ICAO fields, such as field 18, may have
+several subfields with the same name, (e.g. the STS and RMK subfields can occur
+more than once in a message). To cater for this, the subfields are stored as
+a list of subfields in the subfield's member.
+
+There is a single 'add' method to add subfields to this class.\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1FlightPlanRecord_1_1FieldRecord_a8f45aff9112bf9ba83d37b1639482a44}\label{classIcaoMessageParser_1_1FlightPlanRecord_1_1FieldRecord_a8f45aff9112bf9ba83d37b1639482a44}} 
+\index{IcaoMessageParser.FlightPlanRecord.FieldRecord@{IcaoMessageParser.FlightPlanRecord.FieldRecord}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!IcaoMessageParser.FlightPlanRecord.FieldRecord@{IcaoMessageParser.FlightPlanRecord.FieldRecord}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Flight\+Plan\+Record.\+Field\+Record.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{field\+\_\+text,  }\item[{}]{start\+\_\+index,  }\item[{}]{end\+\_\+index }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Constructor that initializes all the sub_fields class member with an
+empty subfield dictionary and a fully populated ICAO field.
+    :param field_text: The ICAO field as it appears in a message
+    :param start_index: The zero based start index of the ICAO fields position in the original message string
+    :param end_index: The zero based end index of the ICAO fields position in the original message string
+    :return: None\end{DoxyVerb}
+ 
+
+Reimplemented from \mbox{\hyperlink{classIcaoMessageParser_1_1FlightPlanRecord_1_1SubFieldRecord_a9203e1332026eaf581cadac898c108a4}{Icao\+Message\+Parser.\+Flight\+Plan\+Record.\+Sub\+Field\+Record}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{122     \textcolor{keyword}{def }\_\_init\_\_(self, field\_text, start\_index, end\_index):  \textcolor{comment}{\# , field\_identifier):}}
+\DoxyCodeLine{123         \textcolor{comment}{\# type: (str, int, int) -\/> None}}
+\DoxyCodeLine{124         \textcolor{stringliteral}{"""Constructor that initializes all the sub\_fields class member with an}}
+\DoxyCodeLine{125 \textcolor{stringliteral}{        empty subfield dictionary and a fully populated ICAO field.}}
+\DoxyCodeLine{126 \textcolor{stringliteral}{            :param field\_text: The ICAO field as it appears in a message}}
+\DoxyCodeLine{127 \textcolor{stringliteral}{            :param start\_index: The zero based start index of the ICAO fields position in the original message string}}
+\DoxyCodeLine{128 \textcolor{stringliteral}{            :param end\_index: The zero based end index of the ICAO fields position in the original message string}}
+\DoxyCodeLine{129 \textcolor{stringliteral}{            :return: None"""}}
+\DoxyCodeLine{130         super().\_\_init\_\_(field\_text, start\_index, end\_index)}
+\DoxyCodeLine{131         self.subfields = \{\}}
+\DoxyCodeLine{132 }
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1FlightPlanRecord_1_1FieldRecord_abad95b0dd93d05666fc7c2c9da851513}\label{classIcaoMessageParser_1_1FlightPlanRecord_1_1FieldRecord_abad95b0dd93d05666fc7c2c9da851513}} 
+\index{IcaoMessageParser.FlightPlanRecord.FieldRecord@{IcaoMessageParser.FlightPlanRecord.FieldRecord}!add\_subfield@{add\_subfield}}
+\index{add\_subfield@{add\_subfield}!IcaoMessageParser.FlightPlanRecord.FieldRecord@{IcaoMessageParser.FlightPlanRecord.FieldRecord}}
+\doxysubsubsection{\texorpdfstring{add\_subfield()}{add\_subfield()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Flight\+Plan\+Record.\+Field\+Record.\+add\+\_\+subfield (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{icao\+\_\+subfield\+\_\+id,  }\item[{}]{subfield }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Adds an ICAO subfield to this ICAO field record
+    :param icao_subfield_id: The ICAO field that this subfield is being added to
+    :param subfield: The ICAO subfield being added
+    :return: None\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{133     \textcolor{keyword}{def }add\_subfield(self, icao\_subfield\_id, subfield):}
+\DoxyCodeLine{134         \textcolor{comment}{\# type: (SubFieldIdentifiers, SubFieldRecord) -\/> None}}
+\DoxyCodeLine{135         \textcolor{stringliteral}{"""Adds an ICAO subfield to this ICAO field record}}
+\DoxyCodeLine{136 \textcolor{stringliteral}{            :param icao\_subfield\_id: The ICAO field that this subfield is being added to}}
+\DoxyCodeLine{137 \textcolor{stringliteral}{            :param subfield: The ICAO subfield being added}}
+\DoxyCodeLine{138 \textcolor{stringliteral}{            :return: None"""}}
+\DoxyCodeLine{139         list\_of\_subfield: [SubFieldRecord] = self.get\_all\_subfields(icao\_subfield\_id)}
+\DoxyCodeLine{140         \textcolor{keywordflow}{if} list\_of\_subfield \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:}
+\DoxyCodeLine{141             self.subfields[icao\_subfield\_id] = [subfield]}
+\DoxyCodeLine{142         \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{143             list\_of\_subfield.append(subfield)}
+\DoxyCodeLine{144 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1FlightPlanRecord_1_1FieldRecord_a2a99049f785cae510e5d92328d0c6dc8}\label{classIcaoMessageParser_1_1FlightPlanRecord_1_1FieldRecord_a2a99049f785cae510e5d92328d0c6dc8}} 
+\index{IcaoMessageParser.FlightPlanRecord.FieldRecord@{IcaoMessageParser.FlightPlanRecord.FieldRecord}!contains\_subfield@{contains\_subfield}}
+\index{contains\_subfield@{contains\_subfield}!IcaoMessageParser.FlightPlanRecord.FieldRecord@{IcaoMessageParser.FlightPlanRecord.FieldRecord}}
+\doxysubsubsection{\texorpdfstring{contains\_subfield()}{contains\_subfield()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Flight\+Plan\+Record.\+Field\+Record.\+contains\+\_\+subfield (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{icao\+\_\+subfield\+\_\+id }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Checks if the dictionary of subfields contains an entry with the key
+icao_subfield_id.
+    :param icao_subfield_id: The ICAO subfield identifier being checked
+    :return: True if the subfield dictionary contains an entry with the key
+     icao_subfield_id, False otherwise\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{183     \textcolor{keyword}{def }contains\_subfield(self, icao\_subfield\_id):}
+\DoxyCodeLine{184         \textcolor{comment}{\# type: (SubFieldIdentifiers) -\/> bool}}
+\DoxyCodeLine{185         \textcolor{stringliteral}{"""Checks if the dictionary of subfields contains an entry with the key}}
+\DoxyCodeLine{186 \textcolor{stringliteral}{        icao\_subfield\_id.}}
+\DoxyCodeLine{187 \textcolor{stringliteral}{            :param icao\_subfield\_id: The ICAO subfield identifier being checked}}
+\DoxyCodeLine{188 \textcolor{stringliteral}{            :return: True if the subfield dictionary contains an entry with the key}}
+\DoxyCodeLine{189 \textcolor{stringliteral}{                     icao\_subfield\_id, False otherwise"""}}
+\DoxyCodeLine{190         \textcolor{keywordflow}{return} icao\_subfield\_id \textcolor{keywordflow}{in} self.subfields}
+\DoxyCodeLine{191 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1FlightPlanRecord_1_1FieldRecord_a5d5103862af78d5f61d1971b620ab628}\label{classIcaoMessageParser_1_1FlightPlanRecord_1_1FieldRecord_a5d5103862af78d5f61d1971b620ab628}} 
+\index{IcaoMessageParser.FlightPlanRecord.FieldRecord@{IcaoMessageParser.FlightPlanRecord.FieldRecord}!field\_as\_xml@{field\_as\_xml}}
+\index{field\_as\_xml@{field\_as\_xml}!IcaoMessageParser.FlightPlanRecord.FieldRecord@{IcaoMessageParser.FlightPlanRecord.FieldRecord}}
+\doxysubsubsection{\texorpdfstring{field\_as\_xml()}{field\_as\_xml()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Flight\+Plan\+Record.\+Field\+Record.\+field\+\_\+as\+\_\+xml (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{field\+\_\+id }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This method returns an XML representation of the contents of this class.
+
+:return: An XML representation of the contents of this class as a string\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{192     \textcolor{keyword}{def }field\_as\_xml(self, field\_id):}
+\DoxyCodeLine{193         \textcolor{comment}{\# type: (FieldIdentifiers) -\/> str}}
+\DoxyCodeLine{194         \textcolor{stringliteral}{"""This method returns an XML representation of the contents of this class.}}
+\DoxyCodeLine{195 \textcolor{stringliteral}{}}
+\DoxyCodeLine{196 \textcolor{stringliteral}{        :return: An XML representation of the contents of this class as a string"""}}
+\DoxyCodeLine{197 }
+\DoxyCodeLine{198         \textcolor{comment}{\# Build the subfield elements first if any are present}}
+\DoxyCodeLine{199         subfield\_xml = \textcolor{stringliteral}{""}}
+\DoxyCodeLine{200         \textcolor{keywordflow}{if} len(self.subfields) > 0:}
+\DoxyCodeLine{201             \textcolor{keywordflow}{for} subfield\_id, subfield \textcolor{keywordflow}{in} self.subfields.items():}
+\DoxyCodeLine{202                 \textcolor{keywordflow}{if} len(subfield) > 0:}
+\DoxyCodeLine{203                     \textcolor{keywordflow}{for} sf \textcolor{keywordflow}{in} subfield:}
+\DoxyCodeLine{204                         subfield\_xml = subfield\_xml + sf.subfield\_as\_xml(subfield\_id) + \textcolor{stringliteral}{"\(\backslash\)n"}}
+\DoxyCodeLine{205 }
+\DoxyCodeLine{206         \textcolor{keywordflow}{return} \textcolor{stringliteral}{"      <field\_record id=\(\backslash\)""} + field\_id.name + \(\backslash\)}
+\DoxyCodeLine{207                \textcolor{stringliteral}{"\(\backslash\)" start\_index=\(\backslash\)""} + str(self.get\_start\_index()) + \(\backslash\)}
+\DoxyCodeLine{208                \textcolor{stringliteral}{"\(\backslash\)" end\_index=\(\backslash\)""} + str(self.get\_end\_index()) + \textcolor{stringliteral}{"\(\backslash\)">"} + self.get\_field\_text() + \textcolor{stringliteral}{"\(\backslash\)n"} + \(\backslash\)}
+\DoxyCodeLine{209                subfield\_xml + \(\backslash\)}
+\DoxyCodeLine{210                \textcolor{stringliteral}{"      </field\_record>"}}
+\DoxyCodeLine{211 }
+\DoxyCodeLine{212 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1FlightPlanRecord_1_1FieldRecord_a1db3b8b2de4b02fbeaab7642fd6018ae}\label{classIcaoMessageParser_1_1FlightPlanRecord_1_1FieldRecord_a1db3b8b2de4b02fbeaab7642fd6018ae}} 
+\index{IcaoMessageParser.FlightPlanRecord.FieldRecord@{IcaoMessageParser.FlightPlanRecord.FieldRecord}!get\_all\_subfields@{get\_all\_subfields}}
+\index{get\_all\_subfields@{get\_all\_subfields}!IcaoMessageParser.FlightPlanRecord.FieldRecord@{IcaoMessageParser.FlightPlanRecord.FieldRecord}}
+\doxysubsubsection{\texorpdfstring{get\_all\_subfields()}{get\_all\_subfields()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Flight\+Plan\+Record.\+Field\+Record.\+get\+\_\+all\+\_\+subfields (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{icao\+\_\+subfield\+\_\+id }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Returns all subfields with the icao_subfield_id or None if the subfield does not
+exist. For some fields such as field 18 there may be more than one subfield
+with the same name/icao_subfield_id.
+    :param icao_subfield_id: The ICAO subfield identifier
+    :return: A list of ICAO subfields or None if the subfield does not exist\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{171     \textcolor{keyword}{def }get\_all\_subfields(self, icao\_subfield\_id):}
+\DoxyCodeLine{172         \textcolor{comment}{\# type: (SubFieldIdentifiers) -\/> [SubFieldRecord]}}
+\DoxyCodeLine{173         \textcolor{stringliteral}{"""Returns all subfields with the icao\_subfield\_id or None if the subfield does not}}
+\DoxyCodeLine{174 \textcolor{stringliteral}{        exist. For some fields such as field 18 there may be more than one subfield}}
+\DoxyCodeLine{175 \textcolor{stringliteral}{        with the same name/icao\_subfield\_id.}}
+\DoxyCodeLine{176 \textcolor{stringliteral}{            :param icao\_subfield\_id: The ICAO subfield identifier}}
+\DoxyCodeLine{177 \textcolor{stringliteral}{            :return: A list of ICAO subfields or None if the subfield does not exist"""}}
+\DoxyCodeLine{178         \textcolor{keywordflow}{if} self.contains\_subfield(icao\_subfield\_id):}
+\DoxyCodeLine{179             \textcolor{keywordflow}{return} self.subfields[icao\_subfield\_id]}
+\DoxyCodeLine{180         \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{181             \textcolor{keywordflow}{return} \textcolor{keywordtype}{None}}
+\DoxyCodeLine{182 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1FlightPlanRecord_1_1FieldRecord_ad09f06af263d16b5a77d66b070f8b8ee}\label{classIcaoMessageParser_1_1FlightPlanRecord_1_1FieldRecord_ad09f06af263d16b5a77d66b070f8b8ee}} 
+\index{IcaoMessageParser.FlightPlanRecord.FieldRecord@{IcaoMessageParser.FlightPlanRecord.FieldRecord}!get\_subfield@{get\_subfield}}
+\index{get\_subfield@{get\_subfield}!IcaoMessageParser.FlightPlanRecord.FieldRecord@{IcaoMessageParser.FlightPlanRecord.FieldRecord}}
+\doxysubsubsection{\texorpdfstring{get\_subfield()}{get\_subfield()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Flight\+Plan\+Record.\+Field\+Record.\+get\+\_\+subfield (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{icao\+\_\+subfield\+\_\+id }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Returns a single subfield or None if the subfield does not exist. This method
+always returns the first subfield in the list of subfields; typically there is only
+one subfield. For some fields such as field 18 there may be more than one subfield
+with the same name.
+    :param icao_subfield_id: The ICAO subfield identifier
+    :return: The ICAO subfield or None if the subfield does not exist; if multiple
+    subfields exist, this method always the returns the first subfield in the list
+    of subfields\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{145     \textcolor{keyword}{def }get\_subfield(self, icao\_subfield\_id):}
+\DoxyCodeLine{146         \textcolor{comment}{\# type: (SubFieldIdentifiers) -\/> SubFieldRecord | None}}
+\DoxyCodeLine{147         \textcolor{stringliteral}{"""Returns a single subfield or None if the subfield does not exist. This method}}
+\DoxyCodeLine{148 \textcolor{stringliteral}{        always returns the first subfield in the list of subfields; typically there is only}}
+\DoxyCodeLine{149 \textcolor{stringliteral}{        one subfield. For some fields such as field 18 there may be more than one subfield}}
+\DoxyCodeLine{150 \textcolor{stringliteral}{        with the same name.}}
+\DoxyCodeLine{151 \textcolor{stringliteral}{            :param icao\_subfield\_id: The ICAO subfield identifier}}
+\DoxyCodeLine{152 \textcolor{stringliteral}{            :return: The ICAO subfield or None if the subfield does not exist; if multiple}}
+\DoxyCodeLine{153 \textcolor{stringliteral}{            subfields exist, this method always the returns the first subfield in the list}}
+\DoxyCodeLine{154 \textcolor{stringliteral}{            of subfields"""}}
+\DoxyCodeLine{155         \textcolor{keywordflow}{if} self.contains\_subfield(icao\_subfield\_id):}
+\DoxyCodeLine{156             \textcolor{keywordflow}{return} self.subfields[icao\_subfield\_id][0]}
+\DoxyCodeLine{157         \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{158             \textcolor{keywordflow}{return} \textcolor{keywordtype}{None}}
+\DoxyCodeLine{159 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1FlightPlanRecord_1_1FieldRecord_a32f0bede6ebbbcec7c60b1219d77163a}\label{classIcaoMessageParser_1_1FlightPlanRecord_1_1FieldRecord_a32f0bede6ebbbcec7c60b1219d77163a}} 
+\index{IcaoMessageParser.FlightPlanRecord.FieldRecord@{IcaoMessageParser.FlightPlanRecord.FieldRecord}!get\_subfield\_dictionary@{get\_subfield\_dictionary}}
+\index{get\_subfield\_dictionary@{get\_subfield\_dictionary}!IcaoMessageParser.FlightPlanRecord.FieldRecord@{IcaoMessageParser.FlightPlanRecord.FieldRecord}}
+\doxysubsubsection{\texorpdfstring{get\_subfield\_dictionary()}{get\_subfield\_dictionary()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Flight\+Plan\+Record.\+Field\+Record.\+get\+\_\+subfield\+\_\+dictionary (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This method returns the complete subfield dictionary stored in this field record; for
+fields such as F18, F19 or F22 there may be a lot of subfields. This method is used primarily
+to loop over the subfields of compound fields such as F18, F19 and F22 to parse the individual
+subfields.
+:return: A dictionary with SubFieldIdentifiers as key and a list of one or more subfields as the
+value;
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{160     \textcolor{keyword}{def }get\_subfield\_dictionary(self):}
+\DoxyCodeLine{161         \textcolor{comment}{\# type: () -\/> (SubFieldIdentifiers, [SubFieldRecord])}}
+\DoxyCodeLine{162         \textcolor{stringliteral}{"""This method returns the complete subfield dictionary stored in this field record; for}}
+\DoxyCodeLine{163 \textcolor{stringliteral}{        fields such as F18, F19 or F22 there may be a lot of subfields. This method is used primarily}}
+\DoxyCodeLine{164 \textcolor{stringliteral}{        to loop over the subfields of compound fields such as F18, F19 and F22 to parse the individual}}
+\DoxyCodeLine{165 \textcolor{stringliteral}{        subfields.}}
+\DoxyCodeLine{166 \textcolor{stringliteral}{        :return: A dictionary with SubFieldIdentifiers as key and a list of one or more subfields as the}}
+\DoxyCodeLine{167 \textcolor{stringliteral}{        value;}}
+\DoxyCodeLine{168 \textcolor{stringliteral}{        """}}
+\DoxyCodeLine{169         \textcolor{keywordflow}{return} self.subfields}
+\DoxyCodeLine{170 }
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1FlightPlanRecord_1_1FieldRecord_a0b4922f736d10c1f6d58fbd85766a3b0}\label{classIcaoMessageParser_1_1FlightPlanRecord_1_1FieldRecord_a0b4922f736d10c1f6d58fbd85766a3b0}} 
+\index{IcaoMessageParser.FlightPlanRecord.FieldRecord@{IcaoMessageParser.FlightPlanRecord.FieldRecord}!subfields@{subfields}}
+\index{subfields@{subfields}!IcaoMessageParser.FlightPlanRecord.FieldRecord@{IcaoMessageParser.FlightPlanRecord.FieldRecord}}
+\doxysubsubsection{\texorpdfstring{subfields}{subfields}}
+{\footnotesize\ttfamily Icao\+Message\+Parser.\+Flight\+Plan\+Record.\+Field\+Record.\+subfields}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Icao\+Message\+Parser/\mbox{\hyperlink{FlightPlanRecord_8py}{Flight\+Plan\+Record.\+py}}\end{DoxyCompactItemize}

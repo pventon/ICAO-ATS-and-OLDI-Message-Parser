@@ -1,0 +1,68 @@
+\hypertarget{classIcaoMessageParser_1_1ParseOriginator_1_1ParseOriginator}{}\doxysection{Icao\+Message\+Parser.\+Parse\+Originator.\+Parse\+Originator Class Reference}
+\label{classIcaoMessageParser_1_1ParseOriginator_1_1ParseOriginator}\index{IcaoMessageParser.ParseOriginator.ParseOriginator@{IcaoMessageParser.ParseOriginator.ParseOriginator}}
+
+
+Inheritance diagram for Icao\+Message\+Parser.\+Parse\+Originator.\+Parse\+Originator\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=270pt]{classIcaoMessageParser_1_1ParseOriginator_1_1ParseOriginator__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Icao\+Message\+Parser.\+Parse\+Originator.\+Parse\+Originator\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=270pt]{classIcaoMessageParser_1_1ParseOriginator_1_1ParseOriginator__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1ParseOriginator_1_1ParseOriginator_a5ffb22cb1172fdd5ac72696c5424d5dc}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a93341de2e606a5ad85e0dd34f0336c00}{flight\+\_\+plan\+\_\+record}}, sfif, \mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a48a759a0835373c4ffbfa523d3566cdd}{sfd}})
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseOriginator_1_1ParseOriginator_a5ffb22cb1172fdd5ac72696c5424d5dc}\label{classIcaoMessageParser_1_1ParseOriginator_1_1ParseOriginator_a5ffb22cb1172fdd5ac72696c5424d5dc}} 
+\index{IcaoMessageParser.ParseOriginator.ParseOriginator@{IcaoMessageParser.ParseOriginator.ParseOriginator}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!IcaoMessageParser.ParseOriginator.ParseOriginator@{IcaoMessageParser.ParseOriginator.ParseOriginator}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Parse\+Originator.\+Parse\+Originator.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{flight\+\_\+plan\+\_\+record,  }\item[{}]{sfif,  }\item[{}]{sfd }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Constructor to set up the field parser for the message header 'originator' field.
+Arguments
+---------
+flight_plan_record:   Flight plan to populate
+sfif:                 Configuration data defining the subfields in an ICAO field
+sfd:                  Configuration data describing the syntax and other information about all subfields\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{10     \textcolor{keyword}{def }\_\_init\_\_(self, flight\_plan\_record, sfif, sfd):}
+\DoxyCodeLine{11         \textcolor{comment}{\# type: (FlightPlanRecord, SubFieldsInFields, SubFieldDescriptions) -\/> None}}
+\DoxyCodeLine{12         \textcolor{stringliteral}{"""Constructor to set up the field parser for the message header 'originator' field.}}
+\DoxyCodeLine{13 \textcolor{stringliteral}{        Arguments}}
+\DoxyCodeLine{14 \textcolor{stringliteral}{        -\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{15 \textcolor{stringliteral}{        flight\_plan\_record:   Flight plan to populate}}
+\DoxyCodeLine{16 \textcolor{stringliteral}{        sfif:                 Configuration data defining the subfields in an ICAO field}}
+\DoxyCodeLine{17 \textcolor{stringliteral}{        sfd:                  Configuration data describing the syntax and other information about all subfields"""}}
+\DoxyCodeLine{18         super().\_\_init\_\_(flight\_plan\_record,  \textcolor{comment}{\# Flight plan to populate}}
+\DoxyCodeLine{19                          sfd,  \textcolor{comment}{\# Configuration data describing individual subfields}}
+\DoxyCodeLine{20                          FieldIdentifiers.ORIGINATOR,  \textcolor{comment}{\# ICAO field identifier}}
+\DoxyCodeLine{21                          \textcolor{stringliteral}{" \(\backslash\)n\(\backslash\)t\(\backslash\)r"},  \textcolor{comment}{\# Whitespace to tokenize the field}}
+\DoxyCodeLine{22                          \textcolor{comment}{\# Subfields in this field}}
+\DoxyCodeLine{23                          sfif.get\_field\_content\_description(FieldIdentifiers.ORIGINATOR),}
+\DoxyCodeLine{24                          \textcolor{comment}{\# Errors associated for this field}}
+\DoxyCodeLine{25                          sfif.get\_field\_errors(FieldIdentifiers.ORIGINATOR))}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Icao\+Message\+Parser/\mbox{\hyperlink{ParseOriginator_8py}{Parse\+Originator.\+py}}\end{DoxyCompactItemize}

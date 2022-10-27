@@ -1,0 +1,349 @@
+\hypertarget{classConfiguration_1_1SubFieldsInFields_1_1SubFieldsInFields}{}\doxysection{Configuration.\+Sub\+Fields\+In\+Fields.\+Sub\+Fields\+In\+Fields Class Reference}
+\label{classConfiguration_1_1SubFieldsInFields_1_1SubFieldsInFields}\index{Configuration.SubFieldsInFields.SubFieldsInFields@{Configuration.SubFieldsInFields.SubFieldsInFields}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{classConfiguration_1_1SubFieldsInFields_1_1SubFieldsInFields_adac55e39e6698696be4060de26e29ccc}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self)
+\item 
+def \mbox{\hyperlink{classConfiguration_1_1SubFieldsInFields_1_1SubFieldsInFields_a996898316f5de70e65cc42418d18ad8a}{get\+\_\+field\+\_\+content\+\_\+description}} (self, icao\+\_\+field\+\_\+id)
+\item 
+def \mbox{\hyperlink{classConfiguration_1_1SubFieldsInFields_1_1SubFieldsInFields_a81c7ea3eb899bc62dfa32e8c1c0dc769}{get\+\_\+field\+\_\+errors}} (self, icao\+\_\+field\+\_\+id)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classConfiguration_1_1SubFieldsInFields_1_1SubFieldsInFields_a0568d086130ff46cc2b9eccd247b9369}{field\+\_\+content\+\_\+description}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+dictionary \mbox{\hyperlink{classConfiguration_1_1SubFieldsInFields_1_1SubFieldsInFields_a90ed863e5325ae4bc0f1d039d99e00b4}{field\+\_\+content\+\_\+description}} = \{\}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}This class describes the subfield content of each ICAO and OLDI field supported by this
+message parser.
+
+The description consists of listing the ICAO subfields / ID for each ICAO field defined by this parser.
+The ICAO subfield IDs are provided by the enumeration values in the SubFieldIdentifiers class. Many of
+the ICAO subfield IDs translate directly to those specified in ICAO DOC 4444; however, due to support
+for OLDI messages as well as some IFPS Oceanic message, some field identifiers are what could be called
+custom.
+
+The result is the same, all subfields for a given ICAO field can be obtained from this class. The data
+is stored in a dictionary; the key is an enumeration from the FieldIdentifiers class with the subfields
+stored in a list of SubFieldIdentifiers enumerations and associated with their respective ICAO fields.
+
+For each ICAO field declaration, a list of error message identifiers are also stored; these errors will
+be used by the parser when looping over the subfields in a field to parse each individual subfield.\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classConfiguration_1_1SubFieldsInFields_1_1SubFieldsInFields_adac55e39e6698696be4060de26e29ccc}\label{classConfiguration_1_1SubFieldsInFields_1_1SubFieldsInFields_adac55e39e6698696be4060de26e29ccc}} 
+\index{Configuration.SubFieldsInFields.SubFieldsInFields@{Configuration.SubFieldsInFields.SubFieldsInFields}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!Configuration.SubFieldsInFields.SubFieldsInFields@{Configuration.SubFieldsInFields.SubFieldsInFields}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def Configuration.\+Sub\+Fields\+In\+Fields.\+Sub\+Fields\+In\+Fields.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{25     \textcolor{keyword}{def }\_\_init\_\_(self):}
+\DoxyCodeLine{26         \textcolor{comment}{\# type: () -\/> None}}
+\DoxyCodeLine{27         self.field\_content\_description = \{}
+\DoxyCodeLine{28             \textcolor{comment}{\# Message Header fields}}
+\DoxyCodeLine{29             FieldIdentifiers.PRIORITY\_INDICATOR: [[SubFieldIdentifiers.PRIORITY\_INDICATOR],}
+\DoxyCodeLine{30                                                   [ErrorId.PRIORITY\_SYNTAX, ErrorId.PRIORITY\_TOO\_MANY\_FIELDS,}
+\DoxyCodeLine{31                                                    ErrorId.FLD\_MORE\_SUBFIELDS\_EXPECTED, ErrorId.PRIORITY\_MISSING]],}
+\DoxyCodeLine{32             FieldIdentifiers.FILING\_TIME: [[SubFieldIdentifiers.FILING\_TIME],}
+\DoxyCodeLine{33                                            [ErrorId.FILING\_TIME\_SYNTAX, ErrorId.FILING\_TIME\_TOO\_MANY\_FIELDS,}
+\DoxyCodeLine{34                                             ErrorId.FLD\_MORE\_SUBFIELDS\_EXPECTED, ErrorId.FILING\_TIME\_MISSING]],}
+\DoxyCodeLine{35             FieldIdentifiers.ORIGINATOR: [[SubFieldIdentifiers.ORIGINATOR],}
+\DoxyCodeLine{36                                           [ErrorId.ORIGINATOR\_SYNTAX, ErrorId.ORIGINATOR\_TOO\_MANY\_FIELDS,}
+\DoxyCodeLine{37                                            ErrorId.FLD\_MORE\_SUBFIELDS\_EXPECTED, ErrorId.ORIGINATOR\_MISSING]],}
+\DoxyCodeLine{38             FieldIdentifiers.ADDRESS: [[SubFieldIdentifiers.ADDRESS1, SubFieldIdentifiers.ADDRESS2,}
+\DoxyCodeLine{39                                         SubFieldIdentifiers.ADDRESS3, SubFieldIdentifiers.ADDRESS4,}
+\DoxyCodeLine{40                                         SubFieldIdentifiers.ADDRESS5, SubFieldIdentifiers.ADDRESS6,}
+\DoxyCodeLine{41                                         SubFieldIdentifiers.ADDRESS7, SubFieldIdentifiers.ADDRESS8],}
+\DoxyCodeLine{42                                        [ErrorId.ADDRESSEE\_SYNTAX, ErrorId.ADDRESSEE\_SYNTAX,}
+\DoxyCodeLine{43                                         ErrorId.ADDRESSEE\_SYNTAX, ErrorId.ADDRESSEE\_SYNTAX,}
+\DoxyCodeLine{44                                         ErrorId.ADDRESSEE\_SYNTAX, ErrorId.ADDRESSEE\_SYNTAX,}
+\DoxyCodeLine{45                                         ErrorId.ADDRESSEE\_SYNTAX, ErrorId.ADDRESSEE\_SYNTAX,}
+\DoxyCodeLine{46                                         ErrorId.ADDRESSEE\_TOO\_MANY\_FIELDS,}
+\DoxyCodeLine{47                                         ErrorId.FLD\_MORE\_SUBFIELDS\_EXPECTED, ErrorId.ADDRESSEE\_MISSING]],}
+\DoxyCodeLine{48             FieldIdentifiers.ADADDRESS: [[SubFieldIdentifiers.ADADDRESS1, SubFieldIdentifiers.ADADDRESS2,}
+\DoxyCodeLine{49                                           SubFieldIdentifiers.ADADDRESS3, SubFieldIdentifiers.ADADDRESS4,}
+\DoxyCodeLine{50                                           SubFieldIdentifiers.ADADDRESS5, SubFieldIdentifiers.ADADDRESS6,}
+\DoxyCodeLine{51                                           SubFieldIdentifiers.ADADDRESS7, SubFieldIdentifiers.ADADDRESS8],}
+\DoxyCodeLine{52                                          [ErrorId.AD\_ADDRESSEE\_SYNTAX, ErrorId.AD\_ADDRESSEE\_SYNTAX,}
+\DoxyCodeLine{53                                           ErrorId.AD\_ADDRESSEE\_SYNTAX, ErrorId.AD\_ADDRESSEE\_SYNTAX,}
+\DoxyCodeLine{54                                           ErrorId.AD\_ADDRESSEE\_SYNTAX, ErrorId.AD\_ADDRESSEE\_SYNTAX,}
+\DoxyCodeLine{55                                           ErrorId.AD\_ADDRESSEE\_SYNTAX, ErrorId.AD\_ADDRESSEE\_SYNTAX,}
+\DoxyCodeLine{56                                           ErrorId.AD\_ADDRESSEE\_TOO\_MANY\_FIELDS,}
+\DoxyCodeLine{57                                           ErrorId.FLD\_MORE\_SUBFIELDS\_EXPECTED, ErrorId.AD\_ADDRESSEE\_MISSING]],}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59             \textcolor{comment}{\# ICAO fields}}
+\DoxyCodeLine{60             \textcolor{comment}{\# Field 3 parsing rules}}
+\DoxyCodeLine{61             FieldIdentifiers.F3: [[SubFieldIdentifiers.F3a, SubFieldIdentifiers.F3b1, SubFieldIdentifiers.F3b2,}
+\DoxyCodeLine{62                                    SubFieldIdentifiers.F3b3, SubFieldIdentifiers.F3b4, SubFieldIdentifiers.F3c1,}
+\DoxyCodeLine{63                                    SubFieldIdentifiers.F3c2, SubFieldIdentifiers.F3c3, SubFieldIdentifiers.F3c4],}
+\DoxyCodeLine{64                                   [ErrorId.F3\_TITLE\_SYNTAX, ErrorId.F3\_TX\_SYNTAX, ErrorId.FLD\_SLASH\_SYNTAX,}
+\DoxyCodeLine{65                                    ErrorId.F3\_RX\_SYNTAX, ErrorId.F3\_SEQ\_SYNTAX, ErrorId.F3\_TX\_SYNTAX,}
+\DoxyCodeLine{66                                    ErrorId.FLD\_SLASH\_SYNTAX, ErrorId.F3\_RX\_SYNTAX, ErrorId.F3\_SEQ\_SYNTAX,}
+\DoxyCodeLine{67                                    ErrorId.F3\_TOO\_MANY\_FIELDS, ErrorId.F3\_RX\_TX\_EXPECTED, ErrorId.F3\_TITLE\_MISSING]],}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{69             \textcolor{comment}{\# Field 5 parsing rules}}
+\DoxyCodeLine{70             FieldIdentifiers.F5: [[SubFieldIdentifiers.F5a, SubFieldIdentifiers.F5ab, SubFieldIdentifiers.F5b,}
+\DoxyCodeLine{71                                    SubFieldIdentifiers.F5bc, SubFieldIdentifiers.F5c],}
+\DoxyCodeLine{72                                   [ErrorId.F5\_F5A\_SYNTAX, ErrorId.F5\_F5AB\_EXPECTING\_SLASH, ErrorId.F5\_F5B\_SYNTAX,}
+\DoxyCodeLine{73                                    ErrorId.F5\_F5BC\_EXPECTING\_SLASH, ErrorId.F5\_F5C\_SYNTAX, ErrorId.F5\_TOO\_MANY\_FIELDS,}
+\DoxyCodeLine{74                                    ErrorId.FLD\_MORE\_SUBFIELDS\_EXPECTED, ErrorId.F5\_MISSING]],}
+\DoxyCodeLine{75 }
+\DoxyCodeLine{76             \textcolor{comment}{\# Field 7 parsing rules}}
+\DoxyCodeLine{77             FieldIdentifiers.F7: [[SubFieldIdentifiers.F7a, SubFieldIdentifiers.F7ab, SubFieldIdentifiers.F7b,}
+\DoxyCodeLine{78                                    SubFieldIdentifiers.F7c],}
+\DoxyCodeLine{79                                   [ErrorId.F7\_F7A\_SYNTAX, ErrorId.F7\_F7AB\_SYNTAX, ErrorId.F7\_F7B\_SYNTAX,}
+\DoxyCodeLine{80                                    ErrorId.F7\_F7C\_SYNTAX, ErrorId.F7\_TOO\_MANY\_FIELDS,}
+\DoxyCodeLine{81                                    ErrorId.F7\_MORE\_SUBFIELDS\_EXPECTED, ErrorId.F7\_MISSING]],}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{83             \textcolor{comment}{\# Field 8 parsing rules}}
+\DoxyCodeLine{84             FieldIdentifiers.F8: [[SubFieldIdentifiers.F8a, SubFieldIdentifiers.F8b],}
+\DoxyCodeLine{85                                   [ErrorId.F8\_F8A\_SYNTAX, ErrorId.F8\_F8B\_SYNTAX,}
+\DoxyCodeLine{86                                    ErrorId.F8\_TOO\_MANY\_FIELDS,}
+\DoxyCodeLine{87                                    ErrorId.F8\_MORE\_SUBFIELDS\_EXPECTED, ErrorId.F8\_MISSING]],}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{89             \textcolor{comment}{\# Field 8a parsing rules}}
+\DoxyCodeLine{90             FieldIdentifiers.F8a: [[SubFieldIdentifiers.F8a],}
+\DoxyCodeLine{91                                    [ErrorId.F8\_F8A\_SYNTAX, ErrorId.F8\_TOO\_MANY\_FIELDS,}
+\DoxyCodeLine{92                                     ErrorId.F8\_MORE\_SUBFIELDS\_EXPECTED, ErrorId.F8\_MISSING]],}
+\DoxyCodeLine{93 }
+\DoxyCodeLine{94             \textcolor{comment}{\# Field 9 parsing rules}}
+\DoxyCodeLine{95             FieldIdentifiers.F9: [[SubFieldIdentifiers.F9a, SubFieldIdentifiers.F9b, SubFieldIdentifiers.F9bc,}
+\DoxyCodeLine{96                                    SubFieldIdentifiers.F9c],}
+\DoxyCodeLine{97                                   [ErrorId.F9\_F9A\_SYNTAX, ErrorId.F9\_F9B\_SYNTAX, ErrorId.F9\_F9BC\_SYNTAX,}
+\DoxyCodeLine{98                                    ErrorId.F9\_F9C\_SYNTAX, ErrorId.F9\_TOO\_MANY\_FIELDS,}
+\DoxyCodeLine{99                                    ErrorId.F9\_MORE\_SUBFIELDS\_EXPECTED, ErrorId.F9\_MISSING]],}
+\DoxyCodeLine{100 }
+\DoxyCodeLine{101             \textcolor{comment}{\# Field 10 parsing rules}}
+\DoxyCodeLine{102             FieldIdentifiers.F10: [[SubFieldIdentifiers.F10a, SubFieldIdentifiers.F10ab, SubFieldIdentifiers.F10b],}
+\DoxyCodeLine{103                                    [ErrorId.F10\_F10A\_SYNTAX, ErrorId.F10\_F10AB\_SYNTAX, ErrorId.F10\_F10B\_SYNTAX,}
+\DoxyCodeLine{104                                     ErrorId.F10\_TOO\_MANY\_FIELDS,}
+\DoxyCodeLine{105                                     ErrorId.F10\_MORE\_SUBFIELDS\_EXPECTED, ErrorId.F10\_MISSING]],}
+\DoxyCodeLine{106 }
+\DoxyCodeLine{107             \textcolor{comment}{\# Field 13 parsing rules}}
+\DoxyCodeLine{108             FieldIdentifiers.F13: [[SubFieldIdentifiers.F13a, SubFieldIdentifiers.F13b],}
+\DoxyCodeLine{109                                    [ErrorId.F13\_F13A\_SYNTAX, ErrorId.F13\_F13B\_SYNTAX,}
+\DoxyCodeLine{110                                     ErrorId.F13\_TOO\_MANY\_FIELDS,}
+\DoxyCodeLine{111                                     ErrorId.F13\_MORE\_SUBFIELDS\_EXPECTED, ErrorId.F13\_MISSING]],}
+\DoxyCodeLine{112 }
+\DoxyCodeLine{113             \textcolor{comment}{\# Field 13a parsing rules}}
+\DoxyCodeLine{114             FieldIdentifiers.F13a: [[SubFieldIdentifiers.F13a],}
+\DoxyCodeLine{115                                     [ErrorId.F13\_F13A\_SYNTAX, ErrorId.F13\_TOO\_MANY\_FIELDS,}
+\DoxyCodeLine{116                                      ErrorId.F13\_MORE\_SUBFIELDS\_EXPECTED, ErrorId.F13\_MISSING]],}
+\DoxyCodeLine{117 }
+\DoxyCodeLine{118             \textcolor{comment}{\# Field 14 parsing rules}}
+\DoxyCodeLine{119             FieldIdentifiers.F14: [[SubFieldIdentifiers.F14a, SubFieldIdentifiers.F14ab, SubFieldIdentifiers.F14b,}
+\DoxyCodeLine{120                                     SubFieldIdentifiers.F14c, SubFieldIdentifiers.F14d, SubFieldIdentifiers.F14e],}
+\DoxyCodeLine{121                                    [ErrorId.F14\_F14A\_SYNTAX, ErrorId.F14\_F14AB\_SYNTAX, ErrorId.F14\_F14B\_SYNTAX,}
+\DoxyCodeLine{122                                     ErrorId.F14\_F14C\_SYNTAX, ErrorId.F14\_F14D\_SYNTAX, ErrorId.F14\_F14E\_SYNTAX,}
+\DoxyCodeLine{123                                     ErrorId.F14\_TOO\_MANY\_FIELDS,}
+\DoxyCodeLine{124                                     ErrorId.F14\_MORE\_FIELDS\_EXPECTED, ErrorId.F14\_MISSING]],}
+\DoxyCodeLine{125 }
+\DoxyCodeLine{126             \textcolor{comment}{\# Field 14a parsing rules}}
+\DoxyCodeLine{127             FieldIdentifiers.F14a: [[SubFieldIdentifiers.F14a],}
+\DoxyCodeLine{128                                     [ErrorId.F14\_F14A\_SYNTAX, ErrorId.F14\_TOO\_MANY\_FIELDS,}
+\DoxyCodeLine{129                                      ErrorId.F14\_MORE\_FIELDS\_EXPECTED, ErrorId.F14\_MISSING]],}
+\DoxyCodeLine{130 }
+\DoxyCodeLine{131             \textcolor{comment}{\# Field 15 has its own dedicated parser}}
+\DoxyCodeLine{132             FieldIdentifiers.F15: [[SubFieldIdentifiers.F15], []],}
+\DoxyCodeLine{133 }
+\DoxyCodeLine{134             \textcolor{comment}{\# Field 16 parsing rules}}
+\DoxyCodeLine{135             FieldIdentifiers.F16: [[SubFieldIdentifiers.F16a, SubFieldIdentifiers.F16b, SubFieldIdentifiers.F16c,}
+\DoxyCodeLine{136                                     SubFieldIdentifiers.F16d],}
+\DoxyCodeLine{137                                    [ErrorId.F16\_F16A\_SYNTAX, ErrorId.F16\_F16B\_SYNTAX,}
+\DoxyCodeLine{138                                     ErrorId.F16\_F16C\_SYNTAX, ErrorId.F16\_F16D\_SYNTAX,}
+\DoxyCodeLine{139                                     ErrorId.F16\_TOO\_MANY\_FIELDS,}
+\DoxyCodeLine{140                                     ErrorId.FLD\_MORE\_SUBFIELDS\_EXPECTED, ErrorId.F16\_MISSING]],}
+\DoxyCodeLine{141 }
+\DoxyCodeLine{142             \textcolor{comment}{\# Field 16a parsing rules}}
+\DoxyCodeLine{143             FieldIdentifiers.F16a: [[SubFieldIdentifiers.F16a],}
+\DoxyCodeLine{144                                     [ErrorId.F16\_F16A\_SYNTAX, ErrorId.F16\_TOO\_MANY\_FIELDS,}
+\DoxyCodeLine{145                                      ErrorId.FLD\_MORE\_SUBFIELDS\_EXPECTED, ErrorId.F16\_MISSING]],}
+\DoxyCodeLine{146 }
+\DoxyCodeLine{147             \textcolor{comment}{\# Field 16ab parsing rules}}
+\DoxyCodeLine{148             FieldIdentifiers.F16ab: [[SubFieldIdentifiers.F16a, SubFieldIdentifiers.F16b],}
+\DoxyCodeLine{149                                      [ErrorId.F16\_F16A\_SYNTAX, ErrorId.F16\_F16B\_SYNTAX,}
+\DoxyCodeLine{150                                       ErrorId.F16\_TOO\_MANY\_FIELDS,}
+\DoxyCodeLine{151                                       ErrorId.FLD\_MORE\_SUBFIELDS\_EXPECTED, ErrorId.F16\_MISSING]],}
+\DoxyCodeLine{152 }
+\DoxyCodeLine{153             \textcolor{comment}{\# Field 16abc parsing rules}}
+\DoxyCodeLine{154             FieldIdentifiers.F16abc: [[SubFieldIdentifiers.F16a, SubFieldIdentifiers.F16b, SubFieldIdentifiers.F16c],}
+\DoxyCodeLine{155                                       [ErrorId.F16\_F16A\_SYNTAX, ErrorId.F16\_F16B\_SYNTAX,}
+\DoxyCodeLine{156                                        ErrorId.F16\_F16C\_SYNTAX,}
+\DoxyCodeLine{157                                        ErrorId.F16\_TOO\_MANY\_FIELDS,}
+\DoxyCodeLine{158                                        ErrorId.FLD\_MORE\_SUBFIELDS\_EXPECTED, ErrorId.F16\_MISSING]],}
+\DoxyCodeLine{159 }
+\DoxyCodeLine{160             \textcolor{comment}{\# Field 17 parsing rules}}
+\DoxyCodeLine{161             FieldIdentifiers.F17: [[SubFieldIdentifiers.F17a, SubFieldIdentifiers.F17b, SubFieldIdentifiers.F17c],}
+\DoxyCodeLine{162                                    [ErrorId.F17\_F17A\_SYNTAX, ErrorId.F17\_F17B\_SYNTAX,}
+\DoxyCodeLine{163                                     ErrorId.F17\_F17C\_SYNTAX, ErrorId.F17\_TOO\_MANY\_FIELDS,}
+\DoxyCodeLine{164                                     ErrorId.FLD\_MORE\_SUBFIELDS\_EXPECTED, ErrorId.F17\_MISSING]],}
+\DoxyCodeLine{165 }
+\DoxyCodeLine{166             \textcolor{comment}{\# TODO F18 Individual field parsing has to be implemented for this field.}}
+\DoxyCodeLine{167             \textcolor{comment}{\# TODO F18 The fields are all present in the FPR as of this implementation.}}
+\DoxyCodeLine{168             \textcolor{comment}{\# Field 18 parsing rules}}
+\DoxyCodeLine{169             FieldIdentifiers.F18: [}
+\DoxyCodeLine{170                 [SubFieldIdentifiers.F18altn, SubFieldIdentifiers.F18code, SubFieldIdentifiers.F18com,}
+\DoxyCodeLine{171                  SubFieldIdentifiers.F18dat, SubFieldIdentifiers.F18dep, SubFieldIdentifiers.F18dest,}
+\DoxyCodeLine{172                  SubFieldIdentifiers.F18dof, SubFieldIdentifiers.F18dle, SubFieldIdentifiers.F18eet,}
+\DoxyCodeLine{173                  SubFieldIdentifiers.F18est, SubFieldIdentifiers.F18ifp, SubFieldIdentifiers.F18nav,}
+\DoxyCodeLine{174                  SubFieldIdentifiers.F18opr, SubFieldIdentifiers.F18orgn, SubFieldIdentifiers.F18pbn,}
+\DoxyCodeLine{175                  SubFieldIdentifiers.F18per, SubFieldIdentifiers.F18ralt, SubFieldIdentifiers.F18reg,}
+\DoxyCodeLine{176                  SubFieldIdentifiers.F18rif, SubFieldIdentifiers.F18rfp, SubFieldIdentifiers.F18rmk,}
+\DoxyCodeLine{177                  SubFieldIdentifiers.F18rvr, SubFieldIdentifiers.F18sel, SubFieldIdentifiers.F18sts,}
+\DoxyCodeLine{178                  SubFieldIdentifiers.F18sur, SubFieldIdentifiers.F18src, SubFieldIdentifiers.F18talt,}
+\DoxyCodeLine{179                  SubFieldIdentifiers.F18typ],}
+\DoxyCodeLine{180                 []],}
+\DoxyCodeLine{181 }
+\DoxyCodeLine{182             \textcolor{comment}{\# F18\_DOF -\/ For single DOF used on many messages without a complete F18}}
+\DoxyCodeLine{183             FieldIdentifiers.F18\_DOF: [[SubFieldIdentifiers.F18dof],}
+\DoxyCodeLine{184                                        [ErrorId.F18\_DOF\_F18A\_SYNTAX, ErrorId.F18\_DOF\_TOO\_MANY\_FIELDS,}
+\DoxyCodeLine{185                                         ErrorId.FLD\_MORE\_SUBFIELDS\_EXPECTED, ErrorId.F18\_DOF\_MISSING]],}
+\DoxyCodeLine{186 }
+\DoxyCodeLine{187             \textcolor{comment}{\# TODO F19 Individual field parsing has to be implemented for this field.}}
+\DoxyCodeLine{188             \textcolor{comment}{\# TODO F19 The fields are all present in the FPR as of this implementation.}}
+\DoxyCodeLine{189             \textcolor{comment}{\# Field 19 parsing rules}}
+\DoxyCodeLine{190             FieldIdentifiers.F19: [[SubFieldIdentifiers.F19a, SubFieldIdentifiers.F19c, SubFieldIdentifiers.F19d,}
+\DoxyCodeLine{191                                     SubFieldIdentifiers.F19e, SubFieldIdentifiers.F19j, SubFieldIdentifiers.F19n,}
+\DoxyCodeLine{192                                     SubFieldIdentifiers.F19p, SubFieldIdentifiers.F19r, SubFieldIdentifiers.F19s],}
+\DoxyCodeLine{193                                    []],}
+\DoxyCodeLine{194 }
+\DoxyCodeLine{195             \textcolor{comment}{\# Field 20 parsing rules}}
+\DoxyCodeLine{196             FieldIdentifiers.F20: [[SubFieldIdentifiers.F20a, SubFieldIdentifiers.F20b,}
+\DoxyCodeLine{197                                     SubFieldIdentifiers.F20c, SubFieldIdentifiers.F20d,}
+\DoxyCodeLine{198                                     SubFieldIdentifiers.F20e, SubFieldIdentifiers.F20f,}
+\DoxyCodeLine{199                                     SubFieldIdentifiers.F20g, SubFieldIdentifiers.F20h],}
+\DoxyCodeLine{200                                    [ErrorId.F20\_F20A\_SYNTAX, ErrorId.F20\_F20B\_SYNTAX,}
+\DoxyCodeLine{201                                     ErrorId.F20\_F20C\_SYNTAX, ErrorId.F20\_F20D\_SYNTAX,}
+\DoxyCodeLine{202                                     ErrorId.F20\_F20E\_SYNTAX, ErrorId.F20\_F20F\_SYNTAX,}
+\DoxyCodeLine{203                                     ErrorId.F20\_F20G\_SYNTAX, ErrorId.F20\_F20H\_SYNTAX,}
+\DoxyCodeLine{204                                     ErrorId.F20\_TOO\_MANY\_FIELDS,}
+\DoxyCodeLine{205                                     ErrorId.FLD\_MORE\_SUBFIELDS\_EXPECTED, ErrorId.F20\_MISSING]],}
+\DoxyCodeLine{206 }
+\DoxyCodeLine{207             \textcolor{comment}{\# Field 21 parsing rules}}
+\DoxyCodeLine{208             FieldIdentifiers.F21: [[SubFieldIdentifiers.F21a, SubFieldIdentifiers.F21b,}
+\DoxyCodeLine{209                                     SubFieldIdentifiers.F21c, SubFieldIdentifiers.F21d,}
+\DoxyCodeLine{210                                     SubFieldIdentifiers.F21e, SubFieldIdentifiers.F21f],}
+\DoxyCodeLine{211                                    [ErrorId.F21\_F21A\_SYNTAX, ErrorId.F21\_F21B\_SYNTAX,}
+\DoxyCodeLine{212                                     ErrorId.F21\_F21C\_SYNTAX, ErrorId.F21\_F21D\_SYNTAX,}
+\DoxyCodeLine{213                                     ErrorId.F21\_F21E\_SYNTAX, ErrorId.F21\_F21F\_SYNTAX,}
+\DoxyCodeLine{214                                     ErrorId. F21\_TOO\_MANY\_FIELDS,}
+\DoxyCodeLine{215                                     ErrorId.FLD\_MORE\_SUBFIELDS\_EXPECTED, ErrorId.F21\_MISSING]],}
+\DoxyCodeLine{216 }
+\DoxyCodeLine{217             \textcolor{comment}{\# TODO F22 Individual field parsing has to be implemented for this field.}}
+\DoxyCodeLine{218             \textcolor{comment}{\# TODO F22 The fields are all present in the FPR as of this implementation.}}
+\DoxyCodeLine{219             FieldIdentifiers.F22: [[SubFieldIdentifiers.F22\_f3],}
+\DoxyCodeLine{220                                    []],}
+\DoxyCodeLine{221             \textcolor{comment}{\# TODO F22\_SPECIFIC Individual field parsing has to be implemented for this field.}}
+\DoxyCodeLine{222             \textcolor{comment}{\# TODO F22\_SPECIFIC The fields are all present in the FPR as of this implementation.}}
+\DoxyCodeLine{223             FieldIdentifiers.F22\_SPECIFIC: [[SubFieldIdentifiers.F22\_f3],}
+\DoxyCodeLine{224                                             []],}
+\DoxyCodeLine{225 }
+\DoxyCodeLine{226             \textcolor{comment}{\# Field 80 parsing rules}}
+\DoxyCodeLine{227             FieldIdentifiers.F80: [[SubFieldIdentifiers.F80a],}
+\DoxyCodeLine{228                                    [ErrorId.F80\_F80A\_SYNTAX, ErrorId.F80\_TOO\_MANY\_FIELDS,}
+\DoxyCodeLine{229                                    ErrorId.F80\_MORE\_SUBFIELDS\_EXPECTED, ErrorId.F80\_MISSING]],}
+\DoxyCodeLine{230 }
+\DoxyCodeLine{231             \textcolor{comment}{\# Field 81 parsing rules}}
+\DoxyCodeLine{232             FieldIdentifiers.F81: [[SubFieldIdentifiers.F81a, SubFieldIdentifiers.F81ab,}
+\DoxyCodeLine{233                                     SubFieldIdentifiers.F81b, SubFieldIdentifiers.F81bc,}
+\DoxyCodeLine{234                                     SubFieldIdentifiers.F81c],}
+\DoxyCodeLine{235                                    [ErrorId.F81\_F81A\_SYNTAX, ErrorId.F81\_F81AB\_SYNTAX,}
+\DoxyCodeLine{236                                     ErrorId.F81\_F81B\_SYNTAX, ErrorId.F81\_F81BC\_SYNTAX,}
+\DoxyCodeLine{237                                     ErrorId.F81\_F81C\_SYNTAX, ErrorId.F81\_TOO\_MANY\_FIELDS,}
+\DoxyCodeLine{238                                    ErrorId.F81\_MORE\_FIELDS\_EXPECTED, ErrorId.F81\_MISSING]],}
+\DoxyCodeLine{239 }
+\DoxyCodeLine{240             \textcolor{comment}{\# MFS message significant point, has different point syntax to normal ICAO points}}
+\DoxyCodeLine{241             FieldIdentifiers.MFS\_SIG\_POINT: [[SubFieldIdentifiers.MFS\_SIG\_POINT],}
+\DoxyCodeLine{242                                              [ErrorId.MFS\_POINT\_SYNTAX, ErrorId.MFS\_POINT\_TOO\_MANY\_FIELDS,}
+\DoxyCodeLine{243                                               ErrorId.FLD\_MORE\_SUBFIELDS\_EXPECTED, ErrorId.MFS\_POINT\_MISSING]],}
+\DoxyCodeLine{244         \}}
+\DoxyCodeLine{245 }
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classConfiguration_1_1SubFieldsInFields_1_1SubFieldsInFields_a996898316f5de70e65cc42418d18ad8a}\label{classConfiguration_1_1SubFieldsInFields_1_1SubFieldsInFields_a996898316f5de70e65cc42418d18ad8a}} 
+\index{Configuration.SubFieldsInFields.SubFieldsInFields@{Configuration.SubFieldsInFields.SubFieldsInFields}!get\_field\_content\_description@{get\_field\_content\_description}}
+\index{get\_field\_content\_description@{get\_field\_content\_description}!Configuration.SubFieldsInFields.SubFieldsInFields@{Configuration.SubFieldsInFields.SubFieldsInFields}}
+\doxysubsubsection{\texorpdfstring{get\_field\_content\_description()}{get\_field\_content\_description()}}
+{\footnotesize\ttfamily def Configuration.\+Sub\+Fields\+In\+Fields.\+Sub\+Fields\+In\+Fields.\+get\+\_\+field\+\_\+content\+\_\+description (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{icao\+\_\+field\+\_\+id }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Gets the subfield description for an ICAO field based on its ICAO field ID, i.e. F13, F16 etc.
+
+    :param icao_field_id: The field ID; an enumerator from the FieldIdentifiers class. Based on
+                  the ICAO field numbers as defined in ICAO DOC 4444.
+    :return:              A list of one or more enumeration values from the SubFieldIdentifiers class
+                  or None if the field 'icao_field_id' could not be found.\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{246     \textcolor{keyword}{def }get\_field\_content\_description(self, icao\_field\_id):}
+\DoxyCodeLine{247         \textcolor{comment}{\# type: (FieldIdentifiers) -\/> [SubFieldIdentifiers]}}
+\DoxyCodeLine{248         \textcolor{stringliteral}{"""Gets the subfield description for an ICAO field based on its ICAO field ID, i.e. F13, F16 etc.}}
+\DoxyCodeLine{249 \textcolor{stringliteral}{}}
+\DoxyCodeLine{250 \textcolor{stringliteral}{            :param icao\_field\_id: The field ID; an enumerator from the FieldIdentifiers class. Based on}}
+\DoxyCodeLine{251 \textcolor{stringliteral}{                                  the ICAO field numbers as defined in ICAO DOC 4444.}}
+\DoxyCodeLine{252 \textcolor{stringliteral}{            :return:              A list of one or more enumeration values from the SubFieldIdentifiers class}}
+\DoxyCodeLine{253 \textcolor{stringliteral}{                                  or None if the field 'icao\_field\_id' could not be found."""}}
+\DoxyCodeLine{254         \textcolor{keywordflow}{return} self.field\_content\_description[icao\_field\_id][0]}
+\DoxyCodeLine{255 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classConfiguration_1_1SubFieldsInFields_1_1SubFieldsInFields_a81c7ea3eb899bc62dfa32e8c1c0dc769}\label{classConfiguration_1_1SubFieldsInFields_1_1SubFieldsInFields_a81c7ea3eb899bc62dfa32e8c1c0dc769}} 
+\index{Configuration.SubFieldsInFields.SubFieldsInFields@{Configuration.SubFieldsInFields.SubFieldsInFields}!get\_field\_errors@{get\_field\_errors}}
+\index{get\_field\_errors@{get\_field\_errors}!Configuration.SubFieldsInFields.SubFieldsInFields@{Configuration.SubFieldsInFields.SubFieldsInFields}}
+\doxysubsubsection{\texorpdfstring{get\_field\_errors()}{get\_field\_errors()}}
+{\footnotesize\ttfamily def Configuration.\+Sub\+Fields\+In\+Fields.\+Sub\+Fields\+In\+Fields.\+get\+\_\+field\+\_\+errors (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{icao\+\_\+field\+\_\+id }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Gets the list of errors defined for a given ICAO field that are used by the subfield
+parser to report errors.
+
+:param icao_field_id: The field ID; an enumerator from the FieldIdentifiers class. Based on
+              the ICAO field numbers as defined in ICAO DOC 4444.
+:return: A list of one or more enumeration values from the ErrorId class
+ or None if the field 'icao_field_id' could not be found.\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{256     \textcolor{keyword}{def }get\_field\_errors(self, icao\_field\_id):}
+\DoxyCodeLine{257         \textcolor{comment}{\# type: (FieldIdentifiers) -\/> [ErrorId]}}
+\DoxyCodeLine{258         \textcolor{stringliteral}{"""Gets the list of errors defined for a given ICAO field that are used by the subfield}}
+\DoxyCodeLine{259 \textcolor{stringliteral}{        parser to report errors.}}
+\DoxyCodeLine{260 \textcolor{stringliteral}{}}
+\DoxyCodeLine{261 \textcolor{stringliteral}{        :param icao\_field\_id: The field ID; an enumerator from the FieldIdentifiers class. Based on}}
+\DoxyCodeLine{262 \textcolor{stringliteral}{                              the ICAO field numbers as defined in ICAO DOC 4444.}}
+\DoxyCodeLine{263 \textcolor{stringliteral}{        :return: A list of one or more enumeration values from the ErrorId class}}
+\DoxyCodeLine{264 \textcolor{stringliteral}{                 or None if the field 'icao\_field\_id' could not be found."""}}
+\DoxyCodeLine{265         \textcolor{keywordflow}{return} self.field\_content\_description[icao\_field\_id][1]}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classConfiguration_1_1SubFieldsInFields_1_1SubFieldsInFields_a90ed863e5325ae4bc0f1d039d99e00b4}\label{classConfiguration_1_1SubFieldsInFields_1_1SubFieldsInFields_a90ed863e5325ae4bc0f1d039d99e00b4}} 
+\index{Configuration.SubFieldsInFields.SubFieldsInFields@{Configuration.SubFieldsInFields.SubFieldsInFields}!field\_content\_description@{field\_content\_description}}
+\index{field\_content\_description@{field\_content\_description}!Configuration.SubFieldsInFields.SubFieldsInFields@{Configuration.SubFieldsInFields.SubFieldsInFields}}
+\doxysubsubsection{\texorpdfstring{field\_content\_description}{field\_content\_description}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily dictionary Configuration.\+Sub\+Fields\+In\+Fields.\+Sub\+Fields\+In\+Fields.\+field\+\_\+content\+\_\+description = \{\}\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classConfiguration_1_1SubFieldsInFields_1_1SubFieldsInFields_a0568d086130ff46cc2b9eccd247b9369}\label{classConfiguration_1_1SubFieldsInFields_1_1SubFieldsInFields_a0568d086130ff46cc2b9eccd247b9369}} 
+\index{Configuration.SubFieldsInFields.SubFieldsInFields@{Configuration.SubFieldsInFields.SubFieldsInFields}!field\_content\_description@{field\_content\_description}}
+\index{field\_content\_description@{field\_content\_description}!Configuration.SubFieldsInFields.SubFieldsInFields@{Configuration.SubFieldsInFields.SubFieldsInFields}}
+\doxysubsubsection{\texorpdfstring{field\_content\_description}{field\_content\_description}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Configuration.\+Sub\+Fields\+In\+Fields.\+Sub\+Fields\+In\+Fields.\+field\+\_\+content\+\_\+description}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Configuration/\mbox{\hyperlink{SubFieldsInFields_8py}{Sub\+Fields\+In\+Fields.\+py}}\end{DoxyCompactItemize}

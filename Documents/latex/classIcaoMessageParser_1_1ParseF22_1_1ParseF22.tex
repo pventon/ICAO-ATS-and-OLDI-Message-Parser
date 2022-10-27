@@ -1,0 +1,313 @@
+\hypertarget{classIcaoMessageParser_1_1ParseF22_1_1ParseF22}{}\doxysection{Icao\+Message\+Parser.\+Parse\+F22.\+Parse\+F22 Class Reference}
+\label{classIcaoMessageParser_1_1ParseF22_1_1ParseF22}\index{IcaoMessageParser.ParseF22.ParseF22@{IcaoMessageParser.ParseF22.ParseF22}}
+
+
+Inheritance diagram for Icao\+Message\+Parser.\+Parse\+F22.\+Parse\+F22\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=247pt]{classIcaoMessageParser_1_1ParseF22_1_1ParseF22__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Icao\+Message\+Parser.\+Parse\+F22.\+Parse\+F22\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=247pt]{classIcaoMessageParser_1_1ParseF22_1_1ParseF22__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1ParseF22_1_1ParseF22_aed5dbfb3b225f61e46c5c47da843ea01}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a93341de2e606a5ad85e0dd34f0336c00}{flight\+\_\+plan\+\_\+record}}, sfif, \mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a48a759a0835373c4ffbfa523d3566cdd}{sfd}})
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1ParseF22_1_1ParseF22_aa29966b359844b5aec4f14a78c1140b9}{parse\+\_\+field}} (self)
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1ParseF22_1_1ParseF22_a31aaea3b7bdcb8c50da700cf4929e3a8}{parse\+\_\+compound\+\_\+subfields}} (self, subfield\+\_\+start, subfield\+\_\+end)
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}This class parses ICAO field 22; this class subclasses ParseFieldsCommon. This class
+initialises the base class with information specific for parsing field 22, namely:
+
+- A flight plan record, instance of FlightPlanRecord
+- Configuration data defining the subfields contained in this field,
+  see configuration data in the SubFieldsInFields class
+- Configuration data defining the subfields that a field comprises,
+  see configuration data in the SubFieldDescriptions class\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseF22_1_1ParseF22_aed5dbfb3b225f61e46c5c47da843ea01}\label{classIcaoMessageParser_1_1ParseF22_1_1ParseF22_aed5dbfb3b225f61e46c5c47da843ea01}} 
+\index{IcaoMessageParser.ParseF22.ParseF22@{IcaoMessageParser.ParseF22.ParseF22}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!IcaoMessageParser.ParseF22.ParseF22@{IcaoMessageParser.ParseF22.ParseF22}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Parse\+F22.\+Parse\+F22.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{flight\+\_\+plan\+\_\+record,  }\item[{}]{sfif,  }\item[{}]{sfd }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Constructor to set up the field parser for ICAO field 22.
+
+    :param flight_plan_record: Flight plan to populate
+    :param sfif: Configuration data defining the subfields in an ICAO field
+    :param sfd: Configuration data describing the syntax and other information about all subfields\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{36     \textcolor{keyword}{def }\_\_init\_\_(self, flight\_plan\_record, sfif, sfd):}
+\DoxyCodeLine{37         \textcolor{comment}{\# type: (FlightPlanRecord, SubFieldsInFields, SubFieldDescriptions) -\/> None}}
+\DoxyCodeLine{38         \textcolor{stringliteral}{"""Constructor to set up the field parser for ICAO field 22.}}
+\DoxyCodeLine{39 \textcolor{stringliteral}{}}
+\DoxyCodeLine{40 \textcolor{stringliteral}{            :param flight\_plan\_record: Flight plan to populate}}
+\DoxyCodeLine{41 \textcolor{stringliteral}{            :param sfif: Configuration data defining the subfields in an ICAO field}}
+\DoxyCodeLine{42 \textcolor{stringliteral}{            :param sfd: Configuration data describing the syntax and other information about all subfields"""}}
+\DoxyCodeLine{43         super().\_\_init\_\_(flight\_plan\_record,  \textcolor{comment}{\# Flight plan to populate}}
+\DoxyCodeLine{44                          sfd,  \textcolor{comment}{\# Configuration data describing individual subfields}}
+\DoxyCodeLine{45                          FieldIdentifiers.F22,  \textcolor{comment}{\# ICAO field identifier}}
+\DoxyCodeLine{46                          \textcolor{stringliteral}{"-\/\(\backslash\)n\(\backslash\)t\(\backslash\)r"},  \textcolor{comment}{\# Whitespace to tokenize the field}}
+\DoxyCodeLine{47                          sfif.get\_field\_content\_description(FieldIdentifiers.F22),  \textcolor{comment}{\# Subfields in this field}}
+\DoxyCodeLine{48                          sfif.get\_field\_errors(FieldIdentifiers.F22))  \textcolor{comment}{\# Errors associated with this field}}
+\DoxyCodeLine{49 }
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseF22_1_1ParseF22_a31aaea3b7bdcb8c50da700cf4929e3a8}\label{classIcaoMessageParser_1_1ParseF22_1_1ParseF22_a31aaea3b7bdcb8c50da700cf4929e3a8}} 
+\index{IcaoMessageParser.ParseF22.ParseF22@{IcaoMessageParser.ParseF22.ParseF22}!parse\_compound\_subfields@{parse\_compound\_subfields}}
+\index{parse\_compound\_subfields@{parse\_compound\_subfields}!IcaoMessageParser.ParseF22.ParseF22@{IcaoMessageParser.ParseF22.ParseF22}}
+\doxysubsubsection{\texorpdfstring{parse\_compound\_subfields()}{parse\_compound\_subfields()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Parse\+F22.\+Parse\+F22.\+parse\+\_\+compound\+\_\+subfields (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{subfield\+\_\+start,  }\item[{}]{subfield\+\_\+end }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This method parses the individual F22 subfields by looping over all the subfields
+stored in the flight plans F22 record. All F22 subfields are fields that already
+have parsers implemented.
+
+The process to parse the F22 subfields works as follows:
+    - Get the F22 field record;
+    - Retrieve the list of subfields from the field record that contains a list of
+      all the F22 subfields;
+    - Create a new flight plan record and copy it into the flight plan record used by
+      this parser self.get_flight_plan_record().set_f22_flight_plan(new_fpr)), the
+      flight plan record maintains a flight plan record of the F22 subfields;
+    - Loop over the subfields and:
+* Check if there is more than one subfield in the list of subfields, this implies
+  a subfield appears twice in field 22, an error is reported if this is the case;
+* Copy the subfield into the new flight plan record;
+* Parse the subfield as is done fo any flight plan field;
+    - The 'new' flight plan now contains all the F22 subfields as fields with their respective
+      subfields along with any errors;
+    - Check if there are any errors, if there are, copy them from the new flight plan
+      into the flight plan record this field parser is working on;
+When looping over the F22 subfields, the F22 subfield enumeration values are used as the loop range;
+this ensures when looping over the F22 subfields that only F22 subfields are 'addressed' and reduces
+the processing time by limiting the number of enumerations to the F22 subset;
+
+    :param subfield_start: The first F22 subfield enumeration value;
+    :param subfield_end: The last F22 subfield enumeration value;
+    :return: None
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{114     \textcolor{keyword}{def }parse\_compound\_subfields(self, subfield\_start, subfield\_end):}
+\DoxyCodeLine{115         \textcolor{comment}{\# type: (SubFieldIdentifiers, SubFieldIdentifiers) -\/> None}}
+\DoxyCodeLine{116         \textcolor{stringliteral}{"""This method parses the individual F22 subfields by looping over all the subfields}}
+\DoxyCodeLine{117 \textcolor{stringliteral}{        stored in the flight plans F22 record. All F22 subfields are fields that already}}
+\DoxyCodeLine{118 \textcolor{stringliteral}{        have parsers implemented.}}
+\DoxyCodeLine{119 \textcolor{stringliteral}{}}
+\DoxyCodeLine{120 \textcolor{stringliteral}{        The process to parse the F22 subfields works as follows:}}
+\DoxyCodeLine{121 \textcolor{stringliteral}{            -\/ Get the F22 field record;}}
+\DoxyCodeLine{122 \textcolor{stringliteral}{            -\/ Retrieve the list of subfields from the field record that contains a list of}}
+\DoxyCodeLine{123 \textcolor{stringliteral}{              all the F22 subfields;}}
+\DoxyCodeLine{124 \textcolor{stringliteral}{            -\/ Create a new flight plan record and copy it into the flight plan record used by}}
+\DoxyCodeLine{125 \textcolor{stringliteral}{              this parser self.get\_flight\_plan\_record().set\_f22\_flight\_plan(new\_fpr)), the}}
+\DoxyCodeLine{126 \textcolor{stringliteral}{              flight plan record maintains a flight plan record of the F22 subfields;}}
+\DoxyCodeLine{127 \textcolor{stringliteral}{            -\/ Loop over the subfields and:}}
+\DoxyCodeLine{128 \textcolor{stringliteral}{                * Check if there is more than one subfield in the list of subfields, this implies}}
+\DoxyCodeLine{129 \textcolor{stringliteral}{                  a subfield appears twice in field 22, an error is reported if this is the case;}}
+\DoxyCodeLine{130 \textcolor{stringliteral}{                * Copy the subfield into the new flight plan record;}}
+\DoxyCodeLine{131 \textcolor{stringliteral}{                * Parse the subfield as is done fo any flight plan field;}}
+\DoxyCodeLine{132 \textcolor{stringliteral}{            -\/ The 'new' flight plan now contains all the F22 subfields as fields with their respective}}
+\DoxyCodeLine{133 \textcolor{stringliteral}{              subfields along with any errors;}}
+\DoxyCodeLine{134 \textcolor{stringliteral}{            -\/ Check if there are any errors, if there are, copy them from the new flight plan}}
+\DoxyCodeLine{135 \textcolor{stringliteral}{              into the flight plan record this field parser is working on;}}
+\DoxyCodeLine{136 \textcolor{stringliteral}{        When looping over the F22 subfields, the F22 subfield enumeration values are used as the loop range;}}
+\DoxyCodeLine{137 \textcolor{stringliteral}{        this ensures when looping over the F22 subfields that only F22 subfields are 'addressed' and reduces}}
+\DoxyCodeLine{138 \textcolor{stringliteral}{        the processing time by limiting the number of enumerations to the F22 subset;}}
+\DoxyCodeLine{139 \textcolor{stringliteral}{}}
+\DoxyCodeLine{140 \textcolor{stringliteral}{            :param subfield\_start: The first F22 subfield enumeration value;}}
+\DoxyCodeLine{141 \textcolor{stringliteral}{            :param subfield\_end: The last F22 subfield enumeration value;}}
+\DoxyCodeLine{142 \textcolor{stringliteral}{            :return: None}}
+\DoxyCodeLine{143 \textcolor{stringliteral}{        """}}
+\DoxyCodeLine{144         \textcolor{comment}{\# Set up a dictionary of field parser callbacks...}}
+\DoxyCodeLine{145         parse\_field\_x = \{SubFieldIdentifiers.F22\_f3: [FieldIdentifiers.F3, ParseF3],}
+\DoxyCodeLine{146                          SubFieldIdentifiers.F22\_f5: [FieldIdentifiers.F5, ParseF5],}
+\DoxyCodeLine{147                          SubFieldIdentifiers.F22\_f7: [FieldIdentifiers.F7, ParseF7],}
+\DoxyCodeLine{148                          SubFieldIdentifiers.F22\_f8: [FieldIdentifiers.F8, ParseF8],}
+\DoxyCodeLine{149                          SubFieldIdentifiers.F22\_f9: [FieldIdentifiers.F9, ParseF9],}
+\DoxyCodeLine{150                          SubFieldIdentifiers.F22\_f10: [FieldIdentifiers.F10, ParseF10],}
+\DoxyCodeLine{151                          SubFieldIdentifiers.F22\_f13: [FieldIdentifiers.F13, ParseF13],}
+\DoxyCodeLine{152                          SubFieldIdentifiers.F22\_f14: [FieldIdentifiers.F14, ParseF14],}
+\DoxyCodeLine{153                          SubFieldIdentifiers.F22\_f15: [FieldIdentifiers.F15, ParseF15x],}
+\DoxyCodeLine{154                          SubFieldIdentifiers.F22\_f16: [FieldIdentifiers.F16, ParseF16],}
+\DoxyCodeLine{155                          SubFieldIdentifiers.F22\_f17: [FieldIdentifiers.F17, ParseF17],}
+\DoxyCodeLine{156                          SubFieldIdentifiers.F22\_f18: [FieldIdentifiers.F18, ParseF18],}
+\DoxyCodeLine{157                          SubFieldIdentifiers.F22\_f19: [FieldIdentifiers.F19, ParseF19],}
+\DoxyCodeLine{158                          SubFieldIdentifiers.F22\_f20: [FieldIdentifiers.F20, ParseF20],}
+\DoxyCodeLine{159                          SubFieldIdentifiers.F22\_f21: [FieldIdentifiers.F21, ParseF21],}
+\DoxyCodeLine{160                          SubFieldIdentifiers.F22\_f22: [FieldIdentifiers.F22, ParseF22],}
+\DoxyCodeLine{161                          SubFieldIdentifiers.F22\_f80: [FieldIdentifiers.F80, ParseF80],}
+\DoxyCodeLine{162                          SubFieldIdentifiers.F22\_f81: [FieldIdentifiers.F81, ParseF81]\}}
+\DoxyCodeLine{163 }
+\DoxyCodeLine{164         \textcolor{comment}{\# Get the field 22 FieldRecord that contains zero or more F22 subfields}}
+\DoxyCodeLine{165         field\_record = self.get\_flight\_plan\_record().get\_icao\_field(self.get\_field\_identifier())}
+\DoxyCodeLine{166 }
+\DoxyCodeLine{167         \textcolor{comment}{\# Get the dictionary containing all the field 22 subfields stored in the flight plan}}
+\DoxyCodeLine{168         subfield\_dictionary = field\_record.get\_subfield\_dictionary()}
+\DoxyCodeLine{169 }
+\DoxyCodeLine{170         \textcolor{comment}{\# The field parsers need a flight plan, and we can't use the one in this instance, create}}
+\DoxyCodeLine{171         \textcolor{comment}{\# a new one, it will be populated by all the fields found in the field 22 being parsed.}}
+\DoxyCodeLine{172         new\_fpr = FlightPlanRecord()}
+\DoxyCodeLine{173 }
+\DoxyCodeLine{174         \textcolor{comment}{\# Add the new flight plan to the flight plan instance in this class;}}
+\DoxyCodeLine{175         self.get\_flight\_plan\_record().set\_f22\_flight\_plan(new\_fpr)}
+\DoxyCodeLine{176 }
+\DoxyCodeLine{177         \textcolor{comment}{\# Loop of the dictionary of subfields and parse each individual subfield}}
+\DoxyCodeLine{178         \textcolor{keywordflow}{for} subfield\_key, subfield\_list \textcolor{keywordflow}{in} subfield\_dictionary.items():}
+\DoxyCodeLine{179             \textcolor{comment}{\# Make sure subfield identifiers are valid F22 subfield enumeration values}}
+\DoxyCodeLine{180             \textcolor{keywordflow}{if} subfield\_start <= subfield\_key <= subfield\_end:}
+\DoxyCodeLine{181                 \textcolor{comment}{\# For field 22 there should only be a single subfield, i.e. a single}}
+\DoxyCodeLine{182                 \textcolor{comment}{\# list entry, if there are more than one it means a field has been repeated}}
+\DoxyCodeLine{183                 \textcolor{comment}{\# and an error will be reported.}}
+\DoxyCodeLine{184                 \textcolor{keywordflow}{if} len(subfield\_list) > 1:}
+\DoxyCodeLine{185                     self.add\_error(subfield\_key.name[5:] + \textcolor{stringliteral}{"/"} + subfield\_list[1].get\_field\_text(),}
+\DoxyCodeLine{186                                    subfield\_list[1].get\_start\_index(),}
+\DoxyCodeLine{187                                    subfield\_list[1].get\_end\_index(),}
+\DoxyCodeLine{188                                    ErrorId.F22\_FIELD\_DUPLICATED)}
+\DoxyCodeLine{189 }
+\DoxyCodeLine{190                 \textcolor{comment}{\# Loop over the list of subfields and parse the field;}}
+\DoxyCodeLine{191                 \textcolor{keywordflow}{for} subfield \textcolor{keywordflow}{in} subfield\_list:}
+\DoxyCodeLine{192                     new\_fpr.add\_icao\_field(}
+\DoxyCodeLine{193                         parse\_field\_x[subfield\_key][0],}
+\DoxyCodeLine{194                         subfield.get\_field\_text(),}
+\DoxyCodeLine{195                         subfield.get\_start\_index(),}
+\DoxyCodeLine{196                         subfield.get\_end\_index())}
+\DoxyCodeLine{197                     pfx = parse\_field\_x[subfield\_key][1](new\_fpr, SubFieldsInFields(), self.sfd)}
+\DoxyCodeLine{198                     pfx.parse\_field()}
+\DoxyCodeLine{199 }
+\DoxyCodeLine{200         \textcolor{comment}{\# Check if the new flight plan contains any errors}}
+\DoxyCodeLine{201         \textcolor{keywordflow}{if} new\_fpr.errors\_detected():}
+\DoxyCodeLine{202             \textcolor{comment}{\# Errors were detected, copy them into the flight plan record of this}}
+\DoxyCodeLine{203             \textcolor{comment}{\# instance}}
+\DoxyCodeLine{204             \textcolor{keywordflow}{for} error\_records \textcolor{keywordflow}{in} new\_fpr.get\_erroneous\_fields():}
+\DoxyCodeLine{205                 self.get\_flight\_plan\_record().add\_erroneous\_field(}
+\DoxyCodeLine{206                     error\_records.get\_field\_text(),}
+\DoxyCodeLine{207                     \textcolor{stringliteral}{"F22 -\/ "} + error\_records.get\_error\_message(),}
+\DoxyCodeLine{208                     error\_records.get\_start\_index(),}
+\DoxyCodeLine{209                     error\_records.get\_end\_index())}
+\DoxyCodeLine{210 }
+\DoxyCodeLine{211         \textcolor{comment}{\# Check if the extracted route in the new flight plan contains amy errors}}
+\DoxyCodeLine{212         \textcolor{keywordflow}{if} new\_fpr.get\_extracted\_route() \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:}
+\DoxyCodeLine{213             \textcolor{keywordflow}{if} new\_fpr.get\_extracted\_route().get\_number\_of\_errors() > 0:}
+\DoxyCodeLine{214                 \textcolor{comment}{\# We have field 15 errors, copy them over}}
+\DoxyCodeLine{215                 \textcolor{keywordflow}{for} error\_record \textcolor{keywordflow}{in} new\_fpr.get\_extracted\_route().get\_all\_errors():}
+\DoxyCodeLine{216                     self.get\_flight\_plan\_record().add\_erroneous\_field(}
+\DoxyCodeLine{217                         error\_record.get\_name(),}
+\DoxyCodeLine{218                         \textcolor{stringliteral}{"F22 -\/ "} + error\_record.get\_error\_text(),}
+\DoxyCodeLine{219                         error\_record.get\_start\_index(),}
+\DoxyCodeLine{220                         error\_record.get\_end\_index())}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseF22_1_1ParseF22_aa29966b359844b5aec4f14a78c1140b9}\label{classIcaoMessageParser_1_1ParseF22_1_1ParseF22_aa29966b359844b5aec4f14a78c1140b9}} 
+\index{IcaoMessageParser.ParseF22.ParseF22@{IcaoMessageParser.ParseF22.ParseF22}!parse\_field@{parse\_field}}
+\index{parse\_field@{parse\_field}!IcaoMessageParser.ParseF22.ParseF22@{IcaoMessageParser.ParseF22.ParseF22}}
+\doxysubsubsection{\texorpdfstring{parse\_field()}{parse\_field()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Parse\+F22.\+Parse\+F22.\+parse\+\_\+field (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This method is the program entry point to parse ICAO field 22. This field is a little
+different to the other compound fields as the keywords are numbers and the fields are separated
+in a message by hyphens.
+
+This method loops over the subfields, identifies them and stores them in the flight plan record.
+If a subfield is not recognised an error is reported.
+    :return: None\end{DoxyVerb}
+ 
+
+Reimplemented from \mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a395ea8f9247a4abe9881d3fa6eb437b4}{Icao\+Message\+Parser.\+Parse\+Fields\+Common.\+Parse\+Fields\+Common}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{50     \textcolor{keyword}{def }parse\_field(self):}
+\DoxyCodeLine{51         \textcolor{comment}{\# type: () -\/> None}}
+\DoxyCodeLine{52         \textcolor{stringliteral}{"""This method is the program entry point to parse ICAO field 22. This field is a little}}
+\DoxyCodeLine{53 \textcolor{stringliteral}{        different to the other compound fields as the keywords are numbers and the fields are separated}}
+\DoxyCodeLine{54 \textcolor{stringliteral}{        in a message by hyphens.}}
+\DoxyCodeLine{55 \textcolor{stringliteral}{}}
+\DoxyCodeLine{56 \textcolor{stringliteral}{        This method loops over the subfields, identifies them and stores them in the flight plan record.}}
+\DoxyCodeLine{57 \textcolor{stringliteral}{        If a subfield is not recognised an error is reported.}}
+\DoxyCodeLine{58 \textcolor{stringliteral}{            :return: None"""}}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{60         \textcolor{comment}{\# Check if the field contains anything at all...}}
+\DoxyCodeLine{61         \textcolor{keywordflow}{if} self.no\_tokens():}
+\DoxyCodeLine{62             self.add\_error(\textcolor{stringliteral}{""}, 0, 0, ErrorId.F22\_DATA\_MISSING)}
+\DoxyCodeLine{63             \textcolor{keywordflow}{return}}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65         data\_found = \textcolor{keyword}{False}}
+\DoxyCodeLine{66         \textcolor{keywordflow}{for} token \textcolor{keywordflow}{in} self.get\_tokens().get\_tokens():}
+\DoxyCodeLine{67             \textcolor{keywordflow}{if} len(token.get\_token\_string().replace(\textcolor{stringliteral}{" "}, \textcolor{stringliteral}{""})) == 0:}
+\DoxyCodeLine{68                 \textcolor{keywordflow}{continue}}
+\DoxyCodeLine{69             \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{70                 data\_found = \textcolor{keyword}{True}}
+\DoxyCodeLine{71             slash\_index = Utils.get\_first\_slash\_index(token.get\_token\_string())}
+\DoxyCodeLine{72             \textcolor{keywordflow}{if} slash\_index < 1:}
+\DoxyCodeLine{73                 \textcolor{comment}{\# Error, field number cannot be determined as it precedes the field, e.g 9/B737/M,}}
+\DoxyCodeLine{74                 \textcolor{comment}{\# If the '/' is missing, then we cannot determine what the field number is.}}
+\DoxyCodeLine{75                 self.add\_error(token.get\_token\_string(),}
+\DoxyCodeLine{76                                token.get\_token\_start\_index(),}
+\DoxyCodeLine{77                                token.get\_token\_end\_index(),}
+\DoxyCodeLine{78                                ErrorId.F22\_NO\_F22\_KEYWORDS\_FOUND)}
+\DoxyCodeLine{79             \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{80                 \textcolor{comment}{\# We found a slash, what precedes it must be the field number, the number as a string}}
+\DoxyCodeLine{81                 field\_number\_as\_string = token.get\_token\_string()[0:slash\_index].rstrip().lstrip()}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{83                 \textcolor{comment}{\# Check if this is a known field number by comparing it with the enumeration}}
+\DoxyCodeLine{84                 \textcolor{comment}{\# values defining the field numbers.}}
+\DoxyCodeLine{85                 subfield\_id = self.is\_compound\_field\_keyword(self.get\_field\_identifier(), field\_number\_as\_string)}
+\DoxyCodeLine{86                 \textcolor{keywordflow}{if} subfield\_id == SubFieldIdentifiers.ANYTHING:}
+\DoxyCodeLine{87                     \textcolor{comment}{\# Field number in unrecognised, not one of those defined}}
+\DoxyCodeLine{88                     self.add\_error(token.get\_token\_string(),}
+\DoxyCodeLine{89                                    token.get\_token\_start\_index(),}
+\DoxyCodeLine{90                                    token.get\_token\_end\_index(),}
+\DoxyCodeLine{91                                    ErrorId.F22\_UNRECOGNISED\_KEYWORD)}
+\DoxyCodeLine{92                 \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{93                     \textcolor{comment}{\# Check if there is any data following the '/'}}
+\DoxyCodeLine{94                     \textcolor{keywordflow}{if} len(token.get\_token\_string()[slash\_index + 1:]) < 1:}
+\DoxyCodeLine{95                         \textcolor{comment}{\# No data following the '/'}}
+\DoxyCodeLine{96                         self.add\_error(token.get\_token\_string(),}
+\DoxyCodeLine{97                                        token.get\_token\_start\_index(),}
+\DoxyCodeLine{98                                        token.get\_token\_end\_index(),}
+\DoxyCodeLine{99                                        ErrorId.F22\_UNRECOGNISED\_DATA)}
+\DoxyCodeLine{100                     \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{101                         \textcolor{comment}{\# Success! Save the subfield!}}
+\DoxyCodeLine{102                         self.get\_flight\_plan\_record().add\_icao\_subfield(}
+\DoxyCodeLine{103                             self.get\_field\_identifier(),}
+\DoxyCodeLine{104                             subfield\_id,}
+\DoxyCodeLine{105                             token.get\_token\_string()[slash\_index + 1:],}
+\DoxyCodeLine{106                             token.get\_token\_start\_index(),}
+\DoxyCodeLine{107                             token.get\_token\_end\_index())}
+\DoxyCodeLine{108 }
+\DoxyCodeLine{109         \textcolor{keywordflow}{if} data\_found:}
+\DoxyCodeLine{110             self.parse\_compound\_subfields(SubFieldIdentifiers.F22\_f3, SubFieldIdentifiers.F22\_f81)}
+\DoxyCodeLine{111         \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{112             self.add\_error(\textcolor{stringliteral}{""}, 0, 0, ErrorId.F22\_DATA\_MISSING)}
+\DoxyCodeLine{113 }
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Icao\+Message\+Parser/\mbox{\hyperlink{ParseF22_8py}{Parse\+F22.\+py}}\end{DoxyCompactItemize}

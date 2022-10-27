@@ -1,0 +1,471 @@
+\hypertarget{classTokenizer_1_1Tokens_1_1Tokens}{}\doxysection{Tokenizer.\+Tokens.\+Tokens Class Reference}
+\label{classTokenizer_1_1Tokens_1_1Tokens}\index{Tokenizer.Tokens.Tokens@{Tokenizer.Tokens.Tokens}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{classTokenizer_1_1Tokens_1_1Tokens_adad9d51081078294163aa391e1ca216d}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self)
+\item 
+def \mbox{\hyperlink{classTokenizer_1_1Tokens_1_1Tokens_a45c66b61278bb38531728aedc5812cd8}{get\+\_\+number\+\_\+of\+\_\+tokens}} (self)
+\item 
+def \mbox{\hyperlink{classTokenizer_1_1Tokens_1_1Tokens_a0006f2d12e31e5c102f82cdb9fa4bb30}{append\+\_\+token}} (self, token)
+\item 
+def \mbox{\hyperlink{classTokenizer_1_1Tokens_1_1Tokens_a5869795a41d22057cc6e7aab5d05d9e4}{insert\+\_\+token}} (self, token, index)
+\item 
+def \mbox{\hyperlink{classTokenizer_1_1Tokens_1_1Tokens_aa5344edeab77fb6fd021294f9ee6bf92}{create\+\_\+append\+\_\+token}} (self, token\+\_\+text, token\+\_\+start\+\_\+index, token\+\_\+end\+\_\+index)
+\item 
+def \mbox{\hyperlink{classTokenizer_1_1Tokens_1_1Tokens_a8acaccf4b74dd1dfd1a068cf31341f30}{get\+\_\+tokens}} (self)
+\item 
+def \mbox{\hyperlink{classTokenizer_1_1Tokens_1_1Tokens_a19accfe64c58c53032ae197777969221}{get\+\_\+token\+\_\+at}} (self, index)
+\item 
+def \mbox{\hyperlink{classTokenizer_1_1Tokens_1_1Tokens_ab4f59a4817c6510ed001983a67730531}{get\+\_\+first\+\_\+token}} (self)
+\item 
+def \mbox{\hyperlink{classTokenizer_1_1Tokens_1_1Tokens_a05d9899275fd61b4927a6e5e4f080619}{get\+\_\+last\+\_\+token}} (self)
+\item 
+def \mbox{\hyperlink{classTokenizer_1_1Tokens_1_1Tokens_a2f05fb93bc5659de5a3611ec54f61ede}{get\+\_\+next\+\_\+token}} (self)
+\item 
+def \mbox{\hyperlink{classTokenizer_1_1Tokens_1_1Tokens_ae0bdb283f89dd2c27b5c717a0640a81e}{get\+\_\+previous\+\_\+token}} (self)
+\item 
+def \mbox{\hyperlink{classTokenizer_1_1Tokens_1_1Tokens_a9114966566d64dfcde70c172f508f8af}{peek\+\_\+next\+\_\+token}} (self, look\+\_\+ahead=1)
+\item 
+def \mbox{\hyperlink{classTokenizer_1_1Tokens_1_1Tokens_a26cded95af75e82aef472883e60b66e1}{peek\+\_\+previous\+\_\+token}} (self, look\+\_\+behind=1)
+\item 
+def \mbox{\hyperlink{classTokenizer_1_1Tokens_1_1Tokens_a6e0588d4721fd2025e2f8309128ab5e3}{get\+\_\+current\+\_\+token}} (self)
+\item 
+def \mbox{\hyperlink{classTokenizer_1_1Tokens_1_1Tokens_a370616c91ddf8b6da050f1d8bc2eee7a}{remove\+\_\+tokens\+\_\+from\+\_\+end\+\_\+of\+\_\+list}} (self, split\+\_\+index)
+\item 
+def \mbox{\hyperlink{classTokenizer_1_1Tokens_1_1Tokens_a74630871cf7ec914c0cae00d79f804e2}{print\+\_\+tokens}} (self)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classTokenizer_1_1Tokens_1_1Tokens_a1ab79e2213a150848286b5423b76bcb1}{current\+\_\+token}}
+\item 
+\mbox{\hyperlink{classTokenizer_1_1Tokens_1_1Tokens_a6e9cd5fe5626011361d12cdc9d9c3a69}{tokens}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classTokenizer_1_1Tokens_1_1Tokens_a738c576c1c0aa6ecb98858c630423956}{int}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}This class contains a list of tokens where each token represents a string of
+# characters tokenized from a string by the Tokenizer class.
+# Refer to the Token class for details about a Token's content.
+# This class provides methods to append and retrieve tokens to / from this class.\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classTokenizer_1_1Tokens_1_1Tokens_adad9d51081078294163aa391e1ca216d}\label{classTokenizer_1_1Tokens_1_1Tokens_adad9d51081078294163aa391e1ca216d}} 
+\index{Tokenizer.Tokens.Tokens@{Tokenizer.Tokens.Tokens}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!Tokenizer.Tokens.Tokens@{Tokenizer.Tokens.Tokens}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def Tokenizer.\+Tokens.\+Tokens.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This constructor creates an 'empty' instance of this class.
+
+    :return: None\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{17     \textcolor{keyword}{def }\_\_init\_\_(self):}
+\DoxyCodeLine{18         \textcolor{comment}{\# type: () -\/> None}}
+\DoxyCodeLine{19         \textcolor{stringliteral}{"""This constructor creates an 'empty' instance of this class.}}
+\DoxyCodeLine{20 \textcolor{stringliteral}{}}
+\DoxyCodeLine{21 \textcolor{stringliteral}{            :return: None"""}}
+\DoxyCodeLine{22         self.current\_token = 0}
+\DoxyCodeLine{23         self.tokens = []}
+\DoxyCodeLine{24 }
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classTokenizer_1_1Tokens_1_1Tokens_a0006f2d12e31e5c102f82cdb9fa4bb30}\label{classTokenizer_1_1Tokens_1_1Tokens_a0006f2d12e31e5c102f82cdb9fa4bb30}} 
+\index{Tokenizer.Tokens.Tokens@{Tokenizer.Tokens.Tokens}!append\_token@{append\_token}}
+\index{append\_token@{append\_token}!Tokenizer.Tokens.Tokens@{Tokenizer.Tokens.Tokens}}
+\doxysubsubsection{\texorpdfstring{append\_token()}{append\_token()}}
+{\footnotesize\ttfamily def Tokenizer.\+Tokens.\+Tokens.\+append\+\_\+token (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{token }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This method appends a token to this class instance
+
+    :param token: A Token instance to append to the list of tokens in this class;
+    :return: None\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{32     \textcolor{keyword}{def }append\_token(self, token):}
+\DoxyCodeLine{33         \textcolor{comment}{\# type: (Token) -\/> None}}
+\DoxyCodeLine{34         \textcolor{stringliteral}{"""This method appends a token to this class instance}}
+\DoxyCodeLine{35 \textcolor{stringliteral}{}}
+\DoxyCodeLine{36 \textcolor{stringliteral}{            :param token: A Token instance to append to the list of tokens in this class;}}
+\DoxyCodeLine{37 \textcolor{stringliteral}{            :return: None"""}}
+\DoxyCodeLine{38         self.tokens.append(token)}
+\DoxyCodeLine{39 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classTokenizer_1_1Tokens_1_1Tokens_aa5344edeab77fb6fd021294f9ee6bf92}\label{classTokenizer_1_1Tokens_1_1Tokens_aa5344edeab77fb6fd021294f9ee6bf92}} 
+\index{Tokenizer.Tokens.Tokens@{Tokenizer.Tokens.Tokens}!create\_append\_token@{create\_append\_token}}
+\index{create\_append\_token@{create\_append\_token}!Tokenizer.Tokens.Tokens@{Tokenizer.Tokens.Tokens}}
+\doxysubsubsection{\texorpdfstring{create\_append\_token()}{create\_append\_token()}}
+{\footnotesize\ttfamily def Tokenizer.\+Tokens.\+Tokens.\+create\+\_\+append\+\_\+token (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{token\+\_\+text,  }\item[{}]{token\+\_\+start\+\_\+index,  }\item[{}]{token\+\_\+end\+\_\+index }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This method creates and appends a token to this class instance with a start and end index.
+
+    :param token_text: The text for this new token;
+    :param token_start_index: The tokens zero based start index for its position in the original
+                      string it was extracted from;
+    :param token_end_index: The tokens zero based end index for its position in the original
+                    string it was extracted from;
+    :return: None\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{49     \textcolor{keyword}{def }create\_append\_token(self, token\_text, token\_start\_index, token\_end\_index):}
+\DoxyCodeLine{50         \textcolor{comment}{\# type: (str, int, int) -\/> None}}
+\DoxyCodeLine{51         \textcolor{stringliteral}{"""This method creates and appends a token to this class instance with a start and end index.}}
+\DoxyCodeLine{52 \textcolor{stringliteral}{}}
+\DoxyCodeLine{53 \textcolor{stringliteral}{            :param token\_text: The text for this new token;}}
+\DoxyCodeLine{54 \textcolor{stringliteral}{            :param token\_start\_index: The tokens zero based start index for its position in the original}}
+\DoxyCodeLine{55 \textcolor{stringliteral}{                                      string it was extracted from;}}
+\DoxyCodeLine{56 \textcolor{stringliteral}{            :param token\_end\_index: The tokens zero based end index for its position in the original}}
+\DoxyCodeLine{57 \textcolor{stringliteral}{                                    string it was extracted from;}}
+\DoxyCodeLine{58 \textcolor{stringliteral}{            :return: None"""}}
+\DoxyCodeLine{59         self.append\_token(Token(token\_text, token\_start\_index, token\_end\_index))}
+\DoxyCodeLine{60 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classTokenizer_1_1Tokens_1_1Tokens_a6e0588d4721fd2025e2f8309128ab5e3}\label{classTokenizer_1_1Tokens_1_1Tokens_a6e0588d4721fd2025e2f8309128ab5e3}} 
+\index{Tokenizer.Tokens.Tokens@{Tokenizer.Tokens.Tokens}!get\_current\_token@{get\_current\_token}}
+\index{get\_current\_token@{get\_current\_token}!Tokenizer.Tokens.Tokens@{Tokenizer.Tokens.Tokens}}
+\doxysubsubsection{\texorpdfstring{get\_current\_token()}{get\_current\_token()}}
+{\footnotesize\ttfamily def Tokenizer.\+Tokens.\+Tokens.\+get\+\_\+current\+\_\+token (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This method gets the current token in the list of tokens;
+the member 'current_token' is NOT modified in this operation leaving the 'current' token as is.
+
+    :return: The 'current' Token in the list of tokens stored in this class;\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{135     \textcolor{keyword}{def }get\_current\_token(self):}
+\DoxyCodeLine{136         \textcolor{comment}{\# type: () -\/> Token}}
+\DoxyCodeLine{137         \textcolor{stringliteral}{"""This method gets the current token in the list of tokens;}}
+\DoxyCodeLine{138 \textcolor{stringliteral}{        the member 'current\_token' is NOT modified in this operation leaving the 'current' token as is.}}
+\DoxyCodeLine{139 \textcolor{stringliteral}{}}
+\DoxyCodeLine{140 \textcolor{stringliteral}{            :return: The 'current' Token in the list of tokens stored in this class;"""}}
+\DoxyCodeLine{141         \textcolor{keywordflow}{return} self.get\_token\_at(self.current\_token)}
+\DoxyCodeLine{142 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classTokenizer_1_1Tokens_1_1Tokens_ab4f59a4817c6510ed001983a67730531}\label{classTokenizer_1_1Tokens_1_1Tokens_ab4f59a4817c6510ed001983a67730531}} 
+\index{Tokenizer.Tokens.Tokens@{Tokenizer.Tokens.Tokens}!get\_first\_token@{get\_first\_token}}
+\index{get\_first\_token@{get\_first\_token}!Tokenizer.Tokens.Tokens@{Tokenizer.Tokens.Tokens}}
+\doxysubsubsection{\texorpdfstring{get\_first\_token()}{get\_first\_token()}}
+{\footnotesize\ttfamily def Tokenizer.\+Tokens.\+Tokens.\+get\+\_\+first\+\_\+token (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This method gets the first token in the list of tokens; the member 'current_token'
+is updated to zero to keep track of the last token recovered.
+
+    :return: The first Token in the list of tokens stored in this class;\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{79     \textcolor{keyword}{def }get\_first\_token(self):}
+\DoxyCodeLine{80         \textcolor{comment}{\# type: () -\/> Token}}
+\DoxyCodeLine{81         \textcolor{stringliteral}{"""This method gets the first token in the list of tokens; the member 'current\_token'}}
+\DoxyCodeLine{82 \textcolor{stringliteral}{        is updated to zero to keep track of the last token recovered.}}
+\DoxyCodeLine{83 \textcolor{stringliteral}{}}
+\DoxyCodeLine{84 \textcolor{stringliteral}{            :return: The first Token in the list of tokens stored in this class;"""}}
+\DoxyCodeLine{85         self.current\_token = 0}
+\DoxyCodeLine{86         \textcolor{keywordflow}{return} self.get\_token\_at(self.current\_token)}
+\DoxyCodeLine{87 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classTokenizer_1_1Tokens_1_1Tokens_a05d9899275fd61b4927a6e5e4f080619}\label{classTokenizer_1_1Tokens_1_1Tokens_a05d9899275fd61b4927a6e5e4f080619}} 
+\index{Tokenizer.Tokens.Tokens@{Tokenizer.Tokens.Tokens}!get\_last\_token@{get\_last\_token}}
+\index{get\_last\_token@{get\_last\_token}!Tokenizer.Tokens.Tokens@{Tokenizer.Tokens.Tokens}}
+\doxysubsubsection{\texorpdfstring{get\_last\_token()}{get\_last\_token()}}
+{\footnotesize\ttfamily def Tokenizer.\+Tokens.\+Tokens.\+get\+\_\+last\+\_\+token (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This method gets the last token in the list of tokens; the member 'current_token'
+is updated to the last token index to keep track of the last token recovered.
+
+    :return: The last Token in the list of tokens stored in this class;\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{88     \textcolor{keyword}{def }get\_last\_token(self):}
+\DoxyCodeLine{89         \textcolor{comment}{\# type: () -\/> Token}}
+\DoxyCodeLine{90         \textcolor{stringliteral}{"""This method gets the last token in the list of tokens; the member 'current\_token'}}
+\DoxyCodeLine{91 \textcolor{stringliteral}{        is updated to the last token index to keep track of the last token recovered.}}
+\DoxyCodeLine{92 \textcolor{stringliteral}{}}
+\DoxyCodeLine{93 \textcolor{stringliteral}{            :return: The last Token in the list of tokens stored in this class;"""}}
+\DoxyCodeLine{94         self.current\_token = self.get\_number\_of\_tokens() -\/ 1}
+\DoxyCodeLine{95         \textcolor{keywordflow}{return} self.get\_token\_at(self.get\_number\_of\_tokens() -\/ 1)}
+\DoxyCodeLine{96 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classTokenizer_1_1Tokens_1_1Tokens_a2f05fb93bc5659de5a3611ec54f61ede}\label{classTokenizer_1_1Tokens_1_1Tokens_a2f05fb93bc5659de5a3611ec54f61ede}} 
+\index{Tokenizer.Tokens.Tokens@{Tokenizer.Tokens.Tokens}!get\_next\_token@{get\_next\_token}}
+\index{get\_next\_token@{get\_next\_token}!Tokenizer.Tokens.Tokens@{Tokenizer.Tokens.Tokens}}
+\doxysubsubsection{\texorpdfstring{get\_next\_token()}{get\_next\_token()}}
+{\footnotesize\ttfamily def Tokenizer.\+Tokens.\+Tokens.\+get\+\_\+next\+\_\+token (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This method gets the next token in the list of tokens from the last one retrieved;
+the member 'current_token' is used to indicated the 'current' token index, one is
+added to this and the 'next' token returned.
+
+    :return: The 'next' Token in the list of tokens stored in this class;\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{97     \textcolor{keyword}{def }get\_next\_token(self):}
+\DoxyCodeLine{98         \textcolor{comment}{\# type: () -\/> Token}}
+\DoxyCodeLine{99         \textcolor{stringliteral}{"""This method gets the next token in the list of tokens from the last one retrieved;}}
+\DoxyCodeLine{100 \textcolor{stringliteral}{        the member 'current\_token' is used to indicated the 'current' token index, one is}}
+\DoxyCodeLine{101 \textcolor{stringliteral}{        added to this and the 'next' token returned.}}
+\DoxyCodeLine{102 \textcolor{stringliteral}{}}
+\DoxyCodeLine{103 \textcolor{stringliteral}{            :return: The 'next' Token in the list of tokens stored in this class;"""}}
+\DoxyCodeLine{104         self.current\_token = self.current\_token + 1}
+\DoxyCodeLine{105         \textcolor{keywordflow}{return} self.get\_token\_at(self.current\_token)}
+\DoxyCodeLine{106 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classTokenizer_1_1Tokens_1_1Tokens_a45c66b61278bb38531728aedc5812cd8}\label{classTokenizer_1_1Tokens_1_1Tokens_a45c66b61278bb38531728aedc5812cd8}} 
+\index{Tokenizer.Tokens.Tokens@{Tokenizer.Tokens.Tokens}!get\_number\_of\_tokens@{get\_number\_of\_tokens}}
+\index{get\_number\_of\_tokens@{get\_number\_of\_tokens}!Tokenizer.Tokens.Tokens@{Tokenizer.Tokens.Tokens}}
+\doxysubsubsection{\texorpdfstring{get\_number\_of\_tokens()}{get\_number\_of\_tokens()}}
+{\footnotesize\ttfamily def Tokenizer.\+Tokens.\+Tokens.\+get\+\_\+number\+\_\+of\+\_\+tokens (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This method gets and returns the number of Token instances stored in this class.
+
+    :return: The number of tokens in this class instance;\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{25     \textcolor{keyword}{def }get\_number\_of\_tokens(self):}
+\DoxyCodeLine{26         \textcolor{comment}{\# type: () -\/> int}}
+\DoxyCodeLine{27         \textcolor{stringliteral}{"""This method gets and returns the number of Token instances stored in this class.}}
+\DoxyCodeLine{28 \textcolor{stringliteral}{}}
+\DoxyCodeLine{29 \textcolor{stringliteral}{            :return: The number of tokens in this class instance;"""}}
+\DoxyCodeLine{30         \textcolor{keywordflow}{return} len(self.tokens)}
+\DoxyCodeLine{31 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classTokenizer_1_1Tokens_1_1Tokens_ae0bdb283f89dd2c27b5c717a0640a81e}\label{classTokenizer_1_1Tokens_1_1Tokens_ae0bdb283f89dd2c27b5c717a0640a81e}} 
+\index{Tokenizer.Tokens.Tokens@{Tokenizer.Tokens.Tokens}!get\_previous\_token@{get\_previous\_token}}
+\index{get\_previous\_token@{get\_previous\_token}!Tokenizer.Tokens.Tokens@{Tokenizer.Tokens.Tokens}}
+\doxysubsubsection{\texorpdfstring{get\_previous\_token()}{get\_previous\_token()}}
+{\footnotesize\ttfamily def Tokenizer.\+Tokens.\+Tokens.\+get\+\_\+previous\+\_\+token (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This method gets the previous token in the list of tokens from the last one retrieved;
+the member 'current_token' is used to indicated the 'current' token index, one is
+subtracted from this and the 'previous' token returned.
+
+    :return: The 'previous' Token in the list of tokens stored in this class;\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{107     \textcolor{keyword}{def }get\_previous\_token(self):}
+\DoxyCodeLine{108         \textcolor{comment}{\# type: () -\/> Token}}
+\DoxyCodeLine{109         \textcolor{stringliteral}{"""This method gets the previous token in the list of tokens from the last one retrieved;}}
+\DoxyCodeLine{110 \textcolor{stringliteral}{        the member 'current\_token' is used to indicated the 'current' token index, one is}}
+\DoxyCodeLine{111 \textcolor{stringliteral}{        subtracted from this and the 'previous' token returned.}}
+\DoxyCodeLine{112 \textcolor{stringliteral}{}}
+\DoxyCodeLine{113 \textcolor{stringliteral}{            :return: The 'previous' Token in the list of tokens stored in this class;"""}}
+\DoxyCodeLine{114         self.current\_token = self.current\_token -\/ 1}
+\DoxyCodeLine{115         \textcolor{keywordflow}{return} self.get\_token\_at(self.current\_token)}
+\DoxyCodeLine{116 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classTokenizer_1_1Tokens_1_1Tokens_a19accfe64c58c53032ae197777969221}\label{classTokenizer_1_1Tokens_1_1Tokens_a19accfe64c58c53032ae197777969221}} 
+\index{Tokenizer.Tokens.Tokens@{Tokenizer.Tokens.Tokens}!get\_token\_at@{get\_token\_at}}
+\index{get\_token\_at@{get\_token\_at}!Tokenizer.Tokens.Tokens@{Tokenizer.Tokens.Tokens}}
+\doxysubsubsection{\texorpdfstring{get\_token\_at()}{get\_token\_at()}}
+{\footnotesize\ttfamily def Tokenizer.\+Tokens.\+Tokens.\+get\+\_\+token\+\_\+at (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{index }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This method gets a specific token from the list of tokens at 'index', 'None' if 'index' is out of range.
+
+    :param index: The index for the token to be returned;
+    :return: A Token instance located in the list of tokens at the position in the list specified by
+    'index' or None if the index is out of range;\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{68     \textcolor{keyword}{def }get\_token\_at(self, index):}
+\DoxyCodeLine{69         \textcolor{comment}{\# type: (int) -\/> Token | None}}
+\DoxyCodeLine{70         \textcolor{stringliteral}{"""This method gets a specific token from the list of tokens at 'index', 'None' if 'index' is out of range.}}
+\DoxyCodeLine{71 \textcolor{stringliteral}{}}
+\DoxyCodeLine{72 \textcolor{stringliteral}{            :param index: The index for the token to be returned;}}
+\DoxyCodeLine{73 \textcolor{stringliteral}{            :return: A Token instance located in the list of tokens at the position in the list specified by}}
+\DoxyCodeLine{74 \textcolor{stringliteral}{                    'index' or None if the index is out of range;"""}}
+\DoxyCodeLine{75         \textcolor{keywordflow}{if} index < 0 \textcolor{keywordflow}{or} index >= len(self.tokens):}
+\DoxyCodeLine{76             \textcolor{keywordflow}{return} \textcolor{keywordtype}{None}}
+\DoxyCodeLine{77         \textcolor{keywordflow}{return} self.tokens[index]}
+\DoxyCodeLine{78 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classTokenizer_1_1Tokens_1_1Tokens_a8acaccf4b74dd1dfd1a068cf31341f30}\label{classTokenizer_1_1Tokens_1_1Tokens_a8acaccf4b74dd1dfd1a068cf31341f30}} 
+\index{Tokenizer.Tokens.Tokens@{Tokenizer.Tokens.Tokens}!get\_tokens@{get\_tokens}}
+\index{get\_tokens@{get\_tokens}!Tokenizer.Tokens.Tokens@{Tokenizer.Tokens.Tokens}}
+\doxysubsubsection{\texorpdfstring{get\_tokens()}{get\_tokens()}}
+{\footnotesize\ttfamily def Tokenizer.\+Tokens.\+Tokens.\+get\+\_\+tokens (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This method gets the list of tokens
+
+    :return: The list of token stored in this class;\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{61     \textcolor{keyword}{def }get\_tokens(self):}
+\DoxyCodeLine{62         \textcolor{comment}{\# type: () -\/> [Token]}}
+\DoxyCodeLine{63         \textcolor{stringliteral}{"""This method gets the list of tokens}}
+\DoxyCodeLine{64 \textcolor{stringliteral}{}}
+\DoxyCodeLine{65 \textcolor{stringliteral}{            :return: The list of token stored in this class;"""}}
+\DoxyCodeLine{66         \textcolor{keywordflow}{return} self.tokens}
+\DoxyCodeLine{67 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classTokenizer_1_1Tokens_1_1Tokens_a5869795a41d22057cc6e7aab5d05d9e4}\label{classTokenizer_1_1Tokens_1_1Tokens_a5869795a41d22057cc6e7aab5d05d9e4}} 
+\index{Tokenizer.Tokens.Tokens@{Tokenizer.Tokens.Tokens}!insert\_token@{insert\_token}}
+\index{insert\_token@{insert\_token}!Tokenizer.Tokens.Tokens@{Tokenizer.Tokens.Tokens}}
+\doxysubsubsection{\texorpdfstring{insert\_token()}{insert\_token()}}
+{\footnotesize\ttfamily def Tokenizer.\+Tokens.\+Tokens.\+insert\+\_\+token (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{token,  }\item[{}]{index }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This method inserts a token before the one identified with the index 'index'
+
+    :param token: The Token instance to insert into the list of tokens in this class;
+    :param index: The index before which the new token will be inserted;
+    :return: None\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{40     \textcolor{keyword}{def }insert\_token(self, token, index):}
+\DoxyCodeLine{41         \textcolor{comment}{\# type: (Token, int) -\/> None}}
+\DoxyCodeLine{42         \textcolor{stringliteral}{"""This method inserts a token before the one identified with the index 'index'}}
+\DoxyCodeLine{43 \textcolor{stringliteral}{}}
+\DoxyCodeLine{44 \textcolor{stringliteral}{            :param token: The Token instance to insert into the list of tokens in this class;}}
+\DoxyCodeLine{45 \textcolor{stringliteral}{            :param index: The index before which the new token will be inserted;}}
+\DoxyCodeLine{46 \textcolor{stringliteral}{            :return: None"""}}
+\DoxyCodeLine{47         self.tokens.insert(index, token)}
+\DoxyCodeLine{48 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classTokenizer_1_1Tokens_1_1Tokens_a9114966566d64dfcde70c172f508f8af}\label{classTokenizer_1_1Tokens_1_1Tokens_a9114966566d64dfcde70c172f508f8af}} 
+\index{Tokenizer.Tokens.Tokens@{Tokenizer.Tokens.Tokens}!peek\_next\_token@{peek\_next\_token}}
+\index{peek\_next\_token@{peek\_next\_token}!Tokenizer.Tokens.Tokens@{Tokenizer.Tokens.Tokens}}
+\doxysubsubsection{\texorpdfstring{peek\_next\_token()}{peek\_next\_token()}}
+{\footnotesize\ttfamily def Tokenizer.\+Tokens.\+Tokens.\+peek\+\_\+next\+\_\+token (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{look\+\_\+ahead = {\ttfamily 1} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This method 'peeks' at the next token in the list of tokens from the last one retrieved;
+the member 'current_token' is NOT updated for a 'peek' operation and the 'current' token
+remains the same.
+
+    :return: The 'next' Token in the list of tokens stored in this class;\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{117     \textcolor{keyword}{def }peek\_next\_token(self, look\_ahead=1):}
+\DoxyCodeLine{118         \textcolor{comment}{\# type: (int) -\/> Token}}
+\DoxyCodeLine{119         \textcolor{stringliteral}{"""This method 'peeks' at the next token in the list of tokens from the last one retrieved;}}
+\DoxyCodeLine{120 \textcolor{stringliteral}{        the member 'current\_token' is NOT updated for a 'peek' operation and the 'current' token}}
+\DoxyCodeLine{121 \textcolor{stringliteral}{        remains the same.}}
+\DoxyCodeLine{122 \textcolor{stringliteral}{}}
+\DoxyCodeLine{123 \textcolor{stringliteral}{            :return: The 'next' Token in the list of tokens stored in this class;"""}}
+\DoxyCodeLine{124         \textcolor{keywordflow}{return} self.get\_token\_at(self.current\_token + look\_ahead)}
+\DoxyCodeLine{125 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classTokenizer_1_1Tokens_1_1Tokens_a26cded95af75e82aef472883e60b66e1}\label{classTokenizer_1_1Tokens_1_1Tokens_a26cded95af75e82aef472883e60b66e1}} 
+\index{Tokenizer.Tokens.Tokens@{Tokenizer.Tokens.Tokens}!peek\_previous\_token@{peek\_previous\_token}}
+\index{peek\_previous\_token@{peek\_previous\_token}!Tokenizer.Tokens.Tokens@{Tokenizer.Tokens.Tokens}}
+\doxysubsubsection{\texorpdfstring{peek\_previous\_token()}{peek\_previous\_token()}}
+{\footnotesize\ttfamily def Tokenizer.\+Tokens.\+Tokens.\+peek\+\_\+previous\+\_\+token (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{look\+\_\+behind = {\ttfamily 1} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This method 'peeks' at the previous token in the list of tokens from the last one retrieved;
+the member 'current_token' is NOT updated for a 'peek' operation and the 'current' token
+remains the same.
+
+    :return: The 'previous' Token in the list of tokens stored in this class;\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{126     \textcolor{keyword}{def }peek\_previous\_token(self, look\_behind=1):}
+\DoxyCodeLine{127         \textcolor{comment}{\# type: (int) -\/> Token}}
+\DoxyCodeLine{128         \textcolor{stringliteral}{"""This method 'peeks' at the previous token in the list of tokens from the last one retrieved;}}
+\DoxyCodeLine{129 \textcolor{stringliteral}{        the member 'current\_token' is NOT updated for a 'peek' operation and the 'current' token}}
+\DoxyCodeLine{130 \textcolor{stringliteral}{        remains the same.}}
+\DoxyCodeLine{131 \textcolor{stringliteral}{}}
+\DoxyCodeLine{132 \textcolor{stringliteral}{            :return: The 'previous' Token in the list of tokens stored in this class;"""}}
+\DoxyCodeLine{133         \textcolor{keywordflow}{return} self.get\_token\_at(self.current\_token -\/ look\_behind)}
+\DoxyCodeLine{134 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classTokenizer_1_1Tokens_1_1Tokens_a74630871cf7ec914c0cae00d79f804e2}\label{classTokenizer_1_1Tokens_1_1Tokens_a74630871cf7ec914c0cae00d79f804e2}} 
+\index{Tokenizer.Tokens.Tokens@{Tokenizer.Tokens.Tokens}!print\_tokens@{print\_tokens}}
+\index{print\_tokens@{print\_tokens}!Tokenizer.Tokens.Tokens@{Tokenizer.Tokens.Tokens}}
+\doxysubsubsection{\texorpdfstring{print\_tokens()}{print\_tokens()}}
+{\footnotesize\ttfamily def Tokenizer.\+Tokens.\+Tokens.\+print\+\_\+tokens (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This method prints the complete list of tokens. The method is provided to assist in debugging.
+
+    :return: None\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{152     \textcolor{keyword}{def }print\_tokens(self):}
+\DoxyCodeLine{153         \textcolor{comment}{\# type: () -\/> None}}
+\DoxyCodeLine{154         \textcolor{stringliteral}{"""This method prints the complete list of tokens. The method is provided to assist in debugging.}}
+\DoxyCodeLine{155 \textcolor{stringliteral}{}}
+\DoxyCodeLine{156 \textcolor{stringliteral}{            :return: None"""}}
+\DoxyCodeLine{157         print(\textcolor{stringliteral}{"Total Number of Tokens: "} + str(len(self.tokens)))}
+\DoxyCodeLine{158         print(\textcolor{stringliteral}{"\{0:>15\}"}.format(\textcolor{stringliteral}{"Start"}) +}
+\DoxyCodeLine{159               \textcolor{stringliteral}{"\{0:>5\}"}.format(\textcolor{stringliteral}{"End"}) +}
+\DoxyCodeLine{160               \textcolor{stringliteral}{"\{0:>6\}"}.format(\textcolor{stringliteral}{"Base"}) +}
+\DoxyCodeLine{161               \textcolor{stringliteral}{"\{0:>5\}"}.format(\textcolor{stringliteral}{"Sub-\/"}))}
+\DoxyCodeLine{162         print(\textcolor{stringliteral}{"\{0:>9\}"}.format(\textcolor{stringliteral}{"Name"}) +}
+\DoxyCodeLine{163               \textcolor{stringliteral}{"\{0:>6\}"}.format(\textcolor{stringliteral}{"Index"}) +}
+\DoxyCodeLine{164               \textcolor{stringliteral}{"\{0:>6\}"}.format(\textcolor{stringliteral}{"Index"}) +}
+\DoxyCodeLine{165               \textcolor{stringliteral}{"\{0:>5\}"}.format(\textcolor{stringliteral}{"Type"}) +}
+\DoxyCodeLine{166               \textcolor{stringliteral}{"\{0:>5\}"}.format(\textcolor{stringliteral}{"Type"}))}
+\DoxyCodeLine{167         \textcolor{keywordflow}{for} item \textcolor{keywordflow}{in} self.tokens:}
+\DoxyCodeLine{168             item.print\_token()}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classTokenizer_1_1Tokens_1_1Tokens_a370616c91ddf8b6da050f1d8bc2eee7a}\label{classTokenizer_1_1Tokens_1_1Tokens_a370616c91ddf8b6da050f1d8bc2eee7a}} 
+\index{Tokenizer.Tokens.Tokens@{Tokenizer.Tokens.Tokens}!remove\_tokens\_from\_end\_of\_list@{remove\_tokens\_from\_end\_of\_list}}
+\index{remove\_tokens\_from\_end\_of\_list@{remove\_tokens\_from\_end\_of\_list}!Tokenizer.Tokens.Tokens@{Tokenizer.Tokens.Tokens}}
+\doxysubsubsection{\texorpdfstring{remove\_tokens\_from\_end\_of\_list()}{remove\_tokens\_from\_end\_of\_list()}}
+{\footnotesize\ttfamily def Tokenizer.\+Tokens.\+Tokens.\+remove\+\_\+tokens\+\_\+from\+\_\+end\+\_\+of\+\_\+list (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{split\+\_\+index }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This method removes tokens from the list above the split_index
+
+:param split_index: Index above which all tokens will be removed
+:return: None
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{143     \textcolor{keyword}{def }remove\_tokens\_from\_end\_of\_list(self, split\_index):}
+\DoxyCodeLine{144         \textcolor{comment}{\# type: (int) -\/> None}}
+\DoxyCodeLine{145         \textcolor{stringliteral}{"""This method removes tokens from the list above the split\_index}}
+\DoxyCodeLine{146 \textcolor{stringliteral}{}}
+\DoxyCodeLine{147 \textcolor{stringliteral}{        :param split\_index: Index above which all tokens will be removed}}
+\DoxyCodeLine{148 \textcolor{stringliteral}{        :return: None}}
+\DoxyCodeLine{149 \textcolor{stringliteral}{        """}}
+\DoxyCodeLine{150         self.tokens = self.tokens[:split\_index + 1]}
+\DoxyCodeLine{151 }
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classTokenizer_1_1Tokens_1_1Tokens_a1ab79e2213a150848286b5423b76bcb1}\label{classTokenizer_1_1Tokens_1_1Tokens_a1ab79e2213a150848286b5423b76bcb1}} 
+\index{Tokenizer.Tokens.Tokens@{Tokenizer.Tokens.Tokens}!current\_token@{current\_token}}
+\index{current\_token@{current\_token}!Tokenizer.Tokens.Tokens@{Tokenizer.Tokens.Tokens}}
+\doxysubsubsection{\texorpdfstring{current\_token}{current\_token}}
+{\footnotesize\ttfamily Tokenizer.\+Tokens.\+Tokens.\+current\+\_\+token}
+
+\mbox{\Hypertarget{classTokenizer_1_1Tokens_1_1Tokens_a738c576c1c0aa6ecb98858c630423956}\label{classTokenizer_1_1Tokens_1_1Tokens_a738c576c1c0aa6ecb98858c630423956}} 
+\index{Tokenizer.Tokens.Tokens@{Tokenizer.Tokens.Tokens}!int@{int}}
+\index{int@{int}!Tokenizer.Tokens.Tokens@{Tokenizer.Tokens.Tokens}}
+\doxysubsubsection{\texorpdfstring{int}{int}}
+{\footnotesize\ttfamily Tokenizer.\+Tokens.\+Tokens.\+int\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classTokenizer_1_1Tokens_1_1Tokens_a6e9cd5fe5626011361d12cdc9d9c3a69}\label{classTokenizer_1_1Tokens_1_1Tokens_a6e9cd5fe5626011361d12cdc9d9c3a69}} 
+\index{Tokenizer.Tokens.Tokens@{Tokenizer.Tokens.Tokens}!tokens@{tokens}}
+\index{tokens@{tokens}!Tokenizer.Tokens.Tokens@{Tokenizer.Tokens.Tokens}}
+\doxysubsubsection{\texorpdfstring{tokens}{tokens}}
+{\footnotesize\ttfamily Tokenizer.\+Tokens.\+Tokens.\+tokens}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Tokenizer/\mbox{\hyperlink{Tokens_8py}{Tokens.\+py}}\end{DoxyCompactItemize}

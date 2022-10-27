@@ -1,0 +1,295 @@
+\hypertarget{classTokenizer_1_1Tokenize_1_1Tokenize}{}\doxysection{Tokenizer.\+Tokenize.\+Tokenize Class Reference}
+\label{classTokenizer_1_1Tokenize_1_1Tokenize}\index{Tokenizer.Tokenize.Tokenize@{Tokenizer.Tokenize.Tokenize}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{classTokenizer_1_1Tokenize_1_1Tokenize_aec6bfe0c7324575e2f13936c932d7f8b}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self)
+\item 
+def \mbox{\hyperlink{classTokenizer_1_1Tokenize_1_1Tokenize_aa654bb142e90b0365321abb51706c9e4}{tokenize}} (self)
+\item 
+def \mbox{\hyperlink{classTokenizer_1_1Tokenize_1_1Tokenize_a486ad9db57056a1840020ec8f75abdfd}{set\+\_\+string\+\_\+to\+\_\+tokenize}} (self, \mbox{\hyperlink{classTokenizer_1_1Tokenize_1_1Tokenize_a215d9a61013b667fe5ab1827fa09c06d}{string\+\_\+to\+\_\+tokenize}}=\char`\"{}\char`\"{})
+\item 
+def \mbox{\hyperlink{classTokenizer_1_1Tokenize_1_1Tokenize_a5d86448d654b9ef7ed37febffb816303}{get\+\_\+string\+\_\+to\+\_\+tokenize}} (self)
+\item 
+def \mbox{\hyperlink{classTokenizer_1_1Tokenize_1_1Tokenize_acc2467ce7571fea2fc7e4eef36cedc8b}{set\+\_\+whitespace}} (self, \mbox{\hyperlink{classTokenizer_1_1Tokenize_1_1Tokenize_a5928dd210f85c7612c520e9696890656}{whitespace}}=\char`\"{}\char`\"{})
+\item 
+def \mbox{\hyperlink{classTokenizer_1_1Tokenize_1_1Tokenize_a1a1857fdd426b7e37df8710407052c4c}{get\+\_\+whitespace}} (self)
+\item 
+def \mbox{\hyperlink{classTokenizer_1_1Tokenize_1_1Tokenize_a93bcc3e879f67a1205404865de821553}{get\+\_\+tokens}} (self)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classTokenizer_1_1Tokenize_1_1Tokenize_a215d9a61013b667fe5ab1827fa09c06d}{string\+\_\+to\+\_\+tokenize}}
+\item 
+\mbox{\hyperlink{classTokenizer_1_1Tokenize_1_1Tokenize_ab6bcbd30426a3fa2f1149ec67907bf69}{tokens}}
+\item 
+\mbox{\hyperlink{classTokenizer_1_1Tokenize_1_1Tokenize_a5928dd210f85c7612c520e9696890656}{whitespace}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classTokenizer_1_1Tokenize_1_1Tokenize_abecc23e53b0e186d018c8fd1a955708f}{str}}
+\item 
+\mbox{\hyperlink{classTokenizer_1_1Tokenize_1_1Tokenize_af6ff55faf229242f3cbed771a7c2365b}{Tokens}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{classTokenizer_1_1Tokenize_1_1Tokenize_a94fa7b62af791ae59f645bd02287aa61}{\+\_\+\+\_\+save\+\_\+token}} (self, token\+\_\+text, idx)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}This class tokenizes a string looking for tokens separated by caller specified
+whitespace characters, storing each token along with its location where it was
+found in the input string (a tokens start and end index in the source string). The
+individual tokens along with their associated attributes are stored in a 'Tokens'
+class instance. \end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classTokenizer_1_1Tokenize_1_1Tokenize_aec6bfe0c7324575e2f13936c932d7f8b}\label{classTokenizer_1_1Tokenize_1_1Tokenize_aec6bfe0c7324575e2f13936c932d7f8b}} 
+\index{Tokenizer.Tokenize.Tokenize@{Tokenizer.Tokenize.Tokenize}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!Tokenizer.Tokenize.Tokenize@{Tokenizer.Tokenize.Tokenize}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def Tokenizer.\+Tokenize.\+Tokenize.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Constructor without a string to tokenize and assigning a default whitespace string
+regular expressions \" \\\\n\\\\t\\\\r\".
+
+    :return: None\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{20     \textcolor{keyword}{def }\_\_init\_\_(self):}
+\DoxyCodeLine{21         \textcolor{stringliteral}{"""Constructor without a string to tokenize and assigning a default whitespace string}}
+\DoxyCodeLine{22 \textcolor{stringliteral}{        regular expressions \(\backslash\)" \(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)n\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)t\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)r\(\backslash\)".}}
+\DoxyCodeLine{23 \textcolor{stringliteral}{}}
+\DoxyCodeLine{24 \textcolor{stringliteral}{            :return: None"""}}
+\DoxyCodeLine{25         self.string\_to\_tokenize = \textcolor{stringliteral}{""}}
+\DoxyCodeLine{26         self.tokens = Tokens()}
+\DoxyCodeLine{27         self.whitespace = \textcolor{stringliteral}{" \(\backslash\)n\(\backslash\)t\(\backslash\)r"}}
+\DoxyCodeLine{28 }
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classTokenizer_1_1Tokenize_1_1Tokenize_a94fa7b62af791ae59f645bd02287aa61}\label{classTokenizer_1_1Tokenize_1_1Tokenize_a94fa7b62af791ae59f645bd02287aa61}} 
+\index{Tokenizer.Tokenize.Tokenize@{Tokenizer.Tokenize.Tokenize}!\_\_save\_token@{\_\_save\_token}}
+\index{\_\_save\_token@{\_\_save\_token}!Tokenizer.Tokenize.Tokenize@{Tokenizer.Tokenize.Tokenize}}
+\doxysubsubsection{\texorpdfstring{\_\_save\_token()}{\_\_save\_token()}}
+{\footnotesize\ttfamily def Tokenizer.\+Tokenize.\+Tokenize.\+\_\+\+\_\+save\+\_\+token (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{token\+\_\+text,  }\item[{}]{idx }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\begin{DoxyVerb}Save a token to a local token attribute.
+
+    :param token_text: Saves the token_text to a token at index idx;
+    :param idx: The index identifying a token in the list of tokens;
+    :return: None\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{96     \textcolor{keyword}{def }\_\_save\_token(self, token\_text, idx):}
+\DoxyCodeLine{97         \textcolor{comment}{\# type: (str, int) -\/> None}}
+\DoxyCodeLine{98         \textcolor{stringliteral}{"""Save a token to a local token attribute.}}
+\DoxyCodeLine{99 \textcolor{stringliteral}{}}
+\DoxyCodeLine{100 \textcolor{stringliteral}{            :param token\_text: Saves the token\_text to a token at index idx;}}
+\DoxyCodeLine{101 \textcolor{stringliteral}{            :param idx: The index identifying a token in the list of tokens;}}
+\DoxyCodeLine{102 \textcolor{stringliteral}{            :return: None"""}}
+\DoxyCodeLine{103         \textcolor{keywordflow}{if} len(token\_text) > 0:}
+\DoxyCodeLine{104             self.tokens.create\_append\_token(}
+\DoxyCodeLine{105                 token\_text, idx -\/ len(token\_text), idx)}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classTokenizer_1_1Tokenize_1_1Tokenize_a5d86448d654b9ef7ed37febffb816303}\label{classTokenizer_1_1Tokenize_1_1Tokenize_a5d86448d654b9ef7ed37febffb816303}} 
+\index{Tokenizer.Tokenize.Tokenize@{Tokenizer.Tokenize.Tokenize}!get\_string\_to\_tokenize@{get\_string\_to\_tokenize}}
+\index{get\_string\_to\_tokenize@{get\_string\_to\_tokenize}!Tokenizer.Tokenize.Tokenize@{Tokenizer.Tokenize.Tokenize}}
+\doxysubsubsection{\texorpdfstring{get\_string\_to\_tokenize()}{get\_string\_to\_tokenize()}}
+{\footnotesize\ttfamily def Tokenizer.\+Tokenize.\+Tokenize.\+get\+\_\+string\+\_\+to\+\_\+tokenize (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Retrieves the string that has been tokenized.
+
+    :return: The string that was tokenized;\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{62     \textcolor{keyword}{def }get\_string\_to\_tokenize(self):}
+\DoxyCodeLine{63         \textcolor{comment}{\# type: () -\/> str}}
+\DoxyCodeLine{64         \textcolor{stringliteral}{"""Retrieves the string that has been tokenized.}}
+\DoxyCodeLine{65 \textcolor{stringliteral}{}}
+\DoxyCodeLine{66 \textcolor{stringliteral}{            :return: The string that was tokenized;"""}}
+\DoxyCodeLine{67         \textcolor{keywordflow}{return} self.string\_to\_tokenize}
+\DoxyCodeLine{68 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classTokenizer_1_1Tokenize_1_1Tokenize_a93bcc3e879f67a1205404865de821553}\label{classTokenizer_1_1Tokenize_1_1Tokenize_a93bcc3e879f67a1205404865de821553}} 
+\index{Tokenizer.Tokenize.Tokenize@{Tokenizer.Tokenize.Tokenize}!get\_tokens@{get\_tokens}}
+\index{get\_tokens@{get\_tokens}!Tokenizer.Tokenize.Tokenize@{Tokenizer.Tokenize.Tokenize}}
+\doxysubsubsection{\texorpdfstring{get\_tokens()}{get\_tokens()}}
+{\footnotesize\ttfamily def Tokenizer.\+Tokenize.\+Tokenize.\+get\+\_\+tokens (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Retrieve the list of tokens stored in this class.
+
+    :return: A list containing zero or more Token classes\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{89     \textcolor{keyword}{def }get\_tokens(self):}
+\DoxyCodeLine{90         \textcolor{comment}{\# type: () -\/> Tokens}}
+\DoxyCodeLine{91         \textcolor{stringliteral}{"""Retrieve the list of tokens stored in this class.}}
+\DoxyCodeLine{92 \textcolor{stringliteral}{}}
+\DoxyCodeLine{93 \textcolor{stringliteral}{            :return: A list containing zero or more Token classes"""}}
+\DoxyCodeLine{94         \textcolor{keywordflow}{return} self.tokens}
+\DoxyCodeLine{95 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classTokenizer_1_1Tokenize_1_1Tokenize_a1a1857fdd426b7e37df8710407052c4c}\label{classTokenizer_1_1Tokenize_1_1Tokenize_a1a1857fdd426b7e37df8710407052c4c}} 
+\index{Tokenizer.Tokenize.Tokenize@{Tokenizer.Tokenize.Tokenize}!get\_whitespace@{get\_whitespace}}
+\index{get\_whitespace@{get\_whitespace}!Tokenizer.Tokenize.Tokenize@{Tokenizer.Tokenize.Tokenize}}
+\doxysubsubsection{\texorpdfstring{get\_whitespace()}{get\_whitespace()}}
+{\footnotesize\ttfamily def Tokenizer.\+Tokenize.\+Tokenize.\+get\+\_\+whitespace (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Retrieve the string representing the token whitespace delimiter characters.
+
+    :return: A string containing characters treated as whitespace characters;\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{82     \textcolor{keyword}{def }get\_whitespace(self):}
+\DoxyCodeLine{83         \textcolor{comment}{\# type: () -\/> str}}
+\DoxyCodeLine{84         \textcolor{stringliteral}{"""Retrieve the string representing the token whitespace delimiter characters.}}
+\DoxyCodeLine{85 \textcolor{stringliteral}{}}
+\DoxyCodeLine{86 \textcolor{stringliteral}{            :return: A string containing characters treated as whitespace characters;"""}}
+\DoxyCodeLine{87         \textcolor{keywordflow}{return} self.whitespace}
+\DoxyCodeLine{88 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classTokenizer_1_1Tokenize_1_1Tokenize_a486ad9db57056a1840020ec8f75abdfd}\label{classTokenizer_1_1Tokenize_1_1Tokenize_a486ad9db57056a1840020ec8f75abdfd}} 
+\index{Tokenizer.Tokenize.Tokenize@{Tokenizer.Tokenize.Tokenize}!set\_string\_to\_tokenize@{set\_string\_to\_tokenize}}
+\index{set\_string\_to\_tokenize@{set\_string\_to\_tokenize}!Tokenizer.Tokenize.Tokenize@{Tokenizer.Tokenize.Tokenize}}
+\doxysubsubsection{\texorpdfstring{set\_string\_to\_tokenize()}{set\_string\_to\_tokenize()}}
+{\footnotesize\ttfamily def Tokenizer.\+Tokenize.\+Tokenize.\+set\+\_\+string\+\_\+to\+\_\+tokenize (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{string\+\_\+to\+\_\+tokenize = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Sets a string to tokenize
+
+    :param string_to_tokenize: A string that will be tokenized by this class;
+    :return: None\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{54     \textcolor{keyword}{def }set\_string\_to\_tokenize(self, string\_to\_tokenize=""):}
+\DoxyCodeLine{55         \textcolor{comment}{\# type: (str) -\/> None}}
+\DoxyCodeLine{56         \textcolor{stringliteral}{"""Sets a string to tokenize}}
+\DoxyCodeLine{57 \textcolor{stringliteral}{}}
+\DoxyCodeLine{58 \textcolor{stringliteral}{            :param string\_to\_tokenize: A string that will be tokenized by this class;}}
+\DoxyCodeLine{59 \textcolor{stringliteral}{            :return: None"""}}
+\DoxyCodeLine{60         self.string\_to\_tokenize = string\_to\_tokenize}
+\DoxyCodeLine{61 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classTokenizer_1_1Tokenize_1_1Tokenize_acc2467ce7571fea2fc7e4eef36cedc8b}\label{classTokenizer_1_1Tokenize_1_1Tokenize_acc2467ce7571fea2fc7e4eef36cedc8b}} 
+\index{Tokenizer.Tokenize.Tokenize@{Tokenizer.Tokenize.Tokenize}!set\_whitespace@{set\_whitespace}}
+\index{set\_whitespace@{set\_whitespace}!Tokenizer.Tokenize.Tokenize@{Tokenizer.Tokenize.Tokenize}}
+\doxysubsubsection{\texorpdfstring{set\_whitespace()}{set\_whitespace()}}
+{\footnotesize\ttfamily def Tokenizer.\+Tokenize.\+Tokenize.\+set\+\_\+whitespace (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{whitespace = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Set a string representing the token whitespace delimiter characters.
+
+Note that a forward slash '/' character will be treated as whitespace
+but will be saved as a token. All other whitespace characters are
+consumed by the tokenizer.
+
+    :param whitespace:  The string containing characters considered as
+                whitespace when tokenizing;
+    :return: None\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{69     \textcolor{keyword}{def }set\_whitespace(self, whitespace=""):}
+\DoxyCodeLine{70         \textcolor{comment}{\# type: (str) -\/> None}}
+\DoxyCodeLine{71         \textcolor{stringliteral}{"""Set a string representing the token whitespace delimiter characters.}}
+\DoxyCodeLine{72 \textcolor{stringliteral}{}}
+\DoxyCodeLine{73 \textcolor{stringliteral}{        Note that a forward slash '/' character will be treated as whitespace}}
+\DoxyCodeLine{74 \textcolor{stringliteral}{        but will be saved as a token. All other whitespace characters are}}
+\DoxyCodeLine{75 \textcolor{stringliteral}{        consumed by the tokenizer.}}
+\DoxyCodeLine{76 \textcolor{stringliteral}{}}
+\DoxyCodeLine{77 \textcolor{stringliteral}{            :param whitespace:  The string containing characters considered as}}
+\DoxyCodeLine{78 \textcolor{stringliteral}{                                whitespace when tokenizing;}}
+\DoxyCodeLine{79 \textcolor{stringliteral}{            :return: None"""}}
+\DoxyCodeLine{80         self.whitespace = whitespace}
+\DoxyCodeLine{81 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classTokenizer_1_1Tokenize_1_1Tokenize_aa654bb142e90b0365321abb51706c9e4}\label{classTokenizer_1_1Tokenize_1_1Tokenize_aa654bb142e90b0365321abb51706c9e4}} 
+\index{Tokenizer.Tokenize.Tokenize@{Tokenizer.Tokenize.Tokenize}!tokenize@{tokenize}}
+\index{tokenize@{tokenize}!Tokenizer.Tokenize.Tokenize@{Tokenizer.Tokenize.Tokenize}}
+\doxysubsubsection{\texorpdfstring{tokenize()}{tokenize()}}
+{\footnotesize\ttfamily def Tokenizer.\+Tokenize.\+Tokenize.\+tokenize (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Tokenize the string using the assigned whitespace character set. Any character contained
+in the parameter 'whitespace' will be discarded and treated as whitespace token separators
+apart from a forward slash '/' which will result in a forward slash token.
+A string given as "E1 E2 E3" will yield 3 tokens using the default whitespace character set.
+
+    :return: None\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{29     \textcolor{keyword}{def }tokenize(self):}
+\DoxyCodeLine{30         \textcolor{comment}{\# type: () -\/> None}}
+\DoxyCodeLine{31         \textcolor{stringliteral}{"""Tokenize the string using the assigned whitespace character set. Any character contained}}
+\DoxyCodeLine{32 \textcolor{stringliteral}{        in the parameter 'whitespace' will be discarded and treated as whitespace token separators}}
+\DoxyCodeLine{33 \textcolor{stringliteral}{        apart from a forward slash '/' which will result in a forward slash token.}}
+\DoxyCodeLine{34 \textcolor{stringliteral}{        A string given as "E1 E2 E3" will yield 3 tokens using the default whitespace character set.}}
+\DoxyCodeLine{35 \textcolor{stringliteral}{}}
+\DoxyCodeLine{36 \textcolor{stringliteral}{            :return: None"""}}
+\DoxyCodeLine{37         self.tokens = Tokens()}
+\DoxyCodeLine{38         idx = 0}
+\DoxyCodeLine{39         token\_text = \textcolor{stringliteral}{""}}
+\DoxyCodeLine{40         \textcolor{keywordflow}{for} item \textcolor{keywordflow}{in} self.string\_to\_tokenize:}
+\DoxyCodeLine{41             \textcolor{keywordflow}{if} item \textcolor{keywordflow}{in} self.whitespace:}
+\DoxyCodeLine{42                 \textcolor{keywordflow}{if} len(token\_text) > 0:}
+\DoxyCodeLine{43                     self.\_\_save\_token(token\_text, idx)}
+\DoxyCodeLine{44                 \textcolor{keywordflow}{if} item \textcolor{keywordflow}{in} \textcolor{stringliteral}{"/"}:}
+\DoxyCodeLine{45                     \textcolor{comment}{\# We have to save the forward slash token}}
+\DoxyCodeLine{46                     self.\_\_save\_token(item, idx+1)}
+\DoxyCodeLine{47                 token\_text = \textcolor{stringliteral}{""}}
+\DoxyCodeLine{48             \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{49                 token\_text = token\_text + item}
+\DoxyCodeLine{50             idx = idx + 1}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52         self.\_\_save\_token(token\_text, idx)}
+\DoxyCodeLine{53 }
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classTokenizer_1_1Tokenize_1_1Tokenize_abecc23e53b0e186d018c8fd1a955708f}\label{classTokenizer_1_1Tokenize_1_1Tokenize_abecc23e53b0e186d018c8fd1a955708f}} 
+\index{Tokenizer.Tokenize.Tokenize@{Tokenizer.Tokenize.Tokenize}!str@{str}}
+\index{str@{str}!Tokenizer.Tokenize.Tokenize@{Tokenizer.Tokenize.Tokenize}}
+\doxysubsubsection{\texorpdfstring{str}{str}}
+{\footnotesize\ttfamily Tokenizer.\+Tokenize.\+Tokenize.\+str\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classTokenizer_1_1Tokenize_1_1Tokenize_a215d9a61013b667fe5ab1827fa09c06d}\label{classTokenizer_1_1Tokenize_1_1Tokenize_a215d9a61013b667fe5ab1827fa09c06d}} 
+\index{Tokenizer.Tokenize.Tokenize@{Tokenizer.Tokenize.Tokenize}!string\_to\_tokenize@{string\_to\_tokenize}}
+\index{string\_to\_tokenize@{string\_to\_tokenize}!Tokenizer.Tokenize.Tokenize@{Tokenizer.Tokenize.Tokenize}}
+\doxysubsubsection{\texorpdfstring{string\_to\_tokenize}{string\_to\_tokenize}}
+{\footnotesize\ttfamily Tokenizer.\+Tokenize.\+Tokenize.\+string\+\_\+to\+\_\+tokenize}
+
+\mbox{\Hypertarget{classTokenizer_1_1Tokenize_1_1Tokenize_af6ff55faf229242f3cbed771a7c2365b}\label{classTokenizer_1_1Tokenize_1_1Tokenize_af6ff55faf229242f3cbed771a7c2365b}} 
+\index{Tokenizer.Tokenize.Tokenize@{Tokenizer.Tokenize.Tokenize}!Tokens@{Tokens}}
+\index{Tokens@{Tokens}!Tokenizer.Tokenize.Tokenize@{Tokenizer.Tokenize.Tokenize}}
+\doxysubsubsection{\texorpdfstring{Tokens}{Tokens}}
+{\footnotesize\ttfamily Tokenizer.\+Tokenize.\+Tokenize.\+Tokens\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classTokenizer_1_1Tokenize_1_1Tokenize_ab6bcbd30426a3fa2f1149ec67907bf69}\label{classTokenizer_1_1Tokenize_1_1Tokenize_ab6bcbd30426a3fa2f1149ec67907bf69}} 
+\index{Tokenizer.Tokenize.Tokenize@{Tokenizer.Tokenize.Tokenize}!tokens@{tokens}}
+\index{tokens@{tokens}!Tokenizer.Tokenize.Tokenize@{Tokenizer.Tokenize.Tokenize}}
+\doxysubsubsection{\texorpdfstring{tokens}{tokens}}
+{\footnotesize\ttfamily Tokenizer.\+Tokenize.\+Tokenize.\+tokens}
+
+\mbox{\Hypertarget{classTokenizer_1_1Tokenize_1_1Tokenize_a5928dd210f85c7612c520e9696890656}\label{classTokenizer_1_1Tokenize_1_1Tokenize_a5928dd210f85c7612c520e9696890656}} 
+\index{Tokenizer.Tokenize.Tokenize@{Tokenizer.Tokenize.Tokenize}!whitespace@{whitespace}}
+\index{whitespace@{whitespace}!Tokenizer.Tokenize.Tokenize@{Tokenizer.Tokenize.Tokenize}}
+\doxysubsubsection{\texorpdfstring{whitespace}{whitespace}}
+{\footnotesize\ttfamily Tokenizer.\+Tokenize.\+Tokenize.\+whitespace}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Tokenizer/\mbox{\hyperlink{Tokenize_8py}{Tokenize.\+py}}\end{DoxyCompactItemize}

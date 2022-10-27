@@ -1,0 +1,41 @@
+\hypertarget{namespaceConfiguration_1_1EnumerationConstants}{}\doxysection{Configuration.\+Enumeration\+Constants Namespace Reference}
+\label{namespaceConfiguration_1_1EnumerationConstants}\index{Configuration.EnumerationConstants@{Configuration.EnumerationConstants}}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classConfiguration_1_1EnumerationConstants_1_1AdjacentUnits}{Adjacent\+Units}}
+\item 
+class \mbox{\hyperlink{classConfiguration_1_1EnumerationConstants_1_1ErrorId}{Error\+Id}}
+\item 
+class \mbox{\hyperlink{classConfiguration_1_1EnumerationConstants_1_1FieldIdentifiers}{Field\+Identifiers}}
+\item 
+class \mbox{\hyperlink{classConfiguration_1_1EnumerationConstants_1_1FlightRules}{Flight\+Rules}}
+\item 
+class \mbox{\hyperlink{classConfiguration_1_1EnumerationConstants_1_1MessageTitles}{Message\+Titles}}
+\item 
+class \mbox{\hyperlink{classConfiguration_1_1EnumerationConstants_1_1MessageTypes}{Message\+Types}}
+\item 
+class \mbox{\hyperlink{classConfiguration_1_1EnumerationConstants_1_1SubFieldIdentifiers}{Sub\+Field\+Identifiers}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}This file contains several enumeration classes used as system-wide constants
+that define the following:
+
+MessageTitles -> Enumerations for all supported ATS and OLDI message titles;
+
+FieldIdentifiers -> Enumerations for all ICAO fields as defined in both the OLDI 4.2 standard and ICAO DOC 4444;
+
+SubFieldIdentifiers -> Enumerations for all ICAO and OLDI message subfields; a subfield is derived as
+described in the ICAO DOC 4444.
+
+MessageTypes -> Enumeration to define the type of message, OLDI, ICAO ATS, ADEXP or UNKNOWN.
+Determined by analysing a message during message parsing;
+
+AdjacentUnits -> A list of adjacent unit identifiers used in combination with a message title and its
+type to determine the field content of OLDI messages. Unlike the ICAO ATS messages, the fields contained
+in an OLDI message are not fixed but vary depending on the adjacent unit that they are being exchanged on.
+
+ErrorId -> Enumeration used to index error messages.\end{DoxyVerb}
+ 

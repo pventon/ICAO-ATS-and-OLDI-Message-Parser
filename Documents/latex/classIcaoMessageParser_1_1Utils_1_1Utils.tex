@@ -1,0 +1,489 @@
+\hypertarget{classIcaoMessageParser_1_1Utils_1_1Utils}{}\doxysection{Icao\+Message\+Parser.\+Utils.\+Utils Class Reference}
+\label{classIcaoMessageParser_1_1Utils_1_1Utils}\index{IcaoMessageParser.Utils.Utils@{IcaoMessageParser.Utils.Utils}}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1Utils_1_1Utils_a914ed328b9181d74f3f920695556033e}{add\+\_\+error}} (flight\+\_\+plan\+\_\+record, erroneous\+\_\+field\+\_\+text, start\+\_\+index, end\+\_\+index, error\+\_\+messages, error\+\_\+id)
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1Utils_1_1Utils_ad33d18e78dbf8a06a08797a678adc7cd}{add\+\_\+subfield\+\_\+error}} (flight\+\_\+plan\+\_\+record, subfield, error\+\_\+id)
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1Utils_1_1Utils_abfada3a9a7838663e75c1090e26a28b9}{check\+\_\+too\+\_\+many\+\_\+fields}} (flight\+\_\+plan\+\_\+record, subfield, error\+\_\+id)
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1Utils_1_1Utils_a3007c9a8d231caca3d13998c12f9ff3c}{get\+\_\+first\+\_\+digit\+\_\+index}} (str\+\_\+)
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1Utils_1_1Utils_a02b6f2003ddbf56fbbfedcc8afe29c80}{get\+\_\+first\+\_\+alpha\+\_\+index}} (str\+\_\+)
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1Utils_1_1Utils_acff2c23a2a8891ddd9a0fb6e203b30bb}{get\+\_\+first\+\_\+slash\+\_\+index}} (str\+\_\+)
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1Utils_1_1Utils_afa56e302073b3d3cea7ad27939539e95}{is\+\_\+dof}} (dof)
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1Utils_1_1Utils_a5eb2ce18f8e42731fcb140db3bb3b149}{parse\+\_\+for\+\_\+alpha\+\_\+num}} (flight\+\_\+plan\+\_\+record, subfield, error\+\_\+id)
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1Utils_1_1Utils_ad41b4990279d9146310f3da81840acdd}{parse\+\_\+for\+\_\+hex\+\_\+address}} (flight\+\_\+plan\+\_\+record, subfield, error\+\_\+id)
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1Utils_1_1Utils_abe45e75fcc92ac5ec9936e1ff49e80f0}{parse\+\_\+for\+\_\+regexp}} (flight\+\_\+plan\+\_\+record, subfield, error\+\_\+id, regexp)
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1Utils_1_1Utils_a7ff2e48d8826ef286b8534c59bba9ee6}{split\+\_\+on\+\_\+first\+\_\+digit}} (str\+\_\+)
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1Utils_1_1Utils_affed9805fcb3a9df44cc3987c911dffb}{split\+\_\+on\+\_\+first\+\_\+alpha}} (str\+\_\+)
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1Utils_1_1Utils_abc51730829c79d545f747cd3837c7b01}{split\+\_\+on\+\_\+first\+\_\+character}} (str\+\_\+, char)
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1Utils_1_1Utils_a1d97048e2c9bc7f640353c0f72e48dba}{split\+\_\+on\+\_\+index}} (str\+\_\+, idx)
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1Utils_1_1Utils_a2a1741a1caece98c9f30da8a385391d4}{title\+\_\+defined}} (f3)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}This class provides utility methods for the ICAO and OLDI Message Parser.\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1Utils_1_1Utils_a914ed328b9181d74f3f920695556033e}\label{classIcaoMessageParser_1_1Utils_1_1Utils_a914ed328b9181d74f3f920695556033e}} 
+\index{IcaoMessageParser.Utils.Utils@{IcaoMessageParser.Utils.Utils}!add\_error@{add\_error}}
+\index{add\_error@{add\_error}!IcaoMessageParser.Utils.Utils@{IcaoMessageParser.Utils.Utils}}
+\doxysubsubsection{\texorpdfstring{add\_error()}{add\_error()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Utils.\+Utils.\+add\+\_\+error (\begin{DoxyParamCaption}\item[{}]{flight\+\_\+plan\+\_\+record,  }\item[{}]{erroneous\+\_\+field\+\_\+text,  }\item[{}]{start\+\_\+index,  }\item[{}]{end\+\_\+index,  }\item[{}]{error\+\_\+messages,  }\item[{}]{error\+\_\+id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyVerb}This method adds an error to the Flight Data Record
+
+    :param flight_plan_record: Flight Data Record into which an error is written;
+    :param erroneous_field_text: The field that is in error;
+    :param start_index: Zero based start index of the erroneous fields position in the original message;
+    :param end_index: Zero based end index of the erroneous fields position in the original message;
+    :param error_messages: Configuration data containing a dictionary of all error messages;
+    :param error_id: Index into the error message dictionary in ErrorMessageDefinitions;
+    :return: None\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{12     \textcolor{keyword}{def }add\_error(flight\_plan\_record, erroneous\_field\_text, start\_index, end\_index, error\_messages, error\_id):}
+\DoxyCodeLine{13         \textcolor{comment}{\# type: (FlightPlanRecord, str, int, int, ErrorMessages, ErrorId) -\/> None}}
+\DoxyCodeLine{14         \textcolor{stringliteral}{"""This method adds an error to the Flight Data Record}}
+\DoxyCodeLine{15 \textcolor{stringliteral}{}}
+\DoxyCodeLine{16 \textcolor{stringliteral}{            :param flight\_plan\_record: Flight Data Record into which an error is written;}}
+\DoxyCodeLine{17 \textcolor{stringliteral}{            :param erroneous\_field\_text: The field that is in error;}}
+\DoxyCodeLine{18 \textcolor{stringliteral}{            :param start\_index: Zero based start index of the erroneous fields position in the original message;}}
+\DoxyCodeLine{19 \textcolor{stringliteral}{            :param end\_index: Zero based end index of the erroneous fields position in the original message;}}
+\DoxyCodeLine{20 \textcolor{stringliteral}{            :param error\_messages: Configuration data containing a dictionary of all error messages;}}
+\DoxyCodeLine{21 \textcolor{stringliteral}{            :param error\_id: Index into the error message dictionary in ErrorMessageDefinitions;}}
+\DoxyCodeLine{22 \textcolor{stringliteral}{            :return: None"""}}
+\DoxyCodeLine{23         error\_text = error\_messages.get\_error\_message(error\_id).replace(\textcolor{stringliteral}{"!"}, erroneous\_field\_text)}
+\DoxyCodeLine{24         flight\_plan\_record.add\_erroneous\_field(}
+\DoxyCodeLine{25             erroneous\_field\_text, error\_text, start\_index, end\_index)}
+\DoxyCodeLine{26 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1Utils_1_1Utils_ad33d18e78dbf8a06a08797a678adc7cd}\label{classIcaoMessageParser_1_1Utils_1_1Utils_ad33d18e78dbf8a06a08797a678adc7cd}} 
+\index{IcaoMessageParser.Utils.Utils@{IcaoMessageParser.Utils.Utils}!add\_subfield\_error@{add\_subfield\_error}}
+\index{add\_subfield\_error@{add\_subfield\_error}!IcaoMessageParser.Utils.Utils@{IcaoMessageParser.Utils.Utils}}
+\doxysubsubsection{\texorpdfstring{add\_subfield\_error()}{add\_subfield\_error()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Utils.\+Utils.\+add\+\_\+subfield\+\_\+error (\begin{DoxyParamCaption}\item[{}]{flight\+\_\+plan\+\_\+record,  }\item[{}]{subfield,  }\item[{}]{error\+\_\+id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyVerb}Helper method to save an error to the flight plan record where the subfield
+is the subfield in error.
+
+:param flight_plan_record: Flight Data Record into which an error is written;
+:param subfield: The subfield in error;
+:param error_id: An enumeration value identifying the error associated with this subfield
+:return: None
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{28     \textcolor{keyword}{def }add\_subfield\_error(flight\_plan\_record, subfield, error\_id):}
+\DoxyCodeLine{29         \textcolor{comment}{\# type: (FlightPlanRecord, SubFieldRecord, ErrorId) -\/> None}}
+\DoxyCodeLine{30         \textcolor{stringliteral}{"""Helper method to save an error to the flight plan record where the subfield}}
+\DoxyCodeLine{31 \textcolor{stringliteral}{        is the subfield in error.}}
+\DoxyCodeLine{32 \textcolor{stringliteral}{}}
+\DoxyCodeLine{33 \textcolor{stringliteral}{        :param flight\_plan\_record: Flight Data Record into which an error is written;}}
+\DoxyCodeLine{34 \textcolor{stringliteral}{        :param subfield: The subfield in error;}}
+\DoxyCodeLine{35 \textcolor{stringliteral}{        :param error\_id: An enumeration value identifying the error associated with this subfield}}
+\DoxyCodeLine{36 \textcolor{stringliteral}{        :return: None}}
+\DoxyCodeLine{37 \textcolor{stringliteral}{        """}}
+\DoxyCodeLine{38         Utils.add\_error(flight\_plan\_record,}
+\DoxyCodeLine{39                         subfield.get\_field\_text(),}
+\DoxyCodeLine{40                         subfield.get\_start\_index(),}
+\DoxyCodeLine{41                         subfield.get\_end\_index(),}
+\DoxyCodeLine{42                         ErrorMessages(),}
+\DoxyCodeLine{43                         error\_id)}
+\DoxyCodeLine{44 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1Utils_1_1Utils_abfada3a9a7838663e75c1090e26a28b9}\label{classIcaoMessageParser_1_1Utils_1_1Utils_abfada3a9a7838663e75c1090e26a28b9}} 
+\index{IcaoMessageParser.Utils.Utils@{IcaoMessageParser.Utils.Utils}!check\_too\_many\_fields@{check\_too\_many\_fields}}
+\index{check\_too\_many\_fields@{check\_too\_many\_fields}!IcaoMessageParser.Utils.Utils@{IcaoMessageParser.Utils.Utils}}
+\doxysubsubsection{\texorpdfstring{check\_too\_many\_fields()}{check\_too\_many\_fields()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Utils.\+Utils.\+check\+\_\+too\+\_\+many\+\_\+fields (\begin{DoxyParamCaption}\item[{}]{flight\+\_\+plan\+\_\+record,  }\item[{}]{subfield,  }\item[{}]{error\+\_\+id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyVerb}This method checks if there are more than one single token in a field
+
+:param flight_plan_record: Flight Data Record into which an error is written;
+:param subfield: The subfield in error;
+:param error_id: An enumeration value identifying the error associated with this subfield;
+:return: True if there is only 1 token in this subfield, False if more than 1;
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{46     \textcolor{keyword}{def }check\_too\_many\_fields(flight\_plan\_record, subfield, error\_id):}
+\DoxyCodeLine{47         \textcolor{comment}{\# type: (FlightPlanRecord, SubFieldRecord, ErrorId) -\/> bool}}
+\DoxyCodeLine{48         \textcolor{stringliteral}{"""This method checks if there are more than one single token in a field}}
+\DoxyCodeLine{49 \textcolor{stringliteral}{}}
+\DoxyCodeLine{50 \textcolor{stringliteral}{        :param flight\_plan\_record: Flight Data Record into which an error is written;}}
+\DoxyCodeLine{51 \textcolor{stringliteral}{        :param subfield: The subfield in error;}}
+\DoxyCodeLine{52 \textcolor{stringliteral}{        :param error\_id: An enumeration value identifying the error associated with this subfield;}}
+\DoxyCodeLine{53 \textcolor{stringliteral}{        :return: True if there is only 1 token in this subfield, False if more than 1;}}
+\DoxyCodeLine{54 \textcolor{stringliteral}{        """}}
+\DoxyCodeLine{55         \textcolor{keywordflow}{if} len(subfield.get\_field\_text().split()) > 1:}
+\DoxyCodeLine{56             Utils.add\_subfield\_error(flight\_plan\_record, subfield, error\_id)}
+\DoxyCodeLine{57             \textcolor{keywordflow}{return} \textcolor{keyword}{False}}
+\DoxyCodeLine{58         \textcolor{keywordflow}{return} \textcolor{keyword}{True}}
+\DoxyCodeLine{59 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1Utils_1_1Utils_a02b6f2003ddbf56fbbfedcc8afe29c80}\label{classIcaoMessageParser_1_1Utils_1_1Utils_a02b6f2003ddbf56fbbfedcc8afe29c80}} 
+\index{IcaoMessageParser.Utils.Utils@{IcaoMessageParser.Utils.Utils}!get\_first\_alpha\_index@{get\_first\_alpha\_index}}
+\index{get\_first\_alpha\_index@{get\_first\_alpha\_index}!IcaoMessageParser.Utils.Utils@{IcaoMessageParser.Utils.Utils}}
+\doxysubsubsection{\texorpdfstring{get\_first\_alpha\_index()}{get\_first\_alpha\_index()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Utils.\+Utils.\+get\+\_\+first\+\_\+alpha\+\_\+index (\begin{DoxyParamCaption}\item[{}]{str\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyVerb}This method returns a zero based index of the first alpha found in a string.
+
+    :param str_: The string being searched for an alpha
+    :return: The zero based index of the first alpha or -1 if no alpha could be found\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{73     \textcolor{keyword}{def }get\_first\_alpha\_index(str\_):}
+\DoxyCodeLine{74         \textcolor{comment}{\# type: (str) -\/> int}}
+\DoxyCodeLine{75         \textcolor{stringliteral}{"""This method returns a zero based index of the first alpha found in a string.}}
+\DoxyCodeLine{76 \textcolor{stringliteral}{}}
+\DoxyCodeLine{77 \textcolor{stringliteral}{            :param str\_: The string being searched for an alpha}}
+\DoxyCodeLine{78 \textcolor{stringliteral}{            :return: The zero based index of the first alpha or -\/1 if no alpha could be found"""}}
+\DoxyCodeLine{79         \textcolor{keywordflow}{for} index, char \textcolor{keywordflow}{in} enumerate(str\_):}
+\DoxyCodeLine{80             \textcolor{keywordflow}{if} char.isalpha():}
+\DoxyCodeLine{81                 \textcolor{keywordflow}{return} index}
+\DoxyCodeLine{82         \textcolor{keywordflow}{return} -\/1}
+\DoxyCodeLine{83 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1Utils_1_1Utils_a3007c9a8d231caca3d13998c12f9ff3c}\label{classIcaoMessageParser_1_1Utils_1_1Utils_a3007c9a8d231caca3d13998c12f9ff3c}} 
+\index{IcaoMessageParser.Utils.Utils@{IcaoMessageParser.Utils.Utils}!get\_first\_digit\_index@{get\_first\_digit\_index}}
+\index{get\_first\_digit\_index@{get\_first\_digit\_index}!IcaoMessageParser.Utils.Utils@{IcaoMessageParser.Utils.Utils}}
+\doxysubsubsection{\texorpdfstring{get\_first\_digit\_index()}{get\_first\_digit\_index()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Utils.\+Utils.\+get\+\_\+first\+\_\+digit\+\_\+index (\begin{DoxyParamCaption}\item[{}]{str\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyVerb}This method returns a zero based index of the first digit found in a string.
+
+    :param str_: The string being searched for a digit
+    :return: The zero based index of the first digit or -1 if no digit could be found\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{61     \textcolor{keyword}{def }get\_first\_digit\_index(str\_):}
+\DoxyCodeLine{62         \textcolor{comment}{\# type: (str) -\/> int}}
+\DoxyCodeLine{63         \textcolor{stringliteral}{"""This method returns a zero based index of the first digit found in a string.}}
+\DoxyCodeLine{64 \textcolor{stringliteral}{}}
+\DoxyCodeLine{65 \textcolor{stringliteral}{            :param str\_: The string being searched for a digit}}
+\DoxyCodeLine{66 \textcolor{stringliteral}{            :return: The zero based index of the first digit or -\/1 if no digit could be found"""}}
+\DoxyCodeLine{67         \textcolor{keywordflow}{for} index, char \textcolor{keywordflow}{in} enumerate(str\_):}
+\DoxyCodeLine{68             \textcolor{keywordflow}{if} char.isdigit():}
+\DoxyCodeLine{69                 \textcolor{keywordflow}{return} index}
+\DoxyCodeLine{70         \textcolor{keywordflow}{return} -\/1}
+\DoxyCodeLine{71 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1Utils_1_1Utils_acff2c23a2a8891ddd9a0fb6e203b30bb}\label{classIcaoMessageParser_1_1Utils_1_1Utils_acff2c23a2a8891ddd9a0fb6e203b30bb}} 
+\index{IcaoMessageParser.Utils.Utils@{IcaoMessageParser.Utils.Utils}!get\_first\_slash\_index@{get\_first\_slash\_index}}
+\index{get\_first\_slash\_index@{get\_first\_slash\_index}!IcaoMessageParser.Utils.Utils@{IcaoMessageParser.Utils.Utils}}
+\doxysubsubsection{\texorpdfstring{get\_first\_slash\_index()}{get\_first\_slash\_index()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Utils.\+Utils.\+get\+\_\+first\+\_\+slash\+\_\+index (\begin{DoxyParamCaption}\item[{}]{str\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyVerb}This method returns a zero based index of the first forward slash '/' found in a string.
+
+    :param str_: The string being searched for a forward slash '/' character
+    :return: The zero based index of the first forward slash or -1 if no forward slash could be found\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{85     \textcolor{keyword}{def }get\_first\_slash\_index(str\_):}
+\DoxyCodeLine{86         \textcolor{comment}{\# type: (str) -\/> int}}
+\DoxyCodeLine{87         \textcolor{stringliteral}{"""This method returns a zero based index of the first forward slash '/' found in a string.}}
+\DoxyCodeLine{88 \textcolor{stringliteral}{}}
+\DoxyCodeLine{89 \textcolor{stringliteral}{            :param str\_: The string being searched for a forward slash '/' character}}
+\DoxyCodeLine{90 \textcolor{stringliteral}{            :return: The zero based index of the first forward slash or -\/1 if no forward slash could be found"""}}
+\DoxyCodeLine{91         \textcolor{keywordflow}{for} index, char \textcolor{keywordflow}{in} enumerate(str\_):}
+\DoxyCodeLine{92             \textcolor{keywordflow}{if} char == \textcolor{stringliteral}{"/"}:}
+\DoxyCodeLine{93                 \textcolor{keywordflow}{return} index}
+\DoxyCodeLine{94         \textcolor{keywordflow}{return} -\/1}
+\DoxyCodeLine{95 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1Utils_1_1Utils_afa56e302073b3d3cea7ad27939539e95}\label{classIcaoMessageParser_1_1Utils_1_1Utils_afa56e302073b3d3cea7ad27939539e95}} 
+\index{IcaoMessageParser.Utils.Utils@{IcaoMessageParser.Utils.Utils}!is\_dof@{is\_dof}}
+\index{is\_dof@{is\_dof}!IcaoMessageParser.Utils.Utils@{IcaoMessageParser.Utils.Utils}}
+\doxysubsubsection{\texorpdfstring{is\_dof()}{is\_dof()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Utils.\+Utils.\+is\+\_\+dof (\begin{DoxyParamCaption}\item[{}]{dof }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyVerb}This method checks if a DOF has the correct syntax; ensures that the leap year and the number of
+days in February is correct for any year. DOF format should be YYMMDD;
+
+    :param dof: The DOF being checked for correct syntax and semantics
+    :return: True if the DOF syntax and semantics is correct, False otherwise\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{97     \textcolor{keyword}{def }is\_dof(dof):}
+\DoxyCodeLine{98         \textcolor{comment}{\# type: (str) -\/> bool}}
+\DoxyCodeLine{99         \textcolor{stringliteral}{"""This method checks if a DOF has the correct syntax; ensures that the leap year and the number of}}
+\DoxyCodeLine{100 \textcolor{stringliteral}{        days in February is correct for any year. DOF format should be YYMMDD;}}
+\DoxyCodeLine{101 \textcolor{stringliteral}{}}
+\DoxyCodeLine{102 \textcolor{stringliteral}{            :param dof: The DOF being checked for correct syntax and semantics}}
+\DoxyCodeLine{103 \textcolor{stringliteral}{            :return: True if the DOF syntax and semantics is correct, False otherwise"""}}
+\DoxyCodeLine{104         \textcolor{keywordflow}{if} len(dof) != 6 \textcolor{keywordflow}{or} dof.isnumeric() \textcolor{keywordflow}{is} \textcolor{keyword}{False}:}
+\DoxyCodeLine{105             \textcolor{keywordflow}{return} \textcolor{keyword}{False}}
+\DoxyCodeLine{106 }
+\DoxyCodeLine{107         yy = int(dof[0:2])}
+\DoxyCodeLine{108         mm = int(dof[2:4])}
+\DoxyCodeLine{109         dd = int(dof[4:])}
+\DoxyCodeLine{110 }
+\DoxyCodeLine{111         day\_count\_for\_month = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]}
+\DoxyCodeLine{112         \textcolor{keywordflow}{if} yy \% 4 == 0 \textcolor{keywordflow}{and} (yy \% 100 != 0 \textcolor{keywordflow}{or} yy \% 400 == 0):}
+\DoxyCodeLine{113             day\_count\_for\_month[2] = 29}
+\DoxyCodeLine{114         \textcolor{keywordflow}{return} 1 <= mm <= 12 \textcolor{keywordflow}{and} 1 <= dd <= day\_count\_for\_month[mm]}
+\DoxyCodeLine{115 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1Utils_1_1Utils_a5eb2ce18f8e42731fcb140db3bb3b149}\label{classIcaoMessageParser_1_1Utils_1_1Utils_a5eb2ce18f8e42731fcb140db3bb3b149}} 
+\index{IcaoMessageParser.Utils.Utils@{IcaoMessageParser.Utils.Utils}!parse\_for\_alpha\_num@{parse\_for\_alpha\_num}}
+\index{parse\_for\_alpha\_num@{parse\_for\_alpha\_num}!IcaoMessageParser.Utils.Utils@{IcaoMessageParser.Utils.Utils}}
+\doxysubsubsection{\texorpdfstring{parse\_for\_alpha\_num()}{parse\_for\_alpha\_num()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Utils.\+Utils.\+parse\+\_\+for\+\_\+alpha\+\_\+num (\begin{DoxyParamCaption}\item[{}]{flight\+\_\+plan\+\_\+record,  }\item[{}]{subfield,  }\item[{}]{error\+\_\+id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyVerb}This method validates that the subfield text string conforms to the regular
+expression [A-Z0-9 ], if not an error is added to the flight plan record.
+
+:param flight_plan_record: The flight plan into which an error may be written
+:param subfield: The subfield whose field text is being parsed;
+:param error_id: The error message that will be reported if the subfield text does not
+       match the regular expression.
+:return: None
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{117     \textcolor{keyword}{def }parse\_for\_alpha\_num(flight\_plan\_record, subfield, error\_id):}
+\DoxyCodeLine{118         \textcolor{comment}{\# type: (FlightPlanRecord, SubFieldRecord, ErrorId) -\/> None}}
+\DoxyCodeLine{119         \textcolor{stringliteral}{"""This method validates that the subfield text string conforms to the regular}}
+\DoxyCodeLine{120 \textcolor{stringliteral}{        expression [A-\/Z0-\/9 ], if not an error is added to the flight plan record.}}
+\DoxyCodeLine{121 \textcolor{stringliteral}{}}
+\DoxyCodeLine{122 \textcolor{stringliteral}{        :param flight\_plan\_record: The flight plan into which an error may be written}}
+\DoxyCodeLine{123 \textcolor{stringliteral}{        :param subfield: The subfield whose field text is being parsed;}}
+\DoxyCodeLine{124 \textcolor{stringliteral}{        :param error\_id: The error message that will be reported if the subfield text does not}}
+\DoxyCodeLine{125 \textcolor{stringliteral}{               match the regular expression.}}
+\DoxyCodeLine{126 \textcolor{stringliteral}{        :return: None}}
+\DoxyCodeLine{127 \textcolor{stringliteral}{        """}}
+\DoxyCodeLine{128         Utils.parse\_for\_regexp(flight\_plan\_record, subfield, error\_id, \textcolor{stringliteral}{"[A-\/Z0-\/9 ]+"})}
+\DoxyCodeLine{129 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1Utils_1_1Utils_ad41b4990279d9146310f3da81840acdd}\label{classIcaoMessageParser_1_1Utils_1_1Utils_ad41b4990279d9146310f3da81840acdd}} 
+\index{IcaoMessageParser.Utils.Utils@{IcaoMessageParser.Utils.Utils}!parse\_for\_hex\_address@{parse\_for\_hex\_address}}
+\index{parse\_for\_hex\_address@{parse\_for\_hex\_address}!IcaoMessageParser.Utils.Utils@{IcaoMessageParser.Utils.Utils}}
+\doxysubsubsection{\texorpdfstring{parse\_for\_hex\_address()}{parse\_for\_hex\_address()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Utils.\+Utils.\+parse\+\_\+for\+\_\+hex\+\_\+address (\begin{DoxyParamCaption}\item[{}]{flight\+\_\+plan\+\_\+record,  }\item[{}]{subfield,  }\item[{}]{error\+\_\+id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyVerb}This method validates that the subfield text string conforms to the regular
+expression F[A-F0-9]{6}, (a 7 digit HEX value), if not an error is added to the flight plan record.
+The HEX address starts at F000000;
+
+:param flight_plan_record: The flight plan into which an error may be written;
+:param subfield: The subfield whose field text is being parsed;
+:param error_id: The error message that will be reported if the subfield text does not
+       match the regular expression;
+:return: None
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{131     \textcolor{keyword}{def }parse\_for\_hex\_address(flight\_plan\_record, subfield, error\_id):}
+\DoxyCodeLine{132         \textcolor{comment}{\# type: (FlightPlanRecord, SubFieldRecord, ErrorId) -\/> None}}
+\DoxyCodeLine{133         \textcolor{stringliteral}{"""This method validates that the subfield text string conforms to the regular}}
+\DoxyCodeLine{134 \textcolor{stringliteral}{        expression F[A-\/F0-\/9]\{6\}, (a 7 digit HEX value), if not an error is added to the flight plan record.}}
+\DoxyCodeLine{135 \textcolor{stringliteral}{        The HEX address starts at F000000;}}
+\DoxyCodeLine{136 \textcolor{stringliteral}{}}
+\DoxyCodeLine{137 \textcolor{stringliteral}{        :param flight\_plan\_record: The flight plan into which an error may be written;}}
+\DoxyCodeLine{138 \textcolor{stringliteral}{        :param subfield: The subfield whose field text is being parsed;}}
+\DoxyCodeLine{139 \textcolor{stringliteral}{        :param error\_id: The error message that will be reported if the subfield text does not}}
+\DoxyCodeLine{140 \textcolor{stringliteral}{               match the regular expression;}}
+\DoxyCodeLine{141 \textcolor{stringliteral}{        :return: None}}
+\DoxyCodeLine{142 \textcolor{stringliteral}{        """}}
+\DoxyCodeLine{143         Utils.parse\_for\_regexp(flight\_plan\_record, subfield, error\_id, \textcolor{stringliteral}{"F[A-\/F0-\/9]\{6\}"})}
+\DoxyCodeLine{144 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1Utils_1_1Utils_abe45e75fcc92ac5ec9936e1ff49e80f0}\label{classIcaoMessageParser_1_1Utils_1_1Utils_abe45e75fcc92ac5ec9936e1ff49e80f0}} 
+\index{IcaoMessageParser.Utils.Utils@{IcaoMessageParser.Utils.Utils}!parse\_for\_regexp@{parse\_for\_regexp}}
+\index{parse\_for\_regexp@{parse\_for\_regexp}!IcaoMessageParser.Utils.Utils@{IcaoMessageParser.Utils.Utils}}
+\doxysubsubsection{\texorpdfstring{parse\_for\_regexp()}{parse\_for\_regexp()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Utils.\+Utils.\+parse\+\_\+for\+\_\+regexp (\begin{DoxyParamCaption}\item[{}]{flight\+\_\+plan\+\_\+record,  }\item[{}]{subfield,  }\item[{}]{error\+\_\+id,  }\item[{}]{regexp }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyVerb}This method validates that the subfield text string conforms to the regular
+expression defined in the parameter regexp, if not an error is added to the flight plan record.
+
+:param flight_plan_record: The flight plan into which an error may be written;
+:param subfield: The subfield whose field text is being parsed;
+:param error_id: The error message that will be reported if the subfield text does not
+       match the regular expression;
+:param regexp: The regular expression used to parse the text in the subfield;
+:return: None
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{146     \textcolor{keyword}{def }parse\_for\_regexp(flight\_plan\_record, subfield, error\_id, regexp):}
+\DoxyCodeLine{147         \textcolor{comment}{\# type: (FlightPlanRecord, SubFieldRecord, ErrorId, str) -\/> None}}
+\DoxyCodeLine{148         \textcolor{stringliteral}{"""This method validates that the subfield text string conforms to the regular}}
+\DoxyCodeLine{149 \textcolor{stringliteral}{        expression defined in the parameter regexp, if not an error is added to the flight plan record.}}
+\DoxyCodeLine{150 \textcolor{stringliteral}{}}
+\DoxyCodeLine{151 \textcolor{stringliteral}{        :param flight\_plan\_record: The flight plan into which an error may be written;}}
+\DoxyCodeLine{152 \textcolor{stringliteral}{        :param subfield: The subfield whose field text is being parsed;}}
+\DoxyCodeLine{153 \textcolor{stringliteral}{        :param error\_id: The error message that will be reported if the subfield text does not}}
+\DoxyCodeLine{154 \textcolor{stringliteral}{               match the regular expression;}}
+\DoxyCodeLine{155 \textcolor{stringliteral}{        :param regexp: The regular expression used to parse the text in the subfield;}}
+\DoxyCodeLine{156 \textcolor{stringliteral}{        :return: None}}
+\DoxyCodeLine{157 \textcolor{stringliteral}{        """}}
+\DoxyCodeLine{158         mo = re.fullmatch(regexp, subfield.get\_field\_text())}
+\DoxyCodeLine{159         \textcolor{keywordflow}{if} mo \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:}
+\DoxyCodeLine{160             Utils.add\_subfield\_error(flight\_plan\_record, subfield, error\_id)}
+\DoxyCodeLine{161 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1Utils_1_1Utils_affed9805fcb3a9df44cc3987c911dffb}\label{classIcaoMessageParser_1_1Utils_1_1Utils_affed9805fcb3a9df44cc3987c911dffb}} 
+\index{IcaoMessageParser.Utils.Utils@{IcaoMessageParser.Utils.Utils}!split\_on\_first\_alpha@{split\_on\_first\_alpha}}
+\index{split\_on\_first\_alpha@{split\_on\_first\_alpha}!IcaoMessageParser.Utils.Utils@{IcaoMessageParser.Utils.Utils}}
+\doxysubsubsection{\texorpdfstring{split\_on\_first\_alpha()}{split\_on\_first\_alpha()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Utils.\+Utils.\+split\+\_\+on\+\_\+first\+\_\+alpha (\begin{DoxyParamCaption}\item[{}]{str\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyVerb}This method splits a string into two parts at the index of the first alpha in the string.
+
+    :param str_: The string being split into two parts
+    :return: A list of two strings or None if no alpha was found in the string\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{175     \textcolor{keyword}{def }split\_on\_first\_alpha(str\_):}
+\DoxyCodeLine{176         \textcolor{comment}{\# type: (str) -\/> []}}
+\DoxyCodeLine{177         \textcolor{stringliteral}{"""This method splits a string into two parts at the index of the first alpha in the string.}}
+\DoxyCodeLine{178 \textcolor{stringliteral}{}}
+\DoxyCodeLine{179 \textcolor{stringliteral}{            :param str\_: The string being split into two parts}}
+\DoxyCodeLine{180 \textcolor{stringliteral}{            :return: A list of two strings or None if no alpha was found in the string"""}}
+\DoxyCodeLine{181         idx = Utils.get\_first\_alpha\_index(str\_)}
+\DoxyCodeLine{182         \textcolor{keywordflow}{if} idx < 0:}
+\DoxyCodeLine{183             \textcolor{keywordflow}{return} \textcolor{keywordtype}{None}}
+\DoxyCodeLine{184         \textcolor{keywordflow}{return} [str\_[0:idx], str\_[idx:]]}
+\DoxyCodeLine{185 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1Utils_1_1Utils_abc51730829c79d545f747cd3837c7b01}\label{classIcaoMessageParser_1_1Utils_1_1Utils_abc51730829c79d545f747cd3837c7b01}} 
+\index{IcaoMessageParser.Utils.Utils@{IcaoMessageParser.Utils.Utils}!split\_on\_first\_character@{split\_on\_first\_character}}
+\index{split\_on\_first\_character@{split\_on\_first\_character}!IcaoMessageParser.Utils.Utils@{IcaoMessageParser.Utils.Utils}}
+\doxysubsubsection{\texorpdfstring{split\_on\_first\_character()}{split\_on\_first\_character()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Utils.\+Utils.\+split\+\_\+on\+\_\+first\+\_\+character (\begin{DoxyParamCaption}\item[{}]{str\+\_\+,  }\item[{}]{char }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyVerb}This method splits a string into two parts at the index of the first character in the string.
+
+    :param str_: The string being split into two parts;
+    :param char: The character at which the string will be split if found in the str_ string;
+    :return: A list of two strings or None if no character was found in the string;\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{187     \textcolor{keyword}{def }split\_on\_first\_character(str\_, char):}
+\DoxyCodeLine{188         \textcolor{comment}{\# type: (str, str) -\/> []}}
+\DoxyCodeLine{189         \textcolor{stringliteral}{"""This method splits a string into two parts at the index of the first character in the string.}}
+\DoxyCodeLine{190 \textcolor{stringliteral}{}}
+\DoxyCodeLine{191 \textcolor{stringliteral}{            :param str\_: The string being split into two parts;}}
+\DoxyCodeLine{192 \textcolor{stringliteral}{            :param char: The character at which the string will be split if found in the str\_ string;}}
+\DoxyCodeLine{193 \textcolor{stringliteral}{            :return: A list of two strings or None if no character was found in the string;"""}}
+\DoxyCodeLine{194         idx = str\_.find(char)}
+\DoxyCodeLine{195         \textcolor{keywordflow}{if} idx < 0:}
+\DoxyCodeLine{196             \textcolor{keywordflow}{return} \textcolor{keywordtype}{None}}
+\DoxyCodeLine{197         \textcolor{keywordflow}{return} [str\_[0:idx], str\_[idx:]]}
+\DoxyCodeLine{198 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1Utils_1_1Utils_a7ff2e48d8826ef286b8534c59bba9ee6}\label{classIcaoMessageParser_1_1Utils_1_1Utils_a7ff2e48d8826ef286b8534c59bba9ee6}} 
+\index{IcaoMessageParser.Utils.Utils@{IcaoMessageParser.Utils.Utils}!split\_on\_first\_digit@{split\_on\_first\_digit}}
+\index{split\_on\_first\_digit@{split\_on\_first\_digit}!IcaoMessageParser.Utils.Utils@{IcaoMessageParser.Utils.Utils}}
+\doxysubsubsection{\texorpdfstring{split\_on\_first\_digit()}{split\_on\_first\_digit()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Utils.\+Utils.\+split\+\_\+on\+\_\+first\+\_\+digit (\begin{DoxyParamCaption}\item[{}]{str\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyVerb}This method splits a string into two parts at the index of the first digit in the string.
+
+    :param str_: The string being split into two parts
+    :return: A list of two strings or None if no digit was found in the string\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{163     \textcolor{keyword}{def }split\_on\_first\_digit(str\_):}
+\DoxyCodeLine{164         \textcolor{comment}{\# type: (str) -\/> []}}
+\DoxyCodeLine{165         \textcolor{stringliteral}{"""This method splits a string into two parts at the index of the first digit in the string.}}
+\DoxyCodeLine{166 \textcolor{stringliteral}{}}
+\DoxyCodeLine{167 \textcolor{stringliteral}{            :param str\_: The string being split into two parts}}
+\DoxyCodeLine{168 \textcolor{stringliteral}{            :return: A list of two strings or None if no digit was found in the string"""}}
+\DoxyCodeLine{169         idx = Utils.get\_first\_digit\_index(str\_)}
+\DoxyCodeLine{170         \textcolor{keywordflow}{if} idx < 0:}
+\DoxyCodeLine{171             \textcolor{keywordflow}{return} \textcolor{keywordtype}{None}}
+\DoxyCodeLine{172         \textcolor{keywordflow}{return} [str\_[0:idx], str\_[idx:]]}
+\DoxyCodeLine{173 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1Utils_1_1Utils_a1d97048e2c9bc7f640353c0f72e48dba}\label{classIcaoMessageParser_1_1Utils_1_1Utils_a1d97048e2c9bc7f640353c0f72e48dba}} 
+\index{IcaoMessageParser.Utils.Utils@{IcaoMessageParser.Utils.Utils}!split\_on\_index@{split\_on\_index}}
+\index{split\_on\_index@{split\_on\_index}!IcaoMessageParser.Utils.Utils@{IcaoMessageParser.Utils.Utils}}
+\doxysubsubsection{\texorpdfstring{split\_on\_index()}{split\_on\_index()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Utils.\+Utils.\+split\+\_\+on\+\_\+index (\begin{DoxyParamCaption}\item[{}]{str\+\_\+,  }\item[{}]{idx }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyVerb}This method splits a string into two parts at the index specified in the parameters.
+
+    :param str_: The string being split into two parts
+    :param idx: The index at which the string is to be split
+    :return: A list of two strings or None if the index is out of range\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{200     \textcolor{keyword}{def }split\_on\_index(str\_, idx):}
+\DoxyCodeLine{201         \textcolor{comment}{\# type: (str, int) -\/> []}}
+\DoxyCodeLine{202         \textcolor{stringliteral}{"""This method splits a string into two parts at the index specified in the parameters.}}
+\DoxyCodeLine{203 \textcolor{stringliteral}{}}
+\DoxyCodeLine{204 \textcolor{stringliteral}{            :param str\_: The string being split into two parts}}
+\DoxyCodeLine{205 \textcolor{stringliteral}{            :param idx: The index at which the string is to be split}}
+\DoxyCodeLine{206 \textcolor{stringliteral}{            :return: A list of two strings or None if the index is out of range"""}}
+\DoxyCodeLine{207         \textcolor{keywordflow}{if} idx < 1 \textcolor{keywordflow}{or} len(str\_) < 2 \textcolor{keywordflow}{or} idx >= len(str\_):}
+\DoxyCodeLine{208             \textcolor{keywordflow}{return} \textcolor{keywordtype}{None}}
+\DoxyCodeLine{209         \textcolor{keywordflow}{return} [str\_[0:idx], str\_[idx:]]}
+\DoxyCodeLine{210 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1Utils_1_1Utils_a2a1741a1caece98c9f30da8a385391d4}\label{classIcaoMessageParser_1_1Utils_1_1Utils_a2a1741a1caece98c9f30da8a385391d4}} 
+\index{IcaoMessageParser.Utils.Utils@{IcaoMessageParser.Utils.Utils}!title\_defined@{title\_defined}}
+\index{title\_defined@{title\_defined}!IcaoMessageParser.Utils.Utils@{IcaoMessageParser.Utils.Utils}}
+\doxysubsubsection{\texorpdfstring{title\_defined()}{title\_defined()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Utils.\+Utils.\+title\+\_\+defined (\begin{DoxyParamCaption}\item[{}]{f3 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyVerb}This method checks if a message title is supported by checking if it can be found in an
+enumeration of EnumerationConstants.MessageTitles class.
+
+    :param f3: A string containing a message title;
+    :return: An enumeration instance of MessageTitles or None if the message
+     title is not defined / supported.\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{212     \textcolor{keyword}{def }title\_defined(f3):}
+\DoxyCodeLine{213         \textcolor{comment}{\# type: (str) -\/> MessageTitles | None}}
+\DoxyCodeLine{214         \textcolor{stringliteral}{"""This method checks if a message title is supported by checking if it can be found in an}}
+\DoxyCodeLine{215 \textcolor{stringliteral}{        enumeration of EnumerationConstants.MessageTitles class.}}
+\DoxyCodeLine{216 \textcolor{stringliteral}{}}
+\DoxyCodeLine{217 \textcolor{stringliteral}{            :param f3: A string containing a message title;}}
+\DoxyCodeLine{218 \textcolor{stringliteral}{            :return: An enumeration instance of MessageTitles or None if the message}}
+\DoxyCodeLine{219 \textcolor{stringliteral}{                     title is not defined / supported."""}}
+\DoxyCodeLine{220         \textcolor{keywordflow}{for} title \textcolor{keywordflow}{in} MessageTitles:}
+\DoxyCodeLine{221             \textcolor{keywordflow}{if} title.name == f3:}
+\DoxyCodeLine{222                 \textcolor{keywordflow}{return} title}
+\DoxyCodeLine{223         \textcolor{keywordflow}{return} \textcolor{keywordtype}{None}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Icao\+Message\+Parser/\mbox{\hyperlink{IcaoMessageParser_2Utils_8py}{Utils.\+py}}\end{DoxyCompactItemize}

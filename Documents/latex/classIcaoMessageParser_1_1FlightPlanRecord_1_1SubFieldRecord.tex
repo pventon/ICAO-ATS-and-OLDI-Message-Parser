@@ -1,0 +1,212 @@
+\hypertarget{classIcaoMessageParser_1_1FlightPlanRecord_1_1SubFieldRecord}{}\doxysection{Icao\+Message\+Parser.\+Flight\+Plan\+Record.\+Sub\+Field\+Record Class Reference}
+\label{classIcaoMessageParser_1_1FlightPlanRecord_1_1SubFieldRecord}\index{IcaoMessageParser.FlightPlanRecord.SubFieldRecord@{IcaoMessageParser.FlightPlanRecord.SubFieldRecord}}
+
+
+Inheritance diagram for Icao\+Message\+Parser.\+Flight\+Plan\+Record.\+Sub\+Field\+Record\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classIcaoMessageParser_1_1FlightPlanRecord_1_1SubFieldRecord__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1FlightPlanRecord_1_1SubFieldRecord_a9203e1332026eaf581cadac898c108a4}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classIcaoMessageParser_1_1FlightPlanRecord_1_1SubFieldRecord_a0767a76554c5006d53f49c14a864a9aa}{field\+\_\+text}}, \mbox{\hyperlink{classIcaoMessageParser_1_1FlightPlanRecord_1_1SubFieldRecord_aded697110a65cdba10638b2bddfd76e3}{start\+\_\+index}}, \mbox{\hyperlink{classIcaoMessageParser_1_1FlightPlanRecord_1_1SubFieldRecord_a887e8024a79415b9906c2ce5e19139d3}{end\+\_\+index}})
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1FlightPlanRecord_1_1SubFieldRecord_adc004fa998ff8a0148129a95717724ac}{get\+\_\+field\+\_\+text}} (self)
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1FlightPlanRecord_1_1SubFieldRecord_acdc0d4a263f17b4219946ef0c81c1a3f}{get\+\_\+start\+\_\+index}} (self)
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1FlightPlanRecord_1_1SubFieldRecord_a38bf9242a73e73f5159f373abe512aaf}{get\+\_\+end\+\_\+index}} (self)
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1FlightPlanRecord_1_1SubFieldRecord_ada0da31c29b5b8debb68797df89c0882}{subfield\+\_\+as\+\_\+xml}} (self, subfield\+\_\+id)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classIcaoMessageParser_1_1FlightPlanRecord_1_1SubFieldRecord_a0767a76554c5006d53f49c14a864a9aa}{field\+\_\+text}}
+\item 
+\mbox{\hyperlink{classIcaoMessageParser_1_1FlightPlanRecord_1_1SubFieldRecord_aded697110a65cdba10638b2bddfd76e3}{start\+\_\+index}}
+\item 
+\mbox{\hyperlink{classIcaoMessageParser_1_1FlightPlanRecord_1_1SubFieldRecord_a887e8024a79415b9906c2ce5e19139d3}{end\+\_\+index}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classIcaoMessageParser_1_1FlightPlanRecord_1_1SubFieldRecord_a29b72ded44b9cadcc5c2fd6d092048bc}{str}}
+\item 
+\mbox{\hyperlink{classIcaoMessageParser_1_1FlightPlanRecord_1_1SubFieldRecord_ab140b31b1464f00800af2638e6468af4}{int}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}This class stores an ICAO subfield added to a flight plan record during ICAO message parsing.
+
+There are 'n' subfields contained in a flight plan record created by the ICAO message parser.
+
+A subfield is stored with its zero based start and end index into the original message.
+
+The ICAO message parser creates and adds a FieldRecord to a flight plan record for each ICAO field
+located in a message; the ICAO field is further decomposed into its constitute subfields and the subfields
+are stored as part of their parent ICAO fields in a FieldRecord.
+
+There are no 'setter' methods in this class as the constructor initialises all members on class
+instantiation making this class effectively 'read' only.\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1FlightPlanRecord_1_1SubFieldRecord_a9203e1332026eaf581cadac898c108a4}\label{classIcaoMessageParser_1_1FlightPlanRecord_1_1SubFieldRecord_a9203e1332026eaf581cadac898c108a4}} 
+\index{IcaoMessageParser.FlightPlanRecord.SubFieldRecord@{IcaoMessageParser.FlightPlanRecord.SubFieldRecord}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!IcaoMessageParser.FlightPlanRecord.SubFieldRecord@{IcaoMessageParser.FlightPlanRecord.SubFieldRecord}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Flight\+Plan\+Record.\+Sub\+Field\+Record.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{field\+\_\+text,  }\item[{}]{start\+\_\+index,  }\item[{}]{end\+\_\+index }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Constructor that initializes all class members
+
+:param field_text: A string that is the subfield, i.e. 'LOWL', '0234' etc.
+:param start_index: An integer representing the zero based index for the start of the
+            subfield in the original message string.
+:param end_index: An integer representing the zero based index for the end of the
+          subfield in the original message string.\end{DoxyVerb}
+ 
+
+Reimplemented in \mbox{\hyperlink{classIcaoMessageParser_1_1FlightPlanRecord_1_1FieldRecord_a8f45aff9112bf9ba83d37b1639482a44}{Icao\+Message\+Parser.\+Flight\+Plan\+Record.\+Field\+Record}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{53     \textcolor{keyword}{def }\_\_init\_\_(self, field\_text, start\_index, end\_index):}
+\DoxyCodeLine{54         \textcolor{comment}{\# type: (str, int, int) -\/> None}}
+\DoxyCodeLine{55         \textcolor{stringliteral}{"""Constructor that initializes all class members}}
+\DoxyCodeLine{56 \textcolor{stringliteral}{}}
+\DoxyCodeLine{57 \textcolor{stringliteral}{        :param field\_text: A string that is the subfield, i.e. 'LOWL', '0234' etc.}}
+\DoxyCodeLine{58 \textcolor{stringliteral}{        :param start\_index: An integer representing the zero based index for the start of the}}
+\DoxyCodeLine{59 \textcolor{stringliteral}{                            subfield in the original message string.}}
+\DoxyCodeLine{60 \textcolor{stringliteral}{        :param end\_index: An integer representing the zero based index for the end of the}}
+\DoxyCodeLine{61 \textcolor{stringliteral}{                          subfield in the original message string."""}}
+\DoxyCodeLine{62         self.field\_text = field\_text}
+\DoxyCodeLine{63         self.start\_index = start\_index}
+\DoxyCodeLine{64         self.end\_index = end\_index}
+\DoxyCodeLine{65 }
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1FlightPlanRecord_1_1SubFieldRecord_a38bf9242a73e73f5159f373abe512aaf}\label{classIcaoMessageParser_1_1FlightPlanRecord_1_1SubFieldRecord_a38bf9242a73e73f5159f373abe512aaf}} 
+\index{IcaoMessageParser.FlightPlanRecord.SubFieldRecord@{IcaoMessageParser.FlightPlanRecord.SubFieldRecord}!get\_end\_index@{get\_end\_index}}
+\index{get\_end\_index@{get\_end\_index}!IcaoMessageParser.FlightPlanRecord.SubFieldRecord@{IcaoMessageParser.FlightPlanRecord.SubFieldRecord}}
+\doxysubsubsection{\texorpdfstring{get\_end\_index()}{get\_end\_index()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Flight\+Plan\+Record.\+Sub\+Field\+Record.\+get\+\_\+end\+\_\+index (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Gets the zero based index of the subfields end position in the original message
+:return: The zero based index of the subfields end position in the original message\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{78     \textcolor{keyword}{def }get\_end\_index(self):}
+\DoxyCodeLine{79         \textcolor{comment}{\# type: () -\/> int}}
+\DoxyCodeLine{80         \textcolor{stringliteral}{"""Gets the zero based index of the subfields end position in the original message}}
+\DoxyCodeLine{81 \textcolor{stringliteral}{        :return: The zero based index of the subfields end position in the original message"""}}
+\DoxyCodeLine{82         \textcolor{keywordflow}{return} self.end\_index}
+\DoxyCodeLine{83 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1FlightPlanRecord_1_1SubFieldRecord_adc004fa998ff8a0148129a95717724ac}\label{classIcaoMessageParser_1_1FlightPlanRecord_1_1SubFieldRecord_adc004fa998ff8a0148129a95717724ac}} 
+\index{IcaoMessageParser.FlightPlanRecord.SubFieldRecord@{IcaoMessageParser.FlightPlanRecord.SubFieldRecord}!get\_field\_text@{get\_field\_text}}
+\index{get\_field\_text@{get\_field\_text}!IcaoMessageParser.FlightPlanRecord.SubFieldRecord@{IcaoMessageParser.FlightPlanRecord.SubFieldRecord}}
+\doxysubsubsection{\texorpdfstring{get\_field\_text()}{get\_field\_text()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Flight\+Plan\+Record.\+Sub\+Field\+Record.\+get\+\_\+field\+\_\+text (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Gets the subfield text as it appears in the original message
+:return: The subfield text\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{66     \textcolor{keyword}{def }get\_field\_text(self):}
+\DoxyCodeLine{67         \textcolor{comment}{\# type: () -\/> str}}
+\DoxyCodeLine{68         \textcolor{stringliteral}{"""Gets the subfield text as it appears in the original message}}
+\DoxyCodeLine{69 \textcolor{stringliteral}{        :return: The subfield text"""}}
+\DoxyCodeLine{70         \textcolor{keywordflow}{return} self.field\_text}
+\DoxyCodeLine{71 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1FlightPlanRecord_1_1SubFieldRecord_acdc0d4a263f17b4219946ef0c81c1a3f}\label{classIcaoMessageParser_1_1FlightPlanRecord_1_1SubFieldRecord_acdc0d4a263f17b4219946ef0c81c1a3f}} 
+\index{IcaoMessageParser.FlightPlanRecord.SubFieldRecord@{IcaoMessageParser.FlightPlanRecord.SubFieldRecord}!get\_start\_index@{get\_start\_index}}
+\index{get\_start\_index@{get\_start\_index}!IcaoMessageParser.FlightPlanRecord.SubFieldRecord@{IcaoMessageParser.FlightPlanRecord.SubFieldRecord}}
+\doxysubsubsection{\texorpdfstring{get\_start\_index()}{get\_start\_index()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Flight\+Plan\+Record.\+Sub\+Field\+Record.\+get\+\_\+start\+\_\+index (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Gets the zero based index of the subfields start position in the original message
+:return: The zero based index of the subfields start position in the original message\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{72     \textcolor{keyword}{def }get\_start\_index(self):}
+\DoxyCodeLine{73         \textcolor{comment}{\# type: () -\/> int}}
+\DoxyCodeLine{74         \textcolor{stringliteral}{"""Gets the zero based index of the subfields start position in the original message}}
+\DoxyCodeLine{75 \textcolor{stringliteral}{        :return: The zero based index of the subfields start position in the original message"""}}
+\DoxyCodeLine{76         \textcolor{keywordflow}{return} self.start\_index}
+\DoxyCodeLine{77 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1FlightPlanRecord_1_1SubFieldRecord_ada0da31c29b5b8debb68797df89c0882}\label{classIcaoMessageParser_1_1FlightPlanRecord_1_1SubFieldRecord_ada0da31c29b5b8debb68797df89c0882}} 
+\index{IcaoMessageParser.FlightPlanRecord.SubFieldRecord@{IcaoMessageParser.FlightPlanRecord.SubFieldRecord}!subfield\_as\_xml@{subfield\_as\_xml}}
+\index{subfield\_as\_xml@{subfield\_as\_xml}!IcaoMessageParser.FlightPlanRecord.SubFieldRecord@{IcaoMessageParser.FlightPlanRecord.SubFieldRecord}}
+\doxysubsubsection{\texorpdfstring{subfield\_as\_xml()}{subfield\_as\_xml()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Flight\+Plan\+Record.\+Sub\+Field\+Record.\+subfield\+\_\+as\+\_\+xml (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{subfield\+\_\+id }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This method returns an XML representation of the contents of this class.
+
+:return: An XML representation of the contents of this class as a string\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{84     \textcolor{keyword}{def }subfield\_as\_xml(self, subfield\_id):}
+\DoxyCodeLine{85         \textcolor{comment}{\# type: (SubFieldIdentifiers) -\/> str}}
+\DoxyCodeLine{86         \textcolor{stringliteral}{"""This method returns an XML representation of the contents of this class.}}
+\DoxyCodeLine{87 \textcolor{stringliteral}{}}
+\DoxyCodeLine{88 \textcolor{stringliteral}{        :return: An XML representation of the contents of this class as a string"""}}
+\DoxyCodeLine{89         \textcolor{keywordflow}{return} \textcolor{stringliteral}{"         <subfield\_record id=\(\backslash\)""} + subfield\_id.name + \(\backslash\)}
+\DoxyCodeLine{90                \textcolor{stringliteral}{"\(\backslash\)" start\_index=\(\backslash\)""} + str(self.get\_start\_index()) + \(\backslash\)}
+\DoxyCodeLine{91                \textcolor{stringliteral}{"\(\backslash\)" end\_index=\(\backslash\)""} + str(self.get\_end\_index()) + \textcolor{stringliteral}{"\(\backslash\)">"} + \(\backslash\)}
+\DoxyCodeLine{92                self.get\_field\_text() + \textcolor{stringliteral}{"</subfield\_record>"}}
+\DoxyCodeLine{93 }
+\DoxyCodeLine{94 }
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1FlightPlanRecord_1_1SubFieldRecord_a887e8024a79415b9906c2ce5e19139d3}\label{classIcaoMessageParser_1_1FlightPlanRecord_1_1SubFieldRecord_a887e8024a79415b9906c2ce5e19139d3}} 
+\index{IcaoMessageParser.FlightPlanRecord.SubFieldRecord@{IcaoMessageParser.FlightPlanRecord.SubFieldRecord}!end\_index@{end\_index}}
+\index{end\_index@{end\_index}!IcaoMessageParser.FlightPlanRecord.SubFieldRecord@{IcaoMessageParser.FlightPlanRecord.SubFieldRecord}}
+\doxysubsubsection{\texorpdfstring{end\_index}{end\_index}}
+{\footnotesize\ttfamily Icao\+Message\+Parser.\+Flight\+Plan\+Record.\+Sub\+Field\+Record.\+end\+\_\+index}
+
+\mbox{\Hypertarget{classIcaoMessageParser_1_1FlightPlanRecord_1_1SubFieldRecord_a0767a76554c5006d53f49c14a864a9aa}\label{classIcaoMessageParser_1_1FlightPlanRecord_1_1SubFieldRecord_a0767a76554c5006d53f49c14a864a9aa}} 
+\index{IcaoMessageParser.FlightPlanRecord.SubFieldRecord@{IcaoMessageParser.FlightPlanRecord.SubFieldRecord}!field\_text@{field\_text}}
+\index{field\_text@{field\_text}!IcaoMessageParser.FlightPlanRecord.SubFieldRecord@{IcaoMessageParser.FlightPlanRecord.SubFieldRecord}}
+\doxysubsubsection{\texorpdfstring{field\_text}{field\_text}}
+{\footnotesize\ttfamily Icao\+Message\+Parser.\+Flight\+Plan\+Record.\+Sub\+Field\+Record.\+field\+\_\+text}
+
+\mbox{\Hypertarget{classIcaoMessageParser_1_1FlightPlanRecord_1_1SubFieldRecord_ab140b31b1464f00800af2638e6468af4}\label{classIcaoMessageParser_1_1FlightPlanRecord_1_1SubFieldRecord_ab140b31b1464f00800af2638e6468af4}} 
+\index{IcaoMessageParser.FlightPlanRecord.SubFieldRecord@{IcaoMessageParser.FlightPlanRecord.SubFieldRecord}!int@{int}}
+\index{int@{int}!IcaoMessageParser.FlightPlanRecord.SubFieldRecord@{IcaoMessageParser.FlightPlanRecord.SubFieldRecord}}
+\doxysubsubsection{\texorpdfstring{int}{int}}
+{\footnotesize\ttfamily Icao\+Message\+Parser.\+Flight\+Plan\+Record.\+Sub\+Field\+Record.\+int\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classIcaoMessageParser_1_1FlightPlanRecord_1_1SubFieldRecord_aded697110a65cdba10638b2bddfd76e3}\label{classIcaoMessageParser_1_1FlightPlanRecord_1_1SubFieldRecord_aded697110a65cdba10638b2bddfd76e3}} 
+\index{IcaoMessageParser.FlightPlanRecord.SubFieldRecord@{IcaoMessageParser.FlightPlanRecord.SubFieldRecord}!start\_index@{start\_index}}
+\index{start\_index@{start\_index}!IcaoMessageParser.FlightPlanRecord.SubFieldRecord@{IcaoMessageParser.FlightPlanRecord.SubFieldRecord}}
+\doxysubsubsection{\texorpdfstring{start\_index}{start\_index}}
+{\footnotesize\ttfamily Icao\+Message\+Parser.\+Flight\+Plan\+Record.\+Sub\+Field\+Record.\+start\+\_\+index}
+
+\mbox{\Hypertarget{classIcaoMessageParser_1_1FlightPlanRecord_1_1SubFieldRecord_a29b72ded44b9cadcc5c2fd6d092048bc}\label{classIcaoMessageParser_1_1FlightPlanRecord_1_1SubFieldRecord_a29b72ded44b9cadcc5c2fd6d092048bc}} 
+\index{IcaoMessageParser.FlightPlanRecord.SubFieldRecord@{IcaoMessageParser.FlightPlanRecord.SubFieldRecord}!str@{str}}
+\index{str@{str}!IcaoMessageParser.FlightPlanRecord.SubFieldRecord@{IcaoMessageParser.FlightPlanRecord.SubFieldRecord}}
+\doxysubsubsection{\texorpdfstring{str}{str}}
+{\footnotesize\ttfamily Icao\+Message\+Parser.\+Flight\+Plan\+Record.\+Sub\+Field\+Record.\+str\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Icao\+Message\+Parser/\mbox{\hyperlink{FlightPlanRecord_8py}{Flight\+Plan\+Record.\+py}}\end{DoxyCompactItemize}

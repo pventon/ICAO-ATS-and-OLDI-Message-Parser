@@ -1,0 +1,1230 @@
+\hypertarget{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon}{}\doxysection{Icao\+Message\+Parser.\+Parse\+Fields\+Common.\+Parse\+Fields\+Common Class Reference}
+\label{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon}\index{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}}
+
+
+Inheritance diagram for Icao\+Message\+Parser.\+Parse\+Fields\+Common.\+Parse\+Fields\+Common\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a5a8fdf42411258fdfdff5b0ec12f5de6}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a93341de2e606a5ad85e0dd34f0336c00}{flight\+\_\+plan\+\_\+record}}, \mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a48a759a0835373c4ffbfa523d3566cdd}{sfd}}, \mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a26d33af7afc567d81dc6ef8de19300d7}{field\+\_\+identifier}}, whitespace, \mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_ab5a02fb9b75261040bc0e65af2a3d334}{sub\+\_\+field\+\_\+list}}, \mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a8a8729db915c29e426a0536d17adb5d6}{error\+\_\+list}})
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_ae83ba14e9efcbabd139aab4d9d6201a3}{add\+\_\+error}} (self, erroneous\+\_\+field\+\_\+text, start\+\_\+index, end\+\_\+index, error\+\_\+id)
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a93777c90548596908e6bf832face76a3}{add\+\_\+compound\+\_\+field\+\_\+error}} (self, \mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_aa270510b85e50c6cf5ea7a4c8475272c}{tokens}}, field\+\_\+text, error\+\_\+id)
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_ae1ce45a3c05b8cc3cd1be77cd828aec8}{add\+\_\+subfield\+\_\+to\+\_\+fpr}} (self, subfield\+\_\+id, subfield\+\_\+text, start\+\_\+idx, end\+\_\+idx)
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a1fae6430855073dba260c54bfc7e5083}{check\+\_\+if\+\_\+tokens\+\_\+left\+\_\+over}} (self)
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a6c6a3dbbb763a7b844bfdbb07ac87dc6}{concatenate\+\_\+token\+\_\+text}} (self, first\+\_\+extra\+\_\+index, num\+\_\+tokens)
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_aa9ffd9ac8a556e1706719f11d92e08a2}{get\+\_\+error\+\_\+list}} (self)
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a171f713f859864c87e747bb005dd51ad}{get\+\_\+error\+\_\+message\+\_\+at\+\_\+idx}} (self, idx)
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_aec357920185ec128ee27fa5b0f5b5c7f}{get\+\_\+field\+\_\+identifier}} (self)
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a1c552840bf58dce412d411c8a2ff13e5}{get\+\_\+flight\+\_\+plan\+\_\+record}} (self)
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_ab7af06787f10748e4402254399a781fa}{get\+\_\+last\+\_\+subfield\+\_\+error}} (self)
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_af21a42a3b2e03a36a42693d57dbd0707}{get\+\_\+missing\+\_\+subfield\+\_\+error}} (self)
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_ae8a1ae33b0a5b451ae0088c34dc8f8ec}{get\+\_\+more\+\_\+subfields\+\_\+expected\+\_\+error}} (self)
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a27f21e078569fec065b10fa04ebfd665}{get\+\_\+sub\+\_\+field\+\_\+list}} (self)
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a360dbd461500353b775417c0c6661e06}{get\+\_\+token\+\_\+at\+\_\+idx}} (self, idx)
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a48d6affb8070a2c8394c287482b6d61c}{get\+\_\+tokens}} (self)
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a19f51b2c5040a7a54275c09aa659143e}{get\+\_\+too\+\_\+many\+\_\+subfields\+\_\+error}} (self)
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a5501071c75aceba833dd48a8c71bfadf}{no\+\_\+tokens}} (self)
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a6fd1a22cf8243537c88d9fc2cdde132f}{parse\+\_\+compound\+\_\+field\+\_\+common}} (self, error\+\_\+codes, keyword\+\_\+checker)
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a2b355efeee939b4b5727b114c96dc820}{parse\+\_\+extra\+\_\+compulsory\+\_\+tokens}} (self, num\+\_\+parsed)
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a4b72b467b9e2e83c62ab994cd7621a03}{parse\+\_\+extra\+\_\+optional\+\_\+tokens}} (self)
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a395ea8f9247a4abe9881d3fa6eb437b4}{parse\+\_\+field}} (self)
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_ae8217b836317b82509a1b5702c4fa3df}{parse\+\_\+field\+\_\+base}} (self)
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_ace8af2bebb40fd53b1d9e13d37cb6b32}{save\+\_\+compound\+\_\+field}} (self, \mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_aa270510b85e50c6cf5ea7a4c8475272c}{tokens}}, subfield\+\_\+id, field\+\_\+text)
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_ab5101ea36d2472a6d1c0794022cadc47}{split\+\_\+and\+\_\+insert\+\_\+token}} (self, insert\+\_\+index, split\+\_\+index)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a8c33d425dff08c4bcd7612b9c758f0ef}{is\+\_\+compound\+\_\+field\+\_\+keyword}} (field\+\_\+id, candidate\+\_\+keyword)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a93341de2e606a5ad85e0dd34f0336c00}{flight\+\_\+plan\+\_\+record}}
+\item 
+\mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a48a759a0835373c4ffbfa523d3566cdd}{sfd}}
+\item 
+\mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a26d33af7afc567d81dc6ef8de19300d7}{field\+\_\+identifier}}
+\item 
+\mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_ab5a02fb9b75261040bc0e65af2a3d334}{sub\+\_\+field\+\_\+list}}
+\item 
+\mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a8a8729db915c29e426a0536d17adb5d6}{error\+\_\+list}}
+\item 
+\mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_aa270510b85e50c6cf5ea7a4c8475272c}{tokens}}
+\item 
+\mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a2a00e3aa4394e9f41200ba3075872f35}{error\+\_\+messages}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a8c8572fb359a4960a5a6f57c3d32c023}{Tokens}}
+\item 
+\mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_aebc2bee50cae3050eacde3c2d6d4d69b}{Flight\+Plan\+Record}}
+\item 
+\mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_aebcd6e721c76b46628a4c73e12be6210}{Error\+Messages}}
+\item 
+\mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_ae8a1e34810fd4304ba28b069720e8592}{Sub\+Field\+Descriptions}}
+\item 
+\mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_adb3097fa8ed29636d56e15a4ec77d99f}{Field\+Identifiers}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}This class is the base class that all individual field parsers inherit from. This class
+provides parsing methods that are common to many fields. In general, ICAO fields fall
+into groups that require different parsing techniques:
+
+- ICAO Fields 3, 5, 7, 8, 9, 10, 13, 16, 17, 20, and 21, also OLDI field 80 and 81) - These are 'basic' fields
+  that all have similar parsing requirements; this splits a field into its constituent subfields
+  and parses each subfield before storing the fields and associated subfields in a flight plan record.
+  Program entry point for the basic field parser is the method self.parse_field() in this class.
+- Field 15 stands on its own as a field requiring special parsing that is implemented
+  in a stand-alone parser. Field 15 describes the route an aircraft will follow, the dedicated
+  field 15 parser takes the route information and creates an extracted route sequence that is
+  copied as a whole to the flight plan record.
+- Fields 18, 19 and 22 - These are what could be referred to as 'compound' fields as they contain
+  'n' occurrences of subfields that require individual parsing.
+
+  All subfields are stored in the flight plan record.
+  Program entry point for the compound field parser is self.parse_compound_field_common() in this class.
+
+This parser copies all the fields into the Flight Plan Record (FPR), an instance of the FlightPlanRecord class.
+This is done by adding instances of the 'FieldRecord' class for each field parsed. The 'FieldRecord' class
+stores one or more individual subfields (instances of SubFiledRecord) that a field is comprised off. For
+compound fields, the subfields are copied as individual subfields of the compound field into a field record.
+The compound fields subfields, are in themselves 'field' with subfields that require dedicated parsing
+for each field.
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a5a8fdf42411258fdfdff5b0ec12f5de6}\label{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a5a8fdf42411258fdfdff5b0ec12f5de6}} 
+\index{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Parse\+Fields\+Common.\+Parse\+Fields\+Common.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{flight\+\_\+plan\+\_\+record,  }\item[{}]{sfd,  }\item[{}]{field\+\_\+identifier,  }\item[{}]{whitespace,  }\item[{}]{sub\+\_\+field\+\_\+list,  }\item[{}]{error\+\_\+list }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This constructor sets up an instance of a field parser with all data needed to parse a given field.
+This base class tokenizes a field and stores its field identifier, the subfields that the field
+comprises and a list of errors associated with each subfield should an error be detected.
+    :param flight_plan_record: An instance of FlightPlanRecord that this parser write its date to,
+   this includes the fields and subfields parsed along with any associated errors.
+    :param sfd: Configuration data that describes individual subfields that includes the regular expression
+   used to parse individual subfields.
+    :param field_identifier: An enumeration value from the FieldIdentifiers class that identifies the
+   field being parsed.
+    :param whitespace: The whitespace characters used to tokenize a field, these differ depending on the field
+   being parsed and are set by subclasses of this class based on the individual requirements
+   of a given field.
+    :param sub_field_list: Configuration data containing a list of subfields that the field being parsed
+   comprises. These are given as a list of enumeration values from the SubFieldDescriptions class.
+    :param error_list: A list of errors that may be reported by this parser; there is a dedicated syntax error
+   message for each subfield as well as some generic messages relating to none-syntactical
+   errors such as field / subfields missing etc.
+    :return: None\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{62     \textcolor{keyword}{def }\_\_init\_\_(self, flight\_plan\_record, sfd, field\_identifier, whitespace, sub\_field\_list, error\_list):}
+\DoxyCodeLine{63         \textcolor{comment}{\# type: (FlightPlanRecord, SubFieldDescriptions, FieldIdentifiers, str, [SubFieldIdentifiers], [ErrorId])-\/>None}}
+\DoxyCodeLine{64         \textcolor{stringliteral}{"""This constructor sets up an instance of a field parser with all data needed to parse a given field.}}
+\DoxyCodeLine{65 \textcolor{stringliteral}{        This base class tokenizes a field and stores its field identifier, the subfields that the field}}
+\DoxyCodeLine{66 \textcolor{stringliteral}{        comprises and a list of errors associated with each subfield should an error be detected.}}
+\DoxyCodeLine{67 \textcolor{stringliteral}{            :param flight\_plan\_record: An instance of FlightPlanRecord that this parser write its date to,}}
+\DoxyCodeLine{68 \textcolor{stringliteral}{                   this includes the fields and subfields parsed along with any associated errors.}}
+\DoxyCodeLine{69 \textcolor{stringliteral}{            :param sfd: Configuration data that describes individual subfields that includes the regular expression}}
+\DoxyCodeLine{70 \textcolor{stringliteral}{                   used to parse individual subfields.}}
+\DoxyCodeLine{71 \textcolor{stringliteral}{            :param field\_identifier: An enumeration value from the FieldIdentifiers class that identifies the}}
+\DoxyCodeLine{72 \textcolor{stringliteral}{                   field being parsed.}}
+\DoxyCodeLine{73 \textcolor{stringliteral}{            :param whitespace: The whitespace characters used to tokenize a field, these differ depending on the field}}
+\DoxyCodeLine{74 \textcolor{stringliteral}{                   being parsed and are set by subclasses of this class based on the individual requirements}}
+\DoxyCodeLine{75 \textcolor{stringliteral}{                   of a given field.}}
+\DoxyCodeLine{76 \textcolor{stringliteral}{            :param sub\_field\_list: Configuration data containing a list of subfields that the field being parsed}}
+\DoxyCodeLine{77 \textcolor{stringliteral}{                   comprises. These are given as a list of enumeration values from the SubFieldDescriptions class.}}
+\DoxyCodeLine{78 \textcolor{stringliteral}{            :param error\_list: A list of errors that may be reported by this parser; there is a dedicated syntax error}}
+\DoxyCodeLine{79 \textcolor{stringliteral}{                   message for each subfield as well as some generic messages relating to none-\/syntactical}}
+\DoxyCodeLine{80 \textcolor{stringliteral}{                   errors such as field / subfields missing etc.}}
+\DoxyCodeLine{81 \textcolor{stringliteral}{            :return: None"""}}
+\DoxyCodeLine{82         \textcolor{comment}{\# Save the field to the FPR}}
+\DoxyCodeLine{83         self.flight\_plan\_record = flight\_plan\_record}
+\DoxyCodeLine{84         self.sfd = sfd}
+\DoxyCodeLine{85         self.field\_identifier = field\_identifier}
+\DoxyCodeLine{86         self.sub\_field\_list = sub\_field\_list}
+\DoxyCodeLine{87         self.error\_list = error\_list}
+\DoxyCodeLine{88         tokenize = Tokenize()}
+\DoxyCodeLine{89         tokenize.set\_string\_to\_tokenize(self.flight\_plan\_record.get\_icao\_field(self.field\_identifier).get\_field\_text())}
+\DoxyCodeLine{90         tokenize.set\_whitespace(whitespace)}
+\DoxyCodeLine{91         tokenize.tokenize()}
+\DoxyCodeLine{92         self.tokens = tokenize.get\_tokens()}
+\DoxyCodeLine{93         self.error\_messages = ErrorMessages()}
+\DoxyCodeLine{94 }
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a93777c90548596908e6bf832face76a3}\label{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a93777c90548596908e6bf832face76a3}} 
+\index{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}!add\_compound\_field\_error@{add\_compound\_field\_error}}
+\index{add\_compound\_field\_error@{add\_compound\_field\_error}!IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}}
+\doxysubsubsection{\texorpdfstring{add\_compound\_field\_error()}{add\_compound\_field\_error()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Parse\+Fields\+Common.\+Parse\+Fields\+Common.\+add\+\_\+compound\+\_\+field\+\_\+error (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{tokens,  }\item[{}]{field\+\_\+text,  }\item[{}]{error\+\_\+id }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This method adds an error to the flight plan record for the subfield of a compound field,
+i.e. Fields 18, 19 and 22.
+    :param tokens: The token representing a field that is in error
+    :param field_text: The text representing the complete compound field
+    :param error_id: The error number given as an enumeration value from the ErrorID class
+    :return: None\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{113     \textcolor{keyword}{def }add\_compound\_field\_error(self, tokens, field\_text, error\_id):}
+\DoxyCodeLine{114         \textcolor{comment}{\# type: ([Token], str, ErrorId) -\/> None}}
+\DoxyCodeLine{115         \textcolor{stringliteral}{"""This method adds an error to the flight plan record for the subfield of a compound field,}}
+\DoxyCodeLine{116 \textcolor{stringliteral}{        i.e. Fields 18, 19 and 22.}}
+\DoxyCodeLine{117 \textcolor{stringliteral}{            :param tokens: The token representing a field that is in error}}
+\DoxyCodeLine{118 \textcolor{stringliteral}{            :param field\_text: The text representing the complete compound field}}
+\DoxyCodeLine{119 \textcolor{stringliteral}{            :param error\_id: The error number given as an enumeration value from the ErrorID class}}
+\DoxyCodeLine{120 \textcolor{stringliteral}{            :return: None"""}}
+\DoxyCodeLine{121         start\_idx = tokens[0].get\_token\_start\_index()}
+\DoxyCodeLine{122         end\_idx = tokens[len(tokens) -\/ 1].get\_token\_end\_index()}
+\DoxyCodeLine{123         self.add\_error(field\_text[start\_idx:end\_idx], start\_idx, end\_idx, error\_id)}
+\DoxyCodeLine{124 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_ae83ba14e9efcbabd139aab4d9d6201a3}\label{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_ae83ba14e9efcbabd139aab4d9d6201a3}} 
+\index{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}!add\_error@{add\_error}}
+\index{add\_error@{add\_error}!IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}}
+\doxysubsubsection{\texorpdfstring{add\_error()}{add\_error()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Parse\+Fields\+Common.\+Parse\+Fields\+Common.\+add\+\_\+error (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{erroneous\+\_\+field\+\_\+text,  }\item[{}]{start\+\_\+index,  }\item[{}]{end\+\_\+index,  }\item[{}]{error\+\_\+id }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This method adds an error to the flight plan record for basic fields, i.e. 3, 5, 7, 8, 9, 10,
+13, 14, 16, 17, 80 and 81.
+    :param erroneous_field_text: The text of the field that is in error
+    :param start_index: The start index of the erroneous fields location in the original field string
+    :param end_index: The end index of the erroneous fields location in the original field string
+    :param error_id: The error number given as an enumeration value from the ErrorID class
+    :return: None\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{95     \textcolor{keyword}{def }add\_error(self, erroneous\_field\_text, start\_index, end\_index, error\_id):}
+\DoxyCodeLine{96         \textcolor{comment}{\# type: (str, int, int, ErrorId) -\/> None}}
+\DoxyCodeLine{97         \textcolor{stringliteral}{"""This method adds an error to the flight plan record for basic fields, i.e. 3, 5, 7, 8, 9, 10,}}
+\DoxyCodeLine{98 \textcolor{stringliteral}{        13, 14, 16, 17, 80 and 81.}}
+\DoxyCodeLine{99 \textcolor{stringliteral}{            :param erroneous\_field\_text: The text of the field that is in error}}
+\DoxyCodeLine{100 \textcolor{stringliteral}{            :param start\_index: The start index of the erroneous fields location in the original field string}}
+\DoxyCodeLine{101 \textcolor{stringliteral}{            :param end\_index: The end index of the erroneous fields location in the original field string}}
+\DoxyCodeLine{102 \textcolor{stringliteral}{            :param error\_id: The error number given as an enumeration value from the ErrorID class}}
+\DoxyCodeLine{103 \textcolor{stringliteral}{            :return: None"""}}
+\DoxyCodeLine{104         Utils.add\_error(self.flight\_plan\_record,}
+\DoxyCodeLine{105                         erroneous\_field\_text,}
+\DoxyCodeLine{106                         start\_index + self.get\_flight\_plan\_record().get\_icao\_field(}
+\DoxyCodeLine{107                             self.get\_field\_identifier()).get\_start\_index(),}
+\DoxyCodeLine{108                         end\_index + self.get\_flight\_plan\_record().get\_icao\_field(}
+\DoxyCodeLine{109                             self.get\_field\_identifier()).get\_start\_index(),}
+\DoxyCodeLine{110                         self.error\_messages,}
+\DoxyCodeLine{111                         error\_id)}
+\DoxyCodeLine{112 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_ae1ce45a3c05b8cc3cd1be77cd828aec8}\label{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_ae1ce45a3c05b8cc3cd1be77cd828aec8}} 
+\index{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}!add\_subfield\_to\_fpr@{add\_subfield\_to\_fpr}}
+\index{add\_subfield\_to\_fpr@{add\_subfield\_to\_fpr}!IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}}
+\doxysubsubsection{\texorpdfstring{add\_subfield\_to\_fpr()}{add\_subfield\_to\_fpr()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Parse\+Fields\+Common.\+Parse\+Fields\+Common.\+add\+\_\+subfield\+\_\+to\+\_\+fpr (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{subfield\+\_\+id,  }\item[{}]{subfield\+\_\+text,  }\item[{}]{start\+\_\+idx,  }\item[{}]{end\+\_\+idx }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This method adds a subfield to the flight plan record;
+
+    :param subfield_id: The subfield identifier as an enumeration value of the SubFieldIdentifiers class
+    :param subfield_text: The text being saved that is the subfield text
+    :param start_idx: The start index of the subfields position in the original field
+    :param end_idx: The start index of the subfields position in the original field
+    :return: None\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{125     \textcolor{keyword}{def }add\_subfield\_to\_fpr(self, subfield\_id, subfield\_text, start\_idx, end\_idx):}
+\DoxyCodeLine{126         \textcolor{comment}{\# type: (SubFieldIdentifiers, str, int, int) -\/> None}}
+\DoxyCodeLine{127         \textcolor{stringliteral}{"""This method adds a subfield to the flight plan record;}}
+\DoxyCodeLine{128 \textcolor{stringliteral}{}}
+\DoxyCodeLine{129 \textcolor{stringliteral}{            :param subfield\_id: The subfield identifier as an enumeration value of the SubFieldIdentifiers class}}
+\DoxyCodeLine{130 \textcolor{stringliteral}{            :param subfield\_text: The text being saved that is the subfield text}}
+\DoxyCodeLine{131 \textcolor{stringliteral}{            :param start\_idx: The start index of the subfields position in the original field}}
+\DoxyCodeLine{132 \textcolor{stringliteral}{            :param end\_idx: The start index of the subfields position in the original field}}
+\DoxyCodeLine{133 \textcolor{stringliteral}{            :return: None"""}}
+\DoxyCodeLine{134         self.get\_flight\_plan\_record().add\_icao\_subfield(}
+\DoxyCodeLine{135             self.get\_field\_identifier(), subfield\_id, subfield\_text, start\_idx, end\_idx)}
+\DoxyCodeLine{136 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a1fae6430855073dba260c54bfc7e5083}\label{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a1fae6430855073dba260c54bfc7e5083}} 
+\index{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}!check\_if\_tokens\_left\_over@{check\_if\_tokens\_left\_over}}
+\index{check\_if\_tokens\_left\_over@{check\_if\_tokens\_left\_over}!IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}}
+\doxysubsubsection{\texorpdfstring{check\_if\_tokens\_left\_over()}{check\_if\_tokens\_left\_over()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Parse\+Fields\+Common.\+Parse\+Fields\+Common.\+check\+\_\+if\+\_\+tokens\+\_\+left\+\_\+over (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This method checks if there are more tokens (subfields) than defined / expected for this field.
+If there are to many tokens/subfields present for the field being parsed an error is added to
+the flight plan record.
+    :return: None\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{137     \textcolor{keyword}{def }check\_if\_tokens\_left\_over(self):}
+\DoxyCodeLine{138         \textcolor{comment}{\# type: () -\/> None}}
+\DoxyCodeLine{139         \textcolor{stringliteral}{"""This method checks if there are more tokens (subfields) than defined / expected for this field.}}
+\DoxyCodeLine{140 \textcolor{stringliteral}{        If there are to many tokens/subfields present for the field being parsed an error is added to}}
+\DoxyCodeLine{141 \textcolor{stringliteral}{        the flight plan record.}}
+\DoxyCodeLine{142 \textcolor{stringliteral}{            :return: None"""}}
+\DoxyCodeLine{143         \textcolor{keywordflow}{if} self.get\_tokens().get\_number\_of\_tokens() > len(self.sub\_field\_list):}
+\DoxyCodeLine{144             \textcolor{comment}{\# Extra unwanted subfields present, error}}
+\DoxyCodeLine{145             concatenated = self.concatenate\_token\_text(len(self.sub\_field\_list),}
+\DoxyCodeLine{146                                                        self.get\_tokens().get\_number\_of\_tokens())}
+\DoxyCodeLine{147 }
+\DoxyCodeLine{148             \textcolor{comment}{\# Report the error}}
+\DoxyCodeLine{149             self.add\_error(concatenated[0],}
+\DoxyCodeLine{150                            concatenated[1],}
+\DoxyCodeLine{151                            concatenated[2],}
+\DoxyCodeLine{152                            self.get\_too\_many\_subfields\_error())}
+\DoxyCodeLine{153 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a6c6a3dbbb763a7b844bfdbb07ac87dc6}\label{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a6c6a3dbbb763a7b844bfdbb07ac87dc6}} 
+\index{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}!concatenate\_token\_text@{concatenate\_token\_text}}
+\index{concatenate\_token\_text@{concatenate\_token\_text}!IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}}
+\doxysubsubsection{\texorpdfstring{concatenate\_token\_text()}{concatenate\_token\_text()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Parse\+Fields\+Common.\+Parse\+Fields\+Common.\+concatenate\+\_\+token\+\_\+text (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{first\+\_\+extra\+\_\+index,  }\item[{}]{num\+\_\+tokens }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This method concatenates the text from several tokens/subfields; this is required
+for situations such as error reporting when there are too many subfields
+present in a field and the error must report all the extra tokens as erroneous.
+    :param first_extra_index: An index into the list of tokens for the first 'extra' subfield
+    :param num_tokens: The last token index that is to be concatenated
+    :return: A list containing the concatenated text of the subfields with their start and end index
+     of their location in the original field text\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{154     \textcolor{keyword}{def }concatenate\_token\_text(self, first\_extra\_index, num\_tokens):}
+\DoxyCodeLine{155         \textcolor{comment}{\# type: (int, int) -\/> [str, int, int]}}
+\DoxyCodeLine{156         \textcolor{stringliteral}{"""This method concatenates the text from several tokens/subfields; this is required}}
+\DoxyCodeLine{157 \textcolor{stringliteral}{        for situations such as error reporting when there are too many subfields}}
+\DoxyCodeLine{158 \textcolor{stringliteral}{        present in a field and the error must report all the extra tokens as erroneous.}}
+\DoxyCodeLine{159 \textcolor{stringliteral}{            :param first\_extra\_index: An index into the list of tokens for the first 'extra' subfield}}
+\DoxyCodeLine{160 \textcolor{stringliteral}{            :param num\_tokens: The last token index that is to be concatenated}}
+\DoxyCodeLine{161 \textcolor{stringliteral}{            :return: A list containing the concatenated text of the subfields with their start and end index}}
+\DoxyCodeLine{162 \textcolor{stringliteral}{                     of their location in the original field text"""}}
+\DoxyCodeLine{163         extra\_string = \textcolor{stringliteral}{""}}
+\DoxyCodeLine{164         start\_index = self.get\_tokens().get\_token\_at(first\_extra\_index).get\_token\_start\_index()}
+\DoxyCodeLine{165         end\_index = self.get\_tokens().get\_token\_at(first\_extra\_index).get\_token\_end\_index()}
+\DoxyCodeLine{166 }
+\DoxyCodeLine{167         \textcolor{comment}{\# If the indices are the same then return the data for the single indexed token}}
+\DoxyCodeLine{168         \textcolor{keywordflow}{if} first\_extra\_index == num\_tokens:}
+\DoxyCodeLine{169             \textcolor{keywordflow}{return} [self.get\_tokens().get\_token\_at(first\_extra\_index).get\_token\_string(),}
+\DoxyCodeLine{170                     start\_index, end\_index]}
+\DoxyCodeLine{171 }
+\DoxyCodeLine{172         \textcolor{keywordflow}{for} extra\_index \textcolor{keywordflow}{in} range(first\_extra\_index, num\_tokens):}
+\DoxyCodeLine{173             extra\_string = extra\_string + self.get\_tokens().get\_token\_at(extra\_index).get\_token\_string() + \textcolor{stringliteral}{" "}}
+\DoxyCodeLine{174             end\_index = self.get\_tokens().get\_token\_at(extra\_index).get\_token\_end\_index()}
+\DoxyCodeLine{175         \textcolor{keywordflow}{return} [extra\_string.rstrip(\textcolor{stringliteral}{" "}).replace(\textcolor{stringliteral}{" /"}, \textcolor{stringliteral}{"/"}).replace(\textcolor{stringliteral}{"/ "}, \textcolor{stringliteral}{"/"}), start\_index, end\_index]}
+\DoxyCodeLine{176 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_aa9ffd9ac8a556e1706719f11d92e08a2}\label{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_aa9ffd9ac8a556e1706719f11d92e08a2}} 
+\index{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}!get\_error\_list@{get\_error\_list}}
+\index{get\_error\_list@{get\_error\_list}!IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}}
+\doxysubsubsection{\texorpdfstring{get\_error\_list()}{get\_error\_list()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Parse\+Fields\+Common.\+Parse\+Fields\+Common.\+get\+\_\+error\+\_\+list (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This method returns a list of enumeration values from the ErrorId class; each list entry
+represents an error pertaining to each subfield in a field. The position of the error message
+numbers is set in configuration data to match the subfield definition for a given field.
+This definition is made in the configuration data class SubFieldsInFields.
+    :return: A list of ErrorId class enumeration values defining the errors for parsing this field.\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{177     \textcolor{keyword}{def }get\_error\_list(self):}
+\DoxyCodeLine{178         \textcolor{comment}{\# type: () -\/> [ErrorId]}}
+\DoxyCodeLine{179         \textcolor{stringliteral}{"""This method returns a list of enumeration values from the ErrorId class; each list entry}}
+\DoxyCodeLine{180 \textcolor{stringliteral}{        represents an error pertaining to each subfield in a field. The position of the error message}}
+\DoxyCodeLine{181 \textcolor{stringliteral}{        numbers is set in configuration data to match the subfield definition for a given field.}}
+\DoxyCodeLine{182 \textcolor{stringliteral}{        This definition is made in the configuration data class SubFieldsInFields.}}
+\DoxyCodeLine{183 \textcolor{stringliteral}{            :return: A list of ErrorId class enumeration values defining the errors for parsing this field."""}}
+\DoxyCodeLine{184         \textcolor{keywordflow}{return} self.error\_list}
+\DoxyCodeLine{185 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a171f713f859864c87e747bb005dd51ad}\label{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a171f713f859864c87e747bb005dd51ad}} 
+\index{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}!get\_error\_message\_at\_idx@{get\_error\_message\_at\_idx}}
+\index{get\_error\_message\_at\_idx@{get\_error\_message\_at\_idx}!IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}}
+\doxysubsubsection{\texorpdfstring{get\_error\_message\_at\_idx()}{get\_error\_message\_at\_idx()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Parse\+Fields\+Common.\+Parse\+Fields\+Common.\+get\+\_\+error\+\_\+message\+\_\+at\+\_\+idx (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{idx }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This method retrieves a single error message number from the list of
+error numbers stored for this field parsing.
+    :return: An enumeration value from the ErrorId class identifying a unique error message.\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{186     \textcolor{keyword}{def }get\_error\_message\_at\_idx(self, idx):}
+\DoxyCodeLine{187         \textcolor{comment}{\# type: (int) -\/> ErrorId}}
+\DoxyCodeLine{188         \textcolor{stringliteral}{"""This method retrieves a single error message number from the list of}}
+\DoxyCodeLine{189 \textcolor{stringliteral}{        error numbers stored for this field parsing.}}
+\DoxyCodeLine{190 \textcolor{stringliteral}{            :return: An enumeration value from the ErrorId class identifying a unique error message."""}}
+\DoxyCodeLine{191         \textcolor{keywordflow}{return} self.error\_list[idx]}
+\DoxyCodeLine{192 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_aec357920185ec128ee27fa5b0f5b5c7f}\label{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_aec357920185ec128ee27fa5b0f5b5c7f}} 
+\index{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}!get\_field\_identifier@{get\_field\_identifier}}
+\index{get\_field\_identifier@{get\_field\_identifier}!IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}}
+\doxysubsubsection{\texorpdfstring{get\_field\_identifier()}{get\_field\_identifier()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Parse\+Fields\+Common.\+Parse\+Fields\+Common.\+get\+\_\+field\+\_\+identifier (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This method returns the ICAO field identifier as an enumeration value from the FieldIdentifiers
+class; when a dedicated field parser inherits from this class and is instantiated, it sets the
+field identifier for the field it is parsing.
+    :return: The ICAO field identifier as an enumeration value from the FieldIdentifiers class.\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{193     \textcolor{keyword}{def }get\_field\_identifier(self):}
+\DoxyCodeLine{194         \textcolor{comment}{\# type: () -\/> FieldIdentifiers}}
+\DoxyCodeLine{195         \textcolor{stringliteral}{"""This method returns the ICAO field identifier as an enumeration value from the FieldIdentifiers}}
+\DoxyCodeLine{196 \textcolor{stringliteral}{        class; when a dedicated field parser inherits from this class and is instantiated, it sets the}}
+\DoxyCodeLine{197 \textcolor{stringliteral}{        field identifier for the field it is parsing.}}
+\DoxyCodeLine{198 \textcolor{stringliteral}{            :return: The ICAO field identifier as an enumeration value from the FieldIdentifiers class."""}}
+\DoxyCodeLine{199         \textcolor{keywordflow}{return} self.field\_identifier}
+\DoxyCodeLine{200 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a1c552840bf58dce412d411c8a2ff13e5}\label{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a1c552840bf58dce412d411c8a2ff13e5}} 
+\index{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}!get\_flight\_plan\_record@{get\_flight\_plan\_record}}
+\index{get\_flight\_plan\_record@{get\_flight\_plan\_record}!IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}}
+\doxysubsubsection{\texorpdfstring{get\_flight\_plan\_record()}{get\_flight\_plan\_record()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Parse\+Fields\+Common.\+Parse\+Fields\+Common.\+get\+\_\+flight\+\_\+plan\+\_\+record (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This method returns the flight plan record that is being used by this parser to
+write all parsed fields, subfields and associated error messages.
+    :return: An instance of FlightPlanRecord that is the flight plan record used by this parser.\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{201     \textcolor{keyword}{def }get\_flight\_plan\_record(self):}
+\DoxyCodeLine{202         \textcolor{comment}{\# type: () -\/> FlightPlanRecord}}
+\DoxyCodeLine{203         \textcolor{stringliteral}{"""This method returns the flight plan record that is being used by this parser to}}
+\DoxyCodeLine{204 \textcolor{stringliteral}{        write all parsed fields, subfields and associated error messages.}}
+\DoxyCodeLine{205 \textcolor{stringliteral}{            :return: An instance of FlightPlanRecord that is the flight plan record used by this parser."""}}
+\DoxyCodeLine{206         \textcolor{keywordflow}{return} self.flight\_plan\_record}
+\DoxyCodeLine{207 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_ab7af06787f10748e4402254399a781fa}\label{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_ab7af06787f10748e4402254399a781fa}} 
+\index{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}!get\_last\_subfield\_error@{get\_last\_subfield\_error}}
+\index{get\_last\_subfield\_error@{get\_last\_subfield\_error}!IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}}
+\doxysubsubsection{\texorpdfstring{get\_last\_subfield\_error()}{get\_last\_subfield\_error()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Parse\+Fields\+Common.\+Parse\+Fields\+Common.\+get\+\_\+last\+\_\+subfield\+\_\+error (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This method returns a specific error message from the list of error messages defined for
+parsing this field. A list of errors is defined for each subfield in the SubFieldsInFields class.
+This method returns the error associated with last subfield in a field.
+    :return: An enumeration value from the ErrorId class identifying a unique error message.\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{208     \textcolor{keyword}{def }get\_last\_subfield\_error(self):}
+\DoxyCodeLine{209         \textcolor{comment}{\# type: () -\/> ErrorId}}
+\DoxyCodeLine{210         \textcolor{stringliteral}{"""This method returns a specific error message from the list of error messages defined for}}
+\DoxyCodeLine{211 \textcolor{stringliteral}{        parsing this field. A list of errors is defined for each subfield in the SubFieldsInFields class.}}
+\DoxyCodeLine{212 \textcolor{stringliteral}{        This method returns the error associated with last subfield in a field.}}
+\DoxyCodeLine{213 \textcolor{stringliteral}{            :return: An enumeration value from the ErrorId class identifying a unique error message."""}}
+\DoxyCodeLine{214         \textcolor{keywordflow}{return} self.get\_error\_message\_at\_idx(len(self.error\_list) -\/ 4)}
+\DoxyCodeLine{215 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_af21a42a3b2e03a36a42693d57dbd0707}\label{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_af21a42a3b2e03a36a42693d57dbd0707}} 
+\index{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}!get\_missing\_subfield\_error@{get\_missing\_subfield\_error}}
+\index{get\_missing\_subfield\_error@{get\_missing\_subfield\_error}!IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}}
+\doxysubsubsection{\texorpdfstring{get\_missing\_subfield\_error()}{get\_missing\_subfield\_error()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Parse\+Fields\+Common.\+Parse\+Fields\+Common.\+get\+\_\+missing\+\_\+subfield\+\_\+error (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This method returns a specific error message from the list of error messages defined for
+parsing this field. A list of errors is defined for each subfield in the SubFieldsInFields class.
+This method returns the error reported when a subfield is missing from a field.
+    :return: An enumeration value from the ErrorId class identifying a unique error message.\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{216     \textcolor{keyword}{def }get\_missing\_subfield\_error(self):}
+\DoxyCodeLine{217         \textcolor{comment}{\# type: () -\/> ErrorId}}
+\DoxyCodeLine{218         \textcolor{stringliteral}{"""This method returns a specific error message from the list of error messages defined for}}
+\DoxyCodeLine{219 \textcolor{stringliteral}{        parsing this field. A list of errors is defined for each subfield in the SubFieldsInFields class.}}
+\DoxyCodeLine{220 \textcolor{stringliteral}{        This method returns the error reported when a subfield is missing from a field.}}
+\DoxyCodeLine{221 \textcolor{stringliteral}{            :return: An enumeration value from the ErrorId class identifying a unique error message."""}}
+\DoxyCodeLine{222         \textcolor{keywordflow}{return} self.get\_error\_message\_at\_idx(len(self.error\_list) -\/ 1)}
+\DoxyCodeLine{223 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_ae8a1ae33b0a5b451ae0088c34dc8f8ec}\label{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_ae8a1ae33b0a5b451ae0088c34dc8f8ec}} 
+\index{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}!get\_more\_subfields\_expected\_error@{get\_more\_subfields\_expected\_error}}
+\index{get\_more\_subfields\_expected\_error@{get\_more\_subfields\_expected\_error}!IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}}
+\doxysubsubsection{\texorpdfstring{get\_more\_subfields\_expected\_error()}{get\_more\_subfields\_expected\_error()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Parse\+Fields\+Common.\+Parse\+Fields\+Common.\+get\+\_\+more\+\_\+subfields\+\_\+expected\+\_\+error (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This method returns a specific error message from the list of error messages defined for
+parsing this field. A list of errors is defined for each subfield in the SubFieldsInFields class.
+This method returns the error reported when more subfields are present than defined for a field.
+    :return: An enumeration value from the ErrorId class identifying a unique error message.\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{224     \textcolor{keyword}{def }get\_more\_subfields\_expected\_error(self):}
+\DoxyCodeLine{225         \textcolor{comment}{\# type: () -\/> ErrorId}}
+\DoxyCodeLine{226         \textcolor{stringliteral}{"""This method returns a specific error message from the list of error messages defined for}}
+\DoxyCodeLine{227 \textcolor{stringliteral}{        parsing this field. A list of errors is defined for each subfield in the SubFieldsInFields class.}}
+\DoxyCodeLine{228 \textcolor{stringliteral}{        This method returns the error reported when more subfields are present than defined for a field.}}
+\DoxyCodeLine{229 \textcolor{stringliteral}{            :return: An enumeration value from the ErrorId class identifying a unique error message."""}}
+\DoxyCodeLine{230         \textcolor{keywordflow}{return} self.get\_error\_message\_at\_idx(len(self.error\_list) -\/ 2)}
+\DoxyCodeLine{231 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a27f21e078569fec065b10fa04ebfd665}\label{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a27f21e078569fec065b10fa04ebfd665}} 
+\index{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}!get\_sub\_field\_list@{get\_sub\_field\_list}}
+\index{get\_sub\_field\_list@{get\_sub\_field\_list}!IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}}
+\doxysubsubsection{\texorpdfstring{get\_sub\_field\_list()}{get\_sub\_field\_list()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Parse\+Fields\+Common.\+Parse\+Fields\+Common.\+get\+\_\+sub\+\_\+field\+\_\+list (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This method returns a list of enumeration values from the SubFieldIdentifiers class; each list
+entry represents a subfield in the field being parsed and in total defines a fields
+subfield content. The position of each entry maps directly to the position of a subfield in a field.
+This definition is made in the configuration data class SubFieldsInFields.
+    :return: A list of SubFieldIdentifiers class enumeration values that define the subfield content
+     for a field\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{232     \textcolor{keyword}{def }get\_sub\_field\_list(self):}
+\DoxyCodeLine{233         \textcolor{comment}{\# type: () -\/> [SubFieldIdentifiers]}}
+\DoxyCodeLine{234         \textcolor{stringliteral}{"""This method returns a list of enumeration values from the SubFieldIdentifiers class; each list}}
+\DoxyCodeLine{235 \textcolor{stringliteral}{        entry represents a subfield in the field being parsed and in total defines a fields}}
+\DoxyCodeLine{236 \textcolor{stringliteral}{        subfield content. The position of each entry maps directly to the position of a subfield in a field.}}
+\DoxyCodeLine{237 \textcolor{stringliteral}{        This definition is made in the configuration data class SubFieldsInFields.}}
+\DoxyCodeLine{238 \textcolor{stringliteral}{            :return: A list of SubFieldIdentifiers class enumeration values that define the subfield content}}
+\DoxyCodeLine{239 \textcolor{stringliteral}{                     for a field"""}}
+\DoxyCodeLine{240         \textcolor{keywordflow}{return} self.sub\_field\_list}
+\DoxyCodeLine{241 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a360dbd461500353b775417c0c6661e06}\label{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a360dbd461500353b775417c0c6661e06}} 
+\index{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}!get\_token\_at\_idx@{get\_token\_at\_idx}}
+\index{get\_token\_at\_idx@{get\_token\_at\_idx}!IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}}
+\doxysubsubsection{\texorpdfstring{get\_token\_at\_idx()}{get\_token\_at\_idx()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Parse\+Fields\+Common.\+Parse\+Fields\+Common.\+get\+\_\+token\+\_\+at\+\_\+idx (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{idx }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This method returns a token/subfield from the list of tokens generated when this class
+was instantiated. Each token is a subfield of a field; the token list includes the 'forward slash'
+('/') as a token.
+    :param idx: The zero based index into the list of tokens to be retrieved.
+    :return: A Token class instance representing a single subfield of a field or None
+    if the index provided by the parameter idx is out of range.\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{242     \textcolor{keyword}{def }get\_token\_at\_idx(self, idx):}
+\DoxyCodeLine{243         \textcolor{comment}{\# type(int) -\/> Token}}
+\DoxyCodeLine{244         \textcolor{stringliteral}{"""This method returns a token/subfield from the list of tokens generated when this class}}
+\DoxyCodeLine{245 \textcolor{stringliteral}{        was instantiated. Each token is a subfield of a field; the token list includes the 'forward slash'}}
+\DoxyCodeLine{246 \textcolor{stringliteral}{        ('/') as a token.}}
+\DoxyCodeLine{247 \textcolor{stringliteral}{            :param idx: The zero based index into the list of tokens to be retrieved.}}
+\DoxyCodeLine{248 \textcolor{stringliteral}{            :return: A Token class instance representing a single subfield of a field or None}}
+\DoxyCodeLine{249 \textcolor{stringliteral}{            if the index provided by the parameter idx is out of range."""}}
+\DoxyCodeLine{250         \textcolor{keywordflow}{return} self.tokens.get\_token\_at(idx)}
+\DoxyCodeLine{251 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a48d6affb8070a2c8394c287482b6d61c}\label{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a48d6affb8070a2c8394c287482b6d61c}} 
+\index{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}!get\_tokens@{get\_tokens}}
+\index{get\_tokens@{get\_tokens}!IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}}
+\doxysubsubsection{\texorpdfstring{get\_tokens()}{get\_tokens()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Parse\+Fields\+Common.\+Parse\+Fields\+Common.\+get\+\_\+tokens (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This method return a list of token/subfields derived from the field being parsed; the token
+list includes the 'forward slash' ('/') as a token.
+:return: A list of Token instances\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{252     \textcolor{keyword}{def }get\_tokens(self):}
+\DoxyCodeLine{253         \textcolor{comment}{\# type: () -\/> Tokens}}
+\DoxyCodeLine{254         \textcolor{stringliteral}{"""This method return a list of token/subfields derived from the field being parsed; the token}}
+\DoxyCodeLine{255 \textcolor{stringliteral}{        list includes the 'forward slash' ('/') as a token.}}
+\DoxyCodeLine{256 \textcolor{stringliteral}{        :return: A list of Token instances"""}}
+\DoxyCodeLine{257         \textcolor{keywordflow}{return} self.tokens}
+\DoxyCodeLine{258 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a19f51b2c5040a7a54275c09aa659143e}\label{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a19f51b2c5040a7a54275c09aa659143e}} 
+\index{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}!get\_too\_many\_subfields\_error@{get\_too\_many\_subfields\_error}}
+\index{get\_too\_many\_subfields\_error@{get\_too\_many\_subfields\_error}!IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}}
+\doxysubsubsection{\texorpdfstring{get\_too\_many\_subfields\_error()}{get\_too\_many\_subfields\_error()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Parse\+Fields\+Common.\+Parse\+Fields\+Common.\+get\+\_\+too\+\_\+many\+\_\+subfields\+\_\+error (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This method returns a specific error message from the list of error messages defined for
+parsing this field. A list of errors is defined for each subfield in the SubFieldsInFields class.
+This method returns the error reported when to many subfields are present than defined for a field.
+    :return: An enumeration value from the ErrorId class identifying a unique error message\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{259     \textcolor{keyword}{def }get\_too\_many\_subfields\_error(self):}
+\DoxyCodeLine{260         \textcolor{comment}{\# type: () -\/> ErrorId}}
+\DoxyCodeLine{261         \textcolor{stringliteral}{"""This method returns a specific error message from the list of error messages defined for}}
+\DoxyCodeLine{262 \textcolor{stringliteral}{        parsing this field. A list of errors is defined for each subfield in the SubFieldsInFields class.}}
+\DoxyCodeLine{263 \textcolor{stringliteral}{        This method returns the error reported when to many subfields are present than defined for a field.}}
+\DoxyCodeLine{264 \textcolor{stringliteral}{            :return: An enumeration value from the ErrorId class identifying a unique error message"""}}
+\DoxyCodeLine{265         \textcolor{keywordflow}{return} self.get\_error\_message\_at\_idx(len(self.error\_list) -\/ 3)}
+\DoxyCodeLine{266 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a8c33d425dff08c4bcd7612b9c758f0ef}\label{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a8c33d425dff08c4bcd7612b9c758f0ef}} 
+\index{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}!is\_compound\_field\_keyword@{is\_compound\_field\_keyword}}
+\index{is\_compound\_field\_keyword@{is\_compound\_field\_keyword}!IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}}
+\doxysubsubsection{\texorpdfstring{is\_compound\_field\_keyword()}{is\_compound\_field\_keyword()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Parse\+Fields\+Common.\+Parse\+Fields\+Common.\+is\+\_\+compound\+\_\+field\+\_\+keyword (\begin{DoxyParamCaption}\item[{}]{field\+\_\+id,  }\item[{}]{candidate\+\_\+keyword }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyVerb}This method returns an enumeration value from the SubFieldIdentifiers class for
+a subfield name/identifier given as a string for a specific field. (e.g. if
+FieldIdentifiers.F18 and 'RALT' are provided for the method parameters, the method locates
+the enumeration value matching RALT or returns SubFieldIdentifiers.ANYTHING if no match is found).
+This method is used when parsing the compound fields 18, 19 and 22; these fields contain
+named subfields. This method is used to check if a named subfield exists, if not
+an error is reported by the parser.
+    :param field_id: An enumeration value from FieldIdentifiers identifying a field
+    :param candidate_keyword: A string containing the subfield name being searched.
+:return: An enumeration value from the SubFieldIdentifiers class for a subfield name/identifier\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{268     \textcolor{keyword}{def }is\_compound\_field\_keyword(field\_id, candidate\_keyword):}
+\DoxyCodeLine{269         \textcolor{comment}{\# type: (FieldIdentifiers, str) -\/> SubFieldIdentifiers}}
+\DoxyCodeLine{270         \textcolor{stringliteral}{"""This method returns an enumeration value from the SubFieldIdentifiers class for}}
+\DoxyCodeLine{271 \textcolor{stringliteral}{        a subfield name/identifier given as a string for a specific field. (e.g. if}}
+\DoxyCodeLine{272 \textcolor{stringliteral}{        FieldIdentifiers.F18 and 'RALT' are provided for the method parameters, the method locates}}
+\DoxyCodeLine{273 \textcolor{stringliteral}{        the enumeration value matching RALT or returns SubFieldIdentifiers.ANYTHING if no match is found).}}
+\DoxyCodeLine{274 \textcolor{stringliteral}{        This method is used when parsing the compound fields 18, 19 and 22; these fields contain}}
+\DoxyCodeLine{275 \textcolor{stringliteral}{        named subfields. This method is used to check if a named subfield exists, if not}}
+\DoxyCodeLine{276 \textcolor{stringliteral}{        an error is reported by the parser.}}
+\DoxyCodeLine{277 \textcolor{stringliteral}{            :param field\_id: An enumeration value from FieldIdentifiers identifying a field}}
+\DoxyCodeLine{278 \textcolor{stringliteral}{            :param candidate\_keyword: A string containing the subfield name being searched.}}
+\DoxyCodeLine{279 \textcolor{stringliteral}{        :return: An enumeration value from the SubFieldIdentifiers class for a subfield name/identifier"""}}
+\DoxyCodeLine{280         \textcolor{keywordflow}{if} field\_id == FieldIdentifiers.F18:}
+\DoxyCodeLine{281             \textcolor{keywordflow}{for} keyword \textcolor{keywordflow}{in} SubFieldIdentifiers:}
+\DoxyCodeLine{282                 \textcolor{keywordflow}{if} SubFieldIdentifiers.F17c < keyword < SubFieldIdentifiers.F19a:}
+\DoxyCodeLine{283                     \textcolor{keywordflow}{if} keyword.name[3:].upper() == candidate\_keyword:}
+\DoxyCodeLine{284                         \textcolor{keywordflow}{return} keyword}
+\DoxyCodeLine{285         \textcolor{keywordflow}{elif} field\_id == FieldIdentifiers.F19:}
+\DoxyCodeLine{286             \textcolor{keywordflow}{for} keyword \textcolor{keywordflow}{in} SubFieldIdentifiers:}
+\DoxyCodeLine{287                 \textcolor{keywordflow}{if} SubFieldIdentifiers.F18typ < keyword < SubFieldIdentifiers.F20a:}
+\DoxyCodeLine{288                     \textcolor{keywordflow}{if} 0 < len(keyword.name[3:]) < 2:}
+\DoxyCodeLine{289                         \textcolor{keywordflow}{if} keyword.name[3:].upper() == candidate\_keyword:}
+\DoxyCodeLine{290                             \textcolor{keywordflow}{return} keyword}
+\DoxyCodeLine{291         \textcolor{keywordflow}{elif} field\_id == FieldIdentifiers.F22:}
+\DoxyCodeLine{292             \textcolor{keywordflow}{for} keyword \textcolor{keywordflow}{in} SubFieldIdentifiers:}
+\DoxyCodeLine{293                 \textcolor{keywordflow}{if} SubFieldIdentifiers.F21f < keyword < SubFieldIdentifiers.F80a:}
+\DoxyCodeLine{294                     \textcolor{keywordflow}{if} len(keyword.name[5:]) < 3:}
+\DoxyCodeLine{295                         \textcolor{comment}{\#  print(keyword.name[3:])}}
+\DoxyCodeLine{296                         \textcolor{keywordflow}{if} keyword.name[5:].upper() == candidate\_keyword:}
+\DoxyCodeLine{297                             \textcolor{keywordflow}{return} keyword}
+\DoxyCodeLine{298         \textcolor{keywordflow}{return} SubFieldIdentifiers.ANYTHING}
+\DoxyCodeLine{299 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a5501071c75aceba833dd48a8c71bfadf}\label{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a5501071c75aceba833dd48a8c71bfadf}} 
+\index{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}!no\_tokens@{no\_tokens}}
+\index{no\_tokens@{no\_tokens}!IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}}
+\doxysubsubsection{\texorpdfstring{no\_tokens()}{no\_tokens()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Parse\+Fields\+Common.\+Parse\+Fields\+Common.\+no\+\_\+tokens (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This method returns True if the list of tokens is zero, i.e. there are no tokens to parse.
+    :return: True if the token list is empty, False otherwise\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{300     \textcolor{keyword}{def }no\_tokens(self):}
+\DoxyCodeLine{301         \textcolor{comment}{\# type: () -\/> bool}}
+\DoxyCodeLine{302         \textcolor{stringliteral}{"""This method returns True if the list of tokens is zero, i.e. there are no tokens to parse.}}
+\DoxyCodeLine{303 \textcolor{stringliteral}{            :return: True if the token list is empty, False otherwise"""}}
+\DoxyCodeLine{304         \textcolor{keywordflow}{return} self.get\_tokens().get\_number\_of\_tokens() == 0}
+\DoxyCodeLine{305 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a6fd1a22cf8243537c88d9fc2cdde132f}\label{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a6fd1a22cf8243537c88d9fc2cdde132f}} 
+\index{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}!parse\_compound\_field\_common@{parse\_compound\_field\_common}}
+\index{parse\_compound\_field\_common@{parse\_compound\_field\_common}!IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}}
+\doxysubsubsection{\texorpdfstring{parse\_compound\_field\_common()}{parse\_compound\_field\_common()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Parse\+Fields\+Common.\+Parse\+Fields\+Common.\+parse\+\_\+compound\+\_\+field\+\_\+common (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{error\+\_\+codes,  }\item[{}]{keyword\+\_\+checker }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This method is the program entry point for the compound field parser used to parse the compound fields
+18, 19 and 22. These fields all contain named subfields, e.g.Field 18 - DEP/Data, Field 19 A/Data
+or field 22 9/Data. In all cases the text preceding the '/', the 'keyword', identifies the subfield. All
+subfields are stored in the flight plan record once parsed.
+
+This class implements a small state machine to loop over the subfields and extract valid known
+subfields and their associated data, parse them and write them out to the flight plan record.
+Unrecognised subfields are not written to the flight plan record and an error is reported.
+Anything else found that is not a subfield will cause an error to be reported.
+    :param error_codes: A list of enumeration values from the ErrorId class identifying an error for
+   each subfield in the field. The error message definition is made in the
+   SubFieldsInFields class.
+    :param keyword_checker: A callback method used to check if a subfield keyword is valid for the
+   field being parsed. Because this method is used by all the compound field
+   parsers, each has its own unique field identifier when calling the
+   method self.is_compound_field_keyword()
+    :return: None\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{306     \textcolor{keyword}{def }parse\_compound\_field\_common(self, error\_codes, keyword\_checker):}
+\DoxyCodeLine{307         \textcolor{comment}{\# type: ([ErrorId], is\_compound\_field\_keyword) -\/> None}}
+\DoxyCodeLine{308         \textcolor{stringliteral}{"""This method is the program entry point for the compound field parser used to parse the compound fields}}
+\DoxyCodeLine{309 \textcolor{stringliteral}{        18, 19 and 22. These fields all contain named subfields, e.g.Field 18 -\/ DEP/Data, Field 19 A/Data}}
+\DoxyCodeLine{310 \textcolor{stringliteral}{        or field 22 9/Data. In all cases the text preceding the '/', the 'keyword', identifies the subfield. All}}
+\DoxyCodeLine{311 \textcolor{stringliteral}{        subfields are stored in the flight plan record once parsed.}}
+\DoxyCodeLine{312 \textcolor{stringliteral}{}}
+\DoxyCodeLine{313 \textcolor{stringliteral}{        This class implements a small state machine to loop over the subfields and extract valid known}}
+\DoxyCodeLine{314 \textcolor{stringliteral}{        subfields and their associated data, parse them and write them out to the flight plan record.}}
+\DoxyCodeLine{315 \textcolor{stringliteral}{        Unrecognised subfields are not written to the flight plan record and an error is reported.}}
+\DoxyCodeLine{316 \textcolor{stringliteral}{        Anything else found that is not a subfield will cause an error to be reported.}}
+\DoxyCodeLine{317 \textcolor{stringliteral}{            :param error\_codes: A list of enumeration values from the ErrorId class identifying an error for}}
+\DoxyCodeLine{318 \textcolor{stringliteral}{                   each subfield in the field. The error message definition is made in the}}
+\DoxyCodeLine{319 \textcolor{stringliteral}{                   SubFieldsInFields class.}}
+\DoxyCodeLine{320 \textcolor{stringliteral}{            :param keyword\_checker: A callback method used to check if a subfield keyword is valid for the}}
+\DoxyCodeLine{321 \textcolor{stringliteral}{                   field being parsed. Because this method is used by all the compound field}}
+\DoxyCodeLine{322 \textcolor{stringliteral}{                   parsers, each has its own unique field identifier when calling the}}
+\DoxyCodeLine{323 \textcolor{stringliteral}{                   method self.is\_compound\_field\_keyword()}}
+\DoxyCodeLine{324 \textcolor{stringliteral}{            :return: None"""}}
+\DoxyCodeLine{325         \textcolor{comment}{\# Two or more tokens present in field 18 if we get this far}}
+\DoxyCodeLine{326         idx = 0}
+\DoxyCodeLine{327         subfield\_id = \textcolor{keywordtype}{None}}
+\DoxyCodeLine{328 }
+\DoxyCodeLine{329         \textcolor{comment}{\# Get the compound field string, this includes all subfields and is the text as it appears in a message}}
+\DoxyCodeLine{330         fxx\_field\_text = self.get\_flight\_plan\_record().get\_icao\_field(self.get\_field\_identifier()).get\_field\_text()}
+\DoxyCodeLine{331 }
+\DoxyCodeLine{332         \textcolor{comment}{\# Looping over a compound field is implemented as a simple state machine that has the following states.}}
+\DoxyCodeLine{333         in\_known\_field = \textcolor{keyword}{False}  \textcolor{comment}{\# Processing a known keyword '/' sequence}}
+\DoxyCodeLine{334         in\_unknown\_field = \textcolor{keyword}{False}  \textcolor{comment}{\# Processing an unknown keyword '/' sequence}}
+\DoxyCodeLine{335         not\_in\_field = \textcolor{keyword}{True}  \textcolor{comment}{\# Not in any sequence, this happens if there is junk at the start of a field}}
+\DoxyCodeLine{336         junk\_bin = []  \textcolor{comment}{\# Stores junk found at the start of the field}}
+\DoxyCodeLine{337         known\_bin = []  \textcolor{comment}{\# Stores the keyword. '/' and data for a known keyword}}
+\DoxyCodeLine{338         unknown\_bin = []  \textcolor{comment}{\# Stores the keyword. '/' and data for an unknown keyword}}
+\DoxyCodeLine{339         \textcolor{comment}{\# Off we go...}}
+\DoxyCodeLine{340         \textcolor{keywordflow}{for} token \textcolor{keywordflow}{in} self.get\_tokens().get\_tokens():}
+\DoxyCodeLine{341             \textcolor{comment}{\# We perform look ahead, so we can only loop of the token list size -\/ 1}}
+\DoxyCodeLine{342             \textcolor{keywordflow}{if} idx >= self.get\_tokens().get\_number\_of\_tokens() -\/ 1:}
+\DoxyCodeLine{343                 \textcolor{keywordflow}{break}}
+\DoxyCodeLine{344             \textcolor{keywordflow}{if} not\_in\_field:}
+\DoxyCodeLine{345                 \textcolor{comment}{\# In this state when processing the first token(s) a compound field until a valid}}
+\DoxyCodeLine{346                 \textcolor{comment}{\# keyword (known or unknown) '/' sequence is encountered.}}
+\DoxyCodeLine{347                 \textcolor{keywordflow}{if} self.get\_tokens().get\_token\_at(idx + 1).get\_token\_string() == \textcolor{stringliteral}{"/"}:}
+\DoxyCodeLine{348                     \textcolor{comment}{\# The next token slash indicates a state change is taking place}}
+\DoxyCodeLine{349                     \textcolor{keywordflow}{if} len(junk\_bin) > 0:}
+\DoxyCodeLine{350                         \textcolor{comment}{\# If there is any 'junk' at the start of the field report an error}}
+\DoxyCodeLine{351                         self.add\_compound\_field\_error(junk\_bin, fxx\_field\_text, error\_codes[0])}
+\DoxyCodeLine{352                     \textcolor{comment}{\# Establish if the keyword is known or unknown}}
+\DoxyCodeLine{353                     subfield\_id = keyword\_checker(self.get\_field\_identifier(), token.get\_token\_string())}
+\DoxyCodeLine{354                     \textcolor{keywordflow}{if} subfield\_id == SubFieldIdentifiers.ANYTHING:}
+\DoxyCodeLine{355                         \textcolor{comment}{\# Move to the unknown keyword '/' sequence state}}
+\DoxyCodeLine{356                         not\_in\_field = \textcolor{keyword}{False}}
+\DoxyCodeLine{357                         in\_unknown\_field = \textcolor{keyword}{True}}
+\DoxyCodeLine{358                         unknown\_bin.append(token)}
+\DoxyCodeLine{359                     \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{360                         \textcolor{comment}{\# Move to the known keyword '/' sequence state}}
+\DoxyCodeLine{361                         not\_in\_field = \textcolor{keyword}{False}}
+\DoxyCodeLine{362                         in\_known\_field = \textcolor{keyword}{True}}
+\DoxyCodeLine{363                         known\_bin.append(token)}
+\DoxyCodeLine{364                     junk\_bin = []}
+\DoxyCodeLine{365                 \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{366                     \textcolor{comment}{\# No state change, save more junk!}}
+\DoxyCodeLine{367                     junk\_bin.append(token)}
+\DoxyCodeLine{368 }
+\DoxyCodeLine{369             \textcolor{keywordflow}{elif} in\_known\_field:}
+\DoxyCodeLine{370                 \textcolor{comment}{\# In this state when processing a known keyword '/' sequence}}
+\DoxyCodeLine{371                 \textcolor{keywordflow}{if} self.get\_tokens().get\_token\_at(idx + 1).get\_token\_string() == \textcolor{stringliteral}{"/"}:}
+\DoxyCodeLine{372                     \textcolor{comment}{\# The next token slash indicates a state change is taking place}}
+\DoxyCodeLine{373                     \textcolor{keywordflow}{if} 0 < len(known\_bin) < 3:}
+\DoxyCodeLine{374                         \textcolor{comment}{\# The previous state must have been a known keyword sequence, it has to}}
+\DoxyCodeLine{375                         \textcolor{comment}{\# have at least 3 fields to be valid (e.g. STS/DATA)}}
+\DoxyCodeLine{376                         self.add\_compound\_field\_error(known\_bin, fxx\_field\_text, error\_codes[1])}
+\DoxyCodeLine{377                     \textcolor{keywordflow}{elif} len(unknown\_bin) > 0:}
+\DoxyCodeLine{378                         \textcolor{comment}{\# The previous state must have been an unknown sequence, if it exists then report an error}}
+\DoxyCodeLine{379                         self.add\_compound\_field\_error(unknown\_bin, fxx\_field\_text, error\_codes[2])}
+\DoxyCodeLine{380                     \textcolor{comment}{\# Save the current 'known' sequence}}
+\DoxyCodeLine{381                     self.save\_compound\_field(known\_bin, subfield\_id, fxx\_field\_text)}
+\DoxyCodeLine{382                     \textcolor{comment}{\# Figure out what state to move to next}}
+\DoxyCodeLine{383                     subfield\_id = keyword\_checker(self.get\_field\_identifier(), token.get\_token\_string())}
+\DoxyCodeLine{384                     \textcolor{keywordflow}{if} subfield\_id == SubFieldIdentifiers.ANYTHING:}
+\DoxyCodeLine{385                         in\_known\_field = \textcolor{keyword}{False}}
+\DoxyCodeLine{386                         in\_unknown\_field = \textcolor{keyword}{True}}
+\DoxyCodeLine{387                         unknown\_bin = [token]}
+\DoxyCodeLine{388                         known\_bin = []}
+\DoxyCodeLine{389                     \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{390                         unknown\_bin = []}
+\DoxyCodeLine{391                         known\_bin = [token]}
+\DoxyCodeLine{392                 \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{393                     known\_bin.append(token)}
+\DoxyCodeLine{394 }
+\DoxyCodeLine{395             \textcolor{keywordflow}{elif} in\_unknown\_field:}
+\DoxyCodeLine{396                 \textcolor{comment}{\# In this state when processing an unknown keyword '/' sequence}}
+\DoxyCodeLine{397                 \textcolor{keywordflow}{if} self.get\_tokens().get\_token\_at(idx + 1).get\_token\_string() == \textcolor{stringliteral}{"/"}:}
+\DoxyCodeLine{398                     \textcolor{comment}{\# The next token slash indicates a state change is taking place}}
+\DoxyCodeLine{399                     \textcolor{keywordflow}{if} 0 < len(known\_bin) < 3:}
+\DoxyCodeLine{400                         \textcolor{comment}{\# The previous state must have been a known keyword sequence, it has to}}
+\DoxyCodeLine{401                         \textcolor{comment}{\# have at least 3 fields to be valid (e.g. STS/DATA)}}
+\DoxyCodeLine{402                         self.add\_compound\_field\_error(known\_bin, fxx\_field\_text, error\_codes[1])}
+\DoxyCodeLine{403                     \textcolor{keywordflow}{if} len(unknown\_bin) > 0:}
+\DoxyCodeLine{404                         \textcolor{comment}{\# The previous state must have been an unknown sequence, if it exists then report an error}}
+\DoxyCodeLine{405                         self.add\_compound\_field\_error(unknown\_bin, fxx\_field\_text, error\_codes[2])}
+\DoxyCodeLine{406                     \textcolor{comment}{\# Save the current 'known' sequence}}
+\DoxyCodeLine{407                     \textcolor{comment}{\# Figure out what state to move to next}}
+\DoxyCodeLine{408                     self.save\_compound\_field(known\_bin, subfield\_id, fxx\_field\_text)}
+\DoxyCodeLine{409                     subfield\_id = keyword\_checker(self.get\_field\_identifier(), token.get\_token\_string())}
+\DoxyCodeLine{410                     \textcolor{keywordflow}{if} subfield\_id == SubFieldIdentifiers.ANYTHING:}
+\DoxyCodeLine{411                         in\_unknown\_field = \textcolor{keyword}{True}}
+\DoxyCodeLine{412                         in\_known\_field = \textcolor{keyword}{False}}
+\DoxyCodeLine{413                         known\_bin = []}
+\DoxyCodeLine{414                         unknown\_bin = [token]}
+\DoxyCodeLine{415                     \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{416                         in\_unknown\_field = \textcolor{keyword}{False}}
+\DoxyCodeLine{417                         in\_known\_field = \textcolor{keyword}{True}}
+\DoxyCodeLine{418                         known\_bin = [token]}
+\DoxyCodeLine{419                         unknown\_bin = []}
+\DoxyCodeLine{420                 \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{421                     unknown\_bin.append(token)}
+\DoxyCodeLine{422             idx += 1}
+\DoxyCodeLine{423 }
+\DoxyCodeLine{424         \textcolor{comment}{\# Clean up the last token}}
+\DoxyCodeLine{425         \textcolor{keywordflow}{if} in\_known\_field:}
+\DoxyCodeLine{426             known\_bin.append(self.get\_tokens().get\_last\_token())}
+\DoxyCodeLine{427         \textcolor{keywordflow}{elif} in\_unknown\_field:}
+\DoxyCodeLine{428             unknown\_bin.append(self.get\_tokens().get\_last\_token())}
+\DoxyCodeLine{429         \textcolor{keywordflow}{elif} not\_in\_field:}
+\DoxyCodeLine{430             junk\_bin.append(self.get\_tokens().get\_last\_token())}
+\DoxyCodeLine{431 }
+\DoxyCodeLine{432         \textcolor{comment}{\# Check if the last field stored has any errors}}
+\DoxyCodeLine{433         \textcolor{keywordflow}{if} len(junk\_bin) > 0:}
+\DoxyCodeLine{434             self.add\_compound\_field\_error(junk\_bin, fxx\_field\_text, error\_codes[3])}
+\DoxyCodeLine{435         \textcolor{keywordflow}{elif} len(unknown\_bin) > 0:}
+\DoxyCodeLine{436             self.add\_compound\_field\_error(unknown\_bin, fxx\_field\_text, error\_codes[2])}
+\DoxyCodeLine{437         \textcolor{keywordflow}{elif} len(known\_bin) > 0:}
+\DoxyCodeLine{438             self.save\_compound\_field(known\_bin, subfield\_id, fxx\_field\_text)}
+\DoxyCodeLine{439             \textcolor{keywordflow}{if} len(known\_bin) < 3:}
+\DoxyCodeLine{440                 self.add\_compound\_field\_error(known\_bin, fxx\_field\_text, error\_codes[1])}
+\DoxyCodeLine{441 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a2b355efeee939b4b5727b114c96dc820}\label{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a2b355efeee939b4b5727b114c96dc820}} 
+\index{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}!parse\_extra\_compulsory\_tokens@{parse\_extra\_compulsory\_tokens}}
+\index{parse\_extra\_compulsory\_tokens@{parse\_extra\_compulsory\_tokens}!IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}}
+\doxysubsubsection{\texorpdfstring{parse\_extra\_compulsory\_tokens()}{parse\_extra\_compulsory\_tokens()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Parse\+Fields\+Common.\+Parse\+Fields\+Common.\+parse\+\_\+extra\+\_\+compulsory\+\_\+tokens (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{num\+\_\+parsed }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This method checks if there are more subfields defined than present in a field.
+If there are more subfield definitions than tokens parsed and the 'missing' tokens are compulsory
+we need to report an error.
+    :param num_parsed: The total number of all subfields already parsed
+    :return: None\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{442     \textcolor{keyword}{def }parse\_extra\_compulsory\_tokens(self, num\_parsed):}
+\DoxyCodeLine{443         \textcolor{comment}{\# type: (int) -\/> None}}
+\DoxyCodeLine{444         \textcolor{stringliteral}{"""This method checks if there are more subfields defined than present in a field.}}
+\DoxyCodeLine{445 \textcolor{stringliteral}{        If there are more subfield definitions than tokens parsed and the 'missing' tokens are compulsory}}
+\DoxyCodeLine{446 \textcolor{stringliteral}{        we need to report an error.}}
+\DoxyCodeLine{447 \textcolor{stringliteral}{            :param num\_parsed: The total number of all subfields already parsed}}
+\DoxyCodeLine{448 \textcolor{stringliteral}{            :return: None"""}}
+\DoxyCodeLine{449         \textcolor{keywordflow}{if} len(self.get\_sub\_field\_list()) > num\_parsed:}
+\DoxyCodeLine{450             self.add\_error(self.get\_tokens().get\_last\_token().get\_token\_string(),}
+\DoxyCodeLine{451                            self.get\_tokens().get\_last\_token().get\_token\_start\_index(),}
+\DoxyCodeLine{452                            self.get\_tokens().get\_last\_token().get\_token\_end\_index(),}
+\DoxyCodeLine{453                            self.get\_more\_subfields\_expected\_error())}
+\DoxyCodeLine{454 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a4b72b467b9e2e83c62ab994cd7621a03}\label{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a4b72b467b9e2e83c62ab994cd7621a03}} 
+\index{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}!parse\_extra\_optional\_tokens@{parse\_extra\_optional\_tokens}}
+\index{parse\_extra\_optional\_tokens@{parse\_extra\_optional\_tokens}!IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}}
+\doxysubsubsection{\texorpdfstring{parse\_extra\_optional\_tokens()}{parse\_extra\_optional\_tokens()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Parse\+Fields\+Common.\+Parse\+Fields\+Common.\+parse\+\_\+extra\+\_\+optional\+\_\+tokens (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This method checks if there are more tokens (subfields) than defined for this field but the
+extra tokens (subfields) are optional with any number of occurrences possible, so they can be included
+but must conform to the syntax specified for the last subfield definition.
+
+If there are more tokens than defined subfields, it may be that the last subfield definition allows
+'n' extras, but they still have to conform to a defined syntax. These 'extra' tokens are checked
+here using the syntax definition for the last token defined in the SubFieldsInFields configuration.
+    :return: None\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{455     \textcolor{keyword}{def }parse\_extra\_optional\_tokens(self):}
+\DoxyCodeLine{456         \textcolor{comment}{\# type: () -\/> None}}
+\DoxyCodeLine{457         \textcolor{stringliteral}{"""This method checks if there are more tokens (subfields) than defined for this field but the}}
+\DoxyCodeLine{458 \textcolor{stringliteral}{        extra tokens (subfields) are optional with any number of occurrences possible, so they can be included}}
+\DoxyCodeLine{459 \textcolor{stringliteral}{        but must conform to the syntax specified for the last subfield definition.}}
+\DoxyCodeLine{460 \textcolor{stringliteral}{}}
+\DoxyCodeLine{461 \textcolor{stringliteral}{        If there are more tokens than defined subfields, it may be that the last subfield definition allows}}
+\DoxyCodeLine{462 \textcolor{stringliteral}{        'n' extras, but they still have to conform to a defined syntax. These 'extra' tokens are checked}}
+\DoxyCodeLine{463 \textcolor{stringliteral}{        here using the syntax definition for the last token defined in the SubFieldsInFields configuration.}}
+\DoxyCodeLine{464 \textcolor{stringliteral}{            :return: None"""}}
+\DoxyCodeLine{465         subfield\_id = self.get\_sub\_field\_list()[len(self.get\_sub\_field\_list()) -\/ 1]}
+\DoxyCodeLine{466         \textcolor{comment}{\# Get the regular expression for the last subfield definition}}
+\DoxyCodeLine{467         regexp = self.sfd.get\_subfield\_description(subfield\_id).get\_field\_syntax()}
+\DoxyCodeLine{468         \textcolor{keywordflow}{for} idx \textcolor{keywordflow}{in} range(len(self.sub\_field\_list), self.get\_tokens().get\_number\_of\_tokens()):}
+\DoxyCodeLine{469             token\_to\_parse = self.get\_tokens().get\_token\_at(idx)}
+\DoxyCodeLine{470             \textcolor{keywordflow}{if} re.fullmatch(regexp, token\_to\_parse.get\_token\_string()) \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:}
+\DoxyCodeLine{471                 \textcolor{comment}{\# Report an error}}
+\DoxyCodeLine{472                 self.add\_error(token\_to\_parse.get\_token\_string(),}
+\DoxyCodeLine{473                                token\_to\_parse.get\_token\_start\_index(),}
+\DoxyCodeLine{474                                token\_to\_parse.get\_token\_end\_index(),}
+\DoxyCodeLine{475                                self.get\_last\_subfield\_error())}
+\DoxyCodeLine{476 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a395ea8f9247a4abe9881d3fa6eb437b4}\label{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a395ea8f9247a4abe9881d3fa6eb437b4}} 
+\index{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}!parse\_field@{parse\_field}}
+\index{parse\_field@{parse\_field}!IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}}
+\doxysubsubsection{\texorpdfstring{parse\_field()}{parse\_field()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Parse\+Fields\+Common.\+Parse\+Fields\+Common.\+parse\+\_\+field (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This method is the program entry point for the basic field parser to parse ICAO fields 3, 5, 7,
+8, 9, 10, 13, 14, 16, 17, 80 and 81.
+
+This method calls the 'base' parser self.parse_field_base() to do most of the heavy lifting. Once
+the base parse is finished, this method checks that all fields are present, not missing any nor
+any extra fields present.
+    :return: None\end{DoxyVerb}
+ 
+
+Reimplemented in \mbox{\hyperlink{classIcaoMessageParser_1_1ParseF22_1_1ParseF22_aa29966b359844b5aec4f14a78c1140b9}{Icao\+Message\+Parser.\+Parse\+F22.\+Parse\+F22}}, \mbox{\hyperlink{classIcaoMessageParser_1_1ParseF18_1_1ParseF18_af79fc23036ceff67e969e64f86b70ceb}{Icao\+Message\+Parser.\+Parse\+F18.\+Parse\+F18}}, \mbox{\hyperlink{classIcaoMessageParser_1_1ParseF19_1_1ParseF19_a560c142c520f083cf581c2dcfc1c9505}{Icao\+Message\+Parser.\+Parse\+F19.\+Parse\+F19}}, \mbox{\hyperlink{classIcaoMessageParser_1_1ParseF20_1_1ParseF20_a41157ce3a0ac4bfe849fb7fd64d0ecb9}{Icao\+Message\+Parser.\+Parse\+F20.\+Parse\+F20}}, \mbox{\hyperlink{classIcaoMessageParser_1_1ParseF21_1_1ParseF21_acc0262957f16598b4fea2b727ddc9214}{Icao\+Message\+Parser.\+Parse\+F21.\+Parse\+F21}}, \mbox{\hyperlink{classIcaoMessageParser_1_1ParseF3_1_1ParseF3_abf8d85267ddd4be292a50f609574c924}{Icao\+Message\+Parser.\+Parse\+F3.\+Parse\+F3}}, \mbox{\hyperlink{classIcaoMessageParser_1_1ParseF9_1_1ParseF9_a984c3d11131f869eef5aeead02e1f867}{Icao\+Message\+Parser.\+Parse\+F9.\+Parse\+F9}}, \mbox{\hyperlink{classIcaoMessageParser_1_1ParseF13_1_1ParseF13_aced6a8103c122125e77a35dff62d0ca1}{Icao\+Message\+Parser.\+Parse\+F13.\+Parse\+F13}}, \mbox{\hyperlink{classIcaoMessageParser_1_1ParseF14_1_1ParseF14_a6b493cf8cf4cebdd9734a26c29cbf915}{Icao\+Message\+Parser.\+Parse\+F14.\+Parse\+F14}}, \mbox{\hyperlink{classIcaoMessageParser_1_1ParseF15_1_1ParseF15x_ab69a173777f50907895e0397951c5a08}{Icao\+Message\+Parser.\+Parse\+F15.\+Parse\+F15x}}, \mbox{\hyperlink{classIcaoMessageParser_1_1ParseF16_1_1ParseF16_a6303084059c50c6a19fe6712888e6df9}{Icao\+Message\+Parser.\+Parse\+F16.\+Parse\+F16}}, \mbox{\hyperlink{classIcaoMessageParser_1_1ParseF16ab_1_1ParseF16ab_a9fd00602d86b1a0eb115c4b6c50b79c8}{Icao\+Message\+Parser.\+Parse\+F16ab.\+Parse\+F16ab}}, \mbox{\hyperlink{classIcaoMessageParser_1_1ParseF16abc_1_1ParseF16abc_a1ce825ae6fff06bf3b31dfa671d05465}{Icao\+Message\+Parser.\+Parse\+F16abc.\+Parse\+F16abc}}, \mbox{\hyperlink{classIcaoMessageParser_1_1ParseF17_1_1ParseF17_a627bad3a374903b1bc2c0652d76257d3}{Icao\+Message\+Parser.\+Parse\+F17.\+Parse\+F17}}, \mbox{\hyperlink{classIcaoMessageParser_1_1ParseF18dof_1_1ParseF18dof_a078ccd8b1d94df8ddf074e801f9e9098}{Icao\+Message\+Parser.\+Parse\+F18dof.\+Parse\+F18dof}}, \mbox{\hyperlink{classIcaoMessageParser_1_1ParseAdditionalAddressee_1_1ParseAdditionalAddressee_a4f80cc61352430110ff45d996704e75f}{Icao\+Message\+Parser.\+Parse\+Additional\+Addressee.\+Parse\+Additional\+Addressee}}, \mbox{\hyperlink{classIcaoMessageParser_1_1ParseAddressee_1_1ParseAddressee_ad14a70251caeb1da3f5820fdac5df1d6}{Icao\+Message\+Parser.\+Parse\+Addressee.\+Parse\+Addressee}}, \mbox{\hyperlink{classIcaoMessageParser_1_1ParseF10_1_1ParseF10_a0e59a458bf5c41c7cd559ddd95dfa888}{Icao\+Message\+Parser.\+Parse\+F10.\+Parse\+F10}}, \mbox{\hyperlink{classIcaoMessageParser_1_1ParseF13a_1_1ParseF13a_a690c727484c9b251ae549bedd418ff92}{Icao\+Message\+Parser.\+Parse\+F13a.\+Parse\+F13a}}, \mbox{\hyperlink{classIcaoMessageParser_1_1ParseF14a_1_1ParseF14a_a25045c98a7ecd24ad9fd190bae6e0dda}{Icao\+Message\+Parser.\+Parse\+F14a.\+Parse\+F14a}}, \mbox{\hyperlink{classIcaoMessageParser_1_1ParseF16a_1_1ParseF16a_ac7183112fcd747d1f0d630d2453ff394}{Icao\+Message\+Parser.\+Parse\+F16a.\+Parse\+F16a}}, \mbox{\hyperlink{classIcaoMessageParser_1_1ParseF5_1_1ParseF5_a8da478e04b07150bd071318905bbe96e}{Icao\+Message\+Parser.\+Parse\+F5.\+Parse\+F5}}, \mbox{\hyperlink{classIcaoMessageParser_1_1ParseF7_1_1ParseF7_afee6b8d18e14102fbaea2f9d7edf58e2}{Icao\+Message\+Parser.\+Parse\+F7.\+Parse\+F7}}, \mbox{\hyperlink{classIcaoMessageParser_1_1ParseF8_1_1ParseF8_a36a90d7f09ae11e586acc33a9f44cf09}{Icao\+Message\+Parser.\+Parse\+F8.\+Parse\+F8}}, \mbox{\hyperlink{classIcaoMessageParser_1_1ParseF80_1_1ParseF80_a916ddadfccb5ecec2168cdc05be8392a}{Icao\+Message\+Parser.\+Parse\+F80.\+Parse\+F80}}, \mbox{\hyperlink{classIcaoMessageParser_1_1ParseF81_1_1ParseF81_ac60ebd3eae8f651afec0fa0f1064e482}{Icao\+Message\+Parser.\+Parse\+F81.\+Parse\+F81}}, \mbox{\hyperlink{classIcaoMessageParser_1_1ParseF8a_1_1ParseF8a_a00def2fa5100b3ef85d4d694701d9275}{Icao\+Message\+Parser.\+Parse\+F8a.\+Parse\+F8a}}, \mbox{\hyperlink{classIcaoMessageParser_1_1ParseF22__Specific_1_1ParseF22Specific_a5635804dfe9c4fb189f14ef91f69b90b}{Icao\+Message\+Parser.\+Parse\+F22\+\_\+\+Specific.\+Parse\+F22\+Specific}}, and \mbox{\hyperlink{classIcaoMessageParser_1_1ParseMfsPoint_1_1ParseMfsPoint_a0284145023f1247eeb31c2752017fa40}{Icao\+Message\+Parser.\+Parse\+Mfs\+Point.\+Parse\+Mfs\+Point}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{477     \textcolor{keyword}{def }parse\_field(self):}
+\DoxyCodeLine{478         \textcolor{comment}{\# type: () -\/> None}}
+\DoxyCodeLine{479         \textcolor{stringliteral}{"""This method is the program entry point for the basic field parser to parse ICAO fields 3, 5, 7,}}
+\DoxyCodeLine{480 \textcolor{stringliteral}{        8, 9, 10, 13, 14, 16, 17, 80 and 81.}}
+\DoxyCodeLine{481 \textcolor{stringliteral}{}}
+\DoxyCodeLine{482 \textcolor{stringliteral}{        This method calls the 'base' parser self.parse\_field\_base() to do most of the heavy lifting. Once}}
+\DoxyCodeLine{483 \textcolor{stringliteral}{        the base parse is finished, this method checks that all fields are present, not missing any nor}}
+\DoxyCodeLine{484 \textcolor{stringliteral}{        any extra fields present.}}
+\DoxyCodeLine{485 \textcolor{stringliteral}{            :return: None"""}}
+\DoxyCodeLine{486 }
+\DoxyCodeLine{487         \textcolor{comment}{\# Check if the field contains anything at all...}}
+\DoxyCodeLine{488         \textcolor{keywordflow}{if} self.no\_tokens():}
+\DoxyCodeLine{489             self.add\_error(\textcolor{stringliteral}{""}, 0, 0, self.get\_missing\_subfield\_error())}
+\DoxyCodeLine{490             \textcolor{keywordflow}{return}}
+\DoxyCodeLine{491 }
+\DoxyCodeLine{492         \textcolor{comment}{\# Parse the field}}
+\DoxyCodeLine{493         num\_parsed = self.parse\_field\_base()}
+\DoxyCodeLine{494 }
+\DoxyCodeLine{495         \textcolor{comment}{\# If there are more 'unparsed' tokens report an error}}
+\DoxyCodeLine{496         \textcolor{keywordflow}{if} len(self.get\_sub\_field\_list()) > num\_parsed:}
+\DoxyCodeLine{497             concatenated = self.concatenate\_token\_text(0, self.get\_tokens().get\_number\_of\_tokens())}
+\DoxyCodeLine{498             self.add\_error(concatenated[0],}
+\DoxyCodeLine{499                            concatenated[1],}
+\DoxyCodeLine{500                            concatenated[2],}
+\DoxyCodeLine{501                            self.get\_more\_subfields\_expected\_error())}
+\DoxyCodeLine{502 }
+\DoxyCodeLine{503         \textcolor{comment}{\# Parse any extra tokens that may be present}}
+\DoxyCodeLine{504         self.check\_if\_tokens\_left\_over()}
+\DoxyCodeLine{505 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_ae8217b836317b82509a1b5702c4fa3df}\label{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_ae8217b836317b82509a1b5702c4fa3df}} 
+\index{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}!parse\_field\_base@{parse\_field\_base}}
+\index{parse\_field\_base@{parse\_field\_base}!IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}}
+\doxysubsubsection{\texorpdfstring{parse\_field\_base()}{parse\_field\_base()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Parse\+Fields\+Common.\+Parse\+Fields\+Common.\+parse\+\_\+field\+\_\+base (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This method loops over the subfields tokenized from a field and parses each subfield.
+The expected subfields to parse along with the configuration data defining what has to be parsed
+are stored in this class when the individual field parser subclasses this class and instantiates itself.
+The configuration data this method needs are:
+
+- The field identifier for this field, self.field_identifier: FieldIdentifiers
+- List of subfields describing this fields content, self.sub_field_list: [SubFieldIdentifiers]
+- List of error messages associated with each subfield, self.error_list: [ErrorId]
+- List of subfields to parse, self.tokens: Tokens
+
+Errors and successfully parsed fields and subfields are written to the flight plan record also stored in
+this class when instantiated (self.flight_plan_record: FlightPlanRecord)
+    :return: None\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{506     \textcolor{keyword}{def }parse\_field\_base(self):}
+\DoxyCodeLine{507         \textcolor{comment}{\# type: () -\/> int}}
+\DoxyCodeLine{508         \textcolor{stringliteral}{"""This method loops over the subfields tokenized from a field and parses each subfield.}}
+\DoxyCodeLine{509 \textcolor{stringliteral}{        The expected subfields to parse along with the configuration data defining what has to be parsed}}
+\DoxyCodeLine{510 \textcolor{stringliteral}{        are stored in this class when the individual field parser subclasses this class and instantiates itself.}}
+\DoxyCodeLine{511 \textcolor{stringliteral}{        The configuration data this method needs are:}}
+\DoxyCodeLine{512 \textcolor{stringliteral}{}}
+\DoxyCodeLine{513 \textcolor{stringliteral}{        -\/ The field identifier for this field, self.field\_identifier: FieldIdentifiers}}
+\DoxyCodeLine{514 \textcolor{stringliteral}{        -\/ List of subfields describing this fields content, self.sub\_field\_list: [SubFieldIdentifiers]}}
+\DoxyCodeLine{515 \textcolor{stringliteral}{        -\/ List of error messages associated with each subfield, self.error\_list: [ErrorId]}}
+\DoxyCodeLine{516 \textcolor{stringliteral}{        -\/ List of subfields to parse, self.tokens: Tokens}}
+\DoxyCodeLine{517 \textcolor{stringliteral}{}}
+\DoxyCodeLine{518 \textcolor{stringliteral}{        Errors and successfully parsed fields and subfields are written to the flight plan record also stored in}}
+\DoxyCodeLine{519 \textcolor{stringliteral}{        this class when instantiated (self.flight\_plan\_record: FlightPlanRecord)}}
+\DoxyCodeLine{520 \textcolor{stringliteral}{            :return: None"""}}
+\DoxyCodeLine{521 }
+\DoxyCodeLine{522         idx = 0}
+\DoxyCodeLine{523         token\_to\_parse = self.get\_token\_at\_idx(idx)}
+\DoxyCodeLine{524         \textcolor{keywordflow}{for} subfield\_id \textcolor{keywordflow}{in} self.sub\_field\_list:}
+\DoxyCodeLine{525             \textcolor{keywordflow}{if} token\_to\_parse \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:}
+\DoxyCodeLine{526                 \textcolor{comment}{\# We have run out of subfields to parse, this is OK if}}
+\DoxyCodeLine{527                 \textcolor{comment}{\# the subfield is optional, check this}}
+\DoxyCodeLine{528                 \textcolor{keywordflow}{if} self.sfd.get\_subfield\_description(subfield\_id).get\_compulsory():}
+\DoxyCodeLine{529                     \textcolor{comment}{\# Subfield missing, error}}
+\DoxyCodeLine{530                     self.add\_error(self.get\_tokens().get\_last\_token().get\_token\_string(),}
+\DoxyCodeLine{531                                    self.get\_tokens().get\_last\_token().get\_token\_start\_index(),}
+\DoxyCodeLine{532                                    self.get\_tokens().get\_last\_token().get\_token\_end\_index(),}
+\DoxyCodeLine{533                                    self.get\_more\_subfields\_expected\_error())}
+\DoxyCodeLine{534                 \textcolor{comment}{\# We can finish parsing as there are no further subfields to process}}
+\DoxyCodeLine{535                 \textcolor{comment}{\# negate the number of fields parsed as we did not parse a token here}}
+\DoxyCodeLine{536                 idx -\/= 1}
+\DoxyCodeLine{537                 \textcolor{keywordflow}{break}}
+\DoxyCodeLine{538             \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{539                 \textcolor{comment}{\# Get the regular expression for the subfield being parsed}}
+\DoxyCodeLine{540                 regexp = self.sfd.get\_subfield\_description(subfield\_id).get\_field\_syntax()}
+\DoxyCodeLine{541                 \textcolor{keywordflow}{if} re.fullmatch(regexp, token\_to\_parse.get\_token\_string()) \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:}
+\DoxyCodeLine{542                     \textcolor{comment}{\# Report an error}}
+\DoxyCodeLine{543                     self.add\_error(token\_to\_parse.get\_token\_string(),}
+\DoxyCodeLine{544                                    token\_to\_parse.get\_token\_start\_index(),}
+\DoxyCodeLine{545                                    token\_to\_parse.get\_token\_end\_index(),}
+\DoxyCodeLine{546                                    self.get\_error\_message\_at\_idx(idx))}
+\DoxyCodeLine{547                     \textcolor{comment}{\# Abort further parsing}}
+\DoxyCodeLine{548                     \textcolor{keywordflow}{break}}
+\DoxyCodeLine{549 }
+\DoxyCodeLine{550             \textcolor{comment}{\# Parsing successful, save the token, only correct tokens are saved}}
+\DoxyCodeLine{551             \textcolor{comment}{\# When setting the indices, the field indices are added to ensure that}}
+\DoxyCodeLine{552             \textcolor{comment}{\# the subfield indices are referencing the original field string and}}
+\DoxyCodeLine{553             \textcolor{comment}{\# not 'local' to the subfield.}}
+\DoxyCodeLine{554             self.add\_subfield\_to\_fpr(subfield\_id,}
+\DoxyCodeLine{555                                      self.get\_tokens().get\_token\_at(idx).get\_token\_string(),}
+\DoxyCodeLine{556                                      \textcolor{comment}{\# Add the header field start index to the individual field start index}}
+\DoxyCodeLine{557                                      self.get\_tokens().get\_token\_at(idx).get\_token\_start\_index() +}
+\DoxyCodeLine{558                                      self.get\_flight\_plan\_record().get\_icao\_field(}
+\DoxyCodeLine{559                                          self.get\_field\_identifier()).get\_start\_index(),}
+\DoxyCodeLine{560                                      \textcolor{comment}{\# Add the header field start index to the individual field end index}}
+\DoxyCodeLine{561                                      self.get\_tokens().get\_token\_at(idx).get\_token\_end\_index() +}
+\DoxyCodeLine{562                                      self.get\_flight\_plan\_record().get\_icao\_field(}
+\DoxyCodeLine{563                                          self.get\_field\_identifier()).get\_start\_index())}
+\DoxyCodeLine{564             idx += 1}
+\DoxyCodeLine{565             \textcolor{keywordflow}{if} idx > self.get\_tokens().get\_number\_of\_tokens():}
+\DoxyCodeLine{566                 \textcolor{comment}{\# Bail out if we have no more tokens left}}
+\DoxyCodeLine{567                 \textcolor{keywordflow}{break}}
+\DoxyCodeLine{568 }
+\DoxyCodeLine{569             \textcolor{comment}{\# Move onto the next token}}
+\DoxyCodeLine{570             token\_to\_parse = self.get\_token\_at\_idx(idx)}
+\DoxyCodeLine{571 }
+\DoxyCodeLine{572         \textcolor{comment}{\# Because the IDX is zero based, we add 1 to make it reflect the number of tokens parsed}}
+\DoxyCodeLine{573         \textcolor{keywordflow}{return} idx + 1}
+\DoxyCodeLine{574 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_ace8af2bebb40fd53b1d9e13d37cb6b32}\label{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_ace8af2bebb40fd53b1d9e13d37cb6b32}} 
+\index{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}!save\_compound\_field@{save\_compound\_field}}
+\index{save\_compound\_field@{save\_compound\_field}!IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}}
+\doxysubsubsection{\texorpdfstring{save\_compound\_field()}{save\_compound\_field()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Parse\+Fields\+Common.\+Parse\+Fields\+Common.\+save\+\_\+compound\+\_\+field (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{tokens,  }\item[{}]{subfield\+\_\+id,  }\item[{}]{field\+\_\+text }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This method saves a compound field to the flight plan record. The keyword and '/' are not
+saved. The subfields are stored in a SubFieldRecord in a FieldRecord in the FlightPlanRecord.
+The zero based start and end indices are also stored for the subfield.
+    :param tokens: The subfield tokens being parsed and saved to the flight plan record
+    :param subfield_id: The subfield ID as an enumeration value from the SubFieldIdentifiers class
+    :param field_text: The subfield text as it appears in a message.
+    :return: None\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{575     \textcolor{keyword}{def }save\_compound\_field(self, tokens, subfield\_id, field\_text):}
+\DoxyCodeLine{576         \textcolor{comment}{\# type: ([Token], SubFieldIdentifiers, str) -\/> None}}
+\DoxyCodeLine{577         \textcolor{stringliteral}{"""This method saves a compound field to the flight plan record. The keyword and '/' are not}}
+\DoxyCodeLine{578 \textcolor{stringliteral}{        saved. The subfields are stored in a SubFieldRecord in a FieldRecord in the FlightPlanRecord.}}
+\DoxyCodeLine{579 \textcolor{stringliteral}{        The zero based start and end indices are also stored for the subfield.}}
+\DoxyCodeLine{580 \textcolor{stringliteral}{            :param tokens: The subfield tokens being parsed and saved to the flight plan record}}
+\DoxyCodeLine{581 \textcolor{stringliteral}{            :param subfield\_id: The subfield ID as an enumeration value from the SubFieldIdentifiers class}}
+\DoxyCodeLine{582 \textcolor{stringliteral}{            :param field\_text: The subfield text as it appears in a message.}}
+\DoxyCodeLine{583 \textcolor{stringliteral}{            :return: None"""}}
+\DoxyCodeLine{584         \textcolor{keywordflow}{if} len(tokens) == 0:}
+\DoxyCodeLine{585             \textcolor{keywordflow}{return}}
+\DoxyCodeLine{586         \textcolor{comment}{\# Don't save the keyword and the '/', hence the + 1}}
+\DoxyCodeLine{587         \textcolor{comment}{\# Token idx 0 is the keyword, token idx 1 is the '/'}}
+\DoxyCodeLine{588         start\_idx = tokens[1].get\_token\_end\_index()}
+\DoxyCodeLine{589         end\_idx = tokens[len(tokens) -\/ 1].get\_token\_end\_index()}
+\DoxyCodeLine{590         self.get\_flight\_plan\_record().add\_icao\_subfield(self.get\_field\_identifier(), subfield\_id,}
+\DoxyCodeLine{591                                                         field\_text[start\_idx:end\_idx], start\_idx, end\_idx)}
+\DoxyCodeLine{592 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_ab5101ea36d2472a6d1c0794022cadc47}\label{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_ab5101ea36d2472a6d1c0794022cadc47}} 
+\index{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}!split\_and\_insert\_token@{split\_and\_insert\_token}}
+\index{split\_and\_insert\_token@{split\_and\_insert\_token}!IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}}
+\doxysubsubsection{\texorpdfstring{split\_and\_insert\_token()}{split\_and\_insert\_token()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Parse\+Fields\+Common.\+Parse\+Fields\+Common.\+split\+\_\+and\+\_\+insert\+\_\+token (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{insert\+\_\+index,  }\item[{}]{split\+\_\+index }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This method splits data in a token and creates a new token so that the subfields can be parsed
+as defined in the configuration data, where each subfield is defined separately.
+For example, a 'full' F3 comprises F3a, F3b & F3c which looks like FPLAA/BB001CC/DD002.
+When tokenized the following tokens are generated:
+    - FPLAA     F3a and F3b '1'
+    - /         F3b '2'
+    - BB001CC   F3b '3' & '4' & F3c '1'
+    - /         F3c '2'
+    - DD002     F3c '3' & '4'
+These tokens must be split up, so we have each subfield in its own token to look like:
+    - FPL       F3a
+    - AA        F3b '1'
+    - /         F3b '2'
+    - BB        F3b '3'
+    - 001       F3b '4'
+    - CC        F3c '1'
+    - /         F3c '2'
+    - DD        F3c '3'
+    - 002       F3c '4'
+This method will take a field to split, split it and insert a new token for the newly created subfield.
+    :param insert_index: The index in the token list, before which the new token is inserted
+    :param split_index: The index in a string where to split a tokens text
+    :return: None\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{593     \textcolor{keyword}{def }split\_and\_insert\_token(self, insert\_index, split\_index):}
+\DoxyCodeLine{594         \textcolor{comment}{\# type: (int, int) -\/> None}}
+\DoxyCodeLine{595         \textcolor{stringliteral}{"""This method splits data in a token and creates a new token so that the subfields can be parsed}}
+\DoxyCodeLine{596 \textcolor{stringliteral}{        as defined in the configuration data, where each subfield is defined separately.}}
+\DoxyCodeLine{597 \textcolor{stringliteral}{        For example, a 'full' F3 comprises F3a, F3b \& F3c which looks like FPLAA/BB001CC/DD002.}}
+\DoxyCodeLine{598 \textcolor{stringliteral}{        When tokenized the following tokens are generated:}}
+\DoxyCodeLine{599 \textcolor{stringliteral}{            -\/ FPLAA     F3a and F3b '1'}}
+\DoxyCodeLine{600 \textcolor{stringliteral}{            -\/ /         F3b '2'}}
+\DoxyCodeLine{601 \textcolor{stringliteral}{            -\/ BB001CC   F3b '3' \& '4' \& F3c '1'}}
+\DoxyCodeLine{602 \textcolor{stringliteral}{            -\/ /         F3c '2'}}
+\DoxyCodeLine{603 \textcolor{stringliteral}{            -\/ DD002     F3c '3' \& '4'}}
+\DoxyCodeLine{604 \textcolor{stringliteral}{        These tokens must be split up, so we have each subfield in its own token to look like:}}
+\DoxyCodeLine{605 \textcolor{stringliteral}{            -\/ FPL       F3a}}
+\DoxyCodeLine{606 \textcolor{stringliteral}{            -\/ AA        F3b '1'}}
+\DoxyCodeLine{607 \textcolor{stringliteral}{            -\/ /         F3b '2'}}
+\DoxyCodeLine{608 \textcolor{stringliteral}{            -\/ BB        F3b '3'}}
+\DoxyCodeLine{609 \textcolor{stringliteral}{            -\/ 001       F3b '4'}}
+\DoxyCodeLine{610 \textcolor{stringliteral}{            -\/ CC        F3c '1'}}
+\DoxyCodeLine{611 \textcolor{stringliteral}{            -\/ /         F3c '2'}}
+\DoxyCodeLine{612 \textcolor{stringliteral}{            -\/ DD        F3c '3'}}
+\DoxyCodeLine{613 \textcolor{stringliteral}{            -\/ 002       F3c '4'}}
+\DoxyCodeLine{614 \textcolor{stringliteral}{        This method will take a field to split, split it and insert a new token for the newly created subfield.}}
+\DoxyCodeLine{615 \textcolor{stringliteral}{            :param insert\_index: The index in the token list, before which the new token is inserted}}
+\DoxyCodeLine{616 \textcolor{stringliteral}{            :param split\_index: The index in a string where to split a tokens text}}
+\DoxyCodeLine{617 \textcolor{stringliteral}{            :return: None"""}}
+\DoxyCodeLine{618         tmp\_token = Token(self.get\_tokens().get\_token\_at(insert\_index).get\_token\_string()[0:split\_index],}
+\DoxyCodeLine{619                           self.get\_tokens().get\_token\_at(insert\_index).get\_token\_start\_index(),}
+\DoxyCodeLine{620                           self.get\_tokens().get\_token\_at(insert\_index).get\_token\_start\_index() + split\_index)}
+\DoxyCodeLine{621         \textcolor{comment}{\# Insert the new token}}
+\DoxyCodeLine{622         self.get\_tokens().insert\_token(tmp\_token, insert\_index)}
+\DoxyCodeLine{623         \textcolor{comment}{\# Fix up token following the one we just stripped out some text from}}
+\DoxyCodeLine{624         self.get\_tokens().get\_token\_at(insert\_index + 1).set\_token\_string(}
+\DoxyCodeLine{625             self.get\_tokens().get\_token\_at(insert\_index + 1).get\_token\_string()[split\_index:])}
+\DoxyCodeLine{626         self.get\_tokens().get\_token\_at(insert\_index + 1).set\_token\_start\_index(}
+\DoxyCodeLine{627             self.get\_tokens().get\_token\_at(insert\_index + 1).get\_token\_start\_index() + split\_index)}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a8a8729db915c29e426a0536d17adb5d6}\label{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a8a8729db915c29e426a0536d17adb5d6}} 
+\index{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}!error\_list@{error\_list}}
+\index{error\_list@{error\_list}!IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}}
+\doxysubsubsection{\texorpdfstring{error\_list}{error\_list}}
+{\footnotesize\ttfamily Icao\+Message\+Parser.\+Parse\+Fields\+Common.\+Parse\+Fields\+Common.\+error\+\_\+list}
+
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a2a00e3aa4394e9f41200ba3075872f35}\label{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a2a00e3aa4394e9f41200ba3075872f35}} 
+\index{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}!error\_messages@{error\_messages}}
+\index{error\_messages@{error\_messages}!IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}}
+\doxysubsubsection{\texorpdfstring{error\_messages}{error\_messages}}
+{\footnotesize\ttfamily Icao\+Message\+Parser.\+Parse\+Fields\+Common.\+Parse\+Fields\+Common.\+error\+\_\+messages}
+
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_aebcd6e721c76b46628a4c73e12be6210}\label{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_aebcd6e721c76b46628a4c73e12be6210}} 
+\index{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}!ErrorMessages@{ErrorMessages}}
+\index{ErrorMessages@{ErrorMessages}!IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}}
+\doxysubsubsection{\texorpdfstring{ErrorMessages}{ErrorMessages}}
+{\footnotesize\ttfamily Icao\+Message\+Parser.\+Parse\+Fields\+Common.\+Parse\+Fields\+Common.\+Error\+Messages\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a26d33af7afc567d81dc6ef8de19300d7}\label{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a26d33af7afc567d81dc6ef8de19300d7}} 
+\index{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}!field\_identifier@{field\_identifier}}
+\index{field\_identifier@{field\_identifier}!IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}}
+\doxysubsubsection{\texorpdfstring{field\_identifier}{field\_identifier}}
+{\footnotesize\ttfamily Icao\+Message\+Parser.\+Parse\+Fields\+Common.\+Parse\+Fields\+Common.\+field\+\_\+identifier}
+
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_adb3097fa8ed29636d56e15a4ec77d99f}\label{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_adb3097fa8ed29636d56e15a4ec77d99f}} 
+\index{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}!FieldIdentifiers@{FieldIdentifiers}}
+\index{FieldIdentifiers@{FieldIdentifiers}!IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}}
+\doxysubsubsection{\texorpdfstring{FieldIdentifiers}{FieldIdentifiers}}
+{\footnotesize\ttfamily Icao\+Message\+Parser.\+Parse\+Fields\+Common.\+Parse\+Fields\+Common.\+Field\+Identifiers\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a93341de2e606a5ad85e0dd34f0336c00}\label{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a93341de2e606a5ad85e0dd34f0336c00}} 
+\index{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}!flight\_plan\_record@{flight\_plan\_record}}
+\index{flight\_plan\_record@{flight\_plan\_record}!IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}}
+\doxysubsubsection{\texorpdfstring{flight\_plan\_record}{flight\_plan\_record}}
+{\footnotesize\ttfamily Icao\+Message\+Parser.\+Parse\+Fields\+Common.\+Parse\+Fields\+Common.\+flight\+\_\+plan\+\_\+record}
+
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_aebc2bee50cae3050eacde3c2d6d4d69b}\label{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_aebc2bee50cae3050eacde3c2d6d4d69b}} 
+\index{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}!FlightPlanRecord@{FlightPlanRecord}}
+\index{FlightPlanRecord@{FlightPlanRecord}!IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}}
+\doxysubsubsection{\texorpdfstring{FlightPlanRecord}{FlightPlanRecord}}
+{\footnotesize\ttfamily Icao\+Message\+Parser.\+Parse\+Fields\+Common.\+Parse\+Fields\+Common.\+Flight\+Plan\+Record\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a48a759a0835373c4ffbfa523d3566cdd}\label{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a48a759a0835373c4ffbfa523d3566cdd}} 
+\index{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}!sfd@{sfd}}
+\index{sfd@{sfd}!IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}}
+\doxysubsubsection{\texorpdfstring{sfd}{sfd}}
+{\footnotesize\ttfamily Icao\+Message\+Parser.\+Parse\+Fields\+Common.\+Parse\+Fields\+Common.\+sfd}
+
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_ab5a02fb9b75261040bc0e65af2a3d334}\label{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_ab5a02fb9b75261040bc0e65af2a3d334}} 
+\index{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}!sub\_field\_list@{sub\_field\_list}}
+\index{sub\_field\_list@{sub\_field\_list}!IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}}
+\doxysubsubsection{\texorpdfstring{sub\_field\_list}{sub\_field\_list}}
+{\footnotesize\ttfamily Icao\+Message\+Parser.\+Parse\+Fields\+Common.\+Parse\+Fields\+Common.\+sub\+\_\+field\+\_\+list}
+
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_ae8a1e34810fd4304ba28b069720e8592}\label{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_ae8a1e34810fd4304ba28b069720e8592}} 
+\index{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}!SubFieldDescriptions@{SubFieldDescriptions}}
+\index{SubFieldDescriptions@{SubFieldDescriptions}!IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}}
+\doxysubsubsection{\texorpdfstring{SubFieldDescriptions}{SubFieldDescriptions}}
+{\footnotesize\ttfamily Icao\+Message\+Parser.\+Parse\+Fields\+Common.\+Parse\+Fields\+Common.\+Sub\+Field\+Descriptions\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a8c8572fb359a4960a5a6f57c3d32c023}\label{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a8c8572fb359a4960a5a6f57c3d32c023}} 
+\index{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}!Tokens@{Tokens}}
+\index{Tokens@{Tokens}!IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}}
+\doxysubsubsection{\texorpdfstring{Tokens}{Tokens}}
+{\footnotesize\ttfamily Icao\+Message\+Parser.\+Parse\+Fields\+Common.\+Parse\+Fields\+Common.\+Tokens\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_aa270510b85e50c6cf5ea7a4c8475272c}\label{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_aa270510b85e50c6cf5ea7a4c8475272c}} 
+\index{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}!tokens@{tokens}}
+\index{tokens@{tokens}!IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon@{IcaoMessageParser.ParseFieldsCommon.ParseFieldsCommon}}
+\doxysubsubsection{\texorpdfstring{tokens}{tokens}}
+{\footnotesize\ttfamily Icao\+Message\+Parser.\+Parse\+Fields\+Common.\+Parse\+Fields\+Common.\+tokens}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Icao\+Message\+Parser/\mbox{\hyperlink{ParseFieldsCommon_8py}{Parse\+Fields\+Common.\+py}}\end{DoxyCompactItemize}

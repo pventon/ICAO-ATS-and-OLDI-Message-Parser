@@ -1,0 +1,106 @@
+\hypertarget{classIcaoMessageParser_1_1ParseMfsPoint_1_1ParseMfsPoint}{}\doxysection{Icao\+Message\+Parser.\+Parse\+Mfs\+Point.\+Parse\+Mfs\+Point Class Reference}
+\label{classIcaoMessageParser_1_1ParseMfsPoint_1_1ParseMfsPoint}\index{IcaoMessageParser.ParseMfsPoint.ParseMfsPoint@{IcaoMessageParser.ParseMfsPoint.ParseMfsPoint}}
+
+
+Inheritance diagram for Icao\+Message\+Parser.\+Parse\+Mfs\+Point.\+Parse\+Mfs\+Point\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=247pt]{classIcaoMessageParser_1_1ParseMfsPoint_1_1ParseMfsPoint__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Icao\+Message\+Parser.\+Parse\+Mfs\+Point.\+Parse\+Mfs\+Point\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=247pt]{classIcaoMessageParser_1_1ParseMfsPoint_1_1ParseMfsPoint__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1ParseMfsPoint_1_1ParseMfsPoint_ad3343fb9a284a9d984a1a9e9ccd9c5f6}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a93341de2e606a5ad85e0dd34f0336c00}{flight\+\_\+plan\+\_\+record}}, sfif, \mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a48a759a0835373c4ffbfa523d3566cdd}{sfd}})
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1ParseMfsPoint_1_1ParseMfsPoint_a0284145023f1247eeb31c2752017fa40}{parse\+\_\+field}} (self)
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseMfsPoint_1_1ParseMfsPoint_ad3343fb9a284a9d984a1a9e9ccd9c5f6}\label{classIcaoMessageParser_1_1ParseMfsPoint_1_1ParseMfsPoint_ad3343fb9a284a9d984a1a9e9ccd9c5f6}} 
+\index{IcaoMessageParser.ParseMfsPoint.ParseMfsPoint@{IcaoMessageParser.ParseMfsPoint.ParseMfsPoint}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!IcaoMessageParser.ParseMfsPoint.ParseMfsPoint@{IcaoMessageParser.ParseMfsPoint.ParseMfsPoint}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Parse\+Mfs\+Point.\+Parse\+Mfs\+Point.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{flight\+\_\+plan\+\_\+record,  }\item[{}]{sfif,  }\item[{}]{sfd }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Constructor to set up the field parser for the oceanic MFS point field.
+Arguments
+---------
+flight_plan_record:   Flight plan to populate
+sfif:                 Configuration data defining the subfields in an ICAO field
+sfd:                  Configuration data describing the syntax and other information about all subfields\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{10     \textcolor{keyword}{def }\_\_init\_\_(self, flight\_plan\_record, sfif, sfd):}
+\DoxyCodeLine{11         \textcolor{comment}{\# type: (FlightPlanRecord, SubFieldsInFields, SubFieldDescriptions) -\/> None}}
+\DoxyCodeLine{12         \textcolor{stringliteral}{"""Constructor to set up the field parser for the oceanic MFS point field.}}
+\DoxyCodeLine{13 \textcolor{stringliteral}{        Arguments}}
+\DoxyCodeLine{14 \textcolor{stringliteral}{        -\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{15 \textcolor{stringliteral}{        flight\_plan\_record:   Flight plan to populate}}
+\DoxyCodeLine{16 \textcolor{stringliteral}{        sfif:                 Configuration data defining the subfields in an ICAO field}}
+\DoxyCodeLine{17 \textcolor{stringliteral}{        sfd:                  Configuration data describing the syntax and other information about all subfields"""}}
+\DoxyCodeLine{18         super().\_\_init\_\_(flight\_plan\_record,  \textcolor{comment}{\# Flight plan to populate}}
+\DoxyCodeLine{19                          sfd,  \textcolor{comment}{\# Configuration data describing individual subfields}}
+\DoxyCodeLine{20                          FieldIdentifiers.MFS\_SIG\_POINT,  \textcolor{comment}{\# ICAO field identifier}}
+\DoxyCodeLine{21                          \textcolor{stringliteral}{" \(\backslash\)n\(\backslash\)t\(\backslash\)r"},  \textcolor{comment}{\# Whitespace to tokenize the field}}
+\DoxyCodeLine{22                          sfif.get\_field\_content\_description(FieldIdentifiers.MFS\_SIG\_POINT),  \textcolor{comment}{\# Subfields in this field}}
+\DoxyCodeLine{23                          sfif.get\_field\_errors(FieldIdentifiers.MFS\_SIG\_POINT))  \textcolor{comment}{\# Errors associated with this field}}
+\DoxyCodeLine{24 }
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseMfsPoint_1_1ParseMfsPoint_a0284145023f1247eeb31c2752017fa40}\label{classIcaoMessageParser_1_1ParseMfsPoint_1_1ParseMfsPoint_a0284145023f1247eeb31c2752017fa40}} 
+\index{IcaoMessageParser.ParseMfsPoint.ParseMfsPoint@{IcaoMessageParser.ParseMfsPoint.ParseMfsPoint}!parse\_field@{parse\_field}}
+\index{parse\_field@{parse\_field}!IcaoMessageParser.ParseMfsPoint.ParseMfsPoint@{IcaoMessageParser.ParseMfsPoint.ParseMfsPoint}}
+\doxysubsubsection{\texorpdfstring{parse\_field()}{parse\_field()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Parse\+Mfs\+Point.\+Parse\+Mfs\+Point.\+parse\+\_\+field (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This method is the program entry point for the basic field parser to parse ICAO fields 3, 5, 7,
+8, 9, 10, 13, 14, 16, 17, 80 and 81.
+
+This method calls the 'base' parser self.parse_field_base() to do most of the heavy lifting. Once
+the base parse is finished, this method checks that all fields are present, not missing any nor
+any extra fields present.
+    :return: None\end{DoxyVerb}
+ 
+
+Reimplemented from \mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a395ea8f9247a4abe9881d3fa6eb437b4}{Icao\+Message\+Parser.\+Parse\+Fields\+Common.\+Parse\+Fields\+Common}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{25     \textcolor{keyword}{def }parse\_field(self):}
+\DoxyCodeLine{26         \textcolor{comment}{\# type: () -\/> None}}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28         \textcolor{comment}{\# Check if the field contains anything at all...}}
+\DoxyCodeLine{29         \textcolor{keywordflow}{if} self.no\_tokens():}
+\DoxyCodeLine{30             self.add\_error(\textcolor{stringliteral}{""}, 0, 0, self.get\_missing\_subfield\_error())}
+\DoxyCodeLine{31             \textcolor{keywordflow}{return}}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33         \textcolor{comment}{\# Parse the field}}
+\DoxyCodeLine{34         self.parse\_field\_base()}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36         \textcolor{comment}{\# Parse any extra tokens that may be present}}
+\DoxyCodeLine{37         self.check\_if\_tokens\_left\_over()}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Icao\+Message\+Parser/\mbox{\hyperlink{ParseMfsPoint_8py}{Parse\+Mfs\+Point.\+py}}\end{DoxyCompactItemize}

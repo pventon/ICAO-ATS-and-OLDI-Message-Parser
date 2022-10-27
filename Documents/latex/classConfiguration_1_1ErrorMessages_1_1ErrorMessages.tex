@@ -1,0 +1,466 @@
+\hypertarget{classConfiguration_1_1ErrorMessages_1_1ErrorMessages}{}\doxysection{Configuration.\+Error\+Messages.\+Error\+Messages Class Reference}
+\label{classConfiguration_1_1ErrorMessages_1_1ErrorMessages}\index{Configuration.ErrorMessages.ErrorMessages@{Configuration.ErrorMessages.ErrorMessages}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{classConfiguration_1_1ErrorMessages_1_1ErrorMessages_ae1c2e26d0f008c060f078eefd4868ca8}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self)
+\item 
+def \mbox{\hyperlink{classConfiguration_1_1ErrorMessages_1_1ErrorMessages_ae68531d0c1d37f126d76aa0d87b07ebe}{get\+\_\+error\+\_\+message}} (self, error\+\_\+id)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classConfiguration_1_1ErrorMessages_1_1ErrorMessages_a318188b65ca108c9e57f5127aae199e5}{error\+\_\+messages}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+dictionary \mbox{\hyperlink{classConfiguration_1_1ErrorMessages_1_1ErrorMessages_affbd95979aacd7ae979ec582e5431441}{error\+\_\+messages}} = \{\}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}This class contains a dictionary of error messages used by the ICAO Message Parser
+when erroneous fields and / or subfields are detected.
+
+The error message dictionary keys are defined in EnumerationConstants.ErrorId class.\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classConfiguration_1_1ErrorMessages_1_1ErrorMessages_ae1c2e26d0f008c060f078eefd4868ca8}\label{classConfiguration_1_1ErrorMessages_1_1ErrorMessages_ae1c2e26d0f008c060f078eefd4868ca8}} 
+\index{Configuration.ErrorMessages.ErrorMessages@{Configuration.ErrorMessages.ErrorMessages}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!Configuration.ErrorMessages.ErrorMessages@{Configuration.ErrorMessages.ErrorMessages}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def Configuration.\+Error\+Messages.\+Error\+Messages.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{11     \textcolor{keyword}{def }\_\_init\_\_(self):}
+\DoxyCodeLine{12         self.error\_messages = \{}
+\DoxyCodeLine{13             \textcolor{comment}{\# System fatal case that really should never happen}}
+\DoxyCodeLine{14             ErrorId.SYSTEM\_FATAL: \textcolor{stringliteral}{"FATAL -\/ Internal error"},}
+\DoxyCodeLine{15             ErrorId.SYSTEM\_CONFIG\_UNDEFINED: \textcolor{stringliteral}{"Message content undefined for Message Type/Adjacent Unit"}}
+\DoxyCodeLine{16                                              \textcolor{stringliteral}{"/Title combination !"},}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18             \textcolor{comment}{\# Errors related to overall message processing}}
+\DoxyCodeLine{19             ErrorId.MSG\_EMPTY: \textcolor{stringliteral}{"Message is empty"},}
+\DoxyCodeLine{20             ErrorId.MSG\_TOO\_SHORT: \textcolor{stringliteral}{"Message is too short and cannot be considered for processing"},}
+\DoxyCodeLine{21             ErrorId.MSG\_MISSING\_HYPHENS: \textcolor{stringliteral}{"No hyphens in message, cannot be an ICAO or ADEXP message"},}
+\DoxyCodeLine{22             ErrorId.MSG\_ADEXP\_NOT\_SUPPORTED: \textcolor{stringliteral}{"Looks like an ADEXP message, currently not supported"},}
+\DoxyCodeLine{23             ErrorId.MSG\_TOO\_MANY\_FIELDS: \textcolor{stringliteral}{"Too many fields in this message, the field '!' is superfluous; check "}}
+\DoxyCodeLine{24                                          \textcolor{stringliteral}{"placement of hyphens"},}
+\DoxyCodeLine{25             ErrorId.MSG\_TOO\_FEW\_FIELDS: \textcolor{stringliteral}{"Too few fields in this message; expecting at least ! fields"},}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27             \textcolor{comment}{\# Error messages relating to field processing in general}}
+\DoxyCodeLine{28             ErrorId.FLD\_MORE\_SUBFIELDS\_EXPECTED: \textcolor{stringliteral}{"More subfields expected after '!'"},}
+\DoxyCodeLine{29             ErrorId.FLD\_SLASH\_SYNTAX: \textcolor{stringliteral}{"Expecting forward slash '/' instead of '!'"},}
+\DoxyCodeLine{30             ErrorId.FLD\_TOO\_MANY\_FIELDS: \textcolor{stringliteral}{"Too many fields found, '!' and / or check the overall syntax"},}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32             \textcolor{comment}{\# Errors relating to the header field Priority Indicator}}
+\DoxyCodeLine{33             ErrorId.PRIORITY\_SYNTAX: \textcolor{stringliteral}{"Expecting priority indicator as 'FF', 'GG', 'DD', 'KK' or 'SS' instead of '!'"},}
+\DoxyCodeLine{34             ErrorId.PRIORITY\_MISSING: \textcolor{stringliteral}{"The priority field is missing, should contain 'FF', 'GG', 'DD', 'KK' or 'SS'"},}
+\DoxyCodeLine{35             ErrorId.PRIORITY\_TOO\_MANY\_FIELDS: \textcolor{stringliteral}{"Remove the extra field(s) '!' in the priority field"},}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37             \textcolor{comment}{\# Errors relating to the header field Filing Time}}
+\DoxyCodeLine{38             ErrorId.FILING\_TIME\_SYNTAX: \textcolor{stringliteral}{"Expecting filing time in DDHHMM format instead of '!'"},}
+\DoxyCodeLine{39             ErrorId.FILING\_TIME\_MISSING: \textcolor{stringliteral}{"The message filing time is missing, should contain DTG as DDHHMM"},}
+\DoxyCodeLine{40             ErrorId.FILING\_TIME\_TOO\_MANY\_FIELDS: \textcolor{stringliteral}{"Remove the extra field(s) '!' in the filing time field"},}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42             \textcolor{comment}{\# Errors relating to the header field Originator}}
+\DoxyCodeLine{43             ErrorId.ORIGINATOR\_SYNTAX: \textcolor{stringliteral}{"Expecting 8 character or 7 character / digit ATC facility address instead of "}}
+\DoxyCodeLine{44                                        \textcolor{stringliteral}{"'!'"},}
+\DoxyCodeLine{45             ErrorId.ORIGINATOR\_MISSING: \textcolor{stringliteral}{"The message originator is missing, 8 character or 7 "}}
+\DoxyCodeLine{46                                         \textcolor{stringliteral}{"character / digit ATC facility address"},}
+\DoxyCodeLine{47             ErrorId.ORIGINATOR\_TOO\_MANY\_FIELDS: \textcolor{stringliteral}{"Remove the extra field(s) '!' in the originator field"},}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49             \textcolor{comment}{\# Errors relating to the header field Addressee}}
+\DoxyCodeLine{50             ErrorId.ADDRESSEE\_SYNTAX:}
+\DoxyCodeLine{51                 \textcolor{stringliteral}{"Expecting 8 character or 7 character / digit ATC facility address instead of '!'"},}
+\DoxyCodeLine{52             ErrorId.ADDRESSEE\_MISSING: \textcolor{stringliteral}{"The addressee field is missing, expecting at least one addressee as an 8 "}}
+\DoxyCodeLine{53                                        \textcolor{stringliteral}{"character or 7 character / digit ATC facility address"},}
+\DoxyCodeLine{54             ErrorId.ADDRESSEE\_TOO\_MANY\_FIELDS: \textcolor{stringliteral}{"Remove the extra field(s) '!' in the addressee field"},}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56             \textcolor{comment}{\# Errors relating to the header field Additional Addressee}}
+\DoxyCodeLine{57             ErrorId.AD\_ADDRESSEE\_MISSING: \textcolor{stringliteral}{"Expecting at least one additional addressee as an 8 character or 7 "}}
+\DoxyCodeLine{58                                           \textcolor{stringliteral}{"character / digit ATC facility address"},}
+\DoxyCodeLine{59             ErrorId.AD\_ADDRESSEE\_SYNTAX: \textcolor{stringliteral}{"Expecting 8 character or 7 character / digit ATC facility address instead "}}
+\DoxyCodeLine{60                                          \textcolor{stringliteral}{"of '!'"},}
+\DoxyCodeLine{61             ErrorId.AD\_ADDRESSEE\_TOO\_MANY\_FIELDS: \textcolor{stringliteral}{"Remove the extra field(s) '!' in the additional addressee field"},}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{63             \textcolor{comment}{\# Errors relating to Field 3}}
+\DoxyCodeLine{64             ErrorId.F3\_TITLE\_MISSING: \textcolor{stringliteral}{"No ATS message title identified in this message"},}
+\DoxyCodeLine{65             ErrorId.F3\_TITLE\_SYNTAX: \textcolor{stringliteral}{"Message title '!' unrecognized, cannot process this message"},}
+\DoxyCodeLine{66             ErrorId.F3\_TX\_SYNTAX: \textcolor{stringliteral}{"Expecting adjacent unit sender name as 1 to 4 letters instead of '!'"},}
+\DoxyCodeLine{67             ErrorId.F3\_RX\_SYNTAX: \textcolor{stringliteral}{"Expecting adjacent unit receiver name as 1 to 4 letters instead of '!'"},}
+\DoxyCodeLine{68             ErrorId.F3\_SEQ\_SYNTAX: \textcolor{stringliteral}{"Expecting channel sequence number as 3 digits instead '!'"},}
+\DoxyCodeLine{69             ErrorId.F3\_RX\_TX\_EXPECTED: \textcolor{stringliteral}{"Expecting sender/receiver adjacent unit name and sequence "}}
+\DoxyCodeLine{70                                        \textcolor{stringliteral}{"number instead of '!'"},}
+\DoxyCodeLine{71             ErrorId.F3\_TOO\_MANY\_FIELDS: \textcolor{stringliteral}{"Field 3 is correct, the extra fields '!' should be removed"},}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73             \textcolor{comment}{\# Errors relating to Field 5}}
+\DoxyCodeLine{74             ErrorId.F5\_F5A\_SYNTAX: \textcolor{stringliteral}{"The first item in F5a should be INCERFA, ALERFA or DETRESFA instead of '!'"},}
+\DoxyCodeLine{75             ErrorId.F5\_F5AB\_EXPECTING\_SLASH: \textcolor{stringliteral}{"Expecting '/<Facility Address>' instead of '!'"},}
+\DoxyCodeLine{76             ErrorId.F5\_F5B\_SYNTAX: \textcolor{stringliteral}{"Expecting 8 character or 7 character / digit ATC facility address instead of '!'"},}
+\DoxyCodeLine{77             ErrorId.F5\_F5BC\_EXPECTING\_SLASH: \textcolor{stringliteral}{"Expecting '/<Free text>' instead of '!'"},}
+\DoxyCodeLine{78             ErrorId.F5\_F5C\_SYNTAX: \textcolor{stringliteral}{"Field 5c can only contain upper case characters and digits instead of '!'"},}
+\DoxyCodeLine{79             ErrorId.F5\_MISSING: \textcolor{stringliteral}{"There is no data in field 5"},}
+\DoxyCodeLine{80             ErrorId.F5\_TOO\_MANY\_FIELDS: \textcolor{stringliteral}{"Field 5 is correct, the extra field '!' should be removed"},}
+\DoxyCodeLine{81 }
+\DoxyCodeLine{82             \textcolor{comment}{\# Errors relating to Field 7}}
+\DoxyCodeLine{83             ErrorId.F7\_MISSING: \textcolor{stringliteral}{"There is no data in field 7"},}
+\DoxyCodeLine{84             ErrorId.F7\_F7A\_SYNTAX: \textcolor{stringliteral}{"Expecting callsign in field 7 instead of '!', (1 to 7 characters and digits)"},}
+\DoxyCodeLine{85             ErrorId.F7\_F7AB\_SYNTAX: \textcolor{stringliteral}{"Expecting '/<SSR Mode ('A' or 'B') and Code "}}
+\DoxyCodeLine{86                                     \textcolor{stringliteral}{"(4 digits 0 to 7 as octal number>' instead of '!'"},}
+\DoxyCodeLine{87             ErrorId.F7\_F7B\_SYNTAX: \textcolor{stringliteral}{"Expecting SSR mode A or C instead of '!'"},}
+\DoxyCodeLine{88             ErrorId.F7\_F7C\_SYNTAX: \textcolor{stringliteral}{"Expecting SSR code as 4 digit octal value instead of '!'"},}
+\DoxyCodeLine{89             ErrorId.F7\_TOO\_MANY\_FIELDS: \textcolor{stringliteral}{"Too many fields in Field 7, remove '!' and / or check the overall syntax"},}
+\DoxyCodeLine{90             ErrorId.F7\_MORE\_SUBFIELDS\_EXPECTED: \textcolor{stringliteral}{"Expecting Mode A or C and octal SSR code at "}}
+\DoxyCodeLine{91                                                 \textcolor{stringliteral}{"end of field instead of '!'"},}
+\DoxyCodeLine{92 }
+\DoxyCodeLine{93             \textcolor{comment}{\# Errors relating to Field 8}}
+\DoxyCodeLine{94             ErrorId.F8\_MISSING: \textcolor{stringliteral}{"There is no data in field 8"},}
+\DoxyCodeLine{95             ErrorId.F8\_F8A\_SYNTAX: \textcolor{stringliteral}{"Expecting flight rules 'I', 'V', 'Y' or 'Z' instead of '!'"},}
+\DoxyCodeLine{96             ErrorId.F8\_F8B\_SYNTAX: \textcolor{stringliteral}{"Expecting type of flight 'S', 'N', 'G', 'M' or 'X' instead of '!'"},}
+\DoxyCodeLine{97             ErrorId.F8\_TOO\_MANY\_FIELDS: \textcolor{stringliteral}{"Field 8 is correct but there is extra unwanted data, "}}
+\DoxyCodeLine{98                                         \textcolor{stringliteral}{"remove '!' and / or check the overall syntax"},}
+\DoxyCodeLine{99             ErrorId.F8\_MORE\_SUBFIELDS\_EXPECTED: \textcolor{stringliteral}{"Expecting type of flight after rules '!'"},}
+\DoxyCodeLine{100 }
+\DoxyCodeLine{101             \textcolor{comment}{\# Errors relating to Field 9}}
+\DoxyCodeLine{102             ErrorId.F9\_MISSING: \textcolor{stringliteral}{"There is no data in field 9"},}
+\DoxyCodeLine{103             ErrorId.F9\_F9A\_SYNTAX: \textcolor{stringliteral}{"Expecting the number of aircraft as 1 or 2 digits instead of '!'"},}
+\DoxyCodeLine{104             ErrorId.F9\_F9B\_SYNTAX: \textcolor{stringliteral}{"Expecting aircraft type instead of '!'"},}
+\DoxyCodeLine{105             ErrorId.F9\_F9BC\_SYNTAX: \textcolor{stringliteral}{"Expecting WTC '/L', '/H', '/M' or '/J' after '!'"},}
+\DoxyCodeLine{106             ErrorId.F9\_F9C\_SYNTAX: \textcolor{stringliteral}{"Expecting WTC 'L', 'M', 'H' or 'J' instead of '!'"},}
+\DoxyCodeLine{107             ErrorId.F9\_TOO\_MANY\_FIELDS: \textcolor{stringliteral}{"Too many fields in Field 9, remove '!' and / or check the overall syntax"},}
+\DoxyCodeLine{108             ErrorId.F9\_MORE\_SUBFIELDS\_EXPECTED: \textcolor{stringliteral}{"Expecting <Number of A/C (optional), Aircraft Type / WTC> "}}
+\DoxyCodeLine{109                                                 \textcolor{stringliteral}{"instead of '!'"},}
+\DoxyCodeLine{110 }
+\DoxyCodeLine{111             \textcolor{comment}{\# Errors relating to Field 10}}
+\DoxyCodeLine{112             ErrorId.F10\_MISSING: \textcolor{stringliteral}{"There is no data in field 10"},}
+\DoxyCodeLine{113             ErrorId.F10\_F10A\_SYNTAX: \textcolor{stringliteral}{"Expecting COMMS/NAV capability as 'N' or 'S' and/or 'A-\/D', 'E1-\/3', "}}
+\DoxyCodeLine{114                                      \textcolor{stringliteral}{"'F-\/I', 'J1-\/7', 'K', 'L', 'M1-\/3', 'O', 'P1-\/9', 'R-\/Z' instead of '!'"},}
+\DoxyCodeLine{115             ErrorId.F10\_F10AB\_SYNTAX: \textcolor{stringliteral}{"Expecting surveillance capabilities as 'N' or one or more of 'A', 'B1-\/2', "}}
+\DoxyCodeLine{116                                       \textcolor{stringliteral}{"'C', 'D1', 'E', 'G1', 'H', 'I', 'L', 'P', 'S', 'U1-\/2', 'V1-\/2' or 'X' instead of "}}
+\DoxyCodeLine{117                                       \textcolor{stringliteral}{"'!'"},}
+\DoxyCodeLine{118             ErrorId.F10\_F10B\_SYNTAX: \textcolor{stringliteral}{"Expecting surveillance capabilities as 'N' or ('I', 'P', 'X') 'A', 'C' or "}}
+\DoxyCodeLine{119                                      \textcolor{stringliteral}{"'A', 'C', 'E', 'H', 'L', 'S' followed optionally by "}}
+\DoxyCodeLine{120                                      \textcolor{stringliteral}{"'B1', B2', 'D1', 'G1', 'U1', 'U2', 'V1', 'V2' instead of '!'"},}
+\DoxyCodeLine{121             ErrorId.F10\_TOO\_MANY\_FIELDS:}
+\DoxyCodeLine{122                 \textcolor{stringliteral}{"Field 10 is correct, remove the extra fields '!' and / or check the overall syntax"},}
+\DoxyCodeLine{123             ErrorId.F10\_MORE\_SUBFIELDS\_EXPECTED: \textcolor{stringliteral}{"Expecting communications and surveillance "}}
+\DoxyCodeLine{124                                                  \textcolor{stringliteral}{"capabilities instead of '!'"},}
+\DoxyCodeLine{125 }
+\DoxyCodeLine{126             \textcolor{comment}{\# Errors relating to Field 13}}
+\DoxyCodeLine{127             ErrorId.F13\_MISSING: \textcolor{stringliteral}{"There is no data in field 13"},}
+\DoxyCodeLine{128             ErrorId.F13\_F13A\_SYNTAX: \textcolor{stringliteral}{"Expecting departure aerodrome as an ICAO location "}}
+\DoxyCodeLine{129                                      \textcolor{stringliteral}{"indicator, e.g. EGLL instead of '!'"},}
+\DoxyCodeLine{130             ErrorId.F13\_F13B\_SYNTAX: \textcolor{stringliteral}{"Expecting EOBT in HHMM instead of '!'"},}
+\DoxyCodeLine{131             ErrorId.F13\_TOO\_MANY\_FIELDS: \textcolor{stringliteral}{"Too many fields in Field 13, remove '!'"},}
+\DoxyCodeLine{132             ErrorId.F13\_MORE\_SUBFIELDS\_EXPECTED: \textcolor{stringliteral}{"Expecting EOBT instead of '!'"},}
+\DoxyCodeLine{133 }
+\DoxyCodeLine{134             \textcolor{comment}{\# Errors relating to Field 14}}
+\DoxyCodeLine{135             ErrorId.F14\_MISSING: \textcolor{stringliteral}{"There is no data in field 14"},}
+\DoxyCodeLine{136             ErrorId.F14\_F14A\_SYNTAX: \textcolor{stringliteral}{"Expecting point as PRP, Lat/Long in degrees, Lat/Long in "}}
+\DoxyCodeLine{137                                      \textcolor{stringliteral}{"degrees/minutes or point/bearing/distance instead of '!'"},}
+\DoxyCodeLine{138             ErrorId.F14\_F14AB\_SYNTAX: \textcolor{stringliteral}{"Processing the slash"},}
+\DoxyCodeLine{139             ErrorId.F14\_F14B\_SYNTAX: \textcolor{stringliteral}{"Expecting boundary crossing time in '/HHMM' instead of '!'"},}
+\DoxyCodeLine{140             ErrorId.F14\_F14C\_SYNTAX: \textcolor{stringliteral}{"Expecting cleared level (F/A 3 digits, or M/S 4 digits) instead of '!'"},}
+\DoxyCodeLine{141             ErrorId.F14\_F14D\_SYNTAX: \textcolor{stringliteral}{"Expecting supplementary crossing data (F/A 3 digits, or M/S 4 digits) instead "}}
+\DoxyCodeLine{142                                      \textcolor{stringliteral}{"of '!'"},}
+\DoxyCodeLine{143             ErrorId.F14\_F14E\_SYNTAX: \textcolor{stringliteral}{"Expecting crossing condition (A or B) instead of '!'"},}
+\DoxyCodeLine{144             ErrorId.F14\_TOO\_MANY\_FIELDS: \textcolor{stringliteral}{"Too many field(s) in Field 14, remove '!'"},}
+\DoxyCodeLine{145             ErrorId.F14\_MORE\_FIELDS\_EXPECTED: \textcolor{stringliteral}{"Field 14 is incomplete, whole field should be Point/Time '/' (HHMM), "}}
+\DoxyCodeLine{146                                               \textcolor{stringliteral}{"Cleared level, supplementary "}}
+\DoxyCodeLine{147                                               \textcolor{stringliteral}{"crossing level, crossing condition (A or B) instead of '!'"},}
+\DoxyCodeLine{148 }
+\DoxyCodeLine{149             \textcolor{comment}{\# Errors relating to Field 15}}
+\DoxyCodeLine{150             \textcolor{comment}{\# This field has its own dedicated parser, hence no other errors are needed}}
+\DoxyCodeLine{151             ErrorId.F15\_MISSING: \textcolor{stringliteral}{"There is no route description in field 15"},}
+\DoxyCodeLine{152 }
+\DoxyCodeLine{153             \textcolor{comment}{\# Errors relating to Field 16}}
+\DoxyCodeLine{154             ErrorId.F16\_MISSING: \textcolor{stringliteral}{"There is no data in field 16"},}
+\DoxyCodeLine{155             ErrorId.F16\_F16A\_SYNTAX: \textcolor{stringliteral}{"Expecting arrival aerodrome as an ICAO location indicator, e.g. EGLL instead of "}}
+\DoxyCodeLine{156                                      \textcolor{stringliteral}{"'!'"},}
+\DoxyCodeLine{157             ErrorId.F16\_F16B\_SYNTAX: \textcolor{stringliteral}{"Expecting EOBT in HHMM instead of '!'"},}
+\DoxyCodeLine{158             ErrorId.F16\_F16C\_SYNTAX: \textcolor{stringliteral}{"Expecting alternate aerodrome as an ICAO location indicator instead of '!'"},}
+\DoxyCodeLine{159             ErrorId.F16\_F16D\_SYNTAX: \textcolor{stringliteral}{"Expecting alternate aerodrome as an ICAO location indicator instead of '!'"},}
+\DoxyCodeLine{160             ErrorId.F16\_TOO\_MANY\_FIELDS: \textcolor{stringliteral}{"Too many fields in Field 16, remove '!'"},}
+\DoxyCodeLine{161 }
+\DoxyCodeLine{162             \textcolor{comment}{\# Errors relating to Field 17}}
+\DoxyCodeLine{163             ErrorId.F17\_MISSING: \textcolor{stringliteral}{"There is no data in field 17"},}
+\DoxyCodeLine{164             ErrorId.F17\_F17A\_SYNTAX: \textcolor{stringliteral}{"Expecting arrival aerodrome as an ICAO location indicator, e.g. EGLL instead of "}}
+\DoxyCodeLine{165                                      \textcolor{stringliteral}{"'!'"},}
+\DoxyCodeLine{166             ErrorId.F17\_F17B\_SYNTAX: \textcolor{stringliteral}{"Expecting ATA in HHMM instead of '!'"},}
+\DoxyCodeLine{167             ErrorId.F17\_F17C\_SYNTAX: \textcolor{stringliteral}{"Invalid characters for alternate aerodrome text, should be "}}
+\DoxyCodeLine{168                                      \textcolor{stringliteral}{"'A' to 'Z' and '0' to '9' only instead of '!'"},}
+\DoxyCodeLine{169             \textcolor{comment}{\# Field 'c' is free text, no limit on this, only invalid characters}}
+\DoxyCodeLine{170             ErrorId.F17\_TOO\_MANY\_FIELDS: \textcolor{stringliteral}{"Invalid characters for alternate aerodrome text, should be "}}
+\DoxyCodeLine{171                                          \textcolor{stringliteral}{"'A' to 'Z' and '0' to '9' only instead of '!'"},}
+\DoxyCodeLine{172 }
+\DoxyCodeLine{173             \textcolor{comment}{\# Field 18 DOF -\/ This is the Field 18 DOF at the end of many messages,}}
+\DoxyCodeLine{174             \textcolor{comment}{\# it's not a complete Field 18, only the DOF}}
+\DoxyCodeLine{175             ErrorId.F18\_DOF\_MISSING: \textcolor{stringliteral}{"There is no data in field 18"},}
+\DoxyCodeLine{176             ErrorId.F18\_DOF\_F18A\_SYNTAX: \textcolor{stringliteral}{"Expecting DOF in the format YYMMDD instead of '!'"},}
+\DoxyCodeLine{177             \textcolor{comment}{\# Field Junk following the DOF}}
+\DoxyCodeLine{178             ErrorId.F18\_DOF\_TOO\_MANY\_FIELDS: \textcolor{stringliteral}{"Invalid characters for alternate aerodrome text, should be "}}
+\DoxyCodeLine{179                                              \textcolor{stringliteral}{"'A' to 'Z' and '0' to '9' only instead of '!'"},}
+\DoxyCodeLine{180 }
+\DoxyCodeLine{181             ErrorId.MFS\_POINT\_MISSING: \textcolor{stringliteral}{"There is no data in field MFS Significant point field"},}
+\DoxyCodeLine{182             ErrorId.MFS\_POINT\_SYNTAX: \textcolor{stringliteral}{"Expecting MFS significant point starting with a letter "}}
+\DoxyCodeLine{183                                       \textcolor{stringliteral}{"followed by up to 14 letters and digits instead of '!'"},}
+\DoxyCodeLine{184             ErrorId.MFS\_POINT\_TOO\_MANY\_FIELDS: \textcolor{stringliteral}{"Expecting a single point for the MFS point, remove '!'"},}
+\DoxyCodeLine{185 }
+\DoxyCodeLine{186             \textcolor{comment}{\# Field 18 is handled by its own parser}}
+\DoxyCodeLine{187             ErrorId.F18\_NO\_F18\_KEYWORDS\_FOUND: \textcolor{stringliteral}{"Expecting field 18 keyword/data instead of '!'"},}
+\DoxyCodeLine{188             ErrorId.F18\_UNRECOGNISED\_DATA: \textcolor{stringliteral}{"Expecting data following field 18 keyword '!'"},}
+\DoxyCodeLine{189             ErrorId.F18\_DATA\_MISSING: \textcolor{stringliteral}{"No data in field 18, expecting field 18 keyword/data"},}
+\DoxyCodeLine{190             ErrorId.F18\_GARBAGE: \textcolor{stringliteral}{"Field 18 contains invalid data, expecting field 18 keyword/data instead of '!'"},}
+\DoxyCodeLine{191             ErrorId.F18\_ZERO\_OR\_KEYWORDS: \textcolor{stringliteral}{"Field 18 contains no keywords, can be '0' or 'n' "}}
+\DoxyCodeLine{192                                           \textcolor{stringliteral}{"keyword/data occurrences instead of '!'"},}
+\DoxyCodeLine{193             ErrorId.F18\_UNRECOGNISED\_KEYWORD: \textcolor{stringliteral}{"Field 18 Keyword '!' unrecognised"},}
+\DoxyCodeLine{194             ErrorId.F18\_ALTN\_SYNTAX: \textcolor{stringliteral}{"The F18 ALTN field contains illegal characters, only A-\/Z, 0-\/9 "}}
+\DoxyCodeLine{195                                      \textcolor{stringliteral}{"and spaces allowed instead of '!'"},}
+\DoxyCodeLine{196             ErrorId.F18\_AWR\_SYNTAX: \textcolor{stringliteral}{"Expecting F18 AWR as R[1-\/9] instead of '!'"},}
+\DoxyCodeLine{197             ErrorId.F18\_AWR\_TOO\_MANY: \textcolor{stringliteral}{"Too many F18 AWR fields, should only be one field as R[1-\/9] instead of '!'"},}
+\DoxyCodeLine{198             ErrorId.F18\_CODE\_SYNTAX: \textcolor{stringliteral}{"Expecting F18 CODE as hexadecimal address with 7 HEX digits "}}
+\DoxyCodeLine{199                                      \textcolor{stringliteral}{"starting at F000000 instead of '!'"},}
+\DoxyCodeLine{200             ErrorId.F18\_CODE\_TOO\_MANY: \textcolor{stringliteral}{"Too many F18 CODE fields, should only be one field  with 7 HEX digits "}}
+\DoxyCodeLine{201                                        \textcolor{stringliteral}{"instead of '!'"},}
+\DoxyCodeLine{202             ErrorId.F18\_COM\_SYNTAX: \textcolor{stringliteral}{"Expecting F18 COM as communication capabilities (only A-\/Z, 0-\/9 and spaces) "}}
+\DoxyCodeLine{203                                     \textcolor{stringliteral}{"not specified in ICAO field 10a instead of '!'"},}
+\DoxyCodeLine{204             ErrorId.F18\_DAT\_SYNTAX: \textcolor{stringliteral}{"Expecting F18 DAT as data application capabilities (only A-\/Z, 0-\/9 and spaces) "}}
+\DoxyCodeLine{205                                     \textcolor{stringliteral}{"not specified in ICAO field 10a instead of '!'"},}
+\DoxyCodeLine{206             ErrorId.F18\_DEP\_SYNTAX: \textcolor{stringliteral}{"Expecting F18 DEP as name and location of departure aerodrome if ZZZZ inserted "}}
+\DoxyCodeLine{207                                     \textcolor{stringliteral}{"in ICAO field 13a, (only A-\/Z, 0-\/9 and spaces) instead of '!'"},}
+\DoxyCodeLine{208             ErrorId.F18\_DEST\_SYNTAX: \textcolor{stringliteral}{"Expecting F18 DEST as name and location of destination aerodrome if ZZZZ "}}
+\DoxyCodeLine{209                                      \textcolor{stringliteral}{"inserted in ICAO field 16a, (only A-\/Z, 0-\/9 and spaces) instead of '!'"},}
+\DoxyCodeLine{210             ErrorId.F18\_DLE\_TOO\_SHORT: \textcolor{stringliteral}{"Expected F18 DLE as 'point HHMM' instead of '!', (can be any kind of point)"},}
+\DoxyCodeLine{211             ErrorId.F18\_DLE\_PNT\_SYNTAX: \textcolor{stringliteral}{"Expected F18 DLE point as a PRP, Latitude/Longitude "}}
+\DoxyCodeLine{212                                         \textcolor{stringliteral}{"(with or without minutes) or bearing distance instead of '!'"},}
+\DoxyCodeLine{213             ErrorId.F18\_DLE\_TIME\_SYNTAX: \textcolor{stringliteral}{"Expected F18 DLE time in HHMM format instead of '!'"},}
+\DoxyCodeLine{214             ErrorId.F18\_DLE\_TOO\_MANY: \textcolor{stringliteral}{"Too many fields in F18 DLE, expecting single field as point \& "}}
+\DoxyCodeLine{215                                       \textcolor{stringliteral}{"time instead of '!'"},}
+\DoxyCodeLine{216             ErrorId.F18\_EET\_PNT\_SYNTAX: \textcolor{stringliteral}{"Expected F18 EET point as a PRP, Latitude/Longitude "}}
+\DoxyCodeLine{217                                         \textcolor{stringliteral}{"(with or without minutes) or bearing distance instead of '!'"},}
+\DoxyCodeLine{218             ErrorId.F18\_EET\_TIME\_SYNTAX: \textcolor{stringliteral}{"Expected F18 EET time in HHMM format instead of '!'"},}
+\DoxyCodeLine{219             ErrorId.F18\_EST\_SYNTAX: \textcolor{stringliteral}{"Expecting F18 EST as estimate data (not sure of the syntax for this at "}}
+\DoxyCodeLine{220                                     \textcolor{stringliteral}{"the moment), (only A-\/Z, 0-\/9 and spaces) instead of '!'"},}
+\DoxyCodeLine{221             ErrorId.F18\_IFP\_SYNTAX: \textcolor{stringliteral}{"Expecting F18 IFP as 'ERROUTRAD', 'ERROUTWE', 'ERROUTE', 'ERRTYPE', "}}
+\DoxyCodeLine{222                                     \textcolor{stringliteral}{"'ERRLEVEL', 'ERREOBT', 'NON833', '833UNKNOWN', 'MODESASP', 'RVSMVIOLATION', "}}
+\DoxyCodeLine{223                                     \textcolor{stringliteral}{"'NONRVSM' or 'RVSMUNKNOWN' instead of '!'"},}
+\DoxyCodeLine{224             ErrorId.F18\_NAV\_SYNTAX: \textcolor{stringliteral}{"Expecting F18 NAV as significant navigation equipment as one or more "}}
+\DoxyCodeLine{225                                     \textcolor{stringliteral}{"space separated designators, (only A-\/Z, 0-\/9 and spaces) instead of '!'"},}
+\DoxyCodeLine{226             ErrorId.F18\_OPR\_SYNTAX: \textcolor{stringliteral}{"Expecting F18 OPR as name of aircraft operating agency, "}}
+\DoxyCodeLine{227                                     \textcolor{stringliteral}{"(only A-\/Z, 0-\/9 and spaces) instead of '!'"},}
+\DoxyCodeLine{228             ErrorId.F18\_ORGN\_SYNTAX: \textcolor{stringliteral}{"Expected F18 ORGN as an 8 or 7 character facility address instead of '!'"},}
+\DoxyCodeLine{229             ErrorId.F18\_ORGN\_TOO\_SHORT: \textcolor{stringliteral}{"F18 ORGN is too short, 8 or 7 character facility address expected "}}
+\DoxyCodeLine{230                                         \textcolor{stringliteral}{"instead of '!'"},}
+\DoxyCodeLine{231             ErrorId.F18\_ORGN\_TOO\_MANY: \textcolor{stringliteral}{"Too many fields in F18 ORGN, expecting single field as facility address "}}
+\DoxyCodeLine{232                                       \textcolor{stringliteral}{"instead of '!'"},}
+\DoxyCodeLine{233             ErrorId.F18\_PBN\_TOO\_LONG: \textcolor{stringliteral}{"Maximum length of F18 PBN is 16 characters, shorten the field '!'"},}
+\DoxyCodeLine{234             ErrorId.F18\_PBN\_SYNTAX: \textcolor{stringliteral}{"F18 PBN syntax incorrect, expecting 1 to 8 of either A1, B1-\/B6, "}}
+\DoxyCodeLine{235                                     \textcolor{stringliteral}{"C1-\/C4, D1-\/D4, L1, O1-\/O4, S1, S2, T1 or T2 instead of '!'"},}
+\DoxyCodeLine{236             ErrorId.F18\_PBN\_TOO\_MANY: \textcolor{stringliteral}{"The F18 PBN field should be a single field instead of '!'"},}
+\DoxyCodeLine{237             ErrorId.F18\_PBN\_TOO\_SHORT: \textcolor{stringliteral}{"F18 PBN must be at least two characters long, expecting 1 to eight of "}}
+\DoxyCodeLine{238                                        \textcolor{stringliteral}{"either A1, B1-\/B6, C1-\/C4, D1-\/D4, L1, O1-\/O4, S1, S2, T1 or T2 instead of '!'"},}
+\DoxyCodeLine{239             ErrorId.F18\_PER\_SYNTAX: \textcolor{stringliteral}{"F18 PER syntax incorrect, expecting a single character A to Z instead of '!'"},}
+\DoxyCodeLine{240             ErrorId.F18\_PER\_TOO\_MANY: \textcolor{stringliteral}{"The F18 PER field should be a single field instead of '!'"},}
+\DoxyCodeLine{241             ErrorId.F18\_RALT\_SYNTAX: \textcolor{stringliteral}{"Expecting F18 RALT as location indicator, alternate arrival aerodrome name "}}
+\DoxyCodeLine{242                                      \textcolor{stringliteral}{"or location as a latitude/longitude, (only A-\/Z, 0-\/9 and spaces) instead of '!'"},}
+\DoxyCodeLine{243             ErrorId.F18\_REG\_SYNTAX: \textcolor{stringliteral}{"Expecting F18 REG as nationality or mark and aircraft registration "}}
+\DoxyCodeLine{244                                     \textcolor{stringliteral}{"(only A-\/Z, 0-\/9 and spaces) instead of '!'"},}
+\DoxyCodeLine{245             ErrorId.F18\_RIF\_SYNTAX: \textcolor{stringliteral}{"Expecting F18 RIF revised route to destination aerodrome, "}}
+\DoxyCodeLine{246                                     \textcolor{stringliteral}{"(only A-\/Z, 0-\/9 and spaces) instead of '!'"},}
+\DoxyCodeLine{247             ErrorId.F18\_RFP\_SYNTAX: \textcolor{stringliteral}{"Expecting F18 RIF as Q[1-\/9] instead of '!'"},}
+\DoxyCodeLine{248             ErrorId.F18\_RFP\_TOO\_MANY: \textcolor{stringliteral}{"Too many F18 RIF fields, should only be one field as Q[1-\/9] instead of '!'"},}
+\DoxyCodeLine{249             ErrorId.F18\_RMK\_SYNTAX: \textcolor{stringliteral}{"The F18 RMK field must only contain characters A-\/Z, 0-\/9, '.', ':', ';' and ',' "}}
+\DoxyCodeLine{250                                       \textcolor{stringliteral}{"instead of '!'"},}
+\DoxyCodeLine{251             ErrorId.F18\_RVR\_SYNTAX: \textcolor{stringliteral}{"Expecting F18 RVR as 1 to 3 digit number instead of '!'"},}
+\DoxyCodeLine{252             ErrorId.F18\_RVR\_TOO\_MANY: \textcolor{stringliteral}{"Too many F18 RVR fields, should only be one field as 1 to 3 digit "}}
+\DoxyCodeLine{253                                       \textcolor{stringliteral}{"number instead of '!'"},}
+\DoxyCodeLine{254             ErrorId.F18\_SEL\_SYNTAX: \textcolor{stringliteral}{"Expecting F18 SEL as 4 to 5 alpha characters instead of '!'"},}
+\DoxyCodeLine{255             ErrorId.F18\_SEL\_TOO\_MANY: \textcolor{stringliteral}{"Too many F18 SEL fields, should only be one field as 4 to 5 alpha characters "}}
+\DoxyCodeLine{256                                       \textcolor{stringliteral}{"instead of '!'"},}
+\DoxyCodeLine{257             ErrorId.F18\_STAYINFO\_SYNTAX: \textcolor{stringliteral}{"The F18 STAYINFO field contains illegal characters, only A-\/Z, 0-\/9 "}}
+\DoxyCodeLine{258                                      \textcolor{stringliteral}{"and spaces allowed instead of '!'"},}
+\DoxyCodeLine{259             ErrorId.F18\_STS\_SYNTAX: \textcolor{stringliteral}{"Expecting F18 STS as 'ALTRV', 'ATFMX', 'FFR', 'FLTCK', 'HAZMAT', 'HEAD', "}}
+\DoxyCodeLine{260                                     \textcolor{stringliteral}{"'HOSP', 'HUM', 'MARSA', 'MEDEVAC', 'NONRVSM', 'SAR' or 'STATE' instead of '!'"},}
+\DoxyCodeLine{261             ErrorId.F18\_STS\_TOO\_MANY: \textcolor{stringliteral}{"Too many F18 STS fields, should only be one field as 'ALTRV', 'ATFMX', "}}
+\DoxyCodeLine{262                                       \textcolor{stringliteral}{"'FFR', 'FLTCK', 'HAZMAT', 'HEAD', 'HOSP', 'HUM', 'MARSA', 'MEDEVAC', "}}
+\DoxyCodeLine{263                                       \textcolor{stringliteral}{"'NONRVSM', 'SAR' or 'STATE' instead of '!'"},}
+\DoxyCodeLine{264             ErrorId.F18\_SRC\_SYNTAX: \textcolor{stringliteral}{"Expecting F18 SRC as 'RPL', 'FPL', 'AFIL', 'MFS', 'FNM', 'RQP', 'AFP', 'DIV' "}}
+\DoxyCodeLine{265                                     \textcolor{stringliteral}{"or a 4 character location indicator instead of '!'"},}
+\DoxyCodeLine{266             ErrorId.F18\_SRC\_TOO\_MANY: \textcolor{stringliteral}{"Too many F18 SRC fields, should only be one field as 'RPL', 'FPL', 'AFIL', "}}
+\DoxyCodeLine{267                                       \textcolor{stringliteral}{"'MFS', 'FNM', 'RQP', 'AFP', 'DIV' or a 4 character location instead of '!'"},}
+\DoxyCodeLine{268             ErrorId.F18\_SUR\_SYNTAX: \textcolor{stringliteral}{"The F18 SUR field should contain surveillance application capabilities using "}}
+\DoxyCodeLine{269                                     \textcolor{stringliteral}{"characters A-\/Z, 0-\/9 instead of '!'"},}
+\DoxyCodeLine{270             ErrorId.F18\_TALT\_SYNTAX: \textcolor{stringliteral}{"Expecting F18 TALT as location indicator, alternate departure aerodrome name "}}
+\DoxyCodeLine{271                                      \textcolor{stringliteral}{"or location as a latitude/longitude, (only A-\/Z, 0-\/9 and spaces) instead of '!'"},}
+\DoxyCodeLine{272             ErrorId.F18\_TYP\_SYNTAX: \textcolor{stringliteral}{"Expecting number (optional) and type of aircraft instead of '!'"},}
+\DoxyCodeLine{273 }
+\DoxyCodeLine{274             \textcolor{comment}{\# Field 19 is handled by its own parser}}
+\DoxyCodeLine{275             ErrorId.F19\_NO\_F19\_KEYWORDS\_FOUND: \textcolor{stringliteral}{"Expecting field 19 keyword/data instead of '!'"},}
+\DoxyCodeLine{276             ErrorId.F19\_DATA\_MISSING: \textcolor{stringliteral}{"No data in field 19, expecting field 19 keyword/data"},}
+\DoxyCodeLine{277             ErrorId.F19\_UNRECOGNISED\_DATA: \textcolor{stringliteral}{"Expecting data following field 19 keyword '!'"},}
+\DoxyCodeLine{278             ErrorId.F19\_UNRECOGNISED\_KEYWORD: \textcolor{stringliteral}{"Field 19 Keyword '!' unrecognised"},}
+\DoxyCodeLine{279             ErrorId.F19\_ZERO\_OR\_KEYWORDS: \textcolor{stringliteral}{"Field 19 contains no keywords, must consist of one or more "}}
+\DoxyCodeLine{280                                           \textcolor{stringliteral}{"keyword/data occurrences instead of '!'"},}
+\DoxyCodeLine{281             ErrorId.F19\_A\_SYNTAX: \textcolor{stringliteral}{"Expecting other significant markings and / or aircraft color (A-\/Z, 0-\/9 and spaces) "}}
+\DoxyCodeLine{282                                   \textcolor{stringliteral}{"instead of '!' in F19 'A'"},}
+\DoxyCodeLine{283             ErrorId.F19\_C\_SYNTAX: \textcolor{stringliteral}{"Expecting pilot name (A-\/Z, 0-\/9 and spaces) instead of '!' in F19 'C'"},}
+\DoxyCodeLine{284             ErrorId.F19\_Da\_SYNTAX: \textcolor{stringliteral}{"Expecting number of dinghies as 1 to 2 digits instead of '!' in F19 'D'"},}
+\DoxyCodeLine{285             ErrorId.F19\_Db\_SYNTAX: \textcolor{stringliteral}{"Expecting number of people that can be carried in total in all dinghies "}}
+\DoxyCodeLine{286                                    \textcolor{stringliteral}{"as 1 to 3 digits instead of '!' in F19 'D'"},}
+\DoxyCodeLine{287             ErrorId.F19\_Dc\_SYNTAX: \textcolor{stringliteral}{"Expecting 'C' to indicate dinghies are covered instead of '!' in F19 'D'"},}
+\DoxyCodeLine{288             ErrorId.F19\_Dd\_SYNTAX: \textcolor{stringliteral}{"Expecting the colour of the dinghies instead of '!' in F19 'D'"},}
+\DoxyCodeLine{289             ErrorId.F19\_D\_TOO\_MANY: \textcolor{stringliteral}{"Too many fields in F19 'D', remove '!'"},}
+\DoxyCodeLine{290             ErrorId.F19\_D\_TOO\_FEW: \textcolor{stringliteral}{"Expecting number of dinghies, dinghy capacity, covered or not and dinghy color, "}}
+\DoxyCodeLine{291                                    \textcolor{stringliteral}{"too few fields in F19 'D', '!'"},}
+\DoxyCodeLine{292             ErrorId.F19\_E\_SYNTAX: \textcolor{stringliteral}{"Expecting fuel endurance in HHMM format instead of '!' in F19 'E'"},}
+\DoxyCodeLine{293             ErrorId.F19\_E\_TOO\_MANY: \textcolor{stringliteral}{"Only one field expected in F19 'E' as fuel endurance in HHMM format "}}
+\DoxyCodeLine{294                                     \textcolor{stringliteral}{"instead of '!'"},}
+\DoxyCodeLine{295             ErrorId.F19\_J\_SYNTAX: \textcolor{stringliteral}{"Expecting life jacket equipment as one or more of 'F', 'L', 'U' or 'V' "}}
+\DoxyCodeLine{296                                   \textcolor{stringliteral}{"indicators instead of '!' in F19 'J'"},}
+\DoxyCodeLine{297             ErrorId.F19\_J\_TOO\_MANY: \textcolor{stringliteral}{"Only one field expected in F19 'J' as life jacket equipment as "}}
+\DoxyCodeLine{298                                     \textcolor{stringliteral}{"'F', 'L', 'U' or 'V' instead of '!'"},}
+\DoxyCodeLine{299             ErrorId.F19\_N\_SYNTAX: \textcolor{stringliteral}{"Expecting other survival equipment and useful remarks (A-\/Z, 1-\/9 and spaces) "}}
+\DoxyCodeLine{300                                   \textcolor{stringliteral}{"instead of '!' in F19 'N'"},}
+\DoxyCodeLine{301             ErrorId.F19\_P\_SYNTAX: \textcolor{stringliteral}{"Expecting number of passengers on board as 1 to 3 digits instead of '!' in F19 'P'"},}
+\DoxyCodeLine{302             ErrorId.F19\_P\_TOO\_MANY: \textcolor{stringliteral}{"Only one field expected in F19 'P' as 1 to 3 digits instead of '!'"},}
+\DoxyCodeLine{303             ErrorId.F19\_R\_SYNTAX: \textcolor{stringliteral}{"Expecting frequency availability on board as one or more of 'E', 'U' or 'V' "}}
+\DoxyCodeLine{304                                   \textcolor{stringliteral}{"instead of '!' in F19 'R'"},}
+\DoxyCodeLine{305             ErrorId.F19\_R\_TOO\_MANY: \textcolor{stringliteral}{"Only one field expected in F19 'R' as 'E', 'U' or 'V' instead of '!'"},}
+\DoxyCodeLine{306             ErrorId.F19\_S\_SYNTAX: \textcolor{stringliteral}{"Expecting survival equipment on board as one or more of 'D', 'J', 'M' or 'P' "}}
+\DoxyCodeLine{307                                   \textcolor{stringliteral}{"instead of '!' in F19 'S'"},}
+\DoxyCodeLine{308             ErrorId.F19\_S\_TOO\_MANY: \textcolor{stringliteral}{"Only one field expected in F19, one or more of "}}
+\DoxyCodeLine{309                                     \textcolor{stringliteral}{"'S' as 'D', 'J', 'M' or 'P' instead of '!'"},}
+\DoxyCodeLine{310 }
+\DoxyCodeLine{311             \textcolor{comment}{\# Errors relating to Field 20}}
+\DoxyCodeLine{312             ErrorId.F20\_MISSING: \textcolor{stringliteral}{"There is no data in field 20"},}
+\DoxyCodeLine{313             ErrorId.F20\_F20A\_SYNTAX: \textcolor{stringliteral}{"Invalid characters in field 20a, expecting A to Z, 0 to 9 instead of '!'"},}
+\DoxyCodeLine{314             ErrorId.F20\_F20B\_SYNTAX: \textcolor{stringliteral}{"Invalid characters in field 20b, expecting A to Z, 0 to 9 instead of '!'"},}
+\DoxyCodeLine{315             ErrorId.F20\_F20C\_SYNTAX: \textcolor{stringliteral}{"Expecting time in HHMM instead of '!'"},}
+\DoxyCodeLine{316             ErrorId.F20\_F20D\_SYNTAX: \textcolor{stringliteral}{"Expecting frequency in 2 to 4 digits, decimal "}}
+\DoxyCodeLine{317                                      \textcolor{stringliteral}{"point, 1 to 2 digit format instead of '!'"},}
+\DoxyCodeLine{318             ErrorId.F20\_F20E\_SYNTAX: \textcolor{stringliteral}{"Expecting point as PRP, Lat/Long in degrees, Lat/Long in "}}
+\DoxyCodeLine{319                                      \textcolor{stringliteral}{"degrees/minutes or point/bearing/distance instead of '!'"},}
+\DoxyCodeLine{320             ErrorId.F20\_F20F\_SYNTAX: \textcolor{stringliteral}{"Invalid characters in field 20f, expecting A to Z, 0 to 9 instead of '!'"},}
+\DoxyCodeLine{321             ErrorId.F20\_F20G\_SYNTAX: \textcolor{stringliteral}{"Invalid characters in field 20g, expecting A to Z, 0 to 9 instead of '!'"},}
+\DoxyCodeLine{322             ErrorId.F20\_F20H\_SYNTAX: \textcolor{stringliteral}{"Invalid characters in field 20h, expecting A to Z, 0 to 9 instead of '!'"},}
+\DoxyCodeLine{323             ErrorId.F20\_TOO\_MANY\_FIELDS: \textcolor{stringliteral}{"Too many fields in Field 20, remove '!'"},}
+\DoxyCodeLine{324 }
+\DoxyCodeLine{325             \textcolor{comment}{\# Errors relating to Field 20}}
+\DoxyCodeLine{326             ErrorId.F21\_MISSING: \textcolor{stringliteral}{"There is no data in field 21"},}
+\DoxyCodeLine{327             ErrorId.F21\_F21A\_SYNTAX: \textcolor{stringliteral}{"Expecting time in HHMM instead of '!'"},}
+\DoxyCodeLine{328             ErrorId.F21\_F21B\_SYNTAX: \textcolor{stringliteral}{"Expecting frequency in 2 to 4 digits, decimal "}}
+\DoxyCodeLine{329                                      \textcolor{stringliteral}{"point, 1 to 2 digit format instead of '!'"},}
+\DoxyCodeLine{330             ErrorId.F21\_F21C\_SYNTAX: \textcolor{stringliteral}{"Expecting point as PRP, Lat/Long in degrees, Lat/Long in "}}
+\DoxyCodeLine{331                                      \textcolor{stringliteral}{"degrees/minutes or point/bearing/distance instead of '!'"},}
+\DoxyCodeLine{332             ErrorId.F21\_F21D\_SYNTAX: \textcolor{stringliteral}{"Expecting time in HHMM instead of '!'"},}
+\DoxyCodeLine{333             ErrorId.F21\_F21E\_SYNTAX: \textcolor{stringliteral}{"Invalid characters in field 21e, expecting A to Z, 0 to 9 instead of '!'"},}
+\DoxyCodeLine{334             ErrorId.F21\_F21F\_SYNTAX: \textcolor{stringliteral}{"Invalid characters in field 21f, expecting A to Z, 0 to 9 instead of '!'"},}
+\DoxyCodeLine{335             ErrorId.F21\_TOO\_MANY\_FIELDS: \textcolor{stringliteral}{"Too many fields in Field 21, remove '!'"},}
+\DoxyCodeLine{336 }
+\DoxyCodeLine{337             \textcolor{comment}{\# Field 22 is handled by its own parser}}
+\DoxyCodeLine{338             ErrorId.F22\_NO\_F22\_KEYWORDS\_FOUND: \textcolor{stringliteral}{"Expecting <field 22 ICAO field number>/<ICAO field> instead of '!'"},}
+\DoxyCodeLine{339             ErrorId.F22\_DATA\_MISSING: \textcolor{stringliteral}{"No data in field 22, expecting <field 22 ICAO field number>/<ICAO field>"},}
+\DoxyCodeLine{340             ErrorId.F22\_UNRECOGNISED\_DATA: \textcolor{stringliteral}{"Expecting data following field 22 ICAO field number '!'"},}
+\DoxyCodeLine{341             ErrorId.F22\_UNRECOGNISED\_KEYWORD: \textcolor{stringliteral}{"Field 22 ICAO field number '!' unrecognised"},}
+\DoxyCodeLine{342             ErrorId.F22\_ZERO\_OR\_KEYWORDS: \textcolor{stringliteral}{"Field 22 contains no ICAO fields, must consist of one or more "}}
+\DoxyCodeLine{343                                           \textcolor{stringliteral}{"<ICAO field number>/<ICAO field> occurrences instead of '!'"},}
+\DoxyCodeLine{344             ErrorId.F22\_FIELD\_DUPLICATED: \textcolor{stringliteral}{"F22 -\/ Field number '!' is duplicated and should be removed"},}
+\DoxyCodeLine{345 }
+\DoxyCodeLine{346             \textcolor{comment}{\# Errors relating to Field 80}}
+\DoxyCodeLine{347             ErrorId.F80\_MISSING: \textcolor{stringliteral}{"There is no data in field 80"},}
+\DoxyCodeLine{348             ErrorId.F80\_F80A\_SYNTAX: \textcolor{stringliteral}{"Expecting type of flight 'S', 'N', 'G', 'M' or 'X' instead of '!'"},}
+\DoxyCodeLine{349             ErrorId.F80\_TOO\_MANY\_FIELDS: \textcolor{stringliteral}{"Field 80 is correct but there is extra unwanted data, "}}
+\DoxyCodeLine{350                                         \textcolor{stringliteral}{"remove '!' and / or check the overall syntax"},}
+\DoxyCodeLine{351             ErrorId.F80\_MORE\_SUBFIELDS\_EXPECTED: \textcolor{stringliteral}{"Expecting type of flight after rules '!'"},}
+\DoxyCodeLine{352 }
+\DoxyCodeLine{353             ErrorId.F81\_MISSING: \textcolor{stringliteral}{"There is no data in field 81"},}
+\DoxyCodeLine{354             ErrorId.F81\_F81A\_SYNTAX: \textcolor{stringliteral}{"Expecting equipment code or surveillance class instead of '!'"},}
+\DoxyCodeLine{355             ErrorId.F81\_F81AB\_SYNTAX: \textcolor{stringliteral}{"Expecting a forward slash '/' instead of '!'"},}
+\DoxyCodeLine{356             ErrorId.F81\_F81B\_SYNTAX: \textcolor{stringliteral}{"Expecting equipment stats as 'EQ'.'UN' or 'NO' instead of '!'"},}
+\DoxyCodeLine{357             ErrorId.F81\_F81BC\_SYNTAX: \textcolor{stringliteral}{"Expecting a forward slash '/' instead of '!'"},}
+\DoxyCodeLine{358             ErrorId.F81\_F81C\_SYNTAX: \textcolor{stringliteral}{"Expecting surveillance equipment code instead of '!'"},}
+\DoxyCodeLine{359             ErrorId.F81\_TOO\_MANY\_FIELDS: \textcolor{stringliteral}{"Too many field(s) in Field 81, remove '!'"},}
+\DoxyCodeLine{360             ErrorId.F81\_MORE\_FIELDS\_EXPECTED: \textcolor{stringliteral}{"Field 81 is incomplete, field should be (equipment code '/' "}}
+\DoxyCodeLine{361                                               \textcolor{stringliteral}{"equipment status) or (surveillance class '/' equipment status "}}
+\DoxyCodeLine{362                                               \textcolor{stringliteral}{"'/' surveillance equipment code) instead of '!'"},}
+\DoxyCodeLine{363             ErrorId.CONSISTENCY\_F8\_F8A\_UNKNOWN: \textcolor{stringliteral}{"Field 15 infers flight rule is '!', but rules are missing in Field 8;"},}
+\DoxyCodeLine{364             ErrorId.CONSISTENCY\_F8\_DERIVED\_UNKNOWN: \textcolor{stringliteral}{"Field 8 flight rules specified as '!' but unable to confirm"}}
+\DoxyCodeLine{365                                                     \textcolor{stringliteral}{"flight rules from field 15 "},}
+\DoxyCodeLine{366             ErrorId.CONSISTENCY\_F8\_F8\_DERIVED\_DIFFERENT: \textcolor{stringliteral}{"Flight rules derived from field 15 ('!') differ from "}}
+\DoxyCodeLine{367                                                          \textcolor{stringliteral}{"the rules given in field 8"},}
+\DoxyCodeLine{368             ErrorId.CONSISTENCY\_F9B\_TYP: \textcolor{stringliteral}{"Field 9b contains 'ZZZZ' and the field 18 'TYP' subfield is missing, "}}
+\DoxyCodeLine{369                                           \textcolor{stringliteral}{"enter a 'TYP' subfield in field 18."},}
+\DoxyCodeLine{370             ErrorId.CONSISTENCY\_F10\_R: \textcolor{stringliteral}{"Field 10a contains an 'R', therefore field 18 must contain the "}}
+\DoxyCodeLine{371                                        \textcolor{stringliteral}{"subfield ! with one or more of the indicators 'B1', 'B2', 'B3', 'B4' or 'B5'"},}
+\DoxyCodeLine{372             ErrorId.CONSISTENCY\_F10\_Z: \textcolor{stringliteral}{"Field 10a contains a 'Z', therefore field 18 must contain one of the "}}
+\DoxyCodeLine{373                                        \textcolor{stringliteral}{"subfields !"},}
+\DoxyCodeLine{374             ErrorId.CONSISTENCY\_F13A\_DEP: \textcolor{stringliteral}{"Field 13a contains 'ZZZZ' and the field 18 'DEP' subfield is missing, "}}
+\DoxyCodeLine{375                                           \textcolor{stringliteral}{"enter a 'DEP' subfield in field 18."},}
+\DoxyCodeLine{376             ErrorId.CONSISTENCY\_F16A\_DEST: \textcolor{stringliteral}{"Field 16a contains 'ZZZZ' and the field 18 'DEST' subfield is missing, "}}
+\DoxyCodeLine{377                                           \textcolor{stringliteral}{"enter a 'DEST' subfield in field 18."},}
+\DoxyCodeLine{378             ErrorId.CONSISTENCY\_PBN\_D: \textcolor{stringliteral}{"Field 18 ! contains one or more of the indicators "}}
+\DoxyCodeLine{379                                        \textcolor{stringliteral}{"'B1', 'B3', 'B4', 'C1', 'C3', 'C4', 'D1', 'D3', 'D4', 'O1', "}}
+\DoxyCodeLine{380                                        \textcolor{stringliteral}{"'O3' or 'O4', therefore F10a must contain the letter 'D'"},}
+\DoxyCodeLine{381             ErrorId.CONSISTENCY\_PBN\_G: \textcolor{stringliteral}{"Field 18 ! contains one or more of the indicators "}}
+\DoxyCodeLine{382                                        \textcolor{stringliteral}{"'B1', 'B2', 'C1', 'C2', 'D1', 'D2', 'O1' or 'O2', therefore F10a "}}
+\DoxyCodeLine{383                                        \textcolor{stringliteral}{"must contain the letter 'G'"},}
+\DoxyCodeLine{384             ErrorId.CONSISTENCY\_PBN\_I: \textcolor{stringliteral}{"Field 18 ! contains one or more of the indicators "}}
+\DoxyCodeLine{385                                        \textcolor{stringliteral}{"'B1', 'B5', 'C1', 'C4', 'D1', 'D4', 'O1' or 'O4', therefore F10a "}}
+\DoxyCodeLine{386                                        \textcolor{stringliteral}{"must contain the letter 'I'"},}
+\DoxyCodeLine{387             ErrorId.CONSISTENCY\_PBN\_OS: \textcolor{stringliteral}{"Field 18 ! contains one or more of the indicators "}}
+\DoxyCodeLine{388                                          \textcolor{stringliteral}{"'B1' or 'B4', therefore F10a must contain one or more of the letters "}}
+\DoxyCodeLine{389                                          \textcolor{stringliteral}{"'D' and 'O' or 'S'"},}
+\DoxyCodeLine{390             ErrorId.CONSISTENCY\_PBN\_R: \textcolor{stringliteral}{"Field 18 ! contains one or more of the indicators "}}
+\DoxyCodeLine{391                                        \textcolor{stringliteral}{"'B1', 'B2', 'B3', 'B4' or 'B5', therefore F10a must contain the letter 'R'"}}
+\DoxyCodeLine{392         \}}
+\DoxyCodeLine{393 }
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classConfiguration_1_1ErrorMessages_1_1ErrorMessages_ae68531d0c1d37f126d76aa0d87b07ebe}\label{classConfiguration_1_1ErrorMessages_1_1ErrorMessages_ae68531d0c1d37f126d76aa0d87b07ebe}} 
+\index{Configuration.ErrorMessages.ErrorMessages@{Configuration.ErrorMessages.ErrorMessages}!get\_error\_message@{get\_error\_message}}
+\index{get\_error\_message@{get\_error\_message}!Configuration.ErrorMessages.ErrorMessages@{Configuration.ErrorMessages.ErrorMessages}}
+\doxysubsubsection{\texorpdfstring{get\_error\_message()}{get\_error\_message()}}
+{\footnotesize\ttfamily def Configuration.\+Error\+Messages.\+Error\+Messages.\+get\+\_\+error\+\_\+message (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{error\+\_\+id }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This method gets an error message using an enumeration value from the ErrorId class.
+
+    :param error_id: The error message ID; an enum from the ErrorId class.
+    :return: A text string that is the error message.\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{394     \textcolor{keyword}{def }get\_error\_message(self, error\_id):}
+\DoxyCodeLine{395         \textcolor{comment}{\# type: (ErrorId) -\/> str | None}}
+\DoxyCodeLine{396         \textcolor{stringliteral}{"""This method gets an error message using an enumeration value from the ErrorId class.}}
+\DoxyCodeLine{397 \textcolor{stringliteral}{}}
+\DoxyCodeLine{398 \textcolor{stringliteral}{            :param error\_id: The error message ID; an enum from the ErrorId class.}}
+\DoxyCodeLine{399 \textcolor{stringliteral}{            :return: A text string that is the error message."""}}
+\DoxyCodeLine{400         \textcolor{keywordflow}{return} self.error\_messages[error\_id]}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classConfiguration_1_1ErrorMessages_1_1ErrorMessages_affbd95979aacd7ae979ec582e5431441}\label{classConfiguration_1_1ErrorMessages_1_1ErrorMessages_affbd95979aacd7ae979ec582e5431441}} 
+\index{Configuration.ErrorMessages.ErrorMessages@{Configuration.ErrorMessages.ErrorMessages}!error\_messages@{error\_messages}}
+\index{error\_messages@{error\_messages}!Configuration.ErrorMessages.ErrorMessages@{Configuration.ErrorMessages.ErrorMessages}}
+\doxysubsubsection{\texorpdfstring{error\_messages}{error\_messages}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily dictionary Configuration.\+Error\+Messages.\+Error\+Messages.\+error\+\_\+messages = \{\}\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classConfiguration_1_1ErrorMessages_1_1ErrorMessages_a318188b65ca108c9e57f5127aae199e5}\label{classConfiguration_1_1ErrorMessages_1_1ErrorMessages_a318188b65ca108c9e57f5127aae199e5}} 
+\index{Configuration.ErrorMessages.ErrorMessages@{Configuration.ErrorMessages.ErrorMessages}!error\_messages@{error\_messages}}
+\index{error\_messages@{error\_messages}!Configuration.ErrorMessages.ErrorMessages@{Configuration.ErrorMessages.ErrorMessages}}
+\doxysubsubsection{\texorpdfstring{error\_messages}{error\_messages}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Configuration.\+Error\+Messages.\+Error\+Messages.\+error\+\_\+messages}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Configuration/\mbox{\hyperlink{ErrorMessages_8py}{Error\+Messages.\+py}}\end{DoxyCompactItemize}

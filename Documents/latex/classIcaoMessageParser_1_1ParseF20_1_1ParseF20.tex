@@ -1,0 +1,118 @@
+\hypertarget{classIcaoMessageParser_1_1ParseF20_1_1ParseF20}{}\doxysection{Icao\+Message\+Parser.\+Parse\+F20.\+Parse\+F20 Class Reference}
+\label{classIcaoMessageParser_1_1ParseF20_1_1ParseF20}\index{IcaoMessageParser.ParseF20.ParseF20@{IcaoMessageParser.ParseF20.ParseF20}}
+
+
+Inheritance diagram for Icao\+Message\+Parser.\+Parse\+F20.\+Parse\+F20\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=247pt]{classIcaoMessageParser_1_1ParseF20_1_1ParseF20__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Icao\+Message\+Parser.\+Parse\+F20.\+Parse\+F20\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=247pt]{classIcaoMessageParser_1_1ParseF20_1_1ParseF20__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1ParseF20_1_1ParseF20_aefb75bfaf267381ec663d7caae3b15c6}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a93341de2e606a5ad85e0dd34f0336c00}{flight\+\_\+plan\+\_\+record}}, sfif, \mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a48a759a0835373c4ffbfa523d3566cdd}{sfd}})
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1ParseF20_1_1ParseF20_a41157ce3a0ac4bfe849fb7fd64d0ecb9}{parse\+\_\+field}} (self)
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}This class parses ICAO field 20; this class subclasses ParseFieldsCommon. This class
+initialises the super class with information specific for parsing field 20, namely:
+
+- A flight plan record, instance of FlightPlanRecord
+- Configuration data defining the subfields contained in this field,
+  see configuration data in the SubFieldsInFields class
+- Configuration data defining the subfields that a field comprises,
+  see configuration data in the SubFieldDescriptions class\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseF20_1_1ParseF20_aefb75bfaf267381ec663d7caae3b15c6}\label{classIcaoMessageParser_1_1ParseF20_1_1ParseF20_aefb75bfaf267381ec663d7caae3b15c6}} 
+\index{IcaoMessageParser.ParseF20.ParseF20@{IcaoMessageParser.ParseF20.ParseF20}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!IcaoMessageParser.ParseF20.ParseF20@{IcaoMessageParser.ParseF20.ParseF20}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Parse\+F20.\+Parse\+F20.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{flight\+\_\+plan\+\_\+record,  }\item[{}]{sfif,  }\item[{}]{sfd }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Constructor to set up the field parser for ICAO field 20.
+
+    :param flight_plan_record: Flight plan to populate
+    :param sfif: Configuration data defining the subfields in an ICAO field
+    :param sfd: Configuration data describing the syntax and other information about all subfields\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{18     \textcolor{keyword}{def }\_\_init\_\_(self, flight\_plan\_record, sfif, sfd):}
+\DoxyCodeLine{19         \textcolor{comment}{\# type: (FlightPlanRecord, SubFieldsInFields, SubFieldDescriptions) -\/> None}}
+\DoxyCodeLine{20         \textcolor{stringliteral}{"""Constructor to set up the field parser for ICAO field 20.}}
+\DoxyCodeLine{21 \textcolor{stringliteral}{}}
+\DoxyCodeLine{22 \textcolor{stringliteral}{            :param flight\_plan\_record: Flight plan to populate}}
+\DoxyCodeLine{23 \textcolor{stringliteral}{            :param sfif: Configuration data defining the subfields in an ICAO field}}
+\DoxyCodeLine{24 \textcolor{stringliteral}{            :param sfd: Configuration data describing the syntax and other information about all subfields"""}}
+\DoxyCodeLine{25         super().\_\_init\_\_(flight\_plan\_record,  \textcolor{comment}{\# Flight plan to populate}}
+\DoxyCodeLine{26                          sfd,  \textcolor{comment}{\# Configuration data describing individual subfields}}
+\DoxyCodeLine{27                          FieldIdentifiers.F20,  \textcolor{comment}{\# ICAO field identifier}}
+\DoxyCodeLine{28                          \textcolor{stringliteral}{" \(\backslash\)n\(\backslash\)t\(\backslash\)r"},  \textcolor{comment}{\# Whitespace to tokenize the field}}
+\DoxyCodeLine{29                          sfif.get\_field\_content\_description(FieldIdentifiers.F20),  \textcolor{comment}{\# Subfields in this field}}
+\DoxyCodeLine{30                          sfif.get\_field\_errors(FieldIdentifiers.F20))  \textcolor{comment}{\# Errors associated with this field}}
+\DoxyCodeLine{31 }
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseF20_1_1ParseF20_a41157ce3a0ac4bfe849fb7fd64d0ecb9}\label{classIcaoMessageParser_1_1ParseF20_1_1ParseF20_a41157ce3a0ac4bfe849fb7fd64d0ecb9}} 
+\index{IcaoMessageParser.ParseF20.ParseF20@{IcaoMessageParser.ParseF20.ParseF20}!parse\_field@{parse\_field}}
+\index{parse\_field@{parse\_field}!IcaoMessageParser.ParseF20.ParseF20@{IcaoMessageParser.ParseF20.ParseF20}}
+\doxysubsubsection{\texorpdfstring{parse\_field()}{parse\_field()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Parse\+F20.\+Parse\+F20.\+parse\+\_\+field (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This method is the program entry point to parse ICAO field 20, the parsing
+is done by calling the super class parse_field_base() method.
+The sole purpose of this class is to initialise the super class with field 20 specific
+configuration data and to tokenize the field.
+    :return: None\end{DoxyVerb}
+ 
+
+Reimplemented from \mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a395ea8f9247a4abe9881d3fa6eb437b4}{Icao\+Message\+Parser.\+Parse\+Fields\+Common.\+Parse\+Fields\+Common}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{32     \textcolor{keyword}{def }parse\_field(self):}
+\DoxyCodeLine{33         \textcolor{comment}{\# type: () -\/> None}}
+\DoxyCodeLine{34         \textcolor{stringliteral}{"""This method is the program entry point to parse ICAO field 20, the parsing}}
+\DoxyCodeLine{35 \textcolor{stringliteral}{        is done by calling the super class parse\_field\_base() method.}}
+\DoxyCodeLine{36 \textcolor{stringliteral}{        The sole purpose of this class is to initialise the super class with field 20 specific}}
+\DoxyCodeLine{37 \textcolor{stringliteral}{        configuration data and to tokenize the field.}}
+\DoxyCodeLine{38 \textcolor{stringliteral}{            :return: None"""}}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40         \textcolor{comment}{\# Check if the field contains anything at all...}}
+\DoxyCodeLine{41         \textcolor{keywordflow}{if} self.no\_tokens():}
+\DoxyCodeLine{42             self.add\_error(\textcolor{stringliteral}{""}, 0, 0, self.get\_missing\_subfield\_error())}
+\DoxyCodeLine{43             \textcolor{keywordflow}{return}}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45         \textcolor{comment}{\# Parse the field}}
+\DoxyCodeLine{46         self.parse\_field\_base()}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48         \textcolor{comment}{\# Check if there are extra unwanted tokens after Field 16}}
+\DoxyCodeLine{49         self.check\_if\_tokens\_left\_over()}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Icao\+Message\+Parser/\mbox{\hyperlink{ParseF20_8py}{Parse\+F20.\+py}}\end{DoxyCompactItemize}

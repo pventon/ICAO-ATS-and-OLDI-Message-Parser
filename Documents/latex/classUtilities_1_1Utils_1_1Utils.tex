@@ -1,0 +1,272 @@
+\hypertarget{classUtilities_1_1Utils_1_1Utils}{}\doxysection{Utilities.\+Utils.\+Utils Class Reference}
+\label{classUtilities_1_1Utils_1_1Utils}\index{Utilities.Utils.Utils@{Utilities.Utils.Utils}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{classUtilities_1_1Utils_1_1Utils_a7cdbeb32b8b4c2ff419f4a8b46ba646c}{get\+\_\+bearing\+\_\+distance\+\_\+projected\+\_\+point}} (self, latitude, longitude, bearing, distance)
+\item 
+def \mbox{\hyperlink{classUtilities_1_1Utils_1_1Utils_a0e3588186d766240fb44843f7e3140a0}{get\+\_\+bearing\+\_\+distance\+\_\+between\+\_\+points}} (self, latitude\+\_\+1, longitude\+\_\+1, latitude\+\_\+2, longitude\+\_\+2)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{classUtilities_1_1Utils_1_1Utils_a7a98e77107e7264af930ea176e74aa6b}{is\+\_\+degree\+\_\+semantics}} (degrees, max\+\_\+degrees)
+\item 
+def \mbox{\hyperlink{classUtilities_1_1Utils_1_1Utils_a40bb76dd9a1312fc80bada41f964437e}{is\+\_\+degree\+\_\+minute\+\_\+semantics}} (degrees\+\_\+minutes, max\+\_\+degrees, split)
+\item 
+def \mbox{\hyperlink{classUtilities_1_1Utils_1_1Utils_aa47923aaac56d54a7ed0d555a4b27c5f}{speed\+\_\+of\+\_\+sound\+\_\+at\+\_\+altitude}} (altitude\+\_\+in\+\_\+meters)
+\item 
+def \mbox{\hyperlink{classUtilities_1_1Utils_1_1Utils_adc8e5d3e1a659b13150acd0dbdba6a05}{mach\+\_\+to\+\_\+ms\+\_\+speed}} (mach\+\_\+number, altitude\+\_\+si)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classUtilities_1_1Utils_1_1Utils_a355790fb9fc0154874cbb36def9fb31b}{geode}} = Geodesic.\+W\+G\+S84
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}This class contains utility methods used by the ICAO Field 15 Parser.\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classUtilities_1_1Utils_1_1Utils_a0e3588186d766240fb44843f7e3140a0}\label{classUtilities_1_1Utils_1_1Utils_a0e3588186d766240fb44843f7e3140a0}} 
+\index{Utilities.Utils.Utils@{Utilities.Utils.Utils}!get\_bearing\_distance\_between\_points@{get\_bearing\_distance\_between\_points}}
+\index{get\_bearing\_distance\_between\_points@{get\_bearing\_distance\_between\_points}!Utilities.Utils.Utils@{Utilities.Utils.Utils}}
+\doxysubsubsection{\texorpdfstring{get\_bearing\_distance\_between\_points()}{get\_bearing\_distance\_between\_points()}}
+{\footnotesize\ttfamily def Utilities.\+Utils.\+Utils.\+get\+\_\+bearing\+\_\+distance\+\_\+between\+\_\+points (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{latitude\+\_\+1,  }\item[{}]{longitude\+\_\+1,  }\item[{}]{latitude\+\_\+2,  }\item[{}]{longitude\+\_\+2 }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This method calculates the bearing and distance between two points given by the arguments'
+latitude_1, longitude_1 and latitude_2, longitude_2.
+
+:param latitude_1: The latitude of the first point.
+:param longitude_1: The longitude of the first point.
+:param latitude_2: The latitude of the second point.
+:param longitude_2: The longitude of the second point.
+:return: A list containing two elements:
+    - Index 1 the azimuth from point 1 to point 2;
+    - Index 2 the distance between point 1 and point 2;
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{109     \textcolor{keyword}{def }get\_bearing\_distance\_between\_points(self, latitude\_1, longitude\_1, latitude\_2, longitude\_2):}
+\DoxyCodeLine{110         \textcolor{comment}{\# type: (float, float, float, float) -\/> []}}
+\DoxyCodeLine{111         \textcolor{stringliteral}{"""This method calculates the bearing and distance between two points given by the arguments'}}
+\DoxyCodeLine{112 \textcolor{stringliteral}{        latitude\_1, longitude\_1 and latitude\_2, longitude\_2.}}
+\DoxyCodeLine{113 \textcolor{stringliteral}{}}
+\DoxyCodeLine{114 \textcolor{stringliteral}{        :param latitude\_1: The latitude of the first point.}}
+\DoxyCodeLine{115 \textcolor{stringliteral}{        :param longitude\_1: The longitude of the first point.}}
+\DoxyCodeLine{116 \textcolor{stringliteral}{        :param latitude\_2: The latitude of the second point.}}
+\DoxyCodeLine{117 \textcolor{stringliteral}{        :param longitude\_2: The longitude of the second point.}}
+\DoxyCodeLine{118 \textcolor{stringliteral}{        :return: A list containing two elements:}}
+\DoxyCodeLine{119 \textcolor{stringliteral}{            -\/ Index 1 the azimuth from point 1 to point 2;}}
+\DoxyCodeLine{120 \textcolor{stringliteral}{            -\/ Index 2 the distance between point 1 and point 2;}}
+\DoxyCodeLine{121 \textcolor{stringliteral}{        """}}
+\DoxyCodeLine{122         result = self.geode.Inverse(latitude\_1, longitude\_1, latitude\_2, longitude\_2)}
+\DoxyCodeLine{123         \textcolor{keywordflow}{return} [result[\textcolor{stringliteral}{'azi1'}], result[\textcolor{stringliteral}{'s12'}]]}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classUtilities_1_1Utils_1_1Utils_a7cdbeb32b8b4c2ff419f4a8b46ba646c}\label{classUtilities_1_1Utils_1_1Utils_a7cdbeb32b8b4c2ff419f4a8b46ba646c}} 
+\index{Utilities.Utils.Utils@{Utilities.Utils.Utils}!get\_bearing\_distance\_projected\_point@{get\_bearing\_distance\_projected\_point}}
+\index{get\_bearing\_distance\_projected\_point@{get\_bearing\_distance\_projected\_point}!Utilities.Utils.Utils@{Utilities.Utils.Utils}}
+\doxysubsubsection{\texorpdfstring{get\_bearing\_distance\_projected\_point()}{get\_bearing\_distance\_projected\_point()}}
+{\footnotesize\ttfamily def Utilities.\+Utils.\+Utils.\+get\+\_\+bearing\+\_\+distance\+\_\+projected\+\_\+point (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{latitude,  }\item[{}]{longitude,  }\item[{}]{bearing,  }\item[{}]{distance }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This method returns a point latitude/longitude calculated from a point / bearing / distance.
+The return value is a list with two elements containing the latitude and longitude of the calculated point.
+
+:param latitude: Latitude of a point from which a projected point's coordinates will be calculated
+       using the bearing and distance arguments.
+:param longitude: Longitude of a point from which a projected point's coordinates will be calculated
+       using the bearing and distance arguments.
+:param bearing: Azimuth from a point specified by the latitude and longitude that is used to calculate
+       a projected point from the latitude / longitude point along this bearing at a distance given
+       by the distance argument.
+:param distance: Distance along a bearing given by the bearing argument that is used to calculate a
+       projected point from the latitude / longitude point given by the latitude / longitude arguments.
+:return: A list containing two items, index 0 the latitude, index 1 the longitude of the projected
+ point calculated by this method.
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{89     \textcolor{keyword}{def }get\_bearing\_distance\_projected\_point(self, latitude, longitude, bearing, distance):}
+\DoxyCodeLine{90         \textcolor{comment}{\# type: (float, float, float, float) -\/> []}}
+\DoxyCodeLine{91         \textcolor{stringliteral}{"""This method returns a point latitude/longitude calculated from a point / bearing / distance.}}
+\DoxyCodeLine{92 \textcolor{stringliteral}{        The return value is a list with two elements containing the latitude and longitude of the calculated point.}}
+\DoxyCodeLine{93 \textcolor{stringliteral}{}}
+\DoxyCodeLine{94 \textcolor{stringliteral}{        :param latitude: Latitude of a point from which a projected point's coordinates will be calculated}}
+\DoxyCodeLine{95 \textcolor{stringliteral}{               using the bearing and distance arguments.}}
+\DoxyCodeLine{96 \textcolor{stringliteral}{        :param longitude: Longitude of a point from which a projected point's coordinates will be calculated}}
+\DoxyCodeLine{97 \textcolor{stringliteral}{               using the bearing and distance arguments.}}
+\DoxyCodeLine{98 \textcolor{stringliteral}{        :param bearing: Azimuth from a point specified by the latitude and longitude that is used to calculate}}
+\DoxyCodeLine{99 \textcolor{stringliteral}{               a projected point from the latitude / longitude point along this bearing at a distance given}}
+\DoxyCodeLine{100 \textcolor{stringliteral}{               by the distance argument.}}
+\DoxyCodeLine{101 \textcolor{stringliteral}{        :param distance: Distance along a bearing given by the bearing argument that is used to calculate a}}
+\DoxyCodeLine{102 \textcolor{stringliteral}{               projected point from the latitude / longitude point given by the latitude / longitude arguments.}}
+\DoxyCodeLine{103 \textcolor{stringliteral}{        :return: A list containing two items, index 0 the latitude, index 1 the longitude of the projected}}
+\DoxyCodeLine{104 \textcolor{stringliteral}{                 point calculated by this method.}}
+\DoxyCodeLine{105 \textcolor{stringliteral}{        """}}
+\DoxyCodeLine{106         result = self.geode.Direct(latitude, longitude, bearing, distance)}
+\DoxyCodeLine{107         \textcolor{keywordflow}{return} [result[\textcolor{stringliteral}{'lat2'}], result[\textcolor{stringliteral}{'lon2'}]]}
+\DoxyCodeLine{108 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classUtilities_1_1Utils_1_1Utils_a40bb76dd9a1312fc80bada41f964437e}\label{classUtilities_1_1Utils_1_1Utils_a40bb76dd9a1312fc80bada41f964437e}} 
+\index{Utilities.Utils.Utils@{Utilities.Utils.Utils}!is\_degree\_minute\_semantics@{is\_degree\_minute\_semantics}}
+\index{is\_degree\_minute\_semantics@{is\_degree\_minute\_semantics}!Utilities.Utils.Utils@{Utilities.Utils.Utils}}
+\doxysubsubsection{\texorpdfstring{is\_degree\_minute\_semantics()}{is\_degree\_minute\_semantics()}}
+{\footnotesize\ttfamily def Utilities.\+Utils.\+Utils.\+is\+\_\+degree\+\_\+minute\+\_\+semantics (\begin{DoxyParamCaption}\item[{}]{degrees\+\_\+minutes,  }\item[{}]{max\+\_\+degrees,  }\item[{}]{split }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyVerb}Checks semantics of a string representing degrees and minutes in either a 'ddmm' or 'dddmm' format.
+
+:param degrees_minutes: A 4 or 5 digit string representing an angle in degrees and minutes in
+      'ddmm' or 'dddmm' format;
+:param max_degrees: The maximum value the 'degrees' value can take;
+:param split: An index into the string 'degrees_minutes' pointing to the 1st digit
+       of the minutes part of the string.
+:return: True if the value in 'degrees' and 'minutes' <= max_degrees, False otherwise;
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{25     \textcolor{keyword}{def }is\_degree\_minute\_semantics(degrees\_minutes, max\_degrees, split):}
+\DoxyCodeLine{26         \textcolor{comment}{\# type: (str, int, int) -\/> bool}}
+\DoxyCodeLine{27         \textcolor{stringliteral}{"""Checks semantics of a string representing degrees and minutes in either a 'ddmm' or 'dddmm' format.}}
+\DoxyCodeLine{28 \textcolor{stringliteral}{}}
+\DoxyCodeLine{29 \textcolor{stringliteral}{        :param degrees\_minutes: A 4 or 5 digit string representing an angle in degrees and minutes in}}
+\DoxyCodeLine{30 \textcolor{stringliteral}{              'ddmm' or 'dddmm' format;}}
+\DoxyCodeLine{31 \textcolor{stringliteral}{        :param max\_degrees: The maximum value the 'degrees' value can take;}}
+\DoxyCodeLine{32 \textcolor{stringliteral}{        :param split: An index into the string 'degrees\_minutes' pointing to the 1st digit}}
+\DoxyCodeLine{33 \textcolor{stringliteral}{               of the minutes part of the string.}}
+\DoxyCodeLine{34 \textcolor{stringliteral}{        :return: True if the value in 'degrees' and 'minutes' <= max\_degrees, False otherwise;}}
+\DoxyCodeLine{35 \textcolor{stringliteral}{        """}}
+\DoxyCodeLine{36         \textcolor{keywordflow}{if} int(degrees\_minutes[0:split]) > max\_degrees:}
+\DoxyCodeLine{37             \textcolor{comment}{\# Degrees to high}}
+\DoxyCodeLine{38             \textcolor{keywordflow}{return} \textcolor{keyword}{False}}
+\DoxyCodeLine{39         \textcolor{keywordflow}{if} int(degrees\_minutes[split:]) > 59:}
+\DoxyCodeLine{40             \textcolor{comment}{\# Minutes exceed 59}}
+\DoxyCodeLine{41             \textcolor{keywordflow}{return} \textcolor{keyword}{False}}
+\DoxyCodeLine{42         \textcolor{keywordflow}{if} int(degrees\_minutes) > max\_degrees * 100:}
+\DoxyCodeLine{43             \textcolor{comment}{\# Total integer value exceeds the maximum,}}
+\DoxyCodeLine{44             \textcolor{comment}{\# i.e. 180 max degrees, means 18000 with degrees and minutes}}
+\DoxyCodeLine{45             \textcolor{keywordflow}{return} \textcolor{keyword}{False}}
+\DoxyCodeLine{46         \textcolor{keywordflow}{return} \textcolor{keyword}{True}}
+\DoxyCodeLine{47 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classUtilities_1_1Utils_1_1Utils_a7a98e77107e7264af930ea176e74aa6b}\label{classUtilities_1_1Utils_1_1Utils_a7a98e77107e7264af930ea176e74aa6b}} 
+\index{Utilities.Utils.Utils@{Utilities.Utils.Utils}!is\_degree\_semantics@{is\_degree\_semantics}}
+\index{is\_degree\_semantics@{is\_degree\_semantics}!Utilities.Utils.Utils@{Utilities.Utils.Utils}}
+\doxysubsubsection{\texorpdfstring{is\_degree\_semantics()}{is\_degree\_semantics()}}
+{\footnotesize\ttfamily def Utilities.\+Utils.\+Utils.\+is\+\_\+degree\+\_\+semantics (\begin{DoxyParamCaption}\item[{}]{degrees,  }\item[{}]{max\+\_\+degrees }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyVerb}Checks semantics of a string for degrees
+
+:param degrees: A string representing an angle in degrees;
+:param max_degrees: The maximum value the 'degrees' value can take;
+:return: True if the value in 'degrees' <= max_degrees, False otherwise;
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{14     \textcolor{keyword}{def }is\_degree\_semantics(degrees, max\_degrees):}
+\DoxyCodeLine{15         \textcolor{comment}{\# type: (str, int) -\/> bool}}
+\DoxyCodeLine{16         \textcolor{stringliteral}{"""Checks semantics of a string for degrees}}
+\DoxyCodeLine{17 \textcolor{stringliteral}{}}
+\DoxyCodeLine{18 \textcolor{stringliteral}{        :param degrees: A string representing an angle in degrees;}}
+\DoxyCodeLine{19 \textcolor{stringliteral}{        :param max\_degrees: The maximum value the 'degrees' value can take;}}
+\DoxyCodeLine{20 \textcolor{stringliteral}{        :return: True if the value in 'degrees' <= max\_degrees, False otherwise;}}
+\DoxyCodeLine{21 \textcolor{stringliteral}{        """}}
+\DoxyCodeLine{22         \textcolor{keywordflow}{return} int(degrees) <= max\_degrees}
+\DoxyCodeLine{23 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classUtilities_1_1Utils_1_1Utils_adc8e5d3e1a659b13150acd0dbdba6a05}\label{classUtilities_1_1Utils_1_1Utils_adc8e5d3e1a659b13150acd0dbdba6a05}} 
+\index{Utilities.Utils.Utils@{Utilities.Utils.Utils}!mach\_to\_ms\_speed@{mach\_to\_ms\_speed}}
+\index{mach\_to\_ms\_speed@{mach\_to\_ms\_speed}!Utilities.Utils.Utils@{Utilities.Utils.Utils}}
+\doxysubsubsection{\texorpdfstring{mach\_to\_ms\_speed()}{mach\_to\_ms\_speed()}}
+{\footnotesize\ttfamily def Utilities.\+Utils.\+Utils.\+mach\+\_\+to\+\_\+ms\+\_\+speed (\begin{DoxyParamCaption}\item[{}]{mach\+\_\+number,  }\item[{}]{altitude\+\_\+si }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyVerb}This method converts a Mach number to meters/second. If the altitude is zero the speed of
+sound at sea level is used, given by the constant MACH_TO_METERS_SECOND.
+
+Speed of sound decreases at higher altitudes up to 11,000 meters, after which the speed of sound
+no longer changes.
+
+:param mach_number: The Mach number speed given as an integer, e.g. 82 is Mach 0.82;
+:param altitude_si: Altitude im meters;
+:return: Speed of sound in meters/second at the altitude given by the input argument
+ 'altitude_in_meters';\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{69     \textcolor{keyword}{def }mach\_to\_ms\_speed(mach\_number, altitude\_si):}
+\DoxyCodeLine{70         \textcolor{comment}{\# type: (float, float) -\/> float}}
+\DoxyCodeLine{71         \textcolor{stringliteral}{"""This method converts a Mach number to meters/second. If the altitude is zero the speed of}}
+\DoxyCodeLine{72 \textcolor{stringliteral}{        sound at sea level is used, given by the constant MACH\_TO\_METERS\_SECOND.}}
+\DoxyCodeLine{73 \textcolor{stringliteral}{}}
+\DoxyCodeLine{74 \textcolor{stringliteral}{        Speed of sound decreases at higher altitudes up to 11,000 meters, after which the speed of sound}}
+\DoxyCodeLine{75 \textcolor{stringliteral}{        no longer changes.}}
+\DoxyCodeLine{76 \textcolor{stringliteral}{}}
+\DoxyCodeLine{77 \textcolor{stringliteral}{        :param mach\_number: The Mach number speed given as an integer, e.g. 82 is Mach 0.82;}}
+\DoxyCodeLine{78 \textcolor{stringliteral}{        :param altitude\_si: Altitude im meters;}}
+\DoxyCodeLine{79 \textcolor{stringliteral}{        :return: Speed of sound in meters/second at the altitude given by the input argument}}
+\DoxyCodeLine{80 \textcolor{stringliteral}{                 'altitude\_in\_meters';"""}}
+\DoxyCodeLine{81         \textcolor{comment}{\# Mach number to the nearest hundredth of unit Mach, e.g. M082 = Mach 0.82}}
+\DoxyCodeLine{82         \textcolor{keywordflow}{if} altitude\_si == 0:}
+\DoxyCodeLine{83             \textcolor{comment}{\# Use speed of sound at sea level}}
+\DoxyCodeLine{84             \textcolor{keywordflow}{return} (mach\_number / 100) * Constants.MACH\_TO\_METERS\_SECOND}
+\DoxyCodeLine{85         \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{86             \textcolor{comment}{\# Use speed of sound at given altitude}}
+\DoxyCodeLine{87             \textcolor{keywordflow}{return} (mach\_number / 100) * Utils.speed\_of\_sound\_at\_altitude(altitude\_si)}
+\DoxyCodeLine{88 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classUtilities_1_1Utils_1_1Utils_aa47923aaac56d54a7ed0d555a4b27c5f}\label{classUtilities_1_1Utils_1_1Utils_aa47923aaac56d54a7ed0d555a4b27c5f}} 
+\index{Utilities.Utils.Utils@{Utilities.Utils.Utils}!speed\_of\_sound\_at\_altitude@{speed\_of\_sound\_at\_altitude}}
+\index{speed\_of\_sound\_at\_altitude@{speed\_of\_sound\_at\_altitude}!Utilities.Utils.Utils@{Utilities.Utils.Utils}}
+\doxysubsubsection{\texorpdfstring{speed\_of\_sound\_at\_altitude()}{speed\_of\_sound\_at\_altitude()}}
+{\footnotesize\ttfamily def Utilities.\+Utils.\+Utils.\+speed\+\_\+of\+\_\+sound\+\_\+at\+\_\+altitude (\begin{DoxyParamCaption}\item[{}]{altitude\+\_\+in\+\_\+meters }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyVerb}This method determines the speed of sound at a given altitude.
+    - speed of sound ~= 331.15 m/s * sqrt(T / 273.15K)
+    - T = (ISA Temp + (altitude in meters * -lapse temp per meter)) + 273.15K / 273.15K
+For altitudes above 11,000 meters no further temp drops are calculated with air temperature
+remaining constant at higher altitudes.
+
+:param altitude_in_meters: Altitude in meters
+:return: Speed of sound in meters / second at the altitude given by the input argument altitude_in_meters\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{49     \textcolor{keyword}{def }speed\_of\_sound\_at\_altitude(altitude\_in\_meters):}
+\DoxyCodeLine{50         \textcolor{comment}{\# type: (float) -\/> float}}
+\DoxyCodeLine{51         \textcolor{stringliteral}{"""This method determines the speed of sound at a given altitude.}}
+\DoxyCodeLine{52 \textcolor{stringliteral}{            -\/ speed of sound \string~= 331.15 m/s * sqrt(T / 273.15K)}}
+\DoxyCodeLine{53 \textcolor{stringliteral}{            -\/ T = (ISA Temp + (altitude in meters * -\/lapse temp per meter)) + 273.15K / 273.15K}}
+\DoxyCodeLine{54 \textcolor{stringliteral}{        For altitudes above 11,000 meters no further temp drops are calculated with air temperature}}
+\DoxyCodeLine{55 \textcolor{stringliteral}{        remaining constant at higher altitudes.}}
+\DoxyCodeLine{56 \textcolor{stringliteral}{}}
+\DoxyCodeLine{57 \textcolor{stringliteral}{        :param altitude\_in\_meters: Altitude in meters}}
+\DoxyCodeLine{58 \textcolor{stringliteral}{        :return: Speed of sound in meters / second at the altitude given by the input argument altitude\_in\_meters"""}}
+\DoxyCodeLine{59         \textcolor{keywordflow}{if} altitude\_in\_meters > Constants.CONSTANT\_TEMP\_ALTITUDE:}
+\DoxyCodeLine{60             altitude\_temp = Constants.ISA\_TEMP + (Constants.CONSTANT\_TEMP\_ALTITUDE * Constants.TEMP\_LAPSE\_RATE\_METER)}
+\DoxyCodeLine{61         \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{62             altitude\_temp = Constants.ISA\_TEMP + (altitude\_in\_meters * Constants.TEMP\_LAPSE\_RATE\_METER)}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64         speed\_of\_sound = (altitude\_temp -\/ Constants.KELVIN\_ZERO) / abs(Constants.KELVIN\_ZERO)}
+\DoxyCodeLine{65         speed\_of\_sound = 331.15 * math.sqrt(speed\_of\_sound)}
+\DoxyCodeLine{66         \textcolor{keywordflow}{return} speed\_of\_sound}
+\DoxyCodeLine{67 }
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classUtilities_1_1Utils_1_1Utils_a355790fb9fc0154874cbb36def9fb31b}\label{classUtilities_1_1Utils_1_1Utils_a355790fb9fc0154874cbb36def9fb31b}} 
+\index{Utilities.Utils.Utils@{Utilities.Utils.Utils}!geode@{geode}}
+\index{geode@{geode}!Utilities.Utils.Utils@{Utilities.Utils.Utils}}
+\doxysubsubsection{\texorpdfstring{geode}{geode}}
+{\footnotesize\ttfamily Utilities.\+Utils.\+Utils.\+geode = Geodesic.\+W\+G\+S84\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Utilities/\mbox{\hyperlink{Utilities_2Utils_8py}{Utils.\+py}}\end{DoxyCompactItemize}

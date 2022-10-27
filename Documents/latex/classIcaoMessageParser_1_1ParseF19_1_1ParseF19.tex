@@ -1,0 +1,533 @@
+\hypertarget{classIcaoMessageParser_1_1ParseF19_1_1ParseF19}{}\doxysection{Icao\+Message\+Parser.\+Parse\+F19.\+Parse\+F19 Class Reference}
+\label{classIcaoMessageParser_1_1ParseF19_1_1ParseF19}\index{IcaoMessageParser.ParseF19.ParseF19@{IcaoMessageParser.ParseF19.ParseF19}}
+
+
+Inheritance diagram for Icao\+Message\+Parser.\+Parse\+F19.\+Parse\+F19\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=247pt]{classIcaoMessageParser_1_1ParseF19_1_1ParseF19__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Icao\+Message\+Parser.\+Parse\+F19.\+Parse\+F19\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=247pt]{classIcaoMessageParser_1_1ParseF19_1_1ParseF19__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1ParseF19_1_1ParseF19_a48b51bd0a58de63eb2cfebd996ec4176}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a93341de2e606a5ad85e0dd34f0336c00}{flight\+\_\+plan\+\_\+record}}, sfif, \mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a48a759a0835373c4ffbfa523d3566cdd}{sfd}})
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1ParseF19_1_1ParseF19_a560c142c520f083cf581c2dcfc1c9505}{parse\+\_\+field}} (self)
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1ParseF19_1_1ParseF19_af7a3d9f2a3c26086e82d5e3188aba1cc}{parse\+\_\+compound\+\_\+subfields}} (self, subfield\+\_\+start, subfield\+\_\+end)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1ParseF19_1_1ParseF19_a21017e033436152d959b0234a9fdf220}{parse\+\_\+f19\+\_\+d}} (\mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a93341de2e606a5ad85e0dd34f0336c00}{flight\+\_\+plan\+\_\+record}}, subfield)
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1ParseF19_1_1ParseF19_a099807eb7633d446240f2173c8bd26c4}{parse\+\_\+f19\+\_\+e}} (\mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a93341de2e606a5ad85e0dd34f0336c00}{flight\+\_\+plan\+\_\+record}}, subfield, regexp)
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1ParseF19_1_1ParseF19_a9a09d4e4635396719842afaee2760ace}{parse\+\_\+f19\+\_\+j}} (\mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a93341de2e606a5ad85e0dd34f0336c00}{flight\+\_\+plan\+\_\+record}}, subfield, regexp)
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1ParseF19_1_1ParseF19_a268eddc2acc1f81c72490b3cc1f79a6d}{parse\+\_\+f19\+\_\+p}} (\mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a93341de2e606a5ad85e0dd34f0336c00}{flight\+\_\+plan\+\_\+record}}, subfield, regexp)
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1ParseF19_1_1ParseF19_a34cff2696905d9878bff416e44379204}{parse\+\_\+f19\+\_\+r}} (\mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a93341de2e606a5ad85e0dd34f0336c00}{flight\+\_\+plan\+\_\+record}}, subfield, regexp)
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1ParseF19_1_1ParseF19_a9543fa8d47e67136dea77a1e4b8ebc68}{parse\+\_\+f19\+\_\+s}} (\mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a93341de2e606a5ad85e0dd34f0336c00}{flight\+\_\+plan\+\_\+record}}, subfield, regexp)
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}This class parses ICAO field 19; this class subclasses ParseFieldsCommon. This class
+initialises the super class with information specific for parsing field 19, namely:
+
+- A flight plan record, instance of FlightPlanRecord
+- Configuration data defining the subfields contained in this field,
+  see configuration data in the SubFieldsInFields class
+- Configuration data defining the subfields that a field comprises,
+  see configuration data in the SubFieldDescriptions class\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseF19_1_1ParseF19_a48b51bd0a58de63eb2cfebd996ec4176}\label{classIcaoMessageParser_1_1ParseF19_1_1ParseF19_a48b51bd0a58de63eb2cfebd996ec4176}} 
+\index{IcaoMessageParser.ParseF19.ParseF19@{IcaoMessageParser.ParseF19.ParseF19}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!IcaoMessageParser.ParseF19.ParseF19@{IcaoMessageParser.ParseF19.ParseF19}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Parse\+F19.\+Parse\+F19.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{flight\+\_\+plan\+\_\+record,  }\item[{}]{sfif,  }\item[{}]{sfd }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Constructor to set up the field parser for ICAO field 19.
+
+    :param flight_plan_record: Flight plan to populate
+    :param sfif: Configuration data defining the subfields in an ICAO field
+    :param sfd: Configuration data describing the syntax and other information about all subfields\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{23     \textcolor{keyword}{def }\_\_init\_\_(self, flight\_plan\_record, sfif, sfd):}
+\DoxyCodeLine{24         \textcolor{comment}{\# type: (FlightPlanRecord, SubFieldsInFields, SubFieldDescriptions) -\/> None}}
+\DoxyCodeLine{25         \textcolor{stringliteral}{"""Constructor to set up the field parser for ICAO field 19.}}
+\DoxyCodeLine{26 \textcolor{stringliteral}{}}
+\DoxyCodeLine{27 \textcolor{stringliteral}{            :param flight\_plan\_record: Flight plan to populate}}
+\DoxyCodeLine{28 \textcolor{stringliteral}{            :param sfif: Configuration data defining the subfields in an ICAO field}}
+\DoxyCodeLine{29 \textcolor{stringliteral}{            :param sfd: Configuration data describing the syntax and other information about all subfields"""}}
+\DoxyCodeLine{30         super().\_\_init\_\_(flight\_plan\_record,  \textcolor{comment}{\# Flight plan to populate}}
+\DoxyCodeLine{31                          sfd,  \textcolor{comment}{\# Configuration data describing individual subfields}}
+\DoxyCodeLine{32                          FieldIdentifiers.F19,  \textcolor{comment}{\# ICAO field identifier}}
+\DoxyCodeLine{33                          \textcolor{stringliteral}{" /\(\backslash\)n\(\backslash\)t\(\backslash\)r"},  \textcolor{comment}{\# Whitespace to tokenize the field}}
+\DoxyCodeLine{34                          sfif.get\_field\_content\_description(FieldIdentifiers.F19),  \textcolor{comment}{\# Subfields in this field}}
+\DoxyCodeLine{35                          sfif.get\_field\_errors(FieldIdentifiers.F19))  \textcolor{comment}{\# Errors associated with this field}}
+\DoxyCodeLine{36 }
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseF19_1_1ParseF19_af7a3d9f2a3c26086e82d5e3188aba1cc}\label{classIcaoMessageParser_1_1ParseF19_1_1ParseF19_af7a3d9f2a3c26086e82d5e3188aba1cc}} 
+\index{IcaoMessageParser.ParseF19.ParseF19@{IcaoMessageParser.ParseF19.ParseF19}!parse\_compound\_subfields@{parse\_compound\_subfields}}
+\index{parse\_compound\_subfields@{parse\_compound\_subfields}!IcaoMessageParser.ParseF19.ParseF19@{IcaoMessageParser.ParseF19.ParseF19}}
+\doxysubsubsection{\texorpdfstring{parse\_compound\_subfields()}{parse\_compound\_subfields()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Parse\+F19.\+Parse\+F19.\+parse\+\_\+compound\+\_\+subfields (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{subfield\+\_\+start,  }\item[{}]{subfield\+\_\+end }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This method loops over all the F!* subfields and parses the individual subfields.
+
+:param subfield_start: The lowest F18 subfield enumeration value to limit the range of
+       loop when looping over the subfields, only need to loop over the F18 subfields;
+:param subfield_end: The highest F18 subfield enumeration value to limit the range of
+       loop when looping over the subfields, only need to loop over the F18 subfields;
+:return: None
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{73     \textcolor{keyword}{def }parse\_compound\_subfields(self, subfield\_start, subfield\_end):}
+\DoxyCodeLine{74         \textcolor{comment}{\# type: (SubFieldIdentifiers, SubFieldIdentifiers) -\/> None}}
+\DoxyCodeLine{75         \textcolor{stringliteral}{"""This method loops over all the F!* subfields and parses the individual subfields.}}
+\DoxyCodeLine{76 \textcolor{stringliteral}{}}
+\DoxyCodeLine{77 \textcolor{stringliteral}{        :param subfield\_start: The lowest F18 subfield enumeration value to limit the range of}}
+\DoxyCodeLine{78 \textcolor{stringliteral}{               loop when looping over the subfields, only need to loop over the F18 subfields;}}
+\DoxyCodeLine{79 \textcolor{stringliteral}{        :param subfield\_end: The highest F18 subfield enumeration value to limit the range of}}
+\DoxyCodeLine{80 \textcolor{stringliteral}{               loop when looping over the subfields, only need to loop over the F18 subfields;}}
+\DoxyCodeLine{81 \textcolor{stringliteral}{        :return: None}}
+\DoxyCodeLine{82 \textcolor{stringliteral}{        """}}
+\DoxyCodeLine{83 }
+\DoxyCodeLine{84         \textcolor{comment}{\# Get the field 19 FieldRecord that contains zero or more F19 subfields}}
+\DoxyCodeLine{85         field\_record = self.get\_flight\_plan\_record().get\_icao\_field(self.get\_field\_identifier())}
+\DoxyCodeLine{86 }
+\DoxyCodeLine{87         \textcolor{comment}{\# Get the dictionary containing all the field 19 subfields stored in the flight plan}}
+\DoxyCodeLine{88         subfield\_dictionary = field\_record.get\_subfield\_dictionary()}
+\DoxyCodeLine{89 }
+\DoxyCodeLine{90         \textcolor{comment}{\# Loop over the dictionary of subfields and parse each individual subfield}}
+\DoxyCodeLine{91         \textcolor{keywordflow}{for} subfield\_key, subfield\_list \textcolor{keywordflow}{in} subfield\_dictionary.items():}
+\DoxyCodeLine{92             \textcolor{comment}{\# Make sure subfield identifiers are valid F19 subfield enumeration values}}
+\DoxyCodeLine{93             \textcolor{keywordflow}{if} subfield\_start <= subfield\_key <= subfield\_end:}
+\DoxyCodeLine{94                 \textcolor{comment}{\# Loop over the list of subfields and parse the field;}}
+\DoxyCodeLine{95                 \textcolor{keywordflow}{for} subfield \textcolor{keywordflow}{in} subfield\_list:}
+\DoxyCodeLine{96                     \textcolor{comment}{\# print(subfield\_key.name)}}
+\DoxyCodeLine{97                     \textcolor{comment}{\# print(subfield.get\_field\_text())}}
+\DoxyCodeLine{98                     match subfield\_key:}
+\DoxyCodeLine{99                         case SubFieldIdentifiers.F19a:}
+\DoxyCodeLine{100                             Utils.parse\_for\_regexp(}
+\DoxyCodeLine{101                                 self.get\_flight\_plan\_record(), subfield, ErrorId.F19\_A\_SYNTAX,}
+\DoxyCodeLine{102                                 self.sfd.get\_subfield\_description(subfield\_key).get\_field\_syntax())}
+\DoxyCodeLine{103                         case SubFieldIdentifiers.F19c:}
+\DoxyCodeLine{104                             Utils.parse\_for\_regexp(}
+\DoxyCodeLine{105                                 self.get\_flight\_plan\_record(), subfield, ErrorId.F19\_C\_SYNTAX,}
+\DoxyCodeLine{106                                 self.sfd.get\_subfield\_description(subfield\_key).get\_field\_syntax())}
+\DoxyCodeLine{107                         case SubFieldIdentifiers.F19d:}
+\DoxyCodeLine{108                             self.parse\_f19\_d(self.get\_flight\_plan\_record(), subfield)}
+\DoxyCodeLine{109                         case SubFieldIdentifiers.F19e:}
+\DoxyCodeLine{110                             self.parse\_f19\_e(}
+\DoxyCodeLine{111                                 self.get\_flight\_plan\_record(), subfield,}
+\DoxyCodeLine{112                                 self.sfd.get\_subfield\_description(subfield\_key).get\_field\_syntax())}
+\DoxyCodeLine{113                         case SubFieldIdentifiers.F19j:}
+\DoxyCodeLine{114                             self.parse\_f19\_j(}
+\DoxyCodeLine{115                                 self.get\_flight\_plan\_record(), subfield,}
+\DoxyCodeLine{116                                 self.sfd.get\_subfield\_description(subfield\_key).get\_field\_syntax())}
+\DoxyCodeLine{117                         case SubFieldIdentifiers.F19n:}
+\DoxyCodeLine{118                             Utils.parse\_for\_regexp(}
+\DoxyCodeLine{119                                 self.get\_flight\_plan\_record(), subfield, ErrorId.F19\_N\_SYNTAX,}
+\DoxyCodeLine{120                                 self.sfd.get\_subfield\_description(subfield\_key).get\_field\_syntax())}
+\DoxyCodeLine{121                         case SubFieldIdentifiers.F19p:}
+\DoxyCodeLine{122                             self.parse\_f19\_p(}
+\DoxyCodeLine{123                                 self.get\_flight\_plan\_record(), subfield,}
+\DoxyCodeLine{124                                 self.sfd.get\_subfield\_description(subfield\_key).get\_field\_syntax())}
+\DoxyCodeLine{125                         case SubFieldIdentifiers.F19r:}
+\DoxyCodeLine{126                             self.parse\_f19\_r(}
+\DoxyCodeLine{127                                 self.get\_flight\_plan\_record(), subfield,}
+\DoxyCodeLine{128                                 self.sfd.get\_subfield\_description(subfield\_key).get\_field\_syntax())}
+\DoxyCodeLine{129                         case SubFieldIdentifiers.F19s:}
+\DoxyCodeLine{130                             self.parse\_f19\_s(}
+\DoxyCodeLine{131                                 self.get\_flight\_plan\_record(), subfield,}
+\DoxyCodeLine{132                                 self.sfd.get\_subfield\_description(subfield\_key).get\_field\_syntax())}
+\DoxyCodeLine{133                         case \_:}
+\DoxyCodeLine{134                             \textcolor{comment}{\# The following F18 require no special parsing other than}}
+\DoxyCodeLine{135                             \textcolor{comment}{\# checking for valid characters;}}
+\DoxyCodeLine{136                             \textcolor{comment}{\# [A-\/Z0-\/9., \(\backslash\)n\(\backslash\)r\(\backslash\)t:;']}}
+\DoxyCodeLine{137                             \textcolor{keywordflow}{pass}}
+\DoxyCodeLine{138 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseF19_1_1ParseF19_a21017e033436152d959b0234a9fdf220}\label{classIcaoMessageParser_1_1ParseF19_1_1ParseF19_a21017e033436152d959b0234a9fdf220}} 
+\index{IcaoMessageParser.ParseF19.ParseF19@{IcaoMessageParser.ParseF19.ParseF19}!parse\_f19\_d@{parse\_f19\_d}}
+\index{parse\_f19\_d@{parse\_f19\_d}!IcaoMessageParser.ParseF19.ParseF19@{IcaoMessageParser.ParseF19.ParseF19}}
+\doxysubsubsection{\texorpdfstring{parse\_f19\_d()}{parse\_f19\_d()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Parse\+F19.\+Parse\+F19.\+parse\+\_\+f19\+\_\+d (\begin{DoxyParamCaption}\item[{}]{flight\+\_\+plan\+\_\+record,  }\item[{}]{subfield }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyVerb}This method validates that the F19 'D' subfields are syntactically and semantically correct.
+
+:param flight_plan_record: The flight plan into which an error may be written;
+:param subfield: The subfield whose field text is being parsed;
+:return: None
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{140     \textcolor{keyword}{def }parse\_f19\_d(flight\_plan\_record, subfield):}
+\DoxyCodeLine{141         \textcolor{comment}{\# type: (FlightPlanRecord, SubFieldRecord) -\/> None}}
+\DoxyCodeLine{142         \textcolor{stringliteral}{"""This method validates that the F19 'D' subfields are syntactically and semantically correct.}}
+\DoxyCodeLine{143 \textcolor{stringliteral}{}}
+\DoxyCodeLine{144 \textcolor{stringliteral}{        :param flight\_plan\_record: The flight plan into which an error may be written;}}
+\DoxyCodeLine{145 \textcolor{stringliteral}{        :param subfield: The subfield whose field text is being parsed;}}
+\DoxyCodeLine{146 \textcolor{stringliteral}{        :return: None}}
+\DoxyCodeLine{147 \textcolor{stringliteral}{        """}}
+\DoxyCodeLine{148         \textcolor{comment}{\# Tokenize the IFP subfield}}
+\DoxyCodeLine{149         tokenize = Tokenize()}
+\DoxyCodeLine{150         tokenize.set\_string\_to\_tokenize(subfield.get\_field\_text())}
+\DoxyCodeLine{151         tokenize.set\_whitespace(\textcolor{stringliteral}{" /n/t/r"})}
+\DoxyCodeLine{152         tokenize.tokenize()}
+\DoxyCodeLine{153         tokens = tokenize.get\_tokens()}
+\DoxyCodeLine{154 }
+\DoxyCodeLine{155         \textcolor{keywordflow}{if} tokens.get\_number\_of\_tokens() < 1:}
+\DoxyCodeLine{156             \textcolor{comment}{\# This gets picked up by the compound field parser}}
+\DoxyCodeLine{157             \textcolor{keywordflow}{return}}
+\DoxyCodeLine{158 }
+\DoxyCodeLine{159         \textcolor{comment}{\# Check if there are too few tokens}}
+\DoxyCodeLine{160         \textcolor{keywordflow}{if} tokens.get\_number\_of\_tokens() < 3:}
+\DoxyCodeLine{161             \textcolor{comment}{\# Too few subfields, error}}
+\DoxyCodeLine{162             end\_index = tokens.get\_token\_at(tokens.get\_number\_of\_tokens() -\/ 1).get\_token\_end\_index()}
+\DoxyCodeLine{163             Utils.add\_error(flight\_plan\_record, subfield.get\_field\_text()[0:end\_index],}
+\DoxyCodeLine{164                             0,}
+\DoxyCodeLine{165                             end\_index,}
+\DoxyCodeLine{166                             ErrorMessages(),}
+\DoxyCodeLine{167                             ErrorId.F19\_D\_TOO\_FEW)}
+\DoxyCodeLine{168             \textcolor{keywordflow}{return}}
+\DoxyCodeLine{169 }
+\DoxyCodeLine{170         \textcolor{comment}{\# Check if there are more than four tokens}}
+\DoxyCodeLine{171         \textcolor{keywordflow}{if} tokens.get\_number\_of\_tokens() > 4:}
+\DoxyCodeLine{172             \textcolor{comment}{\# Too many subfields, error}}
+\DoxyCodeLine{173             start\_index = tokens.get\_token\_at(4).get\_token\_start\_index()}
+\DoxyCodeLine{174             end\_index = tokens.get\_token\_at(tokens.get\_number\_of\_tokens() -\/ 1).get\_token\_end\_index()}
+\DoxyCodeLine{175             Utils.add\_error(flight\_plan\_record, subfield.get\_field\_text()[start\_index:end\_index],}
+\DoxyCodeLine{176                             start\_index,}
+\DoxyCodeLine{177                             end\_index,}
+\DoxyCodeLine{178                             ErrorMessages(),}
+\DoxyCodeLine{179                             ErrorId.F19\_D\_TOO\_MANY)}
+\DoxyCodeLine{180             \textcolor{keywordflow}{return}}
+\DoxyCodeLine{181 }
+\DoxyCodeLine{182         \textcolor{comment}{\# Loop over the tokens}}
+\DoxyCodeLine{183         idx = 0}
+\DoxyCodeLine{184         error\_id = \textcolor{keywordtype}{None}}
+\DoxyCodeLine{185         regexp = \textcolor{stringliteral}{""}}
+\DoxyCodeLine{186         \textcolor{keywordflow}{for} token \textcolor{keywordflow}{in} tokens.get\_tokens():}
+\DoxyCodeLine{187 }
+\DoxyCodeLine{188             \textcolor{comment}{\# Validate the subfield against the valid syntax}}
+\DoxyCodeLine{189             match idx:}
+\DoxyCodeLine{190                 case 0:}
+\DoxyCodeLine{191                     error\_id = ErrorId.F19\_Da\_SYNTAX}
+\DoxyCodeLine{192                     regexp = \textcolor{stringliteral}{"[0-\/9]\{1,2\}"}}
+\DoxyCodeLine{193                 case 1:}
+\DoxyCodeLine{194                     error\_id = ErrorId.F19\_Db\_SYNTAX}
+\DoxyCodeLine{195                     regexp = \textcolor{stringliteral}{"[0-\/9]\{1,3\}"}}
+\DoxyCodeLine{196                 case 2:}
+\DoxyCodeLine{197                     \textcolor{keywordflow}{if} tokens.get\_number\_of\_tokens() == 3:}
+\DoxyCodeLine{198                         error\_id = ErrorId.F19\_Dd\_SYNTAX}
+\DoxyCodeLine{199                         regexp = \textcolor{stringliteral}{"[A-\/Z]+"}}
+\DoxyCodeLine{200                     \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{201                         error\_id = ErrorId.F19\_Dc\_SYNTAX}
+\DoxyCodeLine{202                         regexp = \textcolor{stringliteral}{"C"}}
+\DoxyCodeLine{203                 case 3:}
+\DoxyCodeLine{204                     error\_id = ErrorId.F19\_Dd\_SYNTAX}
+\DoxyCodeLine{205                     regexp = \textcolor{stringliteral}{"[A-\/Z]+"}}
+\DoxyCodeLine{206 }
+\DoxyCodeLine{207             \textcolor{comment}{\# Validate the 'D' subfield against the valid syntax}}
+\DoxyCodeLine{208             mo = re.fullmatch(regexp, token.get\_token\_string())}
+\DoxyCodeLine{209             \textcolor{keywordflow}{if} mo \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:}
+\DoxyCodeLine{210                 \textcolor{comment}{\# Did not match, report an error}}
+\DoxyCodeLine{211                 Utils.add\_error(flight\_plan\_record,}
+\DoxyCodeLine{212                                 token.get\_token\_string(),}
+\DoxyCodeLine{213                                 token.get\_token\_start\_index() + subfield.get\_start\_index(),}
+\DoxyCodeLine{214                                 token.get\_token\_end\_index() + subfield.get\_start\_index(),}
+\DoxyCodeLine{215                                 ErrorMessages(),}
+\DoxyCodeLine{216                                 error\_id)}
+\DoxyCodeLine{217 }
+\DoxyCodeLine{218             idx += 1}
+\DoxyCodeLine{219 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseF19_1_1ParseF19_a099807eb7633d446240f2173c8bd26c4}\label{classIcaoMessageParser_1_1ParseF19_1_1ParseF19_a099807eb7633d446240f2173c8bd26c4}} 
+\index{IcaoMessageParser.ParseF19.ParseF19@{IcaoMessageParser.ParseF19.ParseF19}!parse\_f19\_e@{parse\_f19\_e}}
+\index{parse\_f19\_e@{parse\_f19\_e}!IcaoMessageParser.ParseF19.ParseF19@{IcaoMessageParser.ParseF19.ParseF19}}
+\doxysubsubsection{\texorpdfstring{parse\_f19\_e()}{parse\_f19\_e()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Parse\+F19.\+Parse\+F19.\+parse\+\_\+f19\+\_\+e (\begin{DoxyParamCaption}\item[{}]{flight\+\_\+plan\+\_\+record,  }\item[{}]{subfield,  }\item[{}]{regexp }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyVerb}This method validates that the F19 'E' subfield syntax conforms to a time in HHMM
+format.
+
+:param flight_plan_record: The flight plan into which an error may be written;
+:param subfield: The subfield whose field text is being parsed;
+:param regexp: Regular expression describing the syntax for this subfield;
+:return: None
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{221     \textcolor{keyword}{def }parse\_f19\_e(flight\_plan\_record, subfield, regexp):}
+\DoxyCodeLine{222         \textcolor{comment}{\# type: (FlightPlanRecord, SubFieldRecord, str) -\/> None}}
+\DoxyCodeLine{223         \textcolor{stringliteral}{"""This method validates that the F19 'E' subfield syntax conforms to a time in HHMM}}
+\DoxyCodeLine{224 \textcolor{stringliteral}{        format.}}
+\DoxyCodeLine{225 \textcolor{stringliteral}{}}
+\DoxyCodeLine{226 \textcolor{stringliteral}{        :param flight\_plan\_record: The flight plan into which an error may be written;}}
+\DoxyCodeLine{227 \textcolor{stringliteral}{        :param subfield: The subfield whose field text is being parsed;}}
+\DoxyCodeLine{228 \textcolor{stringliteral}{        :param regexp: Regular expression describing the syntax for this subfield;}}
+\DoxyCodeLine{229 \textcolor{stringliteral}{        :return: None}}
+\DoxyCodeLine{230 \textcolor{stringliteral}{        """}}
+\DoxyCodeLine{231         \textcolor{comment}{\# Check if there is more than a single token}}
+\DoxyCodeLine{232         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} Utils.check\_too\_many\_fields(flight\_plan\_record, subfield, ErrorId.F19\_E\_TOO\_MANY):}
+\DoxyCodeLine{233             \textcolor{keywordflow}{return}}
+\DoxyCodeLine{234 }
+\DoxyCodeLine{235         \textcolor{comment}{\# Parse the 'E subfield}}
+\DoxyCodeLine{236         Utils.parse\_for\_regexp(flight\_plan\_record, subfield, ErrorId.F19\_E\_SYNTAX, \textcolor{stringliteral}{"[ ]*"} + regexp + \textcolor{stringliteral}{"[ ]*"})}
+\DoxyCodeLine{237 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseF19_1_1ParseF19_a9a09d4e4635396719842afaee2760ace}\label{classIcaoMessageParser_1_1ParseF19_1_1ParseF19_a9a09d4e4635396719842afaee2760ace}} 
+\index{IcaoMessageParser.ParseF19.ParseF19@{IcaoMessageParser.ParseF19.ParseF19}!parse\_f19\_j@{parse\_f19\_j}}
+\index{parse\_f19\_j@{parse\_f19\_j}!IcaoMessageParser.ParseF19.ParseF19@{IcaoMessageParser.ParseF19.ParseF19}}
+\doxysubsubsection{\texorpdfstring{parse\_f19\_j()}{parse\_f19\_j()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Parse\+F19.\+Parse\+F19.\+parse\+\_\+f19\+\_\+j (\begin{DoxyParamCaption}\item[{}]{flight\+\_\+plan\+\_\+record,  }\item[{}]{subfield,  }\item[{}]{regexp }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyVerb}This method validates that the F19 'J' subfield syntax conforms to one of the frequency
+life jacket capability indicators 'F', 'L', 'U' or 'V'.
+
+:param flight_plan_record: The flight plan into which an error may be written;
+:param subfield: The subfield whose field text is being parsed;
+:param regexp: Regular expression describing the syntax for this subfield;
+:return: None
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{239     \textcolor{keyword}{def }parse\_f19\_j(flight\_plan\_record, subfield, regexp):}
+\DoxyCodeLine{240         \textcolor{comment}{\# type: (FlightPlanRecord, SubFieldRecord, str) -\/> None}}
+\DoxyCodeLine{241         \textcolor{stringliteral}{"""This method validates that the F19 'J' subfield syntax conforms to one of the frequency}}
+\DoxyCodeLine{242 \textcolor{stringliteral}{        life jacket capability indicators 'F', 'L', 'U' or 'V'.}}
+\DoxyCodeLine{243 \textcolor{stringliteral}{}}
+\DoxyCodeLine{244 \textcolor{stringliteral}{        :param flight\_plan\_record: The flight plan into which an error may be written;}}
+\DoxyCodeLine{245 \textcolor{stringliteral}{        :param subfield: The subfield whose field text is being parsed;}}
+\DoxyCodeLine{246 \textcolor{stringliteral}{        :param regexp: Regular expression describing the syntax for this subfield;}}
+\DoxyCodeLine{247 \textcolor{stringliteral}{        :return: None}}
+\DoxyCodeLine{248 \textcolor{stringliteral}{        """}}
+\DoxyCodeLine{249         \textcolor{comment}{\# Check if there is more than a single token}}
+\DoxyCodeLine{250         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} Utils.check\_too\_many\_fields(flight\_plan\_record, subfield, ErrorId.F19\_J\_TOO\_MANY):}
+\DoxyCodeLine{251             \textcolor{keywordflow}{return}}
+\DoxyCodeLine{252 }
+\DoxyCodeLine{253         \textcolor{comment}{\# Parse the 'E' subfield}}
+\DoxyCodeLine{254         f\_ = subfield.get\_field\_text().count(\textcolor{stringliteral}{"F"})}
+\DoxyCodeLine{255         l\_ = subfield.get\_field\_text().count(\textcolor{stringliteral}{"L"})}
+\DoxyCodeLine{256         u\_ = subfield.get\_field\_text().count(\textcolor{stringliteral}{"U"})}
+\DoxyCodeLine{257         v\_ = subfield.get\_field\_text().count(\textcolor{stringliteral}{"V"})}
+\DoxyCodeLine{258         \textcolor{keywordflow}{if} f\_ > 1 \textcolor{keywordflow}{or} l\_ > 1 \textcolor{keywordflow}{or} u\_ > 1 \textcolor{keywordflow}{or} v\_ > 1 \textcolor{keywordflow}{or} f\_ + l\_ + u\_ + v\_ == 0:}
+\DoxyCodeLine{259             Utils.add\_subfield\_error(flight\_plan\_record, subfield, ErrorId.F19\_J\_SYNTAX)}
+\DoxyCodeLine{260             \textcolor{keywordflow}{return}}
+\DoxyCodeLine{261 }
+\DoxyCodeLine{262         \textcolor{comment}{\# Let regexp processing check that the string only consists the correct character set}}
+\DoxyCodeLine{263         Utils.parse\_for\_regexp(flight\_plan\_record, subfield, ErrorId.F19\_J\_SYNTAX, \textcolor{stringliteral}{"[ ]*"} + regexp + \textcolor{stringliteral}{"[ ]*"})}
+\DoxyCodeLine{264 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseF19_1_1ParseF19_a268eddc2acc1f81c72490b3cc1f79a6d}\label{classIcaoMessageParser_1_1ParseF19_1_1ParseF19_a268eddc2acc1f81c72490b3cc1f79a6d}} 
+\index{IcaoMessageParser.ParseF19.ParseF19@{IcaoMessageParser.ParseF19.ParseF19}!parse\_f19\_p@{parse\_f19\_p}}
+\index{parse\_f19\_p@{parse\_f19\_p}!IcaoMessageParser.ParseF19.ParseF19@{IcaoMessageParser.ParseF19.ParseF19}}
+\doxysubsubsection{\texorpdfstring{parse\_f19\_p()}{parse\_f19\_p()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Parse\+F19.\+Parse\+F19.\+parse\+\_\+f19\+\_\+p (\begin{DoxyParamCaption}\item[{}]{flight\+\_\+plan\+\_\+record,  }\item[{}]{subfield,  }\item[{}]{regexp }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyVerb}This method validates that the F19 'P' subfield syntax conforms to 1 to 3 digits
+format.
+
+:param flight_plan_record: The flight plan into which an error may be written;
+:param subfield: The subfield whose field text is being parsed;
+:param regexp: Regular expression describing the syntax for this subfield;
+:return: None
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{266     \textcolor{keyword}{def }parse\_f19\_p(flight\_plan\_record, subfield, regexp):}
+\DoxyCodeLine{267         \textcolor{comment}{\# type: (FlightPlanRecord, SubFieldRecord, str) -\/> None}}
+\DoxyCodeLine{268         \textcolor{stringliteral}{"""This method validates that the F19 'P' subfield syntax conforms to 1 to 3 digits}}
+\DoxyCodeLine{269 \textcolor{stringliteral}{        format.}}
+\DoxyCodeLine{270 \textcolor{stringliteral}{}}
+\DoxyCodeLine{271 \textcolor{stringliteral}{        :param flight\_plan\_record: The flight plan into which an error may be written;}}
+\DoxyCodeLine{272 \textcolor{stringliteral}{        :param subfield: The subfield whose field text is being parsed;}}
+\DoxyCodeLine{273 \textcolor{stringliteral}{        :param regexp: Regular expression describing the syntax for this subfield;}}
+\DoxyCodeLine{274 \textcolor{stringliteral}{        :return: None}}
+\DoxyCodeLine{275 \textcolor{stringliteral}{        """}}
+\DoxyCodeLine{276         \textcolor{comment}{\# Check if there is more than a single token}}
+\DoxyCodeLine{277         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} Utils.check\_too\_many\_fields(flight\_plan\_record, subfield, ErrorId.F19\_P\_TOO\_MANY):}
+\DoxyCodeLine{278             \textcolor{keywordflow}{return}}
+\DoxyCodeLine{279 }
+\DoxyCodeLine{280         \textcolor{comment}{\# Parse the 'P' subfield}}
+\DoxyCodeLine{281         Utils.parse\_for\_regexp(flight\_plan\_record, subfield, ErrorId.F19\_P\_SYNTAX, \textcolor{stringliteral}{"[ ]*"} + regexp + \textcolor{stringliteral}{"[ ]*"})}
+\DoxyCodeLine{282 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseF19_1_1ParseF19_a34cff2696905d9878bff416e44379204}\label{classIcaoMessageParser_1_1ParseF19_1_1ParseF19_a34cff2696905d9878bff416e44379204}} 
+\index{IcaoMessageParser.ParseF19.ParseF19@{IcaoMessageParser.ParseF19.ParseF19}!parse\_f19\_r@{parse\_f19\_r}}
+\index{parse\_f19\_r@{parse\_f19\_r}!IcaoMessageParser.ParseF19.ParseF19@{IcaoMessageParser.ParseF19.ParseF19}}
+\doxysubsubsection{\texorpdfstring{parse\_f19\_r()}{parse\_f19\_r()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Parse\+F19.\+Parse\+F19.\+parse\+\_\+f19\+\_\+r (\begin{DoxyParamCaption}\item[{}]{flight\+\_\+plan\+\_\+record,  }\item[{}]{subfield,  }\item[{}]{regexp }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyVerb}This method validates that the F19 'R' subfield syntax conforms to one of the frequency
+available indicators 'U', 'V' or 'E'.
+
+:param flight_plan_record: The flight plan into which an error may be written;
+:param subfield: The subfield whose field text is being parsed;
+:param regexp: Regular expression describing the syntax for this subfield;
+:return: None
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{284     \textcolor{keyword}{def }parse\_f19\_r(flight\_plan\_record, subfield, regexp):}
+\DoxyCodeLine{285         \textcolor{comment}{\# type: (FlightPlanRecord, SubFieldRecord, str) -\/> None}}
+\DoxyCodeLine{286         \textcolor{stringliteral}{"""This method validates that the F19 'R' subfield syntax conforms to one of the frequency}}
+\DoxyCodeLine{287 \textcolor{stringliteral}{        available indicators 'U', 'V' or 'E'.}}
+\DoxyCodeLine{288 \textcolor{stringliteral}{}}
+\DoxyCodeLine{289 \textcolor{stringliteral}{        :param flight\_plan\_record: The flight plan into which an error may be written;}}
+\DoxyCodeLine{290 \textcolor{stringliteral}{        :param subfield: The subfield whose field text is being parsed;}}
+\DoxyCodeLine{291 \textcolor{stringliteral}{        :param regexp: Regular expression describing the syntax for this subfield;}}
+\DoxyCodeLine{292 \textcolor{stringliteral}{        :return: None}}
+\DoxyCodeLine{293 \textcolor{stringliteral}{        """}}
+\DoxyCodeLine{294         \textcolor{comment}{\# Check if there is more than a single token}}
+\DoxyCodeLine{295         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} Utils.check\_too\_many\_fields(flight\_plan\_record, subfield, ErrorId.F19\_J\_TOO\_MANY):}
+\DoxyCodeLine{296             \textcolor{keywordflow}{return}}
+\DoxyCodeLine{297 }
+\DoxyCodeLine{298         \textcolor{comment}{\# Parse the 'R' subfield}}
+\DoxyCodeLine{299         e\_ = subfield.get\_field\_text().count(\textcolor{stringliteral}{"E"})}
+\DoxyCodeLine{300         u\_ = subfield.get\_field\_text().count(\textcolor{stringliteral}{"U"})}
+\DoxyCodeLine{301         v\_ = subfield.get\_field\_text().count(\textcolor{stringliteral}{"V"})}
+\DoxyCodeLine{302         \textcolor{keywordflow}{if} e\_ > 1 \textcolor{keywordflow}{or} u\_ > 1 \textcolor{keywordflow}{or} v\_ > 1 \textcolor{keywordflow}{or} e\_ + u\_ + v\_ == 0:}
+\DoxyCodeLine{303             Utils.add\_subfield\_error(flight\_plan\_record, subfield, ErrorId.F19\_R\_SYNTAX)}
+\DoxyCodeLine{304             \textcolor{keywordflow}{return}}
+\DoxyCodeLine{305 }
+\DoxyCodeLine{306         \textcolor{comment}{\# Parse the 'R' subfield}}
+\DoxyCodeLine{307         Utils.parse\_for\_regexp(flight\_plan\_record, subfield, ErrorId.F19\_R\_SYNTAX, \textcolor{stringliteral}{"[ ]*"} + regexp + \textcolor{stringliteral}{"[ ]*"})}
+\DoxyCodeLine{308 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseF19_1_1ParseF19_a9543fa8d47e67136dea77a1e4b8ebc68}\label{classIcaoMessageParser_1_1ParseF19_1_1ParseF19_a9543fa8d47e67136dea77a1e4b8ebc68}} 
+\index{IcaoMessageParser.ParseF19.ParseF19@{IcaoMessageParser.ParseF19.ParseF19}!parse\_f19\_s@{parse\_f19\_s}}
+\index{parse\_f19\_s@{parse\_f19\_s}!IcaoMessageParser.ParseF19.ParseF19@{IcaoMessageParser.ParseF19.ParseF19}}
+\doxysubsubsection{\texorpdfstring{parse\_f19\_s()}{parse\_f19\_s()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Parse\+F19.\+Parse\+F19.\+parse\+\_\+f19\+\_\+s (\begin{DoxyParamCaption}\item[{}]{flight\+\_\+plan\+\_\+record,  }\item[{}]{subfield,  }\item[{}]{regexp }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyVerb}This method validates that the F19 'S' subfield syntax conforms to one of the survival
+equipment indicators 'D', 'J', 'M' or 'P'.
+
+:param flight_plan_record: The flight plan into which an error may be written;
+:param subfield: The subfield whose field text is being parsed;
+:param regexp: Regular expression describing the syntax for this subfield;
+:return: None
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{310     \textcolor{keyword}{def }parse\_f19\_s(flight\_plan\_record, subfield, regexp):}
+\DoxyCodeLine{311         \textcolor{comment}{\# type: (FlightPlanRecord, SubFieldRecord, str) -\/> None}}
+\DoxyCodeLine{312         \textcolor{stringliteral}{"""This method validates that the F19 'S' subfield syntax conforms to one of the survival}}
+\DoxyCodeLine{313 \textcolor{stringliteral}{        equipment indicators 'D', 'J', 'M' or 'P'.}}
+\DoxyCodeLine{314 \textcolor{stringliteral}{}}
+\DoxyCodeLine{315 \textcolor{stringliteral}{        :param flight\_plan\_record: The flight plan into which an error may be written;}}
+\DoxyCodeLine{316 \textcolor{stringliteral}{        :param subfield: The subfield whose field text is being parsed;}}
+\DoxyCodeLine{317 \textcolor{stringliteral}{        :param regexp: Regular expression describing the syntax for this subfield;}}
+\DoxyCodeLine{318 \textcolor{stringliteral}{        :return: None}}
+\DoxyCodeLine{319 \textcolor{stringliteral}{        """}}
+\DoxyCodeLine{320         \textcolor{comment}{\# Check if there is more than a single token}}
+\DoxyCodeLine{321         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} Utils.check\_too\_many\_fields(flight\_plan\_record, subfield, ErrorId.F19\_S\_TOO\_MANY):}
+\DoxyCodeLine{322             \textcolor{keywordflow}{return}}
+\DoxyCodeLine{323 }
+\DoxyCodeLine{324         \textcolor{comment}{\# Parse the 'S' subfield}}
+\DoxyCodeLine{325         d\_ = subfield.get\_field\_text().count(\textcolor{stringliteral}{"D"})}
+\DoxyCodeLine{326         j\_ = subfield.get\_field\_text().count(\textcolor{stringliteral}{"J"})}
+\DoxyCodeLine{327         m\_ = subfield.get\_field\_text().count(\textcolor{stringliteral}{"M"})}
+\DoxyCodeLine{328         p\_ = subfield.get\_field\_text().count(\textcolor{stringliteral}{"P"})}
+\DoxyCodeLine{329         \textcolor{keywordflow}{if} d\_ > 1 \textcolor{keywordflow}{or} j\_ > 1 \textcolor{keywordflow}{or} m\_ > 1 \textcolor{keywordflow}{or} p\_ > 1 \textcolor{keywordflow}{or} d\_ + j\_ + m\_ + p\_ == 0:}
+\DoxyCodeLine{330             Utils.add\_subfield\_error(flight\_plan\_record, subfield, ErrorId.F19\_S\_SYNTAX)}
+\DoxyCodeLine{331             \textcolor{keywordflow}{return}}
+\DoxyCodeLine{332 }
+\DoxyCodeLine{333         \textcolor{comment}{\# Parse the 'S' subfield}}
+\DoxyCodeLine{334         Utils.parse\_for\_regexp(flight\_plan\_record, subfield, ErrorId.F19\_S\_SYNTAX, \textcolor{stringliteral}{"[ ]*"} + regexp + \textcolor{stringliteral}{"[ ]*"})}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseF19_1_1ParseF19_a560c142c520f083cf581c2dcfc1c9505}\label{classIcaoMessageParser_1_1ParseF19_1_1ParseF19_a560c142c520f083cf581c2dcfc1c9505}} 
+\index{IcaoMessageParser.ParseF19.ParseF19@{IcaoMessageParser.ParseF19.ParseF19}!parse\_field@{parse\_field}}
+\index{parse\_field@{parse\_field}!IcaoMessageParser.ParseF19.ParseF19@{IcaoMessageParser.ParseF19.ParseF19}}
+\doxysubsubsection{\texorpdfstring{parse\_field()}{parse\_field()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Parse\+F19.\+Parse\+F19.\+parse\+\_\+field (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This method is the program entry point to parse ICAO field 19. Most of the parsing
+is carried out by the super class ParseFieldCommon.parse_compound_field_common().
+This method perform rudimentary checks, sets up a list of errors that are
+general to all keyword/subfields and calls the parser in the super class.
+    :return: None\end{DoxyVerb}
+ 
+
+Reimplemented from \mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a395ea8f9247a4abe9881d3fa6eb437b4}{Icao\+Message\+Parser.\+Parse\+Fields\+Common.\+Parse\+Fields\+Common}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{37     \textcolor{keyword}{def }parse\_field(self):}
+\DoxyCodeLine{38         \textcolor{comment}{\# type: () -\/> None}}
+\DoxyCodeLine{39         \textcolor{stringliteral}{"""This method is the program entry point to parse ICAO field 19. Most of the parsing}}
+\DoxyCodeLine{40 \textcolor{stringliteral}{        is carried out by the super class ParseFieldCommon.parse\_compound\_field\_common().}}
+\DoxyCodeLine{41 \textcolor{stringliteral}{        This method perform rudimentary checks, sets up a list of errors that are}}
+\DoxyCodeLine{42 \textcolor{stringliteral}{        general to all keyword/subfields and calls the parser in the super class.}}
+\DoxyCodeLine{43 \textcolor{stringliteral}{            :return: None"""}}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45         \textcolor{comment}{\# Check if the field contains anything at all...}}
+\DoxyCodeLine{46         \textcolor{keywordflow}{if} self.no\_tokens():}
+\DoxyCodeLine{47             self.add\_error(\textcolor{stringliteral}{""}, 0, 0, ErrorId.F19\_DATA\_MISSING)}
+\DoxyCodeLine{48             \textcolor{keywordflow}{return}}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50         \textcolor{comment}{\# If there is a single token it has to be an error}}
+\DoxyCodeLine{51         \textcolor{keywordflow}{if} self.get\_tokens().get\_number\_of\_tokens() == 1:}
+\DoxyCodeLine{52             \textcolor{comment}{\# Report an error, cant do anything with a single token}}
+\DoxyCodeLine{53             self.add\_error(self.get\_tokens().get\_first\_token().get\_token\_string(),}
+\DoxyCodeLine{54                            self.get\_tokens().get\_first\_token().get\_token\_start\_index(),}
+\DoxyCodeLine{55                            self.get\_tokens().get\_first\_token().get\_token\_end\_index(),}
+\DoxyCodeLine{56                            ErrorId.F19\_ZERO\_OR\_KEYWORDS)}
+\DoxyCodeLine{57             \textcolor{keywordflow}{return}}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59         \textcolor{comment}{\# Two or more tokens present in field 19 if we get this far}}
+\DoxyCodeLine{60         \textcolor{comment}{\# Declare the errors to be used}}
+\DoxyCodeLine{61         error\_codes = [ErrorId.F19\_NO\_F19\_KEYWORDS\_FOUND, ErrorId.F19\_UNRECOGNISED\_DATA,}
+\DoxyCodeLine{62                        ErrorId.F19\_UNRECOGNISED\_KEYWORD, ErrorId.F19\_ZERO\_OR\_KEYWORDS]}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64         \textcolor{comment}{\# Call the compound field parser that will initially parse field 19.}}
+\DoxyCodeLine{65         \textcolor{comment}{\# Note that this parser does not parse the data for each individual field 19 keyword,}}
+\DoxyCodeLine{66         \textcolor{comment}{\# it saves valid keywords with their respective data and generates errors for unknown keywords}}
+\DoxyCodeLine{67         \textcolor{comment}{\# and any other junk in field 19 that is not part of a keyword's data.}}
+\DoxyCodeLine{68         self.parse\_compound\_field\_common(error\_codes, self.is\_compound\_field\_keyword)}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70         \textcolor{comment}{\# Loop over the individual subfields and parse as appropriate;}}
+\DoxyCodeLine{71         self.parse\_compound\_subfields(SubFieldIdentifiers.F19a, SubFieldIdentifiers.F19s)}
+\DoxyCodeLine{72 }
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Icao\+Message\+Parser/\mbox{\hyperlink{ParseF19_8py}{Parse\+F19.\+py}}\end{DoxyCompactItemize}

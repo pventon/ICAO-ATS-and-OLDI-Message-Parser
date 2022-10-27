@@ -1,0 +1,45 @@
+\hypertarget{classConfiguration_1_1LoadConfigurationData_1_1LoadConfigurationData}{}\doxysection{Configuration.\+Load\+Configuration\+Data.\+Load\+Configuration\+Data Class Reference}
+\label{classConfiguration_1_1LoadConfigurationData_1_1LoadConfigurationData}\index{Configuration.LoadConfigurationData.LoadConfigurationData@{Configuration.LoadConfigurationData.LoadConfigurationData}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{classConfiguration_1_1LoadConfigurationData_1_1LoadConfigurationData_a4beb1b6242d9ffb4edfa007ba6297f1b}{test\+\_\+xml}} (self)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classConfiguration_1_1LoadConfigurationData_1_1LoadConfigurationData_a4beb1b6242d9ffb4edfa007ba6297f1b}\label{classConfiguration_1_1LoadConfigurationData_1_1LoadConfigurationData_a4beb1b6242d9ffb4edfa007ba6297f1b}} 
+\index{Configuration.LoadConfigurationData.LoadConfigurationData@{Configuration.LoadConfigurationData.LoadConfigurationData}!test\_xml@{test\_xml}}
+\index{test\_xml@{test\_xml}!Configuration.LoadConfigurationData.LoadConfigurationData@{Configuration.LoadConfigurationData.LoadConfigurationData}}
+\doxysubsubsection{\texorpdfstring{test\_xml()}{test\_xml()}}
+{\footnotesize\ttfamily def Configuration.\+Load\+Configuration\+Data.\+Load\+Configuration\+Data.\+test\+\_\+xml (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{9     \textcolor{keyword}{def }test\_xml(self):}
+\DoxyCodeLine{10         tilde\_home = Path(\textcolor{stringliteral}{'\string~'}).expanduser()}
+\DoxyCodeLine{11         print(\textcolor{stringliteral}{"Tilde: "} + str(tilde\_home))}
+\DoxyCodeLine{12         f\_handle = open(str(tilde\_home) +}
+\DoxyCodeLine{13                         \textcolor{stringliteral}{"/PycharmProjects/ICAO-\/Message-\/Parser/Configuration/SubFieldDescriptions.xml"}, \textcolor{stringliteral}{'r'})}
+\DoxyCodeLine{14         subfield\_descriptions\_xml\_data = f\_handle.read()}
+\DoxyCodeLine{15         root = ET.XML(subfield\_descriptions\_xml\_data)  \textcolor{comment}{\# Parse XML}}
+\DoxyCodeLine{16         print(\textcolor{stringliteral}{"Attrib: "} + str(root.attrib))}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18         data = []}
+\DoxyCodeLine{19         cols = []}
+\DoxyCodeLine{20         \textcolor{keywordflow}{for} i, child \textcolor{keywordflow}{in} enumerate(root):}
+\DoxyCodeLine{21             print(str(i) + \textcolor{stringliteral}{". child.tag: "} + child.tag + \textcolor{stringliteral}{", child.attrib: "} + str(child.attrib) + \textcolor{stringliteral}{", child.text: "} + child.text)}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23             \textcolor{keywordflow}{for} subchild \textcolor{keywordflow}{in} child:}
+\DoxyCodeLine{24                 print(\textcolor{stringliteral}{"Subchild.text: "} + subchild.text + \textcolor{stringliteral}{", subchild.tag: "} + subchild.tag)}
+\DoxyCodeLine{25             data.append([subchild.text \textcolor{keywordflow}{for} subchild \textcolor{keywordflow}{in} child])}
+\DoxyCodeLine{26             cols.append(child.tag)}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28         f\_handle.close()}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Configuration/\mbox{\hyperlink{LoadConfigurationData_8py}{Load\+Configuration\+Data.\+py}}\end{DoxyCompactItemize}

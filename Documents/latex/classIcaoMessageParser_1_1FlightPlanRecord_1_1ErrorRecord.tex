@@ -1,0 +1,148 @@
+\hypertarget{classIcaoMessageParser_1_1FlightPlanRecord_1_1ErrorRecord}{}\doxysection{Icao\+Message\+Parser.\+Flight\+Plan\+Record.\+Error\+Record Class Reference}
+\label{classIcaoMessageParser_1_1FlightPlanRecord_1_1ErrorRecord}\index{IcaoMessageParser.FlightPlanRecord.ErrorRecord@{IcaoMessageParser.FlightPlanRecord.ErrorRecord}}
+
+
+Inheritance diagram for Icao\+Message\+Parser.\+Flight\+Plan\+Record.\+Error\+Record\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=229pt]{classIcaoMessageParser_1_1FlightPlanRecord_1_1ErrorRecord__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Icao\+Message\+Parser.\+Flight\+Plan\+Record.\+Error\+Record\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=229pt]{classIcaoMessageParser_1_1FlightPlanRecord_1_1ErrorRecord__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1FlightPlanRecord_1_1ErrorRecord_a52e0b968ffaba4ea90a4e36dd5736533}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, erroneous\+\_\+field\+\_\+text, \mbox{\hyperlink{classIcaoMessageParser_1_1FlightPlanRecord_1_1ErrorRecord_a1267709e5442994c30b33ed5b5c366d2}{error\+\_\+message}}, \mbox{\hyperlink{classIcaoMessageParser_1_1FlightPlanRecord_1_1SubFieldRecord_aded697110a65cdba10638b2bddfd76e3}{start\+\_\+index}}, \mbox{\hyperlink{classIcaoMessageParser_1_1FlightPlanRecord_1_1SubFieldRecord_a887e8024a79415b9906c2ce5e19139d3}{end\+\_\+index}})
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1FlightPlanRecord_1_1ErrorRecord_a8e7ed481f218c0a5d11320133c012c01}{get\+\_\+error\+\_\+message}} (self)
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1FlightPlanRecord_1_1ErrorRecord_a9e7a4c7f1a904318b2c4fe8e765257f9}{field\+\_\+error\+\_\+as\+\_\+xml}} (self)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classIcaoMessageParser_1_1FlightPlanRecord_1_1ErrorRecord_a1267709e5442994c30b33ed5b5c366d2}{error\+\_\+message}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classIcaoMessageParser_1_1FlightPlanRecord_1_1ErrorRecord_ac9834ab7a721c7561b98b638edefdd0d}{str}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}This class contains information about an error detected during message processing.
+The erroneous field along with its zero based start and end index in the message plus
+the error message is stored in this class.
+Zero or more of these records may be included in a flight plan record.
+ This class subclasses the FieldRecord class.\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1FlightPlanRecord_1_1ErrorRecord_a52e0b968ffaba4ea90a4e36dd5736533}\label{classIcaoMessageParser_1_1FlightPlanRecord_1_1ErrorRecord_a52e0b968ffaba4ea90a4e36dd5736533}} 
+\index{IcaoMessageParser.FlightPlanRecord.ErrorRecord@{IcaoMessageParser.FlightPlanRecord.ErrorRecord}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!IcaoMessageParser.FlightPlanRecord.ErrorRecord@{IcaoMessageParser.FlightPlanRecord.ErrorRecord}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Flight\+Plan\+Record.\+Error\+Record.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{erroneous\+\_\+field\+\_\+text,  }\item[{}]{error\+\_\+message,  }\item[{}]{start\+\_\+index,  }\item[{}]{end\+\_\+index }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Constructor that initializes all the subFieldRecord class members and in
+ addition, sets the error message associated with the subfield information in this class.
+    :param erroneous_field_text: The ICAO subfield as it appears in a message
+    :param error_message: The error message
+    :param start_index: The zero based start index of the ICAO subfields position in the original message string
+    :param end_index: The zero based end index of the ICAO subfields position in the original message string
+    :return: None\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{223     \textcolor{keyword}{def }\_\_init\_\_(self, erroneous\_field\_text, error\_message, start\_index, end\_index):}
+\DoxyCodeLine{224         \textcolor{comment}{\# type: (str, str, int, int) -\/> None}}
+\DoxyCodeLine{225         \textcolor{stringliteral}{"""Constructor that initializes all the subFieldRecord class members and in}}
+\DoxyCodeLine{226 \textcolor{stringliteral}{         addition, sets the error message associated with the subfield information in this class.}}
+\DoxyCodeLine{227 \textcolor{stringliteral}{            :param erroneous\_field\_text: The ICAO subfield as it appears in a message}}
+\DoxyCodeLine{228 \textcolor{stringliteral}{            :param error\_message: The error message}}
+\DoxyCodeLine{229 \textcolor{stringliteral}{            :param start\_index: The zero based start index of the ICAO subfields position in the original message string}}
+\DoxyCodeLine{230 \textcolor{stringliteral}{            :param end\_index: The zero based end index of the ICAO subfields position in the original message string}}
+\DoxyCodeLine{231 \textcolor{stringliteral}{            :return: None"""}}
+\DoxyCodeLine{232         super().\_\_init\_\_(erroneous\_field\_text, start\_index, end\_index)}
+\DoxyCodeLine{233         self.error\_message = error\_message}
+\DoxyCodeLine{234 }
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1FlightPlanRecord_1_1ErrorRecord_a9e7a4c7f1a904318b2c4fe8e765257f9}\label{classIcaoMessageParser_1_1FlightPlanRecord_1_1ErrorRecord_a9e7a4c7f1a904318b2c4fe8e765257f9}} 
+\index{IcaoMessageParser.FlightPlanRecord.ErrorRecord@{IcaoMessageParser.FlightPlanRecord.ErrorRecord}!field\_error\_as\_xml@{field\_error\_as\_xml}}
+\index{field\_error\_as\_xml@{field\_error\_as\_xml}!IcaoMessageParser.FlightPlanRecord.ErrorRecord@{IcaoMessageParser.FlightPlanRecord.ErrorRecord}}
+\doxysubsubsection{\texorpdfstring{field\_error\_as\_xml()}{field\_error\_as\_xml()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Flight\+Plan\+Record.\+Error\+Record.\+field\+\_\+error\+\_\+as\+\_\+xml (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This method returns an XML representation of the contents of this class.
+
+:return: An XML representation of the contents of this class as a string\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{241     \textcolor{keyword}{def }field\_error\_as\_xml(self):}
+\DoxyCodeLine{242         \textcolor{comment}{\# type: () -\/> str}}
+\DoxyCodeLine{243         \textcolor{stringliteral}{"""This method returns an XML representation of the contents of this class.}}
+\DoxyCodeLine{244 \textcolor{stringliteral}{}}
+\DoxyCodeLine{245 \textcolor{stringliteral}{        :return: An XML representation of the contents of this class as a string"""}}
+\DoxyCodeLine{246 }
+\DoxyCodeLine{247         \textcolor{keywordflow}{return} \textcolor{stringliteral}{"      <error "} + \(\backslash\)}
+\DoxyCodeLine{248                \textcolor{stringliteral}{"start\_index=\(\backslash\)""} + str(self.get\_start\_index()) + \(\backslash\)}
+\DoxyCodeLine{249                \textcolor{stringliteral}{"\(\backslash\)" end\_index=\(\backslash\)""} + str(self.get\_end\_index()) + \(\backslash\)}
+\DoxyCodeLine{250                \textcolor{stringliteral}{"\(\backslash\)" error\_message=\(\backslash\)""} + self.get\_error\_message() + \textcolor{stringliteral}{"\(\backslash\)">"} + \(\backslash\)}
+\DoxyCodeLine{251                self.get\_field\_text() + \textcolor{stringliteral}{"</error>"}}
+\DoxyCodeLine{252 }
+\DoxyCodeLine{253 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1FlightPlanRecord_1_1ErrorRecord_a8e7ed481f218c0a5d11320133c012c01}\label{classIcaoMessageParser_1_1FlightPlanRecord_1_1ErrorRecord_a8e7ed481f218c0a5d11320133c012c01}} 
+\index{IcaoMessageParser.FlightPlanRecord.ErrorRecord@{IcaoMessageParser.FlightPlanRecord.ErrorRecord}!get\_error\_message@{get\_error\_message}}
+\index{get\_error\_message@{get\_error\_message}!IcaoMessageParser.FlightPlanRecord.ErrorRecord@{IcaoMessageParser.FlightPlanRecord.ErrorRecord}}
+\doxysubsubsection{\texorpdfstring{get\_error\_message()}{get\_error\_message()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Flight\+Plan\+Record.\+Error\+Record.\+get\+\_\+error\+\_\+message (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Gets the error message reported on this subfield
+:return: The error message\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{235     \textcolor{keyword}{def }get\_error\_message(self):}
+\DoxyCodeLine{236         \textcolor{comment}{\# type: () -\/> str}}
+\DoxyCodeLine{237         \textcolor{stringliteral}{"""Gets the error message reported on this subfield}}
+\DoxyCodeLine{238 \textcolor{stringliteral}{        :return: The error message"""}}
+\DoxyCodeLine{239         \textcolor{keywordflow}{return} self.error\_message}
+\DoxyCodeLine{240 }
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1FlightPlanRecord_1_1ErrorRecord_a1267709e5442994c30b33ed5b5c366d2}\label{classIcaoMessageParser_1_1FlightPlanRecord_1_1ErrorRecord_a1267709e5442994c30b33ed5b5c366d2}} 
+\index{IcaoMessageParser.FlightPlanRecord.ErrorRecord@{IcaoMessageParser.FlightPlanRecord.ErrorRecord}!error\_message@{error\_message}}
+\index{error\_message@{error\_message}!IcaoMessageParser.FlightPlanRecord.ErrorRecord@{IcaoMessageParser.FlightPlanRecord.ErrorRecord}}
+\doxysubsubsection{\texorpdfstring{error\_message}{error\_message}}
+{\footnotesize\ttfamily Icao\+Message\+Parser.\+Flight\+Plan\+Record.\+Error\+Record.\+error\+\_\+message}
+
+\mbox{\Hypertarget{classIcaoMessageParser_1_1FlightPlanRecord_1_1ErrorRecord_ac9834ab7a721c7561b98b638edefdd0d}\label{classIcaoMessageParser_1_1FlightPlanRecord_1_1ErrorRecord_ac9834ab7a721c7561b98b638edefdd0d}} 
+\index{IcaoMessageParser.FlightPlanRecord.ErrorRecord@{IcaoMessageParser.FlightPlanRecord.ErrorRecord}!str@{str}}
+\index{str@{str}!IcaoMessageParser.FlightPlanRecord.ErrorRecord@{IcaoMessageParser.FlightPlanRecord.ErrorRecord}}
+\doxysubsubsection{\texorpdfstring{str}{str}}
+{\footnotesize\ttfamily Icao\+Message\+Parser.\+Flight\+Plan\+Record.\+Error\+Record.\+str\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Icao\+Message\+Parser/\mbox{\hyperlink{FlightPlanRecord_8py}{Flight\+Plan\+Record.\+py}}\end{DoxyCompactItemize}

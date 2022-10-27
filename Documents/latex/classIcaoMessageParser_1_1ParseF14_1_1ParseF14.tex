@@ -1,0 +1,136 @@
+\hypertarget{classIcaoMessageParser_1_1ParseF14_1_1ParseF14}{}\doxysection{Icao\+Message\+Parser.\+Parse\+F14.\+Parse\+F14 Class Reference}
+\label{classIcaoMessageParser_1_1ParseF14_1_1ParseF14}\index{IcaoMessageParser.ParseF14.ParseF14@{IcaoMessageParser.ParseF14.ParseF14}}
+
+
+Inheritance diagram for Icao\+Message\+Parser.\+Parse\+F14.\+Parse\+F14\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=247pt]{classIcaoMessageParser_1_1ParseF14_1_1ParseF14__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Icao\+Message\+Parser.\+Parse\+F14.\+Parse\+F14\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=247pt]{classIcaoMessageParser_1_1ParseF14_1_1ParseF14__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1ParseF14_1_1ParseF14_ab88944920daba397db4f935115737657}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a93341de2e606a5ad85e0dd34f0336c00}{flight\+\_\+plan\+\_\+record}}, sfif, \mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a48a759a0835373c4ffbfa523d3566cdd}{sfd}})
+\item 
+def \mbox{\hyperlink{classIcaoMessageParser_1_1ParseF14_1_1ParseF14_a6b493cf8cf4cebdd9734a26c29cbf915}{parse\+\_\+field}} (self)
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseF14_1_1ParseF14_ab88944920daba397db4f935115737657}\label{classIcaoMessageParser_1_1ParseF14_1_1ParseF14_ab88944920daba397db4f935115737657}} 
+\index{IcaoMessageParser.ParseF14.ParseF14@{IcaoMessageParser.ParseF14.ParseF14}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!IcaoMessageParser.ParseF14.ParseF14@{IcaoMessageParser.ParseF14.ParseF14}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Parse\+F14.\+Parse\+F14.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{flight\+\_\+plan\+\_\+record,  }\item[{}]{sfif,  }\item[{}]{sfd }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Constructor to set up the field parser for ICAO field 14.
+Arguments
+---------
+flight_plan_record:   Flight plan to populate
+sfif:                 Configuration data defining the subfields in an ICAO field
+sfd:                  Configuration data describing the syntax and other information about all subfields\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{11     \textcolor{keyword}{def }\_\_init\_\_(self, flight\_plan\_record, sfif, sfd):}
+\DoxyCodeLine{12         \textcolor{comment}{\# type: (FlightPlanRecord, SubFieldsInFields, SubFieldDescriptions) -\/> None}}
+\DoxyCodeLine{13         \textcolor{stringliteral}{"""Constructor to set up the field parser for ICAO field 14.}}
+\DoxyCodeLine{14 \textcolor{stringliteral}{        Arguments}}
+\DoxyCodeLine{15 \textcolor{stringliteral}{        -\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{16 \textcolor{stringliteral}{        flight\_plan\_record:   Flight plan to populate}}
+\DoxyCodeLine{17 \textcolor{stringliteral}{        sfif:                 Configuration data defining the subfields in an ICAO field}}
+\DoxyCodeLine{18 \textcolor{stringliteral}{        sfd:                  Configuration data describing the syntax and other information about all subfields"""}}
+\DoxyCodeLine{19         super().\_\_init\_\_(flight\_plan\_record,  \textcolor{comment}{\# Flight plan to populate}}
+\DoxyCodeLine{20                          sfd,  \textcolor{comment}{\# Configuration data describing individual subfields}}
+\DoxyCodeLine{21                          FieldIdentifiers.F14,  \textcolor{comment}{\# ICAO field identifier}}
+\DoxyCodeLine{22                          \textcolor{stringliteral}{" /\(\backslash\)n\(\backslash\)t\(\backslash\)r"},  \textcolor{comment}{\# Whitespace to tokenize the field}}
+\DoxyCodeLine{23                          \textcolor{comment}{\# Subfields in this field}}
+\DoxyCodeLine{24                          sfif.get\_field\_content\_description(FieldIdentifiers.F14),}
+\DoxyCodeLine{25                          \textcolor{comment}{\# Errors associated for this field}}
+\DoxyCodeLine{26                          sfif.get\_field\_errors(FieldIdentifiers.F14))}
+\DoxyCodeLine{27 }
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classIcaoMessageParser_1_1ParseF14_1_1ParseF14_a6b493cf8cf4cebdd9734a26c29cbf915}\label{classIcaoMessageParser_1_1ParseF14_1_1ParseF14_a6b493cf8cf4cebdd9734a26c29cbf915}} 
+\index{IcaoMessageParser.ParseF14.ParseF14@{IcaoMessageParser.ParseF14.ParseF14}!parse\_field@{parse\_field}}
+\index{parse\_field@{parse\_field}!IcaoMessageParser.ParseF14.ParseF14@{IcaoMessageParser.ParseF14.ParseF14}}
+\doxysubsubsection{\texorpdfstring{parse\_field()}{parse\_field()}}
+{\footnotesize\ttfamily def Icao\+Message\+Parser.\+Parse\+F14.\+Parse\+F14.\+parse\+\_\+field (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This method is the program entry point for the basic field parser to parse ICAO fields 3, 5, 7,
+8, 9, 10, 13, 14, 16, 17, 80 and 81.
+
+This method calls the 'base' parser self.parse_field_base() to do most of the heavy lifting. Once
+the base parse is finished, this method checks that all fields are present, not missing any nor
+any extra fields present.
+    :return: None\end{DoxyVerb}
+ 
+
+Reimplemented from \mbox{\hyperlink{classIcaoMessageParser_1_1ParseFieldsCommon_1_1ParseFieldsCommon_a395ea8f9247a4abe9881d3fa6eb437b4}{Icao\+Message\+Parser.\+Parse\+Fields\+Common.\+Parse\+Fields\+Common}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{28     \textcolor{keyword}{def }parse\_field(self):}
+\DoxyCodeLine{29         \textcolor{comment}{\# type: () -\/> None}}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31         \textcolor{comment}{\# Check if the field contains anything at all...}}
+\DoxyCodeLine{32         \textcolor{keywordflow}{if} self.no\_tokens():}
+\DoxyCodeLine{33             self.add\_error(\textcolor{stringliteral}{""}, 0, 0, self.get\_missing\_subfield\_error())}
+\DoxyCodeLine{34             \textcolor{keywordflow}{return}}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36         \textcolor{comment}{\# Need to split field 14b (HHMM) from F14c (altitude) from F14d (altitude) and F14e (crossing mode)}}
+\DoxyCodeLine{37         \textcolor{keywordflow}{if} self.get\_tokens().get\_number\_of\_tokens() > 2:}
+\DoxyCodeLine{38             \textcolor{comment}{\# We have three tokens, should be point, '/' and the rest of field 14 in the 3rd token}}
+\DoxyCodeLine{39             index = Utils.get\_first\_alpha\_index(self.get\_tokens().get\_token\_at(2).get\_token\_string())}
+\DoxyCodeLine{40             \textcolor{keywordflow}{if} index > -\/1 \textcolor{keywordflow}{and} index != 0:}
+\DoxyCodeLine{41                 \textcolor{comment}{\# Split off F14b HHMM into a separate token}}
+\DoxyCodeLine{42                 self.split\_and\_insert\_token(2, index)}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44                 \textcolor{comment}{\# Token (3) contains the rest of F14, F14c, d \& e, F14c is an altitude that should}}
+\DoxyCodeLine{45                 \textcolor{comment}{\# start with a letter followed by a number of digits.}}
+\DoxyCodeLine{46                 \textcolor{comment}{\# If we skip the letter and then look for the next alpha, we can split of the F14c altitude.}}
+\DoxyCodeLine{47                 \textcolor{keywordflow}{if} len(self.get\_tokens().get\_token\_at(3).get\_token\_string()) > 1:}
+\DoxyCodeLine{48                     index = Utils.get\_first\_alpha\_index(}
+\DoxyCodeLine{49                         self.get\_tokens().get\_token\_at(3).get\_token\_string()[1:])}
+\DoxyCodeLine{50                     \textcolor{keywordflow}{if} index > -\/1 \textcolor{keywordflow}{and} index != 0:}
+\DoxyCodeLine{51                         \textcolor{comment}{\# Split off F14c altitude into a separate token}}
+\DoxyCodeLine{52                         self.split\_and\_insert\_token(3, index + 1)}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54                         \textcolor{comment}{\# Token (4) contains the rest of F14, F14d \& e, F14d is an altitude that should}}
+\DoxyCodeLine{55                         \textcolor{comment}{\# start with a letter followed by a number of digits.}}
+\DoxyCodeLine{56                         \textcolor{comment}{\# If we skip the letter and then look for the next alpha, we can split of the F14c altitude.}}
+\DoxyCodeLine{57                         \textcolor{keywordflow}{if} len(self.get\_tokens().get\_token\_at(4).get\_token\_string()) > 1:}
+\DoxyCodeLine{58                             index = Utils.get\_first\_alpha\_index(}
+\DoxyCodeLine{59                                 self.get\_tokens().get\_token\_at(4).get\_token\_string()[1:])}
+\DoxyCodeLine{60                             \textcolor{keywordflow}{if} index > -\/1 \textcolor{keywordflow}{and} index != 0:}
+\DoxyCodeLine{61                                 \textcolor{comment}{\# Split off F14d altitude into a separate token}}
+\DoxyCodeLine{62                                 self.split\_and\_insert\_token(4, index + 1)}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64         \textcolor{comment}{\# Parse the field}}
+\DoxyCodeLine{65         self.parse\_field\_base()}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67         \textcolor{comment}{\# Check if there are extra unwanted tokens after Field 14}}
+\DoxyCodeLine{68         self.check\_if\_tokens\_left\_over()}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Icao\+Message\+Parser/\mbox{\hyperlink{ParseF14_8py}{Parse\+F14.\+py}}\end{DoxyCompactItemize}

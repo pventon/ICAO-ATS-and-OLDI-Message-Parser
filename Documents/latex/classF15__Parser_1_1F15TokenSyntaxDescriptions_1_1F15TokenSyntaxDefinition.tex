@@ -1,0 +1,122 @@
+\hypertarget{classF15__Parser_1_1F15TokenSyntaxDescriptions_1_1F15TokenSyntaxDefinition}{}\doxysection{F15\+\_\+\+Parser.\+F15\+Token\+Syntax\+Descriptions.\+F15\+Token\+Syntax\+Definition Class Reference}
+\label{classF15__Parser_1_1F15TokenSyntaxDescriptions_1_1F15TokenSyntaxDefinition}\index{F15\_Parser.F15TokenSyntaxDescriptions.F15TokenSyntaxDefinition@{F15\_Parser.F15TokenSyntaxDescriptions.F15TokenSyntaxDefinition}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{classF15__Parser_1_1F15TokenSyntaxDescriptions_1_1F15TokenSyntaxDefinition_af92a8d4c1d786a25b478cf17168bff54}{get\+\_\+token\+\_\+type}} (self, token\+\_\+string=\char`\"{}\char`\"{})
+\item 
+def \mbox{\hyperlink{classF15__Parser_1_1F15TokenSyntaxDescriptions_1_1F15TokenSyntaxDefinition_ab5063df673e16fad24e503bc12a8233a}{print\+\_\+descriptions}} (self)
+\item 
+def \mbox{\hyperlink{classF15__Parser_1_1F15TokenSyntaxDescriptions_1_1F15TokenSyntaxDefinition_a3ad4d9c216fd15dab536574e1b5912d2}{print\+\_\+description}} (self, item)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classF15__Parser_1_1F15TokenSyntaxDescriptions_1_1F15TokenSyntaxDefinition_a236985f897e82c962ce378f03950ce7e}{int}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Token descriptions for field 15 tokens in a multidimensional list. Each entry is a 3 field list that
+contains the regular expression for a token along with its base and subtype identifiers.
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classF15__Parser_1_1F15TokenSyntaxDescriptions_1_1F15TokenSyntaxDefinition_af92a8d4c1d786a25b478cf17168bff54}\label{classF15__Parser_1_1F15TokenSyntaxDescriptions_1_1F15TokenSyntaxDefinition_af92a8d4c1d786a25b478cf17168bff54}} 
+\index{F15\_Parser.F15TokenSyntaxDescriptions.F15TokenSyntaxDefinition@{F15\_Parser.F15TokenSyntaxDescriptions.F15TokenSyntaxDefinition}!get\_token\_type@{get\_token\_type}}
+\index{get\_token\_type@{get\_token\_type}!F15\_Parser.F15TokenSyntaxDescriptions.F15TokenSyntaxDefinition@{F15\_Parser.F15TokenSyntaxDescriptions.F15TokenSyntaxDefinition}}
+\doxysubsubsection{\texorpdfstring{get\_token\_type()}{get\_token\_type()}}
+{\footnotesize\ttfamily def F15\+\_\+\+Parser.\+F15\+Token\+Syntax\+Descriptions.\+F15\+Token\+Syntax\+Definition.\+get\+\_\+token\+\_\+type (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{token\+\_\+string = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Gets and returns a record from all token descriptions for a given token passed in as the
+argument 'token_string'. The result is returned as a 3 field list that provides:
+- Index 0: The regular expression describing the token, null string if a token is unknown.
+  Constant TOKEN_REGEXP_IDX can be used to access this field.
+- Index 1: The base type token identifier, Constant TOKEN_BASE_IDENTIFIER_IDX can be used to access this field.
+- Index 2: The subtype token identifier, Constant TOKEN_SUBTYPE_IDENTIFIER_IDX can be used to access this field.
+:param token_string: The string being analysed to which a base and subtype will be assigned; this
+       is a field 15 element such as a point, or route element etc.
+:return: A list containing a single 'record' from the F15_SB_CONFIGURATION base and subtype definitions.
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{382     \textcolor{keyword}{def }get\_token\_type(self, token\_string=""):}
+\DoxyCodeLine{383         \textcolor{comment}{\# type: (str) -\/> [str, TokenBaseType, TokenSubType]}}
+\DoxyCodeLine{384         \textcolor{stringliteral}{"""Gets and returns a record from all token descriptions for a given token passed in as the}}
+\DoxyCodeLine{385 \textcolor{stringliteral}{        argument 'token\_string'. The result is returned as a 3 field list that provides:}}
+\DoxyCodeLine{386 \textcolor{stringliteral}{        -\/ Index 0: The regular expression describing the token, null string if a token is unknown.}}
+\DoxyCodeLine{387 \textcolor{stringliteral}{          Constant TOKEN\_REGEXP\_IDX can be used to access this field.}}
+\DoxyCodeLine{388 \textcolor{stringliteral}{        -\/ Index 1: The base type token identifier, Constant TOKEN\_BASE\_IDENTIFIER\_IDX can be used to access this field.}}
+\DoxyCodeLine{389 \textcolor{stringliteral}{        -\/ Index 2: The subtype token identifier, Constant TOKEN\_SUBTYPE\_IDENTIFIER\_IDX can be used to access this field.}}
+\DoxyCodeLine{390 \textcolor{stringliteral}{        :param token\_string: The string being analysed to which a base and subtype will be assigned; this}}
+\DoxyCodeLine{391 \textcolor{stringliteral}{               is a field 15 element such as a point, or route element etc.}}
+\DoxyCodeLine{392 \textcolor{stringliteral}{        :return: A list containing a single 'record' from the F15\_SB\_CONFIGURATION base and subtype definitions.}}
+\DoxyCodeLine{393 \textcolor{stringliteral}{        """}}
+\DoxyCodeLine{394         \textcolor{keywordflow}{for} item \textcolor{keywordflow}{in} self.F15\_SB\_CONFIGURATION:}
+\DoxyCodeLine{395             \textcolor{keywordflow}{if} re.fullmatch(item[self.TOKEN\_REGEXP\_IDX], token\_string):}
+\DoxyCodeLine{396                 \textcolor{keywordflow}{return} item}
+\DoxyCodeLine{397         \textcolor{keywordflow}{return} [\textcolor{stringliteral}{""}, TokenBaseType.F15\_UNKNOWN, TokenSubType.F15\_SB\_UNKNOWN]}
+\DoxyCodeLine{398 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classF15__Parser_1_1F15TokenSyntaxDescriptions_1_1F15TokenSyntaxDefinition_a3ad4d9c216fd15dab536574e1b5912d2}\label{classF15__Parser_1_1F15TokenSyntaxDescriptions_1_1F15TokenSyntaxDefinition_a3ad4d9c216fd15dab536574e1b5912d2}} 
+\index{F15\_Parser.F15TokenSyntaxDescriptions.F15TokenSyntaxDefinition@{F15\_Parser.F15TokenSyntaxDescriptions.F15TokenSyntaxDefinition}!print\_description@{print\_description}}
+\index{print\_description@{print\_description}!F15\_Parser.F15TokenSyntaxDescriptions.F15TokenSyntaxDefinition@{F15\_Parser.F15TokenSyntaxDescriptions.F15TokenSyntaxDefinition}}
+\doxysubsubsection{\texorpdfstring{print\_description()}{print\_description()}}
+{\footnotesize\ttfamily def F15\+\_\+\+Parser.\+F15\+Token\+Syntax\+Descriptions.\+F15\+Token\+Syntax\+Definition.\+print\+\_\+description (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{item }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Helper method to print the configuration data in this class.
+:return: None
+:return:
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{407     \textcolor{keyword}{def }print\_description(self, item):}
+\DoxyCodeLine{408         \textcolor{comment}{\# type: ([]) -\/> None}}
+\DoxyCodeLine{409         \textcolor{stringliteral}{"""Helper method to print the configuration data in this class.}}
+\DoxyCodeLine{410 \textcolor{stringliteral}{        :return: None}}
+\DoxyCodeLine{411 \textcolor{stringliteral}{        :return:}}
+\DoxyCodeLine{412 \textcolor{stringliteral}{        """}}
+\DoxyCodeLine{413         print(\textcolor{stringliteral}{"\{0:>40\}"}.format(item[self.TOKEN\_REGEXP\_IDX]),}
+\DoxyCodeLine{414               \textcolor{stringliteral}{"\{0:>40\}"}.format(str(item[self.TOKEN\_BASE\_IDENTIFIER\_IDX])) +}
+\DoxyCodeLine{415               \textcolor{stringliteral}{"\{0:>4\}"}.format(item[self.TOKEN\_BASE\_IDENTIFIER\_IDX]),}
+\DoxyCodeLine{416               \textcolor{stringliteral}{"\{0:>40\}"}.format(str(item[self.TOKEN\_SUBTYPE\_IDENTIFIER\_IDX])) +}
+\DoxyCodeLine{417               \textcolor{stringliteral}{"\{0:>4\}"}.format(item[self.TOKEN\_SUBTYPE\_IDENTIFIER\_IDX]))}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classF15__Parser_1_1F15TokenSyntaxDescriptions_1_1F15TokenSyntaxDefinition_ab5063df673e16fad24e503bc12a8233a}\label{classF15__Parser_1_1F15TokenSyntaxDescriptions_1_1F15TokenSyntaxDefinition_ab5063df673e16fad24e503bc12a8233a}} 
+\index{F15\_Parser.F15TokenSyntaxDescriptions.F15TokenSyntaxDefinition@{F15\_Parser.F15TokenSyntaxDescriptions.F15TokenSyntaxDefinition}!print\_descriptions@{print\_descriptions}}
+\index{print\_descriptions@{print\_descriptions}!F15\_Parser.F15TokenSyntaxDescriptions.F15TokenSyntaxDefinition@{F15\_Parser.F15TokenSyntaxDescriptions.F15TokenSyntaxDefinition}}
+\doxysubsubsection{\texorpdfstring{print\_descriptions()}{print\_descriptions()}}
+{\footnotesize\ttfamily def F15\+\_\+\+Parser.\+F15\+Token\+Syntax\+Descriptions.\+F15\+Token\+Syntax\+Definition.\+print\+\_\+descriptions (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Helper method to print the configuration data in this class.
+:return: None
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{399     \textcolor{keyword}{def }print\_descriptions(self):}
+\DoxyCodeLine{400         \textcolor{comment}{\# type: () -\/> None}}
+\DoxyCodeLine{401         \textcolor{stringliteral}{"""Helper method to print the configuration data in this class.}}
+\DoxyCodeLine{402 \textcolor{stringliteral}{        :return: None}}
+\DoxyCodeLine{403 \textcolor{stringliteral}{        """}}
+\DoxyCodeLine{404         \textcolor{keywordflow}{for} item \textcolor{keywordflow}{in} self.F15\_SB\_CONFIGURATION:}
+\DoxyCodeLine{405             self.print\_description(item)}
+\DoxyCodeLine{406 }
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classF15__Parser_1_1F15TokenSyntaxDescriptions_1_1F15TokenSyntaxDefinition_a236985f897e82c962ce378f03950ce7e}\label{classF15__Parser_1_1F15TokenSyntaxDescriptions_1_1F15TokenSyntaxDefinition_a236985f897e82c962ce378f03950ce7e}} 
+\index{F15\_Parser.F15TokenSyntaxDescriptions.F15TokenSyntaxDefinition@{F15\_Parser.F15TokenSyntaxDescriptions.F15TokenSyntaxDefinition}!int@{int}}
+\index{int@{int}!F15\_Parser.F15TokenSyntaxDescriptions.F15TokenSyntaxDefinition@{F15\_Parser.F15TokenSyntaxDescriptions.F15TokenSyntaxDefinition}}
+\doxysubsubsection{\texorpdfstring{int}{int}}
+{\footnotesize\ttfamily F15\+\_\+\+Parser.\+F15\+Token\+Syntax\+Descriptions.\+F15\+Token\+Syntax\+Definition.\+int\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+F15\+\_\+\+Parser/\mbox{\hyperlink{F15TokenSyntaxDescriptions_8py}{F15\+Token\+Syntax\+Descriptions.\+py}}\end{DoxyCompactItemize}
