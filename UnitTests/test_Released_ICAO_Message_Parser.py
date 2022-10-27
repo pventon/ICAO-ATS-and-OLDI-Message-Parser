@@ -24,8 +24,8 @@ class TestParseF3(unittest.TestCase):
             basic_field_errors: [ErrorRecord] = flight_plan_record.get_erroneous_fields()
 
         # For field 15, get the Extracted Route Sequence and get the errors, returns a list of Tokens...
-        if flight_plan_record.get_extracted_route_sequence().get_number_of_errors() > 0:
-            field_15_errors: [Token] = flight_plan_record.get_extracted_route_sequence().get_all_errors()
+        if flight_plan_record.get_extracted_route().get_number_of_errors() > 0:
+            field_15_errors: [Token] = flight_plan_record.get_extracted_route().get_all_errors()
 
         # To extract fields and / or subfields use the methods in the following example code...
         self.assertEqual(
@@ -57,8 +57,8 @@ class TestParseF3(unittest.TestCase):
             basic_field_errors: [ErrorRecord] = flight_plan_record.get_erroneous_fields()
 
         # For field 15, get the Extracted Route Sequence and get the errors, returns a list of Tokens...
-        if flight_plan_record.get_extracted_route_sequence().get_number_of_errors() > 0:
-            field_15_errors: [Token] = flight_plan_record.get_extracted_route_sequence().get_all_errors()
+        if flight_plan_record.get_extracted_route().get_number_of_errors() > 0:
+            field_15_errors: [Token] = flight_plan_record.get_extracted_route().get_all_errors()
 
         # To extract fields and / or subfields use the methods in the following example code...
         self.assertEqual(

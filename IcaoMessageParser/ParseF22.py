@@ -209,10 +209,10 @@ class ParseF22(ParseFieldsCommon):
                     error_records.get_end_index())
 
         # Check if the extracted route in the new flight plan contains amy errors
-        if new_fpr.get_extracted_route_sequence() is not None:
-            if new_fpr.get_extracted_route_sequence().get_number_of_errors() > 0:
+        if new_fpr.get_extracted_route() is not None:
+            if new_fpr.get_extracted_route().get_number_of_errors() > 0:
                 # We have field 15 errors, copy them over
-                for error_record in new_fpr.get_extracted_route_sequence().get_all_errors():
+                for error_record in new_fpr.get_extracted_route().get_all_errors():
                     self.get_flight_plan_record().add_erroneous_field(
                         error_record.get_name(),
                         "F22 - " + error_record.get_error_text(),
