@@ -22,6 +22,8 @@ FlightPlanRecord -+-->  FieldRecord -+--> [SubFieldRecord, ...]
    inherit from the SubFieldRecord class.
 4. Note that the subfields are in a list; this covers the case for some field 18 subfields
    such as the RMK and STS subfields that can occur more than once in field 18."""
+import os
+
 from Configuration.EnumerationConstants import MessageTypes, FieldIdentifiers, SubFieldIdentifiers, AdjacentUnits, \
     MessageTitles, FlightRules
 from F15_Parser.ExtractedRouteSequence import ExtractedRouteSequence, ExtractedRouteRecord
@@ -201,11 +203,11 @@ class FieldRecord(SubFieldRecord):
             for subfield_id, subfield in self.subfields.items():
                 if len(subfield) > 0:
                     for sf in subfield:
-                        subfield_xml = subfield_xml + sf.subfield_as_xml(subfield_id) + "\n"
+                        subfield_xml = subfield_xml + sf.subfield_as_xml(subfield_id) + os.linesep
 
         return "      <field_record id=\"" + field_id.name + \
                "\" start_index=\"" + str(self.get_start_index()) + \
-               "\" end_index=\"" + str(self.get_end_index()) + "\">" + self.get_field_text() + "\n" + \
+               "\" end_index=\"" + str(self.get_end_index()) + "\">" + self.get_field_text() + os.linesep + \
                subfield_xml + \
                "      </field_record>"
 
@@ -373,34 +375,39 @@ class FlightPlanRecord:
         # Build the records as an XML
         field_string = ""
         if len(self.icao_fields) > 0:
-            field_string = "   <icao_fields>\n"
+            field_string = "   <icao_fields>" + os.linesep
             for field_id, record in self.icao_fields.items():
-                field_string = field_string + record.field_as_xml(field_id) + "\n"
-            field_string = field_string + "   </icao_fields>\n"
+                field_string = field_string + record.field_as_xml(field_id) + os.linesep
+            field_string = field_string + "   </icao_fields>" + os.linesep
 
         error_string = ""
         if len(self.erroneous_fields) > 0:
-            error_string = "   <icao_field_errors>\n"
+            error_string = "   <icao_field_errors>" + os.linesep
             for error_record in self.erroneous_fields:
-                error_string = error_string + error_record.field_error_as_xml() + "\n"
-            error_string = error_string + "   </icao_field_errors>\n"
+                error_string = error_string + error_record.field_error_as_xml() + os.linesep
+            error_string = error_string + "   </icao_field_errors>" + os.linesep
 
-        # erroneous_fields: list[ErrorRecord] = []
-        return "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\" ?>\n" + \
-               "<flight_plan_record>\n" + \
-               "   <derived_flight_rules>" + self.get_derived_flight_rules().name + "</derived_flight_rules>\n"\
-               "   <message_type>" + self.get_message_type().name + "</message_type>\n" + \
-               "   <original_message>" + self.get_message_complete() + "</original_message>\n" + \
-               "   <message_header>" + self.get_message_header() + "</message_header>\n" + \
-               "   <message_body>" + self.get_message_body() + "</message_body>\n" + \
+        if self.get_extracted_route() is None:
+            ers = ""
+        else:
+            ers = self.get_extracted_route().as_xml()
+
+        return "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\" ?>" + os.linesep + \
+               "<flight_plan_record>" + os.linesep + \
+               "   <derived_flight_rules>" + self.get_derived_flight_rules().name + "</derived_flight_rules>" + \
+               os.linesep + \
+               "   <message_type>" + self.get_message_type().name + "</message_type>" + os.linesep + \
+               "   <original_message>" + self.get_message_complete() + "</original_message>" + os.linesep + \
+               "   <message_header>" + self.get_message_header() + "</message_header>" + os.linesep + \
+               "   <message_body>" + self.get_message_body() + "</message_body>" + os.linesep + \
                "   <adjacent_unit_sender>" + self.get_sender_adjacent_unit_name().name + \
-               "</adjacent_unit_sender>\n" + \
+               "</adjacent_unit_sender>" + os.linesep + \
                "   <adjacent_unit_receiver>" + self.get_receiver_adjacent_unit_name().name + \
-               "</adjacent_unit_receiver>\n" + \
+               "</adjacent_unit_receiver>" + os.linesep + \
                field_string + \
                error_string + \
-               self.get_extracted_route().as_xml() + \
-               "\n</flight_plan_record>"
+               ers + \
+               os.linesep + "</flight_plan_record>"
 
     def errors_detected(self):
         # type: () -> bool

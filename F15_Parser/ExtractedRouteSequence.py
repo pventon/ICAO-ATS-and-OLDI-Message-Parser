@@ -1,3 +1,5 @@
+import os
+
 from F15_Parser.ExtractedRouteRecord import ExtractedRouteRecord
 from F15_Parser.F15TokenSyntaxDescriptions import TokenBaseType, TokenSubType
 
@@ -82,21 +84,25 @@ class ExtractedRouteSequence:
         """
 
         # Generate the XML for all ERS records
-        xml_string = "   <ers>\n"
+        xml_string = "   <ers>" + os.linesep
 
         # Add the derived rules
         xml_string = xml_string + "      <derived_flight_rules>" + \
                                   self.get_derived_flight_rules() + \
-                                  "</derived_flight_rules>\n"
+                                  "</derived_flight_rules>" + os.linesep
+        if len(self.get_all_elements()) == 0:
+            xml_string = xml_string + "   </ers>"
+            return xml_string
+
         for item in self.get_all_elements():
-            xml_string = xml_string + "   " + item.as_xml(False) + "\n"
+            xml_string = xml_string + "   " + item.as_xml(False) + os.linesep
 
         # If there are errors, add these as XML output
         if self.get_number_of_errors() > 0:
-            xml_string = xml_string + "   <ers_errors>\n"
+            xml_string = xml_string + "   <ers_errors>" + os.linesep
             for item in self.get_all_errors():
-                xml_string = xml_string + "      " + item.as_xml(True) + "\n"
-            xml_string = xml_string + "   </ers_errors>\n"
+                xml_string = xml_string + "      " + item.as_xml(True) + "" + os.linesep
+            xml_string = xml_string + "   </ers_errors>" + os.linesep
 
         xml_string = xml_string + "   </ers>"
 

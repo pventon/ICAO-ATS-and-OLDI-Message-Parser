@@ -62,6 +62,10 @@ class ParseF22(ParseFieldsCommon):
             self.add_error("", 0, 0, ErrorId.F22_DATA_MISSING)
             return
 
+        # Get the start index for F22 in the message as a whole
+        start_offset_index = self.get_flight_plan_record().get_icao_field(
+            self.get_field_identifier()).get_start_index()
+
         data_found = False
         for token in self.get_tokens().get_tokens():
             if len(token.get_token_string().replace(" ", "")) == 0:
@@ -73,29 +77,29 @@ class ParseF22(ParseFieldsCommon):
                 # Error, field number cannot be determined as it precedes the field, e.g 9/B737/M,
                 # If the '/' is missing, then we cannot determine what the field number is.
                 self.add_error(token.get_token_string(),
-                               token.get_token_start_index(),
-                               token.get_token_end_index(),
+                               token.get_token_start_index() + start_offset_index,
+                               token.get_token_end_index() + start_offset_index,
                                ErrorId.F22_NO_F22_KEYWORDS_FOUND)
             else:
-                # We found a slash, what precedes it must be the field number, the number as a string
+                # We found a slash, what precedes it must be the field number as a string
                 field_number_as_string = token.get_token_string()[0:slash_index].rstrip().lstrip()
 
                 # Check if this is a known field number by comparing it with the enumeration
                 # values defining the field numbers.
                 subfield_id = self.is_compound_field_keyword(self.get_field_identifier(), field_number_as_string)
                 if subfield_id == SubFieldIdentifiers.ANYTHING:
-                    # Field number in unrecognised, not one of those defined
+                    # Field number is not one of those defined
                     self.add_error(token.get_token_string(),
-                                   token.get_token_start_index(),
-                                   token.get_token_end_index(),
+                                   token.get_token_start_index() + start_offset_index,
+                                   token.get_token_end_index() + start_offset_index,
                                    ErrorId.F22_UNRECOGNISED_KEYWORD)
                 else:
                     # Check if there is any data following the '/'
                     if len(token.get_token_string()[slash_index + 1:]) < 1:
                         # No data following the '/'
                         self.add_error(token.get_token_string(),
-                                       token.get_token_start_index(),
-                                       token.get_token_end_index(),
+                                       token.get_token_start_index() + start_offset_index + slash_index,
+                                       token.get_token_end_index() + start_offset_index,
                                        ErrorId.F22_UNRECOGNISED_DATA)
                     else:
                         # Success! Save the subfield!
@@ -103,16 +107,16 @@ class ParseF22(ParseFieldsCommon):
                             self.get_field_identifier(),
                             subfield_id,
                             token.get_token_string()[slash_index + 1:],
-                            token.get_token_start_index(),
-                            token.get_token_end_index())
+                            token.get_token_start_index() + start_offset_index + slash_index,
+                            token.get_token_end_index() + start_offset_index)
 
         if data_found:
-            self.parse_compound_subfields(SubFieldIdentifiers.F22_f3, SubFieldIdentifiers.F22_f81)
+            self.parse_compound_subfields(SubFieldIdentifiers.F22_f3, SubFieldIdentifiers.F22_f81, start_offset_index)
         else:
             self.add_error("", 0, 0, ErrorId.F22_DATA_MISSING)
 
-    def parse_compound_subfields(self, subfield_start, subfield_end):
-        # type: (SubFieldIdentifiers, SubFieldIdentifiers) -> None
+    def parse_compound_subfields(self, subfield_start, subfield_end, start_offset_index):
+        # type: (SubFieldIdentifiers, SubFieldIdentifiers, int) -> None
         """This method parses the individual F22 subfields by looping over all the subfields
         stored in the flight plans F22 record. All F22 subfields are fields that already
         have parsers implemented.
@@ -139,6 +143,7 @@ class ParseF22(ParseFieldsCommon):
 
             :param subfield_start: The first F22 subfield enumeration value;
             :param subfield_end: The last F22 subfield enumeration value;
+            :param start_offset_index: The start index of F22 in the message as a whole
             :return: None
         """
         # Set up a dictionary of field parser callbacks...
@@ -174,7 +179,7 @@ class ParseF22(ParseFieldsCommon):
         # Add the new flight plan to the flight plan instance in this class;
         self.get_flight_plan_record().set_f22_flight_plan(new_fpr)
 
-        # Loop of the dictionary of subfields and parse each individual subfield
+        # Loop over the dictionary of subfields and parse each individual subfield
         for subfield_key, subfield_list in subfield_dictionary.items():
             # Make sure subfield identifiers are valid F22 subfield enumeration values
             if subfield_start <= subfield_key <= subfield_end:
@@ -183,8 +188,8 @@ class ParseF22(ParseFieldsCommon):
                 # and an error will be reported.
                 if len(subfield_list) > 1:
                     self.add_error(subfield_key.name[5:] + "/" + subfield_list[1].get_field_text(),
-                                   subfield_list[1].get_start_index(),
-                                   subfield_list[1].get_end_index(),
+                                   subfield_list[1].get_start_index() + start_offset_index,
+                                   subfield_list[1].get_end_index() + start_offset_index,
                                    ErrorId.F22_FIELD_DUPLICATED)
 
                 # Loop over the list of subfields and parse the field;
@@ -216,5 +221,7 @@ class ParseF22(ParseFieldsCommon):
                     self.get_flight_plan_record().add_erroneous_field(
                         error_record.get_name(),
                         "F22 - " + error_record.get_error_text(),
-                        error_record.get_start_index(),
-                        error_record.get_end_index())
+                        error_record.get_start_index() +
+                        new_fpr.get_icao_field(FieldIdentifiers.F15).get_start_index(),
+                        error_record.get_end_index() +
+                        new_fpr.get_icao_field(FieldIdentifiers.F15).get_start_index())

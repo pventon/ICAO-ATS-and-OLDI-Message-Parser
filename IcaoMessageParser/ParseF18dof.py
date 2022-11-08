@@ -36,7 +36,7 @@ class ParseF18dof(ParseFieldsCommon):
         # Parse the field
         # num_parsed = self.parse_field_base()
         # Don't use the base parser as it's a single field that has very specific syntax
-        if Utils().is_dof(self.get_tokens().get_first_token().get_token_string()) is False:
+        if not Utils().is_dof(self.get_tokens().get_first_token().get_token_string()[-6:]):
             self.add_error(self.get_tokens().get_first_token().get_token_string(),
                            self.get_tokens().get_first_token().get_token_start_index(),
                            self.get_tokens().get_first_token().get_token_end_index(),

@@ -7,9 +7,15 @@ from IcaoMessageParser.ParseMessage import ParseMessage
 class MyTestCase(unittest.TestCase):
 
     def test_ParseMessage_ATS_check_f22_variants(self):
-
-        self.do_test(False, 0, "(CPLE/L001 -TEST01-LOWL0800-LOWW0200-221212-9/B737/M)",
-                     ["Expecting pilot name (A-Z, 0-9 and spaces) instead of '   PILOTS. NAME' in F19 'C'"])
+        #                      012345678901
+        self.do_test(True, 2, "FF ABCDEFGH\n"       # 11 bytes, 12?
+                              # 345678901234567
+                              "191916 AAAAAAAA\n"   # 15 bytes, 16?
+                              #  3         4         5         6         7         8         9         0
+                              # 90123456789012345678901234567890123456789012345678901234567890123456789012345
+                              "(ARR-TEST14-LOWW0800-LOWW0200-SOME AIRPORT)",
+                     ["Expecting ATA in HHMM instead of 'AIRPORT'",
+                      "Too few fields in this message; expecting at least 6 fields"])
 
     def do_test(self, errors_detected, number_of_errors, message_to_parse, expected_error_text):
         # type: (bool, int, str, [str]) -> FlightPlanRecord

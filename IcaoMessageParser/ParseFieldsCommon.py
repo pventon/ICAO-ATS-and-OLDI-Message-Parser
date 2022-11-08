@@ -587,8 +587,11 @@ class ParseFieldsCommon:
         # Token idx 0 is the keyword, token idx 1 is the '/'
         start_idx = tokens[1].get_token_end_index()
         end_idx = tokens[len(tokens) - 1].get_token_end_index()
+        start_offset = self.get_flight_plan_record().get_icao_field(self.get_field_identifier()).get_start_index()
         self.get_flight_plan_record().add_icao_subfield(self.get_field_identifier(), subfield_id,
-                                                        field_text[start_idx:end_idx], start_idx, end_idx)
+                                                        field_text[start_idx:end_idx],
+                                                        start_idx + start_offset,
+                                                        end_idx + start_offset)
 
     def split_and_insert_token(self, insert_index, split_index):
         # type: (int, int) -> None

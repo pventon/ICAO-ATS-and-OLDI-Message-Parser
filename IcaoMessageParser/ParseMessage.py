@@ -732,8 +732,10 @@ class ParseMessage:
                 # than one field is missing
                 return flight_plan_record.errors_detected()
             Utils.add_error(flight_plan_record, str(md.get_number_of_fields_in_message()),
-                            tokens.get_first_token().get_token_start_index(),
-                            tokens.get_last_token().get_token_end_index(), self.EM,
+                            tokens.get_first_token().get_token_start_index() +
+                            len(flight_plan_record.get_message_header()),
+                            tokens.get_last_token().get_token_end_index() +
+                            len(flight_plan_record.get_message_header()), self.EM,
                             ErrorId.MSG_TOO_FEW_FIELDS)
         else:
             # Either the fields to parse are equal to those defined, or we have more
