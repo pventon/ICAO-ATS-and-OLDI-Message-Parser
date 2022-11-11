@@ -435,6 +435,33 @@ class FlightPlanRecord:
         """
         return self.get_icao_field(field_id).get_all_subfields(subfield_id)
 
+    def get_all_errors(self):
+        # type: () -> []
+        """Gets all errors reported by the parser in a list of lists;
+        each sublist contains the error message index 0, the start
+        index for index 1 and the end index for index 2.
+
+        :return: A list of lists where the sublist has three entries,
+                 the error message, start index and end index.
+                 An empty list is returned if no errors exist.
+        """
+        ret_val = []
+        if self.errors_detected():
+            for error_rec in self.get_erroneous_fields():
+                ret_val.append([
+                    error_rec.get_error_message(),
+                    error_rec.get_start_index(),
+                    error_rec.get_end_index()
+                ])
+        if self.f15_errors_exist():
+            for error_rec in self.get_f15_errors():
+                ret_val.append([
+                    error_rec.get_error_text(),
+                    error_rec.get_start_index(),
+                    error_rec.get_end_index()
+                ])
+        return ret_val
+
     def get_derived_flight_rules(self):
         # type: () -> FlightRules
         """Get the flight rules derived and set from parsing F15; this is not the rules from F8,
