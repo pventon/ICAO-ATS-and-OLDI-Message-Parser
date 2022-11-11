@@ -1,4 +1,5 @@
 # ICAO ATS and OLDI Message Parser
+<b>Breaking News -> </b>On Thursday, 10th November 2022 I have uploaded a complete <a href="https://github.com/pventon/AFTN-Terminal-Application">AFTN Terminal Application</a> to my third <a href="https://github.com/">GitHub</a> repository. It still needs some work but the GUI is 90% complete. Feel free to take a look.
 <p>This <a href="https://github.com/">GitHub</a> repository contains an <b>ICAO ATS and OLDI Message Parser</b>. The <b>ICAO ATS and OLDI Message Parser</b> is implemented using Python version 3.10.7. A more recent version of Python must be used in order to support <b>switch</b> statements used in the source code.
 </p>
 <p>An acronym list is provided at the end of this readme for readers unfamiliar with ATC acronyms.
