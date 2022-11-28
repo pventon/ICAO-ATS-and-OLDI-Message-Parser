@@ -1,5 +1,4 @@
 # ICAO ATS and OLDI Message Parser
-<b>Breaking News -> </b>On Thursday, 10th November 2022 I have uploaded a complete <a href="https://github.com/pventon/AFTN-Terminal-Application">AFTN Terminal Application</a> to my third <a href="https://github.com/">GitHub</a> repository. It still needs some work but the GUI is 90% complete. Feel free to take a look.
 <p>This <a href="https://github.com/">GitHub</a> repository contains an <b>ICAO ATS and OLDI Message Parser</b>. The <b>ICAO ATS and OLDI Message Parser</b> is implemented using Python version 3.10.7. A more recent version of Python must be used in order to support <b>switch</b> statements used in the source code.
 </p>
 <p>An acronym list is provided at the end of this readme for readers unfamiliar with ATC acronyms.
@@ -11,7 +10,10 @@
 <p>All software on both the <b>ICAO ATS and OLDI Message Parser</b> and <b>ICAO Field 15 Parser</b> <a href="https://github.com/">GitHub</a> repositories has been written by Peter Venton (user <a href="https://github.com/pventon">pventon</a> on <a href="https://github.com/">GitHub</a>).</p>
 <p>Full source code documentation can be found <a href="Documents/html/index.html">here</a>.
 </p>
-
+<p>This repository is used in a complete <a href="https://github.com/pventon/AFTN-Terminal-Application">AFTN Terminal Application</a> uploaded to my third <a href="https://github.com/">GitHub</a> repository that can be found <a href="https://github.com/pventon/AFTN-Terminal-Application">here</a>.
+</p>
+<p>The project has been built using the <a href="https://www.jetbrains.com/pycharm/">PyCharm 2022.2.2</a> (Professional Edition) IDE running on a <a href="https://www.linuxmint.com">Linux Mint</a> OS. Installing Python 3.x and the <a href="https://www.jetbrains.com/pycharm/">PyCharm IDE</a> was straightforward with everything working as expected. Please donate and support <a href="https://www.linuxmint.com">Linux Mint</a> if your able to do so, its a great OS!
+</p>
 <h1>Overview</h1>
 <p>ICAO ATS and OLDI messages conform to the syntax and semantic standards described in ICAO DOC 4444.
 </p>
